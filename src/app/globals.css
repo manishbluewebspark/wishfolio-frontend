@@ -10,18 +10,71 @@
   }
 }
 
-html,
+/* html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+} */
+.container-sm{
+  max-width: 430px !important;
+}
+@media (min-width:430) {
+  .container-sm{
+    max-width: 430px !important;
+  }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* html, body {
+  font-family: "Manrope", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+  min-width: 375px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  overflow-x: hidden;
+  background-color: #ebf2fa;
+} */
+ 
+html, body{
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+  max-width: 386px;
+  /* border: 1px solid red; */
+  background-color: #ebf2fa;
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* display: flex;
+  align-items: center; 
+  justify-content: center;  */
+}
+
+.main-layout{
+  margin: 0 auto;
+  /* width: 430px;  */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Vertical centering */
+  justify-content: center;
+  background-color:white;
+}
+.page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  /* min-height: 100vh;  */
+  /* max-width: 386px; */
+  justify-content: center;
+  align-items: center;
 }
 
 * {
@@ -29,6 +82,21 @@ body {
   padding: 0;
   margin: 0;
 }
+.content-container {
+  flex-grow: 1; /* Fills the remaining space between header and footer */
+  margin-top: 58px; /* Adjust this to the height of the fixed header */
+  margin-bottom: 60px; /* Adjust this to the height of the fixed footer */
+  overflow-y: scroll; /* Ensure scrollable content */
+  background-color: white;
+  width: 386px;
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 a {
   color: inherit;

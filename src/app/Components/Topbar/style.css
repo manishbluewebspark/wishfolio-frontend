@@ -1,0 +1,119 @@
+.emoji-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .emoji-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  .emoji-card {
+    width: 92px;
+    gap:2px;
+    height: 94px;
+    border-radius: 35px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    background-color: #f9f9fb;
+    padding: 10px;
+  }
+  .emoji-card-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* position: relative; */
+
+  }
+  
+  
+  .emoji-selected {
+    background-color: #A9C5FF;
+    color: black;
+    
+  }
+  
+  .emoji-locked {
+    /* background-color: #F8F9FA; */
+    color: gray;
+  }
+  
+  .emoji-lock {
+    /* position: absolute; */
+    top: 10px;
+    right: 10px;
+    /* font-size: 12px; */
+    /* color: gray; */
+  }
+  
+  .emoji-icon {
+  }
+  
+  .emoji-name {
+    font-weight: 800;
+    line-height: 21.86px;
+    font-size: 16px;
+    color: #000000;
+  }
+
+  /* @media (max-width: 576px) {
+    .emoji-row {
+      flex-wrap: wrap;
+    }
+  
+    .emoji-card {
+      width: 80px;
+      height: 110px;
+      margin-bottom: 10px;
+    }
+  } */
+  
+  /* @media (min-width: 768px) {
+    .emoji-card {
+      width: 90px;
+      height: 120px;
+    }
+  }
+   */
+   /* topbar css */
+    .top-nav {
+    max-width: 386px;
+    margin: 0 auto;
+  }
+
+   .top-bar {
+    width: 386px; /* Set the width */
+    height: 42px; /* Set the height */
+    justify-content: space-between; /* Space between logo and settings icon */
+    gap: 0px; /* No gap between elements */
+    opacity: 1; /* Ensure full opacity */
+  }
+  .brand-text {
+    font-size: 24px; /* Font size for the brand */
+    font-weight: 800; /* Medium weight for "Wish" */
+    color: #000000; /* Black for "Wish" */
+    margin-left: 8px; /* Space between logo and text */
+    line-height: 32.78px;
+  }
+  
+  .highlight-text {
+    color: #8AB6FF; /* Light blue color for "Folio" */
+  }
+  
+  .icon-container {
+    background-color: #F2F4FB; /* Light circle background */
+    padding: 10px;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }

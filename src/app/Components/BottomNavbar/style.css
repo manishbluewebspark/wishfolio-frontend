@@ -1,0 +1,63 @@
+
+  .bottom-nav {
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+    background-color: #fff;
+    max-width: 386px;
+    margin: 0 auto;
+    /* box-shadow: 0px 2px 7px -2px; */
+  }
+  
+  
+  .bottom-nav .row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-icon {
+    font-size: 24px;
+    color: gray;
+  }
+  
+  .active-item .nav-icon {
+    color: #4A90E2; /* Highlight selected icon */
+  }
+  
+  .active-item .nav-text-bn {
+    color:#90AEFF;
+    ;
+  }
+  
+  .active-item {
+    font-weight: bold;
+  }
+  
+
+  .icon-container-bn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-text-bn {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  
+  .active-item .icon-container img {
+    filter: none; /* Show the colored icon when active */
+  }
+  
+  .icon-container img {
+    filter: grayscale(100%); /* Grayscale icons when not active */
+  }
+  
+  .active-text {
+    color: #4A90E2; /* Highlight color for the active text */
+  }
+  
+  .active-item .icon-container img {
+    filter: none; /* Remove grayscale filter for active items */
+  }
+  

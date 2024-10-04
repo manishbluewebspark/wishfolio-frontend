@@ -1,0 +1,45 @@
+/* Full page container */
+.em-confirm-main-container {
+    display: flex;
+    background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+    height: 100vh;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Centered confirmation box */
+  .em-confirm-box {
+    max-width: 386px;
+    text-align: center;
+  }
+  
+  .em-confirm-box-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .em-confirm-logo {
+    max-width: 32px;
+    max-height: 32px;
+  }
+  
+  /* Main title */
+  .em-confirm-heading {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+    color: #000;
+  }
+  
+  /* Description text */
+  .em-confirm-text {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.5rem;
+    margin-top: 12px;
+  }
+  
