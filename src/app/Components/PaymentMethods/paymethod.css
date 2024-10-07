@@ -1,0 +1,590 @@
+/* Container */
+.ptm-container {
+    max-width: 386px;
+    height: 329px;
+    margin: 20px auto; /* Added margin from all sides */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Added shadow for better look */
+    /* height: 100vh; */
+  }
+  
+  /* Title */
+  .ptm-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  /* Payment Method Container */
+  .ptm-payment-options {
+    /* background-color: #fff; */
+    /* border-radius: 12px; */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    padding: 10px; /* Added padding to make space inside */
+    height: auto;
+  }
+  
+  .ptm-payment-method {
+    padding: 15px;
+    border: 1px solid #000000;
+    margin: 12px;
+    border-radius: 35px;
+  }
+  
+  /* Icons */
+  .ptm-icon {
+    margin-right: 10px;
+  }
+  
+  /* Arrow */
+  .ptm-arrow {
+    font-size: 24px;
+    color: #888;
+    font-weight: bold;
+  }
+  
+  /* Hover Effect */
+  .ptm-payment-method:hover {
+    background-color: #f4f4f4;
+    border-radius: 35px; /* Ensure hover effect doesn't interfere with borders */
+  }
+  /* deposit page css  */
+  /* Container */
+.dp-container {
+  max-width:386px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  /* margin-top: 164px; */
+}
+
+/* Back Button */
+.dp-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 75px;
+}
+
+.dp-back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Title and Subtitle */
+.dp-title {
+  font-size: 20px;
+  margin-bottom: 0px !important;
+  font-weight: 800;
+  color: #000;
+  line-height: 24px
+}
+
+.dp-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+}
+
+/* Input Section */
+.dp-input-section {
+  background-color:#F7F7F7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width:100%;
+}
+
+.dp-label {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 21.86px;
+  color: #000;
+}
+
+.dp-balance {
+  font-size: 12px;
+  font-weight: bold;
+  color: #696969;
+}
+.dp-balance strong {
+  font-size: 12px;
+  color: #000000;
+}
+
+/* Amount Box */
+.dp-amount-box {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.dp-rupee-sign {
+  font-size: 34px;
+  font-weight: 800;
+  color: #000;
+  margin-right: 4px;
+}
+
+.dp-amount-input {
+  border: none;
+  background-color: transparent;
+  font-size: 34px;
+  font-weight: 600;
+  color: #000000;
+  text-align: left;
+  width: 150px;
+}
+
+.dp-amount-input:disabled {
+  cursor: not-allowed;
+}
+
+/* Quick Amount Buttons */
+.dp-quick-amount {
+  width: 304px;
+  height: 30px;
+  gap: 7px;
+  display: flex;
+}
+
+.dp-quick-btn {
+  width: 48px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dp-quick-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Terms and Privacy */
+.dp-terms {
+  font-size: 12px;
+  color: #888;
+}
+
+.dp-terms a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.dp-terms a:hover {
+  text-decoration: underline;
+}
+
+/* Continue Button */
+.dp-continue-btn-wrapper {
+  text-align: center;
+}
+
+.dp-continue-btn {
+  background-color: #d0e1ff;
+  color: #999;
+  border: none;
+  padding: 15px 0;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+
+
+
+
+/* transfer deposit */
+
+/* Deposit page CSS */
+/* Container */
+.ta-dp-container {
+  max-width: 386px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Back Button */
+.ta-dp-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ta-dp-back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Title and Subtitle */
+.ta-dp-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+  line-height: 20px;
+  margin-bottom: 15px;
+}
+
+/* Input Section */
+.ta-dp-input-section {
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.ta-dp-input-section-btm {
+  display: flex;
+  flex-direction: column;
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 110px;
+
+}
+/* Labels and Text */
+.ta-dp-label {
+  font-size: 14px;
+  color:#696969;
+  font-weight:400;
+  line-height: 19.12px;
+  color: #000;
+}
+
+.ta-dp-balance {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+}
+.ta-dp-balance strong {
+  font-size: 14px;
+  color: #000000;
+}
+
+/* Copy Icon */
+.ta-dp-copy-icon {
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Amount Section */
+.ta-dp-amount-section {
+  margin-bottom: 20px;
+}
+
+.ta-dp-rupee-sign {
+  font-size: 34px;
+  font-weight: 800;
+  color: #000;
+  margin-right: 4px;
+}
+
+.ta-dp-amount-input {
+  border: none;
+  background-color: transparent;
+  font-size: 34px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Final Amount Box */
+.ta-dp-final-amount {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.12px;
+
+  color:
+  #696969;
+  ;
+}
+
+.ta-dp-final-amount-value {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 46.44px;
+  color: #000;
+}
+.ta-dp-amount-section{
+   height: 98px;
+   width: 100%;
+   background-color: #F7F7F7;
+}
+
+/* transfer with upi */
+/* Container */
+.twu-container {
+  max-width: 386px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Back Button */
+.twu-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.twu-back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Title */
+.twu-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #000;
+  line-height: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Input Section */
+.twu-input-section {
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Labels and Text */
+.twu-label {
+  font-size: 14px;
+  color: #696969;
+  font-weight: 400;
+  line-height: 19.12px;
+}
+
+.twu-balance {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.twu-balance strong {
+  font-size: 14px;
+  color: #000;
+}
+
+/* Copy Icon */
+.twu-copy-icon {
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Section Rows */
+.twu-section-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Amount Section */
+.twu-amount-section {
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.twu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Final Amount Box */
+.twu-final-amount-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 110px;
+}
+
+.twu-final-amount {
+  font-size: 14px;
+  font-weight: 400;
+  color: #696969;
+  margin-bottom: 10px;
+}
+
+.twu-final-amount-value {
+  font-size: 34px;
+  font-weight: 800;
+  color: #000;
+}
+
+/* pre deposite page  */
+/* Container */
+.pta-container {
+  max-width: 386px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Transaction ID Section */
+.pta-input-section {
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.pta-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+/* Input Field */
+.pta-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* File Upload Link */
+.pta-upload-link {
+  display: block;
+  color: #007bff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* Description */
+.pta-description {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+/* Submit Button */
+.pta-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #d0e1ff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Divider */
+.pta-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pta-divider::before, .pta-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.pta-divider::before {
+  margin-right: 10px;
+}
+
+.pta-divider::after {
+  margin-left: 10px;
+}
+
+.pta-divider-text {
+  font-size: 14px;
+  color: #888;
+}
+
+/* New Deposit Section */
+.pta-deposit-section {
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Deposit Title */
+.pta-deposit-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+/* Deposit Description */
+.pta-deposit-description {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+/* Deposit Button */
+.pta-deposit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #d0e1ff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}

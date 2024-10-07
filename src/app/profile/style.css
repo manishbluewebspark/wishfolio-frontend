@@ -41,7 +41,7 @@
   }
   
   .pf-balance-section {
-    background-color: #eef5ff;
+    background-color:#90AEFF;
     padding: 15px;
     border-radius: 10px;
   }
@@ -55,9 +55,20 @@
     font-size: 28px;
     font-weight: bold;
   }
+  .pf-icon-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    height: 42px;
+    width: 42px;
+    border-radius: 100px;
+    margin-right: 21px;
+  }
   
   .pf-deposit-button {
-    background-color: #5c74fc;
+   
+    background-color:black;
     color: white;
     padding: 10px 20px;
     border-radius: 25px;
@@ -69,13 +80,17 @@
   }
   
   .pf-menu-item {
+    height: 72px;
+    border-radius: 20px;
     padding: 15px;
-    border-bottom: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     cursor: pointer;
+    margin-bottom: 10px;
+    background-color:#F7F7F7;
   }
   
   .pf-menu-icon {
-    margin-right: 10px;
+    /* margin-right: 10px; */
     width: 20px;
   }
   
@@ -85,11 +100,11 @@
   }
   
   .pf-logout-button {
-    background-color: white;
+    /* background-color: white; */
     color: red;
     border: none;
     padding: 10px 20px;
-    border-radius: 25px;
+    background-color:#F7F7F7;
   }
   
   .pf-footer {

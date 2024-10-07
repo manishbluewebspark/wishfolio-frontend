@@ -46,7 +46,6 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
   max-width: 386px;
-  /* border: 1px solid red; */
   background-color: #ebf2fa;
   overflow-x: hidden;
   min-height: 100vh;
