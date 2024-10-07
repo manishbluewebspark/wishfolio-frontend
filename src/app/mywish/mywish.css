@@ -1,0 +1,194 @@
+/* Container */
+.container-mw {
+    background-color: #ffffff;
+    min-height: 100vh;
+  }
+  .mw-top-con{
+    height: 287px;
+    width: 386px;
+    gap:8px;
+  }
+  
+  /* Header */
+  .mw-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mw-logo img {
+    width: 150px;
+  }
+  
+  .mw-close-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Statistics Section */
+  .mw-statistics-section {
+    background-color: #90AEFF;
+    color: #000000;
+    border-radius: 8px;
+    height: 207px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 24px;
+    gap: 10px;
+  }
+  .mw-statistics-inside-sec{
+    width: 346px;
+    height: 167px;
+    gap: 10px;
+  }
+  .mw-content-inside-sec{
+    height: 63px;
+    width: 346px;
+    gap: 3px;
+
+  }
+  .mw-content-inside-sec2{
+    height: 94px;
+    width: 346px;
+    gap: 10px;
+
+  }
+  .mw-statistics-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21.86px;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  
+  .mw-description {
+    margin-bottom: 10px;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.12px;
+
+  }
+  
+  .mw-statistics-details {
+    margin-top: 15px;
+  }
+  
+  .mw-stat-item {
+    display: flex;
+    height: 44px;
+    width: 346px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 80px;
+    background-color: #AEC4FF;
+    margin-bottom: 10px;
+    ;
+  }
+  
+  .mw-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .mw-stat-text span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.12px;
+  }
+  
+  .mw-stat-text h6 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #000;
+    /* line-height: 21.86px; */
+  }
+  
+  /* Orders Section */
+  .mw-orders-section {
+    background-color:#F7F7F7  ;
+    border-radius: 24px;
+    padding: 10px 15px;
+    color: #000000;
+    border-radius: 8px;
+    height: 72px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 24px;
+    gap: 15px;
+  }
+  .mwlovely-img{
+    padding: 14px;
+    border-radius: 40px;
+    background-color: #dedede;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+  }
+  .mw-orders-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .mw-arrow-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Donation Section */
+
+.mw-donation-section-con{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 245;
+  width: 100%;
+
+}
+  .mw-donation-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 245px;
+    /* width: 320px; */
+  }
+  .mw-donation-section h5{
+    font-size: 20;
+    font-weight: 700;
+    line-height: 27.32px;
+    text-align: center;
+  }
+  .mw-donation-section p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.12px;
+    text-align: center;
+  }
+
+
+  
+  .mw-donate-img {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .mw-donate-btn {
+    background-color:#90AEFF;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 25px;
+  font-weight: 800;
+  text-align: center;
+    border: none;
+    font-size: 16px;
+  }
+  
