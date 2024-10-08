@@ -4,7 +4,7 @@ import Image from 'next/image';
 import './style.css';
 import starIcon from '../../images/star.jpg'; // Replace with your icon path
 import dropIcon from '../../images/drop.jpg'; // Replace with your icon path
-import vectorIcon from '../../images/vector.png'; // Replace with your icon path
+import vectorIcon from '../../images/moon.png'; // Replace with your icon path
 import profileIcon from '../../images/Male15.png'; // Replace with your icon path
 
 const BottomNav = () => {
