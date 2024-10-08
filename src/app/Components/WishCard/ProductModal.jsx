@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import './style.css'; // Custom styles for modal
+import MyDoner from '../MyDoner/MyDoner';
 
 const ProductModal = ({ product, showModal, handleClose }) => {
   useEffect(() => {
@@ -35,7 +36,8 @@ const ProductModal = ({ product, showModal, handleClose }) => {
             </div>
 
             {/* Donors List */}
-            <div className="donors-section">
+            <MyDoner></MyDoner>
+            {/* <div className="donors-section">
               <h3>Donors 6/10</h3>
               <ul>
                 {product.donors.map((donor, index) => (
@@ -45,7 +47,7 @@ const ProductModal = ({ product, showModal, handleClose }) => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             {/* Donate Button */}
             <div className="donate-section">

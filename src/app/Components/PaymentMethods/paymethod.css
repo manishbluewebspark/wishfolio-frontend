@@ -1,13 +1,11 @@
 /* Container */
 .ptm-container {
-    max-width: 386px;
-    height: 329px;
-    margin: 20px auto; /* Added margin from all sides */
+    max-width: 100%;
+    margin: 20px auto; 
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 15px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Added shadow for better look */
-    /* height: 100vh; */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); 
   }
   
   /* Title */
@@ -53,9 +51,8 @@
   /* deposit page css  */
   /* Container */
 .dp-container {
-  max-width:386px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
   background-color: #ffffff;
   min-height: 100vh;
   /* margin-top: 164px; */

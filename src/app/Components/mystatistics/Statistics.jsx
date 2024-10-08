@@ -8,7 +8,7 @@ import icon2 from '../../images/drop.png';
 
 const Statistics= () => {
   return (
-        <div className="mw-statistics-section  shadow-sm">
+        <div className="container mw-statistics-section  shadow-sm">
         <div className='mw-statistics-inside-sec'>
           <div className="mw-content-inside-sec">
           <h5 className="mw-statistics-title">My Statistic</h5>
