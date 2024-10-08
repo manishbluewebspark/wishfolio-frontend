@@ -1,11 +1,11 @@
-/* .emoji-container {
+.emoji-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-top: 15px;
     margin-bottom: 15px;
-  } */
+  }
   
   .emoji-row {
     display: flex;
