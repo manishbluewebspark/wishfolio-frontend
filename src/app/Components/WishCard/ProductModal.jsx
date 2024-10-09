@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./style.css"; // Custom styles for modal
 import Statistics from "../mystatistics/Statistics";
-
+import MyDoner from "../MyDoner/MyDoner";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ProductModal = ({
@@ -114,6 +114,13 @@ const ProductModal = ({
                 Donors {product.donationsDetails.length}/
                 {minDonation.numberOfDonations}
               </h3>
+              {/* Statistics Section */}
+
+              {/* Donors List */}
+              <MyDoner></MyDoner>
+            </div>
+            {/* <div className="donors-section">
+              <h3>Donors 6/10</h3>
               <ul>
                 {product?.donationsDetails?.map((donor, index) => (
                   <li key={index}>
@@ -129,7 +136,7 @@ const ProductModal = ({
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             <div className="donate-section">
               <input

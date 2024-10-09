@@ -1,0 +1,86 @@
+/* Custom CSS for the Donor List */
+
+.pf-donor-container {
+    background-color:#F7F7F7;
+    ;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 250px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    margin-top: 4px;
+  }
+  
+  .pf-donor-header {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .pf-donor-avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+  .pf-avatar-img {
+    border-radius: 50%;
+  }
+  
+  .pf-donor-title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .pf-donor-count {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .pf-donor-list {
+    max-height: 250px; /* Set a max height if the list is long */
+    overflow-y: auto;
+  }
+  
+  .pf-donor-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .pf-donor-item:last-child {
+    border-bottom: none;
+  }
+  
+  .pf-donor-img {
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .pf-donor-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pf-donor-name {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .pf-donor-time {
+    color: #999;
+    font-size: 12px;
+  }
+  
+  .pf-donor-amount {
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .pf-verified-icon {
+    margin-left: 5px;
+    color: #28a745;
+    font-size: 12px;
+  }
+  

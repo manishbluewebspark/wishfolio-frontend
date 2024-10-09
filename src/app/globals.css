@@ -46,12 +46,13 @@ html, body{
   margin: 0;
 }
 .content-container {
+  width: 100%;
   flex-grow: 1; 
   margin-top: 58px; 
   margin-bottom: 60px; 
+  /* padding: 0px 20px; */
   overflow-y: scroll; 
   background-color: white;
-  width: 386px;
   -ms-overflow-style: none; 
   scrollbar-width: none; 
   height: 100vh;

@@ -90,7 +90,7 @@
   }
 
    .top-bar {
-    width: 386px; /* Set the width */
+    width: 100%; /* Set the width */
     height: 42px; /* Set the height */
     justify-content: space-between; /* Space between logo and settings icon */
     gap: 0px; /* No gap between elements */
@@ -116,4 +116,7 @@
   .navbar-brand {
     display: flex;
     align-items: center;
+  }
+  @media (min-width:375px) and (max-width:429px) {
+    
   }
