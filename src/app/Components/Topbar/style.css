@@ -15,7 +15,7 @@
   }
   
   .emoji-card {
-    width: 92px;
+    width: 92px !important;
     gap:2px;
     height: 94px;
     border-radius: 35px;

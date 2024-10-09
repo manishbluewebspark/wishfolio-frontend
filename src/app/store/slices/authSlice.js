@@ -1,20 +1,25 @@
-'use client';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
+"use client";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 // Async thunk for login
 export const loginUser = createAsyncThunk(
-  'auth/loginUser',
+  "auth/loginUser",
   async (loginData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://13.53.166.146:4000/api/auth/login', loginData);
+      const response = await axios.post(
+        `${API_BASE_URL}/auth/login`,
+        loginData
+      );
       // Assuming the response has a `token` and `user` field
-      console.log(response.data)
-      return response.data; 
+      console.log(response.data);
+      return response.data;
     } catch (error) {
       // Return the error message or status if available
       if (error.response && error.response.data) {
-        return rejectWithValue(error.response.data.message || error.response.data);
+        return rejectWithValue(
+          error.response.data.message || error.response.data
+        );
       } else {
         return rejectWithValue(error.message);
       }
@@ -23,7 +28,7 @@ export const loginUser = createAsyncThunk(
 );
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: {
     user: null,
     token: null,
@@ -34,7 +39,7 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.token = null;
-      localStorage.removeItem('token'); // Remove token on logout
+      localStorage.removeItem("token"); // Remove token on logout
     },
   },
   extraReducers: (builder) => {
@@ -50,13 +55,13 @@ const authSlice = createSlice({
         state.token = action.payload.token || null;
         // Store token in localStorage if available
         if (action.payload.token) {
-          localStorage.setItem('token', action.payload.token);
+          localStorage.setItem("token", action.payload.token);
         }
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         // Handle error message
-        state.error = action.payload || 'Login failed. Please try again.';
+        state.error = action.payload || "Login failed. Please try again.";
       });
   },
 });

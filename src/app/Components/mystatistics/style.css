@@ -39,19 +39,19 @@
     gap: 10px;
   }
   .mw-statistics-inside-sec{
-    width: 346px;
+    width: 100%;
     height: 167px;
     gap: 10px;
   }
   .mw-content-inside-sec{
     height: 63px;
-    width: 346px;
+    width: 100%;
     gap: 3px;
 
   }
   .mw-content-inside-sec2{
     height: 94px;
-    width: 346px;
+    width: 100%;
     gap: 10px;
 
   }
@@ -80,7 +80,7 @@
   .mw-stat-item {
     display: flex;
     height: 44px;
-    width: 346px;
+    width: 100%;
     align-items: center;
     padding: 10px;
     border-radius: 80px;

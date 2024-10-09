@@ -1,51 +1,65 @@
 "use client";
-import { useState } from 'react';
-import Image from 'next/image'; // Import the Next.js Image component
-import './style.css';
-import emoji1 from '../../images/emoji1.png';
-import emoji2 from '../../images/emoji2.png';
-import emoji3 from '../../images/emoji3.png';
-import emoji4 from '../../images/emoji4.png';
-import lockIcon from '../../images/lock-circle.jpg';
-
+import { useState, useEffect } from "react";
+import Image from "next/image"; // Import the Next.js Image component
+import "./style.css";
+import lockIcon from "../../images/lock-circle.jpg";
+import { fetchLevels } from "../../store/slices/levelsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
 const EmojisCard = () => {
-  const [selected, setSelected] = useState('Star');
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState("");
+  const [selectedId, setSelectedId] = useState("");
 
-  const options = [
-    { name: 'Star', emoji: emoji1, locked: false },
-    { name: 'Tree', emoji: emoji2, locked: true },
-    { name: 'Wave', emoji: emoji3, locked: true },
-    { name: 'Sun', emoji: emoji4, locked: true },
-  ];
+  const { levels, loading, error } = useSelector((state) => state.levels);
 
-  const handleSelect = (name) => {
-    if (!options.find(option => option.name === name).locked) {
-      setSelected(name);
+  useEffect(() => {
+    dispatch(fetchLevels());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (levels.length > 0 && !selected) {
+      setSelected(levels[0].labelName);
+      setSelectedId(levels[0]._id);
+      dispatch(fetchProductsByLevel(levels[0]._id));
     }
+  }, [levels, selected, dispatch]);
+  const handleSelect = (name, id) => {
+    setSelected(name);
+    setSelectedId(id);
+    dispatch(fetchProductsByLevel(id));
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="emoji-container">
       <div className="emoji-row row">
-        {options.map((option) => (
+        {levels.map((option, index) => (
           <div
-            key={option.name}
-            className={` emoji-card  ${selected === option.name ? 'emoji-selected' : 'emoji-locked'}`}
-            onClick={() => handleSelect(option.name)}
+            key={index}
+            className={`emoji-card ${
+              selected === option.labelName ? "emoji-selected" : "emoji-locked"
+            }`}
+            onClick={() => handleSelect(option.labelName, option._id)}
           >
-           <div className='emoji-card-items'>
-           {option.locked && (
-              <div className="emoji-lock">
-                <Image src={lockIcon} width={18} height={18}></Image>
+            <div className="emoji-card-items">
+              {option?.locked && (
+                <div className="emoji-lock">
+                  <Image src={lockIcon} width={18} height={18} alt="lock" />
+                </div>
+              )}
+              <div className="emoji-name">{option.labelName}</div>
+              <div className="emoji-icon">
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${option.imageUrl}`}
+                  alt={option.labelName}
+                  width={32}
+                  height={32}
+                />
               </div>
-            )}
-            <div className="emoji-name">
-              {option.name}
             </div>
-            <div className="emoji-icon">
-              <Image src={option.emoji} alt={option.name} width={32} height={32} />
-            </div>
-           </div>
           </div>
         ))}
       </div>

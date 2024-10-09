@@ -1,48 +1,57 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WishCard from "./WishCard";
 import ProductModal from "./ProductModal";
 import watchImage from "../../images/watchimg.png";
 import bagImage from "../../images/bagimg.png";
 import profileImage from "../../images/Male15.png";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserData } from "../../store/slices/userSlice";
+import SuccessModal from "./successModal";
 // Sample Product Data
-const productData = [
-  { 
-    id: 1, 
-    productImage: watchImage, 
-    title: "Apple Watch Series 6", 
-    price: 34000, 
-    donationGoal: 54990, 
-    category: "electronics", 
-    donors: [
-      { name: "Theresa Webb", profileImage: profileImage, donationAmount: 500 }
-    ] 
-  },
-  { 
-    id: 2, 
-    productImage: bagImage, 
-    title: "Versace Handbag", 
-    price: 24000, 
-    donationGoal: 40000, 
-    category: "fashion", 
-    donors: [
-      { name: "Sinan CP", profileImage: profileImage, donationAmount: 500 }
-    ] 
-  },
-  // Add more products as needed
-];
 
 export default function ProductCard() {
+  const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  
-  // Filter states
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [selected, setSelected] = useState("");
+  const [minDonation, setMinDonation] = useState({});
   const [filterCategory, setFilterCategory] = useState("all");
   const [filterPriceRange, setFilterPriceRange] = useState("all");
   const [dropdownOpen, setDropdownOpen] = useState(false); // Dropdown state
-  const [nestedDropdownOpen, setNestedDropdownOpen] = useState({ category: false, price: false });
+  const [nestedDropdownOpen, setNestedDropdownOpen] = useState({
+    category: false,
+    price: false,
+  });
+  const {
+    products,
+    loading: productsLoading,
+    error: productsError,
+  } = useSelector((state) => state.productsByLevel);
+  const { levels, loading, error } = useSelector((state) => state.levels);
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const getUserData = () => {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        const uData = JSON.parse(userData);
+        setUser(uData);
+        dispatch(fetchUserData(uData.id));
+      }
+    };
+
+    getUserData(); // Call the function
+  }, []);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      setSelected(products[0].levelId);
+      const foundData = levels.find((item) => item._id === products[0].levelId);
+      setMinDonation(foundData);
+    }
+  }, [levels, products]);
   const handleCardClick = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
@@ -53,15 +62,27 @@ export default function ProductCard() {
     setSelectedProduct(null);
   };
 
+  const handleOpensucessModal = () => {
+    setShowModal(false);
+    setSelectedProduct(null);
+    setShowSuccessModal(true);
+  };
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+  };
   // Filter products by category and price
-  const filteredProducts = productData.filter((product) => {
-    const matchesCategory = filterCategory === "all" || product.category === filterCategory;
-    
-    const matchesPrice = filterPriceRange === "all" || 
-      (filterPriceRange === "low" && product.price < 30000) ||
-      (filterPriceRange === "medium" && product.price >= 30000 && product.price <= 50000) ||
-      (filterPriceRange === "high" && product.price > 50000);
-    
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      filterCategory === "all" || product.categoryId === filterCategory;
+
+    const matchesPrice =
+      filterPriceRange === "all" ||
+      (filterPriceRange === "low" && product.productPrice < 30000) ||
+      (filterPriceRange === "medium" &&
+        product.price >= 30000 &&
+        product.price <= 50000) ||
+      (filterPriceRange === "high" && product.productPrice > 50000);
+
     return matchesCategory && matchesPrice;
   });
 
@@ -80,10 +101,10 @@ export default function ProductCard() {
     <div className="container-sm position-relative mb-2">
       {/* Filter Section */}
       <div className="d-flex justify-content-between align-items-center mb-2">
-       <div className="d-block">
-       <h2 className="wishing-items-title">Wishing Items</h2>
-       <p className="price-range">₹5,000 – ₹10,000 Worth Items</p>
-       </div>
+        <div className="d-block">
+          <h2 className="wishing-items-title">Wishing Items</h2>
+          <p className="price-range">₹5,000 – ₹10,000 Worth Items</p>
+        </div>
 
         <div className="filter-by">
           <a className="dropdown-toggle" onClick={toggleDropdown}>
@@ -93,29 +114,49 @@ export default function ProductCard() {
           {dropdownOpen && (
             <div className="dropdown-menu">
               <div className="nested-dropdown">
-                <button className="nested-toggle" onClick={() => toggleNestedDropdown('category')}>
+                <button
+                  className="nested-toggle"
+                  onClick={() => toggleNestedDropdown("category")}
+                >
                   All Categories
                 </button>
                 {nestedDropdownOpen.category && (
                   <div className="nested-dropdown-menu">
-                    <button onClick={() => setFilterCategory("all")}>All</button>
-                    <button onClick={() => setFilterCategory("electronics")}>Electronics</button>
-                    <button onClick={() => setFilterCategory("fashion")}>Fashion</button>
+                    <button onClick={() => setFilterCategory("all")}>
+                      All
+                    </button>
+                    <button onClick={() => setFilterCategory("electronics")}>
+                      Electronics
+                    </button>
+                    <button onClick={() => setFilterCategory("fashion")}>
+                      Fashion
+                    </button>
                     {/* Add more categories */}
                   </div>
                 )}
               </div>
-              
+
               <div className="nested-dropdown">
-                <button className="nested-toggle" onClick={() => toggleNestedDropdown('price')}>
+                <button
+                  className="nested-toggle"
+                  onClick={() => toggleNestedDropdown("price")}
+                >
                   All Prices
                 </button>
                 {nestedDropdownOpen.price && (
                   <div className="nested-dropdown-menu">
-                    <button onClick={() => setFilterPriceRange("all")}>All</button>
-                    <button onClick={() => setFilterPriceRange("low")}>Below ₹30,000</button>
-                    <button onClick={() => setFilterPriceRange("medium")}>₹30,000 - ₹50,000</button>
-                    <button onClick={() => setFilterPriceRange("high")}>Above ₹50,000</button>
+                    <button onClick={() => setFilterPriceRange("all")}>
+                      All
+                    </button>
+                    <button onClick={() => setFilterPriceRange("low")}>
+                      Below ₹30,000
+                    </button>
+                    <button onClick={() => setFilterPriceRange("medium")}>
+                      ₹30,000 - ₹50,000
+                    </button>
+                    <button onClick={() => setFilterPriceRange("high")}>
+                      Above ₹50,000
+                    </button>
                   </div>
                 )}
               </div>
@@ -124,17 +165,24 @@ export default function ProductCard() {
         </div>
       </div>
 
-
       {/* Product Cards */}
       <div className="row product-con">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div className="col-md-6 col-sm-6 col-6 product-col" key={product.id} onClick={() => handleCardClick(product)}>
+            <div
+              className="col-md-6 col-sm-6 col-6 product-col"
+              key={product.id}
+              onClick={() => handleCardClick(product)}
+            >
               <WishCard
-                productImage={product.productImage}
-                title={product.title}
-                price={product.price}
-                donationGoal={product.donationGoal}
+                minDonation={minDonation?.minimumDonation}
+                productImage={product.productImageUrl}
+                title={product.productName}
+                price={product.donationGoal || 0}
+                donationGoal={product.productPrice}
+                wishingBy={product.wishingBy}
+                wishingByImage={product.wishingByImage}
+                donationsDetails={product.donationsDetails}
               />
             </div>
           ))
@@ -148,7 +196,15 @@ export default function ProductCard() {
         <ProductModal
           product={selectedProduct}
           showModal={showModal}
+          minDonation={minDonation}
           handleClose={handleCloseModal}
+          openSuccessModal={handleOpensucessModal}
+        />
+      )}
+      {showSuccessModal && (
+        <SuccessModal
+          showModal={showSuccessModal}
+          handleClose={handleCloseSuccessModal}
         />
       )}
     </div>
