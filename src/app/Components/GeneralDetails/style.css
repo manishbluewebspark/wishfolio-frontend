@@ -1,0 +1,82 @@
+/* Styles for the component using "gd" prefix and Bootstrap */
+
+.gd-profile-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  /* Header with back button, title, and save button */
+  .gd-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .gd-back-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .gd-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .gd-save-btn {
+    background-color: #4A64FE;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .gd-save-btn:hover {
+    background-color: #3a54ce;
+  }
+  
+  /* Input Group Styles */
+  .gd-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .gd-input-group {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 50px; /* Rounded input container */
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .gd-input-field-right {
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: right; /* Align text to the right */
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+  }
+  
+  .gd-input-label {
+    position: absolute;
+    left: 20px;
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+    pointer-events: none;
+  }
+  
+  .gd-input-field-right:read-only {
+    background-color: #fff; /* Ensure read-only input doesn't change background */
+  }
+  
