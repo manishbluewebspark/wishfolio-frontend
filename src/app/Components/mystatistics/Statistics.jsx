@@ -59,7 +59,8 @@ const Statistics = (props) => {
             <div className="mw-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Min Donations</span>
               <h6>
-                ₹{getSumOfAmounts(statisticData?.data)}/{props?.minDonation}
+                ₹{getSumOfAmounts(statisticData?.data)}
+                {/* /{props?.minDonation} */}
                 {/* {props?.minDonation} / {props.price} */}
               </h6>
             </div>
@@ -78,7 +79,8 @@ const Statistics = (props) => {
             <div className="mw-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Number of Donations</span>
               <h6>
-                {statisticData?.data?.length}/{props.numberOfDoanation}
+                {statisticData?.data?.length}
+                {/* /{props.numberOfDoanation} */}
                 {/* {props.remaningDonation} / {props.numberOfDoanation} */}
               </h6>
             </div>
