@@ -33,7 +33,9 @@ const LoginScreen = () => {
         console.error("Login failed:", err);
       });
   };
-
+  const handleCreateAccount = () => {
+    router.push("/signup/email");
+  };
   return (
     <div className="login-main-container">
       <div className="login-container d-block justify-content-center align-items-center">
@@ -124,7 +126,10 @@ const LoginScreen = () => {
 
           {/* Google Sign-in Button */}
           <div className="login-box-btm">
-            <button className="btn btn-light btn-google w-100 mb-3">
+            <button
+              className="btn btn-light btn-google w-100 mb-3"
+              onClick={() => handleCreateAccount()}
+            >
               <i className="bi bi-google"></i> Sign up with Google
             </button>
           </div>
@@ -132,11 +137,17 @@ const LoginScreen = () => {
 
         {/* Create New Account */}
         <div className="create-new-con">
-          <div className="create-account">
-            <a href="#">
+          {/* <div className="create-account">
+            <a href="#" onClick={() => handleCreateAccount()}>
               <i className="bi bi-arrow-right-circle"></i> Create a new account
             </a>
-          </div>
+          </div> */}
+          <button
+            className="btn btn-light btn-google w-100 mb-3"
+            onClick={() => handleCreateAccount()}
+          >
+            <i className="bi bi-google"></i> Create a new account
+          </button>
         </div>
       </div>
     </div>

@@ -1,32 +1,60 @@
-'use client';
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'next/image';
-import logo from '../../images/snow.png'; // Replace with your logo path
-import './style.css';
-
+"use client";
+import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Image from "next/image";
+import logo from "../../images/snow.png"; // Replace with your logo path
+import "./style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const AddressForm = () => {
-  const [country, setCountry] = useState('India');
-  const [state, setState] = useState('Kerala');
-  const [city, setCity] = useState('');
-  const [addressLine1, setAddressLine1] = useState('');
-  const [addressLine2, setAddressLine2] = useState('');
-  const [pinCode, setPinCode] = useState('');
-  const [roomNumber, setRoomNumber] = useState('');
-
-  const handleSubmit = (e) => {
+  const { email, name, mobile } = useSelector((state) => state.signup);
+  const [country, setCountry] = useState("India");
+  const [state, setState] = useState("Kerala");
+  const [city, setCity] = useState("");
+  const [addressLine1, setAddressLine1] = useState("");
+  const [addressLine2, setAddressLine2] = useState("");
+  const [pinCode, setPinCode] = useState("");
+  const [roomNumber, setRoomNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // const formData = {
+    //   country,
+    //   state,
+    //   city,
+    //   addressLine1,
+    //   addressLine2,
+    //   pinCode,
+    //   roomNumber,
+    // };
+
     const formData = {
-      country,
-      state,
+      name: name,
+      country: country,
+      state: state,
+      address_line_1: addressLine1,
+      address_line_2: addressLine2,
+      pincode: pinCode,
+      roomNumber: roomNumber,
+      email: email,
+      password: password,
+      userRole: 2,
+      mobile: mobile,
       city,
-      addressLine1,
-      addressLine2,
-      pinCode,
-      roomNumber,
     };
-    console.log('Form Data:', formData);
-    alert('Address submitted successfully!');
+    try {
+      const response = await axios.post(`${API_BASE_URL}/user`, formData);
+      if (response.status === 201) {
+        router.push("/login");
+        console.log("Form Data:", formData);
+        alert("submitted successfully!");
+      }
+    } catch (error) {
+      console.error("Error sending verification code:", error);
+    }
   };
 
   return (
@@ -42,8 +70,12 @@ const AddressForm = () => {
               height={32}
             />
             <div className="em-address-top-text">
-              <h2 className="em-address-heading">Enter your Delivery Address</h2>
-              <p className="subtext">Start your wishing journey by signing up.</p>
+              <h2 className="em-address-heading">
+                Enter your Delivery Address
+              </h2>
+              <p className="subtext">
+                Start your wishing journey by signing up.
+              </p>
             </div>
           </div>
 
@@ -122,6 +154,15 @@ const AddressForm = () => {
                 onChange={(e) => setRoomNumber(e.target.value)}
               />
             </div>
+            <div className="input-container mb-3">
+              <input
+                type="password"
+                className="form-control custom-input"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
             {/* Complete button */}
             <div className="d-grid mt-4">
@@ -134,7 +175,8 @@ const AddressForm = () => {
           {/* Policy and terms */}
           <div className="text-center mt-2">
             <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of Service
+              By continuing, you agree to our Privacy Policy and Terms of
+              Service
             </a>
           </div>
         </div>

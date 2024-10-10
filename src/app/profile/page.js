@@ -28,7 +28,10 @@ const Profile = () => {
 
     getUserData(); // Call the function
   }, []);
-
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
   return (
     <div className="pf-profile-container container">
       {/* Top Section with Profile Image and User Information */}
@@ -114,7 +117,9 @@ const Profile = () => {
 
       {/* Logout Button */}
       <div className="pf-menu-item d-flex align-items-center justify-content-center just mt-4">
-        <button className="pf-logout-button">Logout</button>
+        <button className="pf-logout-button" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );
