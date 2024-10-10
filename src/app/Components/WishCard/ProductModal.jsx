@@ -28,26 +28,30 @@ const ProductModal = ({
   }, [showModal]);
 
   const handleDonateClick = async () => {
-    const formData = {
-      productId: product.productId,
-      userId: userData._id,
-      amount: amout,
-      wiseProductId: product._id,
-    };
+    if (userData?._id) {
+      const formData = {
+        productId: product.productId,
+        userId: userData._id,
+        amount: amout,
+        wiseProductId: product._id,
+      };
 
-    try {
-      const response = await axios.post(
-        `${API_BASE_URL}/product/donation`,
-        formData
-      );
+      try {
+        const response = await axios.post(
+          `${API_BASE_URL}/product/donation`,
+          formData
+        );
 
-      if (response.status === 201) {
-        openSuccessModal();
-      } else {
-        console.error("Deposit failed:", response);
+        if (response.status === 201) {
+          openSuccessModal();
+        } else {
+          console.error("Deposit failed:", response);
+        }
+      } catch (error) {
+        console.error("An error occurred during the deposit:", error);
       }
-    } catch (error) {
-      console.error("An error occurred during the deposit:", error);
+    } else {
+      window.alert("Please login first");
     }
   };
   const getSumOfAmounts = (donations) => {
@@ -122,7 +126,7 @@ const ProductModal = ({
               <button className="donate-btn" onClick={handleDonateClick}>
                 Donate
               </button>
-              <p>Current Balance: ₹{userData.accountBalance || 0}</p>
+              <p>Current Balance: ₹{userData?.accountBalance || 0}</p>
             </div>
           </div>
         </div>
