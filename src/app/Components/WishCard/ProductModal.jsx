@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./style.css"; // Custom styles for modal
 import Statistics from "../mystatistics/Statistics";
+
 import MyDoner from "../MyDoner/MyDoner";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -35,7 +36,6 @@ const ProductModal = ({
     };
 
     try {
-      // Make API request using Axios
       const response = await axios.post(
         `${API_BASE_URL}/product/donation`,
         formData
@@ -49,8 +49,6 @@ const ProductModal = ({
     } catch (error) {
       console.error("An error occurred during the deposit:", error);
     }
-    // dispatch(storePaymentData({ productId: product._id, userId }));
-    // router.push("/paymentmethodpage");
   };
   const getSumOfAmounts = (donations) => {
     return donations.reduce((total, donation) => total + donation.amount, 0);
@@ -110,33 +108,9 @@ const ProductModal = ({
             />
 
             <div className="donors-section">
-              <h3>
-                Donors {product.donationsDetails.length}/
-                {minDonation.numberOfDonations}
-              </h3>
-              {/* Statistics Section */}
-
               {/* Donors List */}
-              <MyDoner></MyDoner>
+              <MyDoner donationsDetails={product.donationsDetails}></MyDoner>
             </div>
-            {/* <div className="donors-section">
-              <h3>Donors 6/10</h3>
-              <ul>
-                {product?.donationsDetails?.map((donor, index) => (
-                  <li key={index}>
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${donor.donorImage}`}
-                      alt={donor.donorName}
-                      width={20}
-                      height={20}
-                      className="donor-pic"
-                    />
-                    {donor.name}{" "}
-                    <span className="donation-amount">+{donor.amount}</span>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
 
             <div className="donate-section">
               <input

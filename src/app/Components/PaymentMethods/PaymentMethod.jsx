@@ -1,5 +1,4 @@
 "use client"; // This is required to use client-side rendering with App Router
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import "./payMethod.css"; // Custom CSS file

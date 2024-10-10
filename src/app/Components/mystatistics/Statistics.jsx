@@ -1,11 +1,34 @@
+"use client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"; // Custom CSS file for styling
 import Image from "next/image";
 import icon1 from "../../images/dollar-circle.png";
 import icon2 from "../../images/drop.png";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {
+  fetchStatisticData,
+  clearStatisticData,
+} from "../../store/slices/statisticSlice";
 // import img2 from '../../images/91.png';
 
 const Statistics = (props) => {
+  const dispatch = useDispatch();
+  const { statisticData } = useSelector((state) => state.statistic);
+  useEffect(() => {
+    const getUserData = () => {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        const uData = JSON.parse(userData);
+        dispatch(fetchStatisticData(uData.id));
+      }
+    };
+
+    getUserData();
+  }, [dispatch]);
+  const getSumOfAmounts = (donations) => {
+    return donations?.reduce((total, donation) => total + donation.amount, 0);
+  };
   return (
     <div
       className="mw-statistics-section  shadow-sm"
@@ -36,7 +59,8 @@ const Statistics = (props) => {
             <div className="mw-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Min Donations</span>
               <h6>
-                ₹{props?.minDonation} / {props.price}
+                ₹{getSumOfAmounts(statisticData?.data)}/{props?.minDonation}
+                {/* {props?.minDonation} / {props.price} */}
               </h6>
             </div>
           </div>
@@ -54,7 +78,8 @@ const Statistics = (props) => {
             <div className="mw-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Number of Donations</span>
               <h6>
-                {props.remaningDonation} / {props.numberOfDoanation}
+                {statisticData?.data?.length}/{props.numberOfDoanation}
+                {/* {props.remaningDonation} / {props.numberOfDoanation} */}
               </h6>
             </div>
           </div>

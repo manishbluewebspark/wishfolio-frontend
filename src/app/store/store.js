@@ -4,6 +4,8 @@ import levelsReducer from "./slices/levelsSlice";
 import productsByLevelReducer from "./slices/productByLevelSlice";
 import paymentReducer from "./slices/paymentSlice";
 import userReducer from "./slices/userSlice";
+import statisticReducer from "./slices/statisticSlice";
+import myDonationsReducer from "./slices/myDonationsSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -11,7 +13,8 @@ export const store = configureStore({
     productsByLevel: productsByLevelReducer,
     payment: paymentReducer,
     user: userReducer,
+    statistic: statisticReducer,
+    myDonations: myDonationsReducer,
   },
 });
-
 export default store;

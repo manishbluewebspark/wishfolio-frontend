@@ -38,11 +38,11 @@ const WishCard = ({
       </div>
 
       {/* Donation Button */}
-      <div className="donation-button-container">
+      {/* <div className="donation-button-container">
         <div className="donate-button">
           <span>Donate</span> <strong>₹{minDonation}</strong>
         </div>
-      </div>
+      </div> */}
 
       {/* Wish Info */}
       <div className="wish-info">
@@ -62,7 +62,7 @@ const WishCard = ({
 
         {/* Price Info */}
         <p className="price">
-          ₹{getSumOfAmounts(donationsDetails)} / ₹
+          ₹{getSumOfAmounts(donationsDetails) || price}/ ₹
           {donationGoal.toLocaleString()}{" "}
           <span className="donated" style={{ marginLeft: "4px" }}>
             {" "}
