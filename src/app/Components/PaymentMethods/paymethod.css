@@ -588,3 +588,84 @@
   font-weight: bold;
   cursor: pointer;
 }
+/* deposit success css */
+/* Styles for the success page using "tx" prefix */
+
+.tx-success-container {
+  /* max-width: 400px; */
+  /* margin: 50px auto; */
+  padding: 20px;
+  background-color: #fff;
+  height: 250px;
+  /* border-radius: 20px; */
+  position: relative;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+/* Close button */
+.tx-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Success icon */
+.tx-success-icon {
+  width: 100px;
+  height: 75px;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.tx-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+/* Subtitle */
+.tx-subtitle {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+/* Current balance */
+.tx-balance {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.tx-balance-amount {
+  font-weight: 800;
+  color: #000;
+}
+
+/* Profile button */
+.tx-profile-btn {
+  background-color: #90AEFF;
+
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.tx-profile-btn:hover {
+  background-color: #647bb9;
+}
+.tx-main-container{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

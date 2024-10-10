@@ -1,0 +1,300 @@
+/* Styles for the component using "hw" prefix */
+
+/* Container */
+.hw-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  /* Header */
+  .hw-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .hw-back-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .hw-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  /* Tabs */
+  .hw-tabs {
+    margin-bottom: 30px;
+  }
+  
+  .hw-tab {
+    background-color: #f0f0f0;
+    color: #666;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    flex: 1;
+    cursor: pointer;
+  }
+  
+  .hw-tab-active {
+    background-color: #4A64FE;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    flex: 1;
+  }
+  
+  /* Content */
+  .hw-content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .hw-subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .hw-instructions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  
+  .hw-instructions li {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Level Icons */
+  .hw-level-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .hw-level-icon {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    padding: 10px;
+  }
+  
+  .hw-level-icon-active {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #4A64FE;
+    border-radius: 50%;
+    padding: 15px;
+  }
+  
+  /* Explanation */
+  .hw-explanation {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    padding: 0 10px;
+  }
+  /* level flow css */
+  /* Container for the level flow */
+.hw-level-flow-container {
+    max-width: 400px;
+    margin: 50px auto;
+    position: relative;
+  }
+  
+  /* Arrow positions */
+  .hw-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .hw-arrow-top {
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hw-arrow-right {
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+  }
+  
+  .hw-arrow-bottom {
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hw-arrow-left {
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+  }
+  
+  /* Level circle icons */
+  .hw-level-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .hw-level-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .hw-level-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .hw-level-circle p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .hw-active {
+    background-color: #4A64FE;
+    border-color: #4A64FE;
+    color: white;
+  }
+  
+  .hw-level-icon {
+    width: 40px;
+    height: 40px;
+  }
+  /* How it work level  */
+  /* Styles for the card-like statistics section */
+
+.hwl-statistics-section {
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hwl-statistics-inside-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Star Level Section */
+  .hwl-level-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .hwl-level-icon-section {
+    position: relative;
+    height: 72px;
+    width: 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:90aeff;
+    ;
+  }
+  
+  .hwl-level-icon {
+    width: 70px;
+    height: 70px;
+    background-color: #4A64FE;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  
+  .hwl-current-level-badge {
+    background-color: #00C036;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    padding: 2px 2px;
+    border-radius: 12px;
+    position: absolute;
+    bottom: -10px;
+    right: -4px;
+  }
+  .hwl-current-level-badge-con{
+    height: 22px;
+    width: 84px;
+  }
+  
+  .hwl-wishing-items h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .hwl-wishing-items p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0;
+  }
+  
+  /* Target Section */
+  .hwl-target-section h6 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .hwl-stat-item {
+    background-color: #F7F7F7;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+  }
+  
+  .hwl-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .hwl-stat-text span {
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  .hwl-stat-text h6 {
+    font-size: 16px;
+    font-weight: 800;
+  }
+  
