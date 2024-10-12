@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const paymentSlice = createSlice({
   name: "payment",
   initialState: {
-    productId: null,
+    transactionId: null,
     userId: null,
     amount: null,
   },
@@ -15,9 +15,13 @@ const paymentSlice = createSlice({
     updateAmount: (state, action) => {
       state.amount = action.payload;
     },
+    updateTransactionId: (state, action) => {
+      state.transactionId = action.payload;
+    },
   },
 });
 
-export const { storePaymentData, updateAmount } = paymentSlice.actions;
+export const { storePaymentData, updateAmount, updateTransactionId } =
+  paymentSlice.actions;
 
 export default paymentSlice.reducer;

@@ -192,4 +192,22 @@
     border: none;
     font-size: 16px;
   }
-  
+  .donate-btn {
+    background-color: #4A90E2 !important;
+    color:black !important;
+    border: none;
+    padding: 10px 20px !important;;
+    border-radius: 30px !important;;
+    cursor: pointer;
+  }
+
+  .post-mywish-btn{
+    background-color: #31B776 !important;
+    color:black !important;
+    border: none;
+    padding: 10px 20px !important;;
+    border-radius: 30px !important;;
+    font-size: 18px;
+    font-weight: 600;
+
+  }

@@ -59,7 +59,7 @@ const Profile = () => {
             <h3 className="pf-balance-amount">₹{userData?.accountBalance}</h3>
           </div>
           <button
-            onClick={() => router.push("/paymentmethodpage")}
+            onClick={() => router.push("/predeposit")}
             className="pf-deposit-button"
           >
             Deposit
@@ -76,7 +76,10 @@ const Profile = () => {
           <span>My Orders</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center">
+        <div
+          className="pf-menu-item d-flex align-items-center"
+          onClick={() => router.push("/generaldetailpage")}
+        >
           <span className="pf-icon-con">
             <Image
               src={GNdetailsicon}
@@ -100,7 +103,10 @@ const Profile = () => {
           <span>Change Password</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center">
+        <div
+          className="pf-menu-item d-flex align-items-center"
+          onClick={() => router.push("/howitworkpage")}
+        >
           <span className="pf-icon-con">
             <Image src={howiticon} alt="Help" width={20} height={20} />
           </span>

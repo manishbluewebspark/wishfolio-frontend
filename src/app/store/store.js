@@ -7,6 +7,9 @@ import userReducer from "./slices/userSlice";
 import statisticReducer from "./slices/statisticSlice";
 import myDonationsReducer from "./slices/myDonationsSlice";
 import signupReducer from "./slices/signupSlice";
+import categoryReducer from "./slices/categorySlice";
+import productReducer from "./slices/productSlice";
+
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -17,6 +20,8 @@ export const store = configureStore({
     statistic: statisticReducer,
     myDonations: myDonationsReducer,
     signup: signupReducer,
+    categories: categoryReducer,
+    products: productReducer,
   },
 });
 export default store;

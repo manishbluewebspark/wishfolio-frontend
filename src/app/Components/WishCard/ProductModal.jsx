@@ -100,6 +100,17 @@ const ProductModal = ({
             </p>
 
             <p className="product-title">{product.productName}</p>
+
+            <div className="progress-bar-container">
+              <div
+                className="progress-bar"
+                style={{
+                  width: `${calculatePercentageOfAmount(
+                    product.productPrice
+                  )}%`,
+                }}
+              ></div>
+            </div>
             <hr />
             <Statistics
               isPayment={true}
