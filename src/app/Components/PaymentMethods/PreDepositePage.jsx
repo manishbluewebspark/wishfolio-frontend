@@ -4,7 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./paymethod.css";
 import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
-import axios from "axios"; // Import Axios
+import axios from "axios";
+import Image from "next/image";
+import arrowleftIcon from "../../images/arrow-left.png";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const PreDepositPage = () => {
   const router = useRouter();
@@ -53,9 +55,23 @@ const PreDepositPage = () => {
       setSelectedImage(e.target.files[0]);
     }
   };
-
+  const handleBackClick = () => {
+    router.push("/profile");
+  };
   return (
     <div className="pta-container">
+      <div className="">
+        <button className="dp-back-btn" onClick={handleBackClick}>
+          <Image
+            src={arrowleftIcon}
+            width={24}
+            height={24}
+            alt="Arrow Left Icon"
+            className="mx-2"
+          />
+          Back
+        </button>
+      </div>
       {/* Transaction ID Input Section */}
       <form className="pta-input-section" onSubmit={handleSubmit}>
         <div className="pta-title">Enter Transaction ID</div>

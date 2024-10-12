@@ -20,7 +20,10 @@ import {
 } from "../store/slices/productSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+
+import arrowleftIcon from "../images/arrow-left.png";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const WishingItems = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -93,17 +96,25 @@ const WishingItems = () => {
       }
     }
   };
-
+  const handleBackClick = () => {
+    router.push("/mywish");
+  };
   return (
     <Container fluid className="p-3">
       {/* Header Section */}
       <Row className="align-items-center mb-3">
-        <Col xs="auto">
-          <Button variant="link" className="p-0">
-            <i className="bi bi-arrow-left"></i>
-          </Button>
+        <Col xs="auto p-0">
+          <button className="dp-back-btn" onClick={handleBackClick}>
+            <Image
+              src={arrowleftIcon}
+              width={24}
+              height={24}
+              alt="Arrow Left Icon"
+              className="mx-2"
+            />
+          </button>
         </Col>
-        <Col>
+        <Col className="p-0">
           <h5 className="mb-0">Wishing Items</h5>
           <small>₹5,000 - ₹10,000 Worth Items</small>
         </Col>

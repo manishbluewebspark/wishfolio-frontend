@@ -52,4 +52,10 @@
     background-color: #7094F4; /* Change background color when selected */
     border-color: #7094F4; /* Change border color when selected */
   }
-  
+  .dp-back-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+  }
