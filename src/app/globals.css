@@ -20,7 +20,13 @@ html, body{
   overflow-x: hidden;
   min-height: 100vh;
 }
-
+body{
+  background-color: #fff !important;
+}
+.form-control:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
 .main-layout{
   margin: 0 auto;
   width: 100%;
