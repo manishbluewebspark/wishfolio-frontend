@@ -1,0 +1,47 @@
+.container {
+    padding-top: 20px;
+  }
+  
+  .card {
+    border-radius: 12px;
+    background-color: #f7f7f7;
+  }
+  
+  /* button {
+    font-family: 'Poppins', sans-serif;
+  } */
+  
+  .btn-primary {
+    border-radius: 25px;
+    background-color: #c4c4f2;
+  }
+  
+  .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .btn-swipe {
+    background-color: #90AEFF  !important;
+    color: #000 !important;
+    padding: 12px !important;
+    border-color: #90AEFF  !important;
+    border-radius: 30px !important;
+    font-weight: 700;
+  }
+  .btn-swipe:hover {
+    background-color: #90AEFF  !important;
+    color: #000 !important;;
+    padding: 12px !important;;
+    border-radius: 30px !important;;
+  }
+  .btn-swipe i {
+    margin-left: 10px;
+  }
+  .fixed-bottom-button {
+    bottom: 70px !important;
+  }
+  .activeAddress {
+    border: 2px solid #007bff !important; 
+    border-radius: 4px;
+  }

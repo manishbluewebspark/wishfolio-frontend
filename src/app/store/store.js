@@ -9,6 +9,8 @@ import myDonationsReducer from "./slices/myDonationsSlice";
 import signupReducer from "./slices/signupSlice";
 import categoryReducer from "./slices/categorySlice";
 import productReducer from "./slices/productSlice";
+import myWishReducer from "./slices/myWishSlice";
+import addressReducer from "./slices/addressSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +24,8 @@ export const store = configureStore({
     signup: signupReducer,
     categories: categoryReducer,
     products: productReducer,
+    myWishData: myWishReducer,
+    addresses: addressReducer,
   },
 });
 export default store;

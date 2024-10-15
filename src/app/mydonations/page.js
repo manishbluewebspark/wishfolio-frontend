@@ -31,36 +31,6 @@ const Page = () => {
 
     getUserData();
   }, [dispatch]);
-  const productData = [
-    {
-      id: 1,
-      productImage: watchImage,
-      title: "Apple Watch Series 6",
-      price: 34000,
-      donationGoal: 54990,
-      category: "electronics",
-      donors: [
-        {
-          name: "Theresa Webb",
-          profileImage: profileImage,
-          donationAmount: 500,
-        },
-      ],
-    },
-    {
-      id: 2,
-      productImage: bagImage,
-      title: "Versace Handbag",
-      price: 24000,
-      donationGoal: 40000,
-      category: "fashion",
-      donors: [
-        { name: "Sinan CP", profileImage: profileImage, donationAmount: 500 },
-      ],
-    },
-    // Add more products as needed
-  ];
-  console.log("minDonation", minDonation);
 
   return (
     <>
