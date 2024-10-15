@@ -6,7 +6,13 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"; // To fetch payment data from Redux
 import { useRouter } from "next/navigation"; // For navigation
 import axios from "axios"; // Import axios
-import { updateAmount } from "../../store/slices/paymentSlice";
+import arrowleftIcon from "../../images/arrow-left.png";
+import {
+  updateAmount,
+  updateTransactionId,
+} from "../../store/slices/paymentSlice";
+import { fetchUserData } from "../../store/slices/userSlice";
+import Image from "next/image";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DepositPage = () => {
   const dispatch = useDispatch();
@@ -14,14 +20,27 @@ const DepositPage = () => {
   const [isButtonEnabled, setIsButtonEnabled] = useState(false); // Enable/Disable button
   const paymentData = useSelector((state) => state.payment); // Assuming you have a Redux state for payment
   const router = useRouter();
-
+  const handleBackClick = () => {
+    router.push("/paymentmethodpage");
+  };
   useEffect(() => {
     // Enable the button if the input has a valid amount
     setIsButtonEnabled(
       amount !== "" && !isNaN(amount) && parseFloat(amount) > 0
     );
   }, [amount]);
+  const { userData, isLoading, error } = useSelector((state) => state.user);
+  useEffect(() => {
+    const getUserData = () => {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        const uData = JSON.parse(userData);
+        dispatch(fetchUserData(uData.id));
+      }
+    };
 
+    getUserData(); // Call the function
+  }, []);
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
   };
@@ -29,37 +48,52 @@ const DepositPage = () => {
   const handleQuickAmountClick = (value) => {
     setAmount(value); // Set amount when clicking quick buttons
   };
-
+  const generateTransactionId = () => {
+    const min = 10000000000000; // Minimum 14-digit number
+    const max = 99999999999999; // Maximum 14-digit number
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
   const handleContinueClick = async () => {
-    // if (isButtonEnabled) {
-    //   const formData = {
-    //     productId: paymentData.productId,
-    //     userId: paymentData.userId,
-    //     amount: amount,
-    //   };
-    //   try {
-    //     // Make API request using Axios
-    //     const response = await axios.post(
-    //       `${API_BASE_URL}/product/donation`,
-    //       formData
-    //     );
-    //     if (response.status === 201) {
-    //       dispatch(updateAmount(amount));
-    //       router.push("/transferwithupi"); // Navigate to success page
-    //     } else {
-    //       console.error("Deposit failed:", response);
-    //     }
-    //   } catch (error) {
-    //     console.error("An error occurred during the deposit:", error);
-    //   }
-    // }
+    if (isButtonEnabled) {
+      const formData = {
+        transactionId: generateTransactionId(),
+        userId: userData._id,
+        amount: amount,
+      };
+      try {
+        // Make API request using Axios
+        const response = await axios.post(
+          `${API_BASE_URL}/user/deposit`,
+          formData
+        );
+        if (response.status === 201) {
+          dispatch(updateAmount(amount));
+          dispatch(updateTransactionId(formData.transactionId));
+
+          router.push("/transferamount"); // Navigate to success page
+        } else {
+          console.error("Deposit failed:", response);
+        }
+      } catch (error) {
+        console.error("An error occurred during the deposit:", error);
+      }
+    }
   };
 
   return (
-    <div className="container dp-container">
+    <div className="container dp-container pt-3">
       {/* Back Button */}
-      <div className="dp-header">
-        <button className="dp-back-btn">← Back</button>
+      <div className="">
+        <button className="dp-back-btn" onClick={handleBackClick}>
+          <Image
+            src={arrowleftIcon}
+            width={24}
+            height={24}
+            alt="Arrow Left Icon"
+            className="mx-2"
+          />
+          Back
+        </button>
       </div>
 
       {/* Title and Description */}

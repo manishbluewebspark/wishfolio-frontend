@@ -7,6 +7,8 @@ import bagImage from "../../images/bagimg.png";
 import profileImage from "../../images/Male15.png";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
+import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
+
 import SuccessModal from "./successModal";
 // Sample Product Data
 
@@ -68,6 +70,8 @@ export default function ProductCard() {
     setShowSuccessModal(true);
   };
   const handleCloseSuccessModal = () => {
+    dispatch(fetchProductsByLevel(levels[0]._id));
+    dispatch(fetchUserData(user.id));
     setShowSuccessModal(false);
   };
   // Filter products by category and price

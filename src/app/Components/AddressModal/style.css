@@ -1,0 +1,401 @@
+/* Card styling */
+.wish-card {
+    background-color: white;
+    /* border-radius: 16px; */
+    padding: 4px;
+    margin-bottom: 20px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 360px; /* Ensures consistent width */
+  }
+  
+  /* Product image styling */
+  .product-image {
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  .product-con{
+    /* width: 386px; */
+    height: 279px;
+    /* gap:12px; */
+  }
+  .product-col{
+    height: 279px;
+    gap:10px;
+  }
+  .wish-card-img{
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    border-radius: 20px;
+    background: #F7F7F7;
+    /* width: 94px; */
+    /* height: 31px; */
+    /* top: 159px; */
+    /* left: 9px; */
+    /* padding: 11px 8px;  */
+    /* border-radius: 100px 0px 0px 0px; */
+  }
+  
+  /* Donation button container */
+  .donation-button-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  /* Donation button styling */
+  .donate-button {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  /* Wish info container */
+  .wish-info {
+    margin-top: 15px;
+    padding: 0 5px;
+  }
+  
+  /* Wish by section */
+  .wish-by {
+    font-size: 10px;
+    color: #7d7d7d;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+  }
+  
+  .profile-pic {
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  
+  /* Price and donation goal */
+  .price {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
+    display: flex;
+    /* justify-content: center; */
+  }
+  
+  .donated {
+    font-weight: normal;
+    color: #7d7d7d;
+  }
+  
+  /* Product title */
+  .product-title {
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: start;
+    font-weight: 600;
+  }
+  
+  /* Progress bar container */
+  .progress-bar-container {
+    background-color: #f1f1f1 !important;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 6px;
+    width: 100%;
+  }
+  
+  .progress-bar {
+    background-color: #4A90E2 !important;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Adjust for mobile screens */
+  @media (max-width: 576px) {
+    .wish-card {
+      max-width: 100%;
+    }
+  }
+  p{
+    margin-bottom: 0px !important;
+  }
+  /* product modal css */
+  /* Modal overlay */
+/* Modal - Bottom Slide */
+.bottom-modal {
+  position: fixed;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 428px;
+  height: 92vh;
+  background: white;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+  z-index: 99999999;
+  overflow: scroll;
+}
+
+.bottom-modal.open {
+  bottom: 0; /* Slide in from the bottom */
+}
+
+.modal-content {
+  padding: 20px;
+  overflow-y: auto; /* Make content scrollable */
+  
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Modal Body */
+.modal-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-details {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  width: 90%;
+}
+
+.my-statistics {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.donors-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.donor-pic {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.donate-section {
+  margin-top: 20px;
+}
+
+.donate-btn {
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+/* filter css */
+.wishing-items-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #000;
+  line-height: 24px;
+}
+
+.price-range {
+  font-size: 12px;
+  color: #888;
+  /* margin-top: -5px;  */
+  font-weight: 500;
+}
+
+.filter-by {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  /* background-color: #f9f9f9; */
+  /* border: 1px solid #ddd; */
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  display: block; /* Ensure it's visible */
+}
+
+.nested-dropdown {
+  margin-bottom: 10px;
+}
+
+.nested-toggle {
+  display: block;
+  background: none;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.nested-dropdown-menu {
+  margin-top: 5px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.nested-dropdown-menu button {
+  display: block;
+  background: none;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+.nested-dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+.nested-dropdown-menu button:hover {
+  background-color: #ddd;
+}
+
+.dropdown-toggle:focus,
+.nested-toggle:focus,
+.nested-dropdown-menu button:focus {
+  outline: none;
+}
+/* Full page container */
+.em-address-main-container {
+  display: flex;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  height: 100vh; /* Full viewport height */
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top to prevent logo going up */
+  overflow-y: auto; /* Allow scrolling if content exceeds 100vh */
+}
+.em-address-container {
+  max-height: 638px;
+  width: 386px;
+}
+
+/* Centered address box */
+.em-address-box {
+  max-width: 386px;
+  height: auto;
+  gap: 15px;
+}
+
+.em-address-box-top {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 96px;
+}
+
+.em-address-box-logo {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.em-address-top-text {
+  width: 291px;
+  height: 52px;
+  margin-bottom: 20px;
+}
+
+/* Main title */
+.em-address-heading {
+  font-size: 18px;
+  line-height: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+}
+
+.subtext {
+  color: #000;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+/* Input fields */
+.input-container {
+  position: relative;
+}
+
+.custom-input,
+.custom-select {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  font-size: 1rem;
+  background-color: #f7f8fa;
+  height: 54px;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.custom-input:focus,
+.custom-select:focus {
+  border-color: #8AB6FF;
+  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
+}
+
+/* Complete button */
+.em-btn-complete {
+  background-color: #7FA9FF;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  height: 64px;
+}
+.address-form{
+  width: 100%;
+}

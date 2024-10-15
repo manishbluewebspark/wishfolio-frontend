@@ -1,0 +1,61 @@
+.product-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.2s;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .btn-swipe {
+    background-color: #e7f0ff !important;
+    color: #007bff !important;
+    padding: 12px !important;
+    border-radius: 30px !important;
+  }
+  .btn-swipe:hover {
+    background-color: #e7f0ff !important;
+    color: #007bff !important;;
+    padding: 12px !important;;
+    border-radius: 30px !important;;
+  }
+  .btn-swipe i {
+    margin-left: 10px;
+  }
+  /* wishitemlist.css */
+
+
+.nav-pills {
+    background-color: #f8f9fa !important;;
+    border-radius: 5px !important;;
+    padding: 10px !important;; 
+  }
+  
+ 
+  .nav-pills .nav-link {
+    color: #000 !important;; 
+    border-radius: 50px !important;
+  }
+  
+ .fixed-bottom{
+    bottom: 20px !important;
+ }
+  .nav-pills .nav-link.active {
+    background-color: #7094F4 !important;; 
+    color: #fff !important;;
+  }
+ 
+  
+  .product-card.selected {
+    background-color: #7094F4; /* Change background color when selected */
+    border-color: #7094F4; /* Change border color when selected */
+  }
+  .dp-back-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+  }

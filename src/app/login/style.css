@@ -56,7 +56,7 @@ max-height: 32px;
   width: 386;
   height: 208px;
   gap: 8px;
-  opacity: 0px;
+  /* opacity: 0px; */
 }
 
 /* Input container and icon */

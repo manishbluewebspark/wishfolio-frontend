@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./style.css"; // Custom styles for modal
 import Statistics from "../mystatistics/Statistics";
+
 import MyDoner from "../MyDoner/MyDoner";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -27,30 +28,31 @@ const ProductModal = ({
   }, [showModal]);
 
   const handleDonateClick = async () => {
-    const formData = {
-      productId: product.productId,
-      userId: userData._id,
-      amount: amout,
-      wiseProductId: product._id,
-    };
+    if (userData?._id) {
+      const formData = {
+        productId: product.productId,
+        userId: userData._id,
+        amount: amout,
+        wiseProductId: product._id,
+      };
 
-    try {
-      // Make API request using Axios
-      const response = await axios.post(
-        `${API_BASE_URL}/product/donation`,
-        formData
-      );
+      try {
+        const response = await axios.post(
+          `${API_BASE_URL}/product/donation`,
+          formData
+        );
 
-      if (response.status === 201) {
-        openSuccessModal();
-      } else {
-        console.error("Deposit failed:", response);
+        if (response.status === 201) {
+          openSuccessModal();
+        } else {
+          console.error("Deposit failed:", response);
+        }
+      } catch (error) {
+        console.error("An error occurred during the deposit:", error);
       }
-    } catch (error) {
-      console.error("An error occurred during the deposit:", error);
+    } else {
+      window.alert("Please login first");
     }
-    // dispatch(storePaymentData({ productId: product._id, userId }));
-    // router.push("/paymentmethodpage");
   };
   const getSumOfAmounts = (donations) => {
     return donations.reduce((total, donation) => total + donation.amount, 0);
@@ -98,6 +100,17 @@ const ProductModal = ({
             </p>
 
             <p className="product-title">{product.productName}</p>
+
+            <div className="progress-bar-container">
+              <div
+                className="progress-bar"
+                style={{
+                  width: `${calculatePercentageOfAmount(
+                    product.productPrice
+                  )}%`,
+                }}
+              ></div>
+            </div>
             <hr />
             <Statistics
               isPayment={true}
@@ -110,33 +123,9 @@ const ProductModal = ({
             />
 
             <div className="donors-section">
-              <h3>
-                Donors {product.donationsDetails.length}/
-                {minDonation.numberOfDonations}
-              </h3>
-              {/* Statistics Section */}
-
               {/* Donors List */}
-              <MyDoner></MyDoner>
+              <MyDoner donationsDetails={product.donationsDetails}></MyDoner>
             </div>
-            {/* <div className="donors-section">
-              <h3>Donors 6/10</h3>
-              <ul>
-                {product?.donationsDetails?.map((donor, index) => (
-                  <li key={index}>
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${donor.donorImage}`}
-                      alt={donor.donorName}
-                      width={20}
-                      height={20}
-                      className="donor-pic"
-                    />
-                    {donor.name}{" "}
-                    <span className="donation-amount">+{donor.amount}</span>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
 
             <div className="donate-section">
               <input
@@ -148,7 +137,7 @@ const ProductModal = ({
               <button className="donate-btn" onClick={handleDonateClick}>
                 Donate
               </button>
-              <p>Current Balance: ₹{userData.accountBalance || 0}</p>
+              <p>Current Balance: ₹{userData?.accountBalance || 0}</p>
             </div>
           </div>
         </div>

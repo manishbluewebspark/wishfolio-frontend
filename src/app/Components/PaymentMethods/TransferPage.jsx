@@ -1,107 +1,125 @@
-'use client';
+"use client";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './paymethod.css'; // Custom CSS file
-import { Icon } from '@iconify/react';
-import clipboardIcon from '@iconify/icons-mdi/clipboard'; // Importing specific MDI icon
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./paymethod.css"; // Custom CSS file
+import { Icon } from "@iconify/react";
+import clipboardIcon from "@iconify/icons-mdi/clipboard"; // Importing specific MDI icon
+import { useRouter } from "next/navigation"; // Import useRouter
+import arrowleftIcon from "../../images/arrow-left.png";
+import Image from "next/image";
+import { useSelector } from "react-redux";
 const TransferPage = () => {
-    return (
-        <div className="container ta-dp-container">
-            {/* Back Button */}
-            <div className="ta-dp-header">
-                <button className="ta-dp-back-btn">
-                    ← Back
-                </button>
-            </div>
+  const router = useRouter(); // Initialize the router
 
-            {/* Bank Details Section */}
-            <div className="ta-dp-input-section">
-                <p className="ta-dp-title">You can transfer the money to the bank account below and submit your transaction ID.</p>
+  const handleBackButtonClick = () => {
+    router.push("/profile"); // Navigate to the previous page
+  };
+  const paymentData = useSelector((state) => state.payment);
+  return (
+    <div className="container ta-dp-container pt-3  pb-30">
+      {/* Back Button */}
+      <div className="">
+        <button className="dp-back-btn" onClick={handleBackButtonClick}>
+          <Image
+            src={arrowleftIcon}
+            width={24}
+            height={24}
+            alt="Arrow Left Icon"
+            className="mx-2"
+          />
+          Back
+        </button>
+      </div>
 
-                {/* Account Information */}
-                <div className=" d-flex justify-content-between align-items-center mb-3">
-                    <div>
-                        <div className="ta-dp-label">Account Name</div>
-                        <div className="ta-dp-balance">TRUETRADER APP PRIVATE LIMITED</div>
-                    </div>
-                    <div>
-                        <span className="d-flex align-items-center">
-                            <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
-                        </span>
-                    </div>
-                </div>
+      {/* Bank Details Section */}
+      <div className="ta-dp-input-section">
+        <p className="ta-dp-title">
+          You can transfer the money to the bank account below and submit your
+          transaction ID. {paymentData?.transactionId}
+        </p>
 
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                    <div>
-                        <div className="ta-dp-label">Account Number</div>
-                        <div className="ta-dp-balance">16900200006420</div>
-                    </div>
-                    <div>
-                        <span className="d-flex align-items-center">
-
-                            <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
-                        </span>
-                    </div>
-                </div>
-
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                    <div>
-                    <span className="ta-dp-label">IFSC</span>
-                    <span className="d-flex align-items-center">
-                        <span className="ta-dp-balance">FDRL0001690</span>
-                        <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
-                    </span>
-                    </div>
-                    <div>
-                    <span className="ta-dp-label">Bank Name</span>
-                    <span className="d-flex align-items-center">
-                        <span className="ta-dp-balance">Federal Bank</span>
-                        <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
-                    </span>
-                    </div>
-                </div>
-
-           
-
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                   <div>
-                   <span className="ta-dp-label">Branch</span>
-                    <span className="d-flex align-items-center">
-                        <span className="ta-dp-balance">Kolathur</span>
-                        <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
-                    </span>
-                   </div>
-                   <div>
-                   <span className="ta-dp-label">SWIFT Code</span>
-                    <span className="d-flex align-items-center">
-                        <span className="ta-dp-balance">FDRLINBBIBD</span>
-                        <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
-                    </span>
-                   </div>
-                </div>
-            </div>
-
-            {/* Amount and Commission Section */}
-           <div className='ta-dp-amount-section p-4 rounded shadow-sm'>
-           <div className="d-flex justify-content-between align-items-center mb-3">
-                <span className="ta-dp-label">Transferring Amount</span>
-                <span className="ta-dp-balance">₹ 5,000</span>
-            </div>
-
-            <div className="d-flex justify-content-between align-items-center mb-3">
-                <span className="ta-dp-label">Platform Commission 15%</span>
-                <span className="ta-dp-balance">₹ 750</span>
-            </div>
-           </div>
-
-            {/* Total to Receive */}
-            <div className="ta-dp-input-section-btm">
-                <span className="ta-dp-final-amount">You Will Receive</span>
-                <span className="ta-dp-final-amount-value">₹ 4,250</span>
-            </div>
+        {/* Account Information */}
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <div className="ta-dp-label">Account Name</div>
+            <div className="ta-dp-balance">TRUETRADER APP PRIVATE LIMITED</div>
+          </div>
+          <div>
+            <span className="d-flex align-items-center">
+              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            </span>
+          </div>
         </div>
-    );
+
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <div className="ta-dp-label">Account Number</div>
+            <div className="ta-dp-balance">16900200006420</div>
+          </div>
+          <div>
+            <span className="d-flex align-items-center">
+              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            </span>
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <span className="ta-dp-label">IFSC</span>
+            <span className="d-flex align-items-center">
+              <span className="ta-dp-balance">FDRL0001690</span>
+              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            </span>
+          </div>
+          <div>
+            <span className="ta-dp-label">Bank Name</span>
+            <span className="d-flex align-items-center">
+              <span className="ta-dp-balance">Federal Bank</span>
+              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            </span>
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <span className="ta-dp-label">Branch</span>
+            <span className="d-flex align-items-center">
+              <span className="ta-dp-balance">Kolathur</span>
+              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            </span>
+          </div>
+          <div>
+            <span className="ta-dp-label">SWIFT Code</span>
+            <span className="d-flex align-items-center">
+              <span className="ta-dp-balance">FDRLINBBIBD</span>
+              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Amount and Commission Section */}
+      <div className="ta-dp-amount-section p-4 rounded shadow-sm">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <span className="ta-dp-label">Transferring Amount</span>
+          <span className="ta-dp-balance">₹ {paymentData?.amount}</span>
+        </div>
+
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <span className="ta-dp-label">Platform Commission 0%</span>
+          <span className="ta-dp-balance">₹ 0</span>
+        </div>
+      </div>
+
+      {/* Total to Receive */}
+      <div className="ta-dp-input-section-btm">
+        <span className="ta-dp-final-amount">You Will Receive</span>
+        <span className="ta-dp-final-amount-value">
+          ₹ {paymentData?.amount}
+        </span>
+      </div>
+    </div>
+  );
 };
 
 export default TransferPage;

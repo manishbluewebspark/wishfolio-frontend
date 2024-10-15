@@ -1,22 +1,26 @@
-// pages/profile.js
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import profile from "../images/Male15.png";
 import myordericon from "../images/lovely.png";
 import GNdetailsicon from "../images/edit-2.png";
 import changepass from "../images/note-2.png";
 import howiticon from "../images/message-question.png";
+import imageUploadButton from "../images/imageUploadButton.png";
+import userAvatar from "../images/userAvatar.jpg";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import "./style.css";
 import { fetchUserData } from "../store/slices/userSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const fileInputRef = useRef(null);
 
   const { userData, isLoading, error } = useSelector((state) => state.user);
+
   useEffect(() => {
     const getUserData = () => {
       const userData = localStorage.getItem("user");
@@ -26,26 +30,85 @@ const Profile = () => {
       }
     };
 
-    getUserData(); // Call the function
-  }, []);
+    getUserData();
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
+
+  // Handle image upload click
+  const handleImageUploadClick = () => {
+    fileInputRef.current.click(); // Trigger hidden file input
+  };
+
+  // Handle file selection and upload
+  const handleImageUpload = async (e) => {
+    const file = e?.target?.files[0];
+    if (file && userData) {
+      const formData = new FormData();
+      formData.append("image", file);
+      formData.append("id", userData._id);
+
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/user/profile/upload`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        // Handle successful upload
+        console.log("Image uploaded successfully", response.data);
+        // Optionally update the user profile image URL after upload
+        dispatch(fetchUserData(userData._id)); // Refresh the data
+      } catch (error) {
+        console.error("Error uploading the image", error);
+      }
+    }
+  };
 
   return (
     <div className="pf-profile-container container">
       {/* Top Section with Profile Image and User Information */}
-      <div className="pf-header text-center">
-        {/* profile */}
+      <div className="pf-header text-center position-relative">
         <Image
-          src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`}
+          src={
+            userData?.imageUrl
+              ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
+              : userAvatar
+          }
           alt="Profile Picture"
           className="pf-profile-image"
           width={137}
           height={137}
         />
+        <Image
+          src={imageUploadButton}
+          alt="Upload Profile Picture"
+          className="pf-profile-image-upload"
+          width={36}
+          height={36}
+          onClick={handleImageUploadClick} // Trigger file input on button click
+        />
+
+        {/* Hidden file input */}
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          accept="image/*"
+          onChange={handleImageUpload} // Call handleImageUpload on file selection
+        />
       </div>
 
       <div className="pf-header-2">
-        <h4 className="pf-user-name">Hello {userData?.name}</h4>
-        <p className="pf-phone-number">{userData?.mobile}</p>
+        <h4 className="pf-user-name">{userData?.name}</h4>
+        <p className="pf-phone-number">{userData?._id}</p>
       </div>
 
       {/* Balance Section with "Deposit" Button */}
@@ -56,7 +119,7 @@ const Profile = () => {
             <h3 className="pf-balance-amount">₹{userData?.accountBalance}</h3>
           </div>
           <button
-            onClick={() => router.push("/paymentmethodpage")}
+            onClick={() => router.push("/predeposit")}
             className="pf-deposit-button"
           >
             Deposit
@@ -73,7 +136,10 @@ const Profile = () => {
           <span>My Orders</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center">
+        <div
+          className="pf-menu-item d-flex align-items-center"
+          onClick={() => router.push("/generaldetailpage")}
+        >
           <span className="pf-icon-con">
             <Image
               src={GNdetailsicon}
@@ -85,19 +151,10 @@ const Profile = () => {
           <span>General Details</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center">
-          <span className="pf-icon-con">
-            <Image
-              src={changepass}
-              alt="Change Password"
-              width={20}
-              height={20}
-            />
-          </span>
-          <span>Change Password</span>
-        </div>
-
-        <div className="pf-menu-item d-flex align-items-center">
+        <div
+          className="pf-menu-item d-flex align-items-center"
+          onClick={() => router.push("/howitworkpage")}
+        >
           <span className="pf-icon-con">
             <Image src={howiticon} alt="Help" width={20} height={20} />
           </span>
@@ -114,7 +171,9 @@ const Profile = () => {
 
       {/* Logout Button */}
       <div className="pf-menu-item d-flex align-items-center justify-content-center just mt-4">
-        <button className="pf-logout-button">Logout</button>
+        <button className="pf-logout-button" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
     </div>
   );

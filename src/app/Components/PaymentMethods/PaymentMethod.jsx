@@ -1,8 +1,7 @@
 "use client"; // This is required to use client-side rendering with App Router
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
-import "./payMethod.css"; // Custom CSS file
+import "./paymethod.css"; // Custom CSS file
 import arrowright from "../../images/arrow-right.png"; // Correct path to arrow-right image
 import bank from "../../images/bank.png"; // Correct path to bank image
 import bhimupi from "../../images/bhimupi.png"; // Correct path to bhim image
@@ -11,16 +10,20 @@ import paytmupi from "../../images/paytmupi.png"; // Correct path to paytm image
 import phoneupi from "../../images/phoneupi.png"; // Correct path to phonepe image (note corrected extension)
 import arrowleftIcon from "../../images/arrow-left.png";
 import { useRouter } from "next/navigation";
+import arrowleftIcon from "../../images/arrow-left.png";
 const PaymentMethod = () => {
   const router = useRouter();
-  const handleDonateClick = () => {
+  const handleDepositClick = () => {
     router.push("/deposit");
+  };
+  const handleBackClick = () => {
+    router.push("/profile");
   };
   return (
     <>
       <div className="container pt-3">
         <div className="">
-          <button className="dp-back-btn">
+          <button className="dp-back-btn" onClick={handleBackClick}>
             <Image
               src={arrowleftIcon}
               width={24}
@@ -35,7 +38,10 @@ const PaymentMethod = () => {
           <h5 className="ptm-title">Choose Payment Method</h5>
           <div className="ptm-payment-options">
             {/* Payment Method 1 */}
-            <div className="ptm-payment-method d-flex justify-content-between align-items-center">
+            <div
+              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
+              onClick={handleDepositClick}
+            >
               <div className="d-flex align-items-center">
                 <Image
                   src={bank}
@@ -46,7 +52,6 @@ const PaymentMethod = () => {
                 />
               </div>
               <Image
-                onClick={handleDonateClick}
                 src={arrowright}
                 alt="Arrow Right"
                 className="ptm-arrow"
@@ -56,7 +61,10 @@ const PaymentMethod = () => {
             </div>
 
             {/* Payment Method 2 */}
-            <div className="ptm-payment-method d-flex justify-content-between align-items-center">
+            <div
+              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
+              // onClick={handleDepositClick}
+            >
               <div className="d-flex align-items-center">
                 <Image
                   src={googleupi}
@@ -67,7 +75,7 @@ const PaymentMethod = () => {
                 />
               </div>
               <Image
-                onClick={handleDonateClick}
+                //  onClick={handleDepositClick}
                 src={arrowright}
                 alt="Arrow Right"
                 className="ptm-arrow"
@@ -77,7 +85,10 @@ const PaymentMethod = () => {
             </div>
 
             {/* Payment Method 3 */}
-            <div className="ptm-payment-method d-flex justify-content-between align-items-center">
+            <div
+              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
+              // onClick={handleDepositClick}
+            >
               <div className="d-flex align-items-center">
                 <Image
                   src={phoneupi}
@@ -88,7 +99,7 @@ const PaymentMethod = () => {
                 />
               </div>
               <Image
-                onClick={handleDonateClick}
+                // onClick={handleDepositClick}
                 src={arrowright}
                 alt="Arrow Right"
                 className="ptm-arrow"
@@ -98,7 +109,10 @@ const PaymentMethod = () => {
             </div>
 
             {/* Payment Method 4 */}
-            <div className="ptm-payment-method d-flex justify-content-between align-items-center">
+            <div
+              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
+              // onClick={handleDepositClick}
+            >
               <div className="d-flex align-items-center">
                 <Image
                   src={paytmupi}
@@ -109,7 +123,7 @@ const PaymentMethod = () => {
                 />
               </div>
               <Image
-                onClick={handleDonateClick}
+                //onClick={handleDepositClick}
                 src={arrowright}
                 alt="Arrow Right"
                 className="ptm-arrow"
@@ -119,7 +133,10 @@ const PaymentMethod = () => {
             </div>
 
             {/* Payment Method 5 */}
-            <div className="ptm-payment-method d-flex justify-content-between align-items-center">
+            <div
+              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
+              //onClick={handleDepositClick}
+            >
               <div className="d-flex align-items-center">
                 <Image
                   src={bhimupi}
@@ -130,7 +147,7 @@ const PaymentMethod = () => {
                 />
               </div>
               <Image
-                onClick={handleDonateClick}
+                //onClick={handleDepositClick}
                 src={arrowright}
                 alt="Arrow Right"
                 className="ptm-arrow"

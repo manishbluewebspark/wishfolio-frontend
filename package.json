@@ -19,5 +19,9 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18",
     "react-redux": "^9.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.5",
+    "typescript": "5.6.3"
   }
 }
