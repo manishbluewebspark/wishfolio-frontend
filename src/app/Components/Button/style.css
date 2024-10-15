@@ -1,0 +1,33 @@
+.bck-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.bck-back-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bck-title {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+}
+
+.bck-save-btn {
+    background-color: #4A64FE;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.bck-save-btn:hover {
+    background-color: #3a54ce;
+}

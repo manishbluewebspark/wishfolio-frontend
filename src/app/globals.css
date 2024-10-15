@@ -18,7 +18,8 @@ html, body{
   max-width: 430px;
   background-color: #ebf2fa;
   overflow-x: hidden;
-  min-height: 100vh;
+  overflow-y: scroll;
+  height: 100vh;
 }
 
 .main-layout{
@@ -27,17 +28,16 @@ html, body{
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  justify-content: center;
+  /* align-items: center;  */
+  /* justify-content: center; */
   background-color:white;
 }
 .page-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
   height: 100%;
-  justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 }
 
 * {
@@ -50,11 +50,20 @@ html, body{
   flex-grow: 1; 
   margin-top: 58px; 
   margin-bottom: 60px; 
-  /* padding: 0px 20px; */
   overflow-y: scroll; 
   background-color: white;
   -ms-overflow-style: none; 
   scrollbar-width: none; 
+  height: 100vh;
+}
+.content-container2 {
+  width: 100%;
+  flex-grow: 1; 
+  margin-bottom: 60px; 
+  overflow-y: scroll; 
+  background-color: white;
+  -ms-overflow-style: none; 
+  /* scrollbar-width: none;  */
   height: 100vh;
 }
 ::-webkit-scrollbar {

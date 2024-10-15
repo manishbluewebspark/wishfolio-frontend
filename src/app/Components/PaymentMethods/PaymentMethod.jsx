@@ -10,16 +10,6 @@ import googleupi from "../../images/googleupi.png"; // Correct path to google pa
 import paytmupi from "../../images/paytmupi.png"; // Correct path to paytm image
 import phoneupi from "../../images/phoneupi.png"; // Correct path to phonepe image (note corrected extension)
 import arrowleftIcon from "../../images/arrow-left.png";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import Image from "next/image";
-import "./payMethod.css"; // Custom CSS file
-import arrowright from "../../images/arrow-right.png"; // Correct path to arrow-right image
-import bank from "../../images/bank.png"; // Correct path to bank image
-import bhimupi from "../../images/bhimupi.png"; // Correct path to bhim image
-import googleupi from "../../images/googleupi.png"; // Correct path to google pay image
-import paytmupi from "../../images/paytmupi.png"; // Correct path to paytm image
-import phoneupi from "../../images/phoneupi.png"; // Correct path to phonepe image (note corrected extension)
 import { useRouter } from "next/navigation";
 const PaymentMethod = () => {
   const router = useRouter();
