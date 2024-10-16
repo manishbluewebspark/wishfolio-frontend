@@ -10,7 +10,6 @@ import paytmupi from "../../images/paytmupi.png"; // Correct path to paytm image
 import phoneupi from "../../images/phoneupi.png"; // Correct path to phonepe image (note corrected extension)
 import arrowleftIcon from "../../images/arrow-left.png";
 import { useRouter } from "next/navigation";
-import arrowleftIcon from "../../images/arrow-left.png";
 const PaymentMethod = () => {
   const router = useRouter();
   const handleDepositClick = () => {

@@ -10,7 +10,7 @@ const OrderConfirmation = () => {
 
   // Function to handle button click
   const handleGoToMyWishes = () => {
-    router.push("/myorder");
+    router.push("/orderhistorypage");
   };
 
   return (

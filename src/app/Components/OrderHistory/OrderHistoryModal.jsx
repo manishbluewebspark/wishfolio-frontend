@@ -1,12 +1,14 @@
-import React from 'react';
-import './orderhistory.css'; // Custom CSS file
-import Image from 'next/image';
-import prodimg from '../../images/watchimg.png'; // Path to your image
-import MyDoner from '../MyDoner/MyDoner';
+import React from "react";
+import "./orderhistory.css"; // Custom CSS file
+import Image from "next/image";
+import prodimg from "../../images/watchimg.png"; // Path to your image
+import MyDoner from "../MyDoner/MyDoner";
 
-const OrderHistoryModal = ({ isModalOpen, closeModal }) => {
+const OrderHistoryModal = ({ isModalOpen, closeModal, order }) => {
   if (!isModalOpen) return null; // If modal is not open, return nothing
-
+  const getSumOfAmounts = (donations) => {
+    return donations.reduce((total, donation) => total + donation.amount, 0);
+  };
   return (
     <div className="phis-modal-overlay">
       <div className="phis-modal-content">
@@ -15,34 +17,37 @@ const OrderHistoryModal = ({ isModalOpen, closeModal }) => {
         </span>
         <div className="phis-modal-details">
           {/* Product Image in Modal */}
-          <Image 
-            src={prodimg} 
-            alt="Product in modal" 
+          <Image
+            src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${order.productImageUrl}`}
+            alt="Product in modal"
             className="img-fluid"
-            width={100}  
-            height={100} 
+            width={100}
+            height={100}
             layout="responsive"
           />
-          <h4>₹54,990 / ₹54,990 Donated</h4>
-          <p>SONY PlayStation 5 console 825 GB</p>
+          <h4>
+            ₹{getSumOfAmounts(order.donationsDetails) || 0} / ₹
+            {order.productPrice} Donated
+          </h4>
+          <p>{order.productName}</p>
 
           <div className="phis-donors">
-            {/* <h5>Donors 6/10</h5>
-           
-            <ul>
-              <li>Theresa Webb - ₹500</li>
-              <li>Ronald Richards - ₹500</li>
-              <li>Bessie Cooper - ₹500</li>
-              <li>Sinan CP - ₹500</li>
-            </ul> */}
-            <MyDoner></MyDoner>
+            <MyDoner
+              donationsDetails={order.donationsDetails}
+              type="complete"
+            ></MyDoner>
           </div>
 
           <div className="phis-address">
-            <p><strong>Address Line 2:</strong> India, Kerala, Malappuram</p>
-            <p>Address Line 1: Address Line 1</p>
-            <p>Pin Code: 4828642</p>
-            <p>Road Number: 353 C</p>
+            <p>
+              <strong>Address :</strong> {order.country}, {order.state},{" "}
+              {order.city}
+            </p>
+            <p>
+              Address Line 1: {order.address_line_1} {order.address_line_2}
+            </p>
+            <p>Pin Code: {order.pincode}</p>
+            <p>Road Number:{order.roomNumber}</p>
           </div>
         </div>
       </div>

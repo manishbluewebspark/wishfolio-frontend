@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import './orderhistory.css'; // Custom CSS file
-import prodimg from '../../images/watchimg.png';
-import Image from 'next/image';
-import OrderHistoryModal from './OrderHistoryModal'; // Import the new modal component
+import React, { useState } from "react";
+import "./orderhistory.css"; // Custom CSS file
+import Image from "next/image";
+import OrderHistoryModal from "./OrderHistoryModal"; // Import the new modal component
+import RatingModal from "./RatingModal"; // Import the rating modal component
 
-const OrderItem = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+const OrderItem = ({ order, activeTab }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state for order details
+  const [isRatingModalOpen, setIsRatingModalOpen] = useState(false); // Modal state for rating
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -15,20 +16,35 @@ const OrderItem = () => {
     setIsModalOpen(false);
   };
 
+  const openRatingModal = () => {
+    setIsRatingModalOpen(true);
+  };
+
+  const closeRatingModal = () => {
+    setIsRatingModalOpen(false);
+  };
+
+  function getDateAndTimeFromISO(isoString) {
+    const dateObj = new Date(isoString);
+    const date = dateObj.toISOString().split("T")[0];
+    const time = dateObj.toISOString().split("T")[1].split(".")[0];
+    return { date, time };
+  }
+
   return (
     <div>
       {/* Order Item */}
-      <div className="container phis-order-item-con" onClick={openModal}>
+      <div className="container phis-order-item-con">
         <div className="phis-order-item row align-items-center">
           {/* Product Image */}
-          <div className="col-3">
+          <div className="col-3" onClick={openModal}>
             <div className="phis-thumbnil">
-              <Image 
-                src={prodimg} 
-                alt="Product" 
+              <Image
+                src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${order.productImageUrl}`}
+                alt="Product"
                 className="img-fluid phis-product-image"
-                width={56.89}  
-                height={63.8} 
+                width={56.89}
+                height={63.8}
                 layout="responsive"
               />
             </div>
@@ -36,22 +52,51 @@ const OrderItem = () => {
 
           {/* Product Info */}
           <div className="col-6 phis-product-info">
-            <h6 className="phis-product-name">Iphone16 Pro Max</h6>
-            <p className="phis-order-date">25 Jan 2024 • 12:34 AM</p>
+            <h6 className="phis-product-name">{order.productName}</h6>
+            <p className="phis-order-date">
+              {getDateAndTimeFromISO(order?.updatedAt)?.date} •{" "}
+              {getDateAndTimeFromISO(order?.updatedAt)?.time}
+            </p>
             <p className="phis-delivery-status">
-              <i className="fas fa-shipping-fast"></i> On the way
+              <i className="fas fa-shipping-fast"></i>{" "}
+              {activeTab === "ongoing" ? (
+                "On the way"
+              ) : (
+                <span
+                  onClick={openRatingModal}
+                  style={{
+                    cursor: "pointer",
+                    color: "#90AEFF",
+                    fontSize: "16px",
+                    fontWeight: "800",
+                  }}
+                >
+                  Rate Us
+                </span>
+              )}
             </p>
           </div>
 
           {/* Price */}
           <div className="col-3 phis-price text-right">
-            <h6 className="phis-price-value">₹4,500</h6>
+            <h6 className="phis-price-value">₹{order.productPrice}</h6>
           </div>
         </div>
       </div>
 
-      {/* Modal Component */}
-      <OrderHistoryModal isModalOpen={isModalOpen} closeModal={closeModal} />
+      {/* Modal Component for Order Details */}
+      <OrderHistoryModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        order={order}
+      />
+
+      {/* Rating Modal Component */}
+      <RatingModal
+        isModalOpen={isRatingModalOpen}
+        closeModal={closeRatingModal}
+        order={order}
+      />
     </div>
   );
 };
