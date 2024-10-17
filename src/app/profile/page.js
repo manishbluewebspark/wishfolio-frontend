@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import profile from "../images/Male15.png";
@@ -11,6 +11,7 @@ import userAvatar from "../images/userAvatar.jpg";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import LogoutModal from "../Components/Modals/LogoutModal"; // Import the new LogoutModal component
 import "./style.css";
 import { fetchUserData } from "../store/slices/userSlice";
 
@@ -18,6 +19,8 @@ const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const fileInputRef = useRef(null);
+
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // State for managing modal visibility
 
   const { userData, isLoading, error } = useSelector((state) => state.user);
 
@@ -161,7 +164,9 @@ const Profile = () => {
           <span>How is it working?</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center">
+        <div className="pf-menu-item d-flex align-items-center" 
+        onClick={() => router.push("/termsandconditions")}
+        >
           <span className="pf-icon-con">
             <Image src={changepass} alt="Terms" width={20} height={20} />
           </span>
@@ -171,10 +176,17 @@ const Profile = () => {
 
       {/* Logout Button */}
       <div className="pf-menu-item d-flex align-items-center justify-content-center just mt-4">
-        <button className="pf-logout-button" onClick={handleLogout}>
+        <button className="pf-logout-button" onClick={() => setIsLogoutModalOpen(true)}>
           Logout
         </button>
       </div>
+
+      {/* Logout Modal */}
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleLogout}
+      />
     </div>
   );
 };

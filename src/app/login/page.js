@@ -4,12 +4,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation"; // For client-side navigation
 import { loginUser } from "../store/slices/authSlice"; // Import the login thunk from authSlice
-import Image from "next/image";
 import logoIcon from "../images/snow.png"; // Replace with your logo
 import "./style.css";
 import { Icon } from "@iconify/react";
-import envelopeIcon from "@iconify/icons-mdi/envelope";
+import envelopeIcon from "@iconify/icons-mdi/envelope-open";
 import lockIcon from "@iconify/icons-mdi/lock";
+import googleIcon from '../images/googleIcon.png';
+import Image from "next/image";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -63,7 +64,7 @@ const LoginScreen = () => {
 
           {/* Login Form */}
           <div className="login-box-from">
-            <form onSubmit={handleLogin} className="mt-4">
+            <form onSubmit={handleLogin}>
               <div
                 className="position-relative"
                 style={{ marginBottom: "8px" }}
@@ -84,7 +85,7 @@ const LoginScreen = () => {
                 </div>
               </div>
 
-              <div
+              {/* <div
                 className="position-relative"
                 style={{ marginBottom: "8px" }}
               >
@@ -105,7 +106,7 @@ const LoginScreen = () => {
                 <a href="#" className="forgot-password">
                   Forgot?
                 </a>
-              </div>
+              </div> */}
 
               {/* Error Message */}
               {error && <p style={{ color: "red" }}>{error}</p>}
@@ -122,7 +123,7 @@ const LoginScreen = () => {
           </div>
 
           {/* Divider */}
-          <div className="my-2">Or</div>
+          <div className="my-2 or-txt">Or</div>
 
           {/* Google Sign-in Button */}
           <div className="login-box-btm">
@@ -130,7 +131,8 @@ const LoginScreen = () => {
               className="btn btn-light btn-google w-100 mb-3"
               onClick={() => handleCreateAccount()}
             >
-              <i className="bi bi-google"></i> Sign up with Google
+              <Image src={googleIcon} height={24} width={24} alt='socialIcon' className="social-icon"></Image>
+              Sign up with Google
             </button>
           </div>
         </div>

@@ -1,23 +1,22 @@
-// app/statistics/page.js
-
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './style.css'; // Import custom styles
 import Image from 'next/image';
-// import starIcon from '../../images/star.png'; // Replace with actual paths to icons
+// Import your icons
+// import starIcon from '../../images/star.png'; 
 import dollarIcon from '../../images/dollar-circle.png'; // Replace with your icons
 import dropIcon from '../../images/drop.png'; // Replace with your icons
 
-const HowItWorkLevel = () => {
+const Levels = () => {
   return (
     <div className="hwl-statistics-section shadow-sm">
       <div className="hwl-statistics-inside-sec">
         {/* Star Level Section */}
-        <div className="hwl-level-content d-flex">
+        <div className="hwl-level-content d-flex align-items-center">
           <div className="hwl-level-icon-section">
             <Image src={''} alt="Star" className="hwl-level-icon" />
             <div className='hwl-current-level-badge-con'>
-            <span className="hwl-current-level-badge">Current Level</span>
+              <span className="hwl-current-level-badge">Current Level</span>
             </div>
           </div>
           <div className="hwl-wishing-items">
@@ -50,4 +49,4 @@ const HowItWorkLevel = () => {
   );
 };
 
-export default HowItWorkLevel;
+export default Levels;

@@ -7,6 +7,7 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import BackButton from "../../Components/Button/BackButton";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const AddressForm = () => {
   const { email, name, mobile } = useSelector((state) => state.signup);
@@ -59,6 +60,9 @@ const AddressForm = () => {
 
   return (
     <div className="d-flex em-address-main-container">
+      <div className="em-back-btn">
+      <BackButton></BackButton>
+      </div>
       <div className="em-address-container">
         <div className="em-address-box">
           <div className="em-address-box-top">
@@ -82,7 +86,7 @@ const AddressForm = () => {
           {/* Address Form */}
           <form onSubmit={handleSubmit}>
             {/* Dropdown for country */}
-            <div className="input-container mb-3">
+            <div className="input-container">
               <select
                 className="form-select custom-select"
                 value={country}
@@ -94,7 +98,7 @@ const AddressForm = () => {
             </div>
 
             {/* Dropdown for state */}
-            <div className="input-container mb-3">
+            <div className="input-container">
               <select
                 className="form-select custom-select"
                 value={state}
@@ -106,7 +110,7 @@ const AddressForm = () => {
             </div>
 
             {/* Input fields for City, Address Line 1, Address Line 2, PIN Code, Room Number */}
-            <div className="input-container mb-3">
+            <div className="input-container">
               <input
                 type="text"
                 className="form-control custom-input"
@@ -116,7 +120,7 @@ const AddressForm = () => {
                 required
               />
             </div>
-            <div className="input-container mb-3">
+            <div className="input-container">
               <input
                 type="text"
                 className="form-control custom-input"
@@ -126,7 +130,7 @@ const AddressForm = () => {
                 required
               />
             </div>
-            <div className="input-container mb-3">
+            <div className="input-container">
               <input
                 type="text"
                 className="form-control custom-input"
@@ -135,7 +139,7 @@ const AddressForm = () => {
                 onChange={(e) => setAddressLine2(e.target.value)}
               />
             </div>
-            <div className="input-container mb-1">
+            <div className="input-container">
               <input
                 type="text"
                 className="form-control custom-input"
@@ -145,7 +149,7 @@ const AddressForm = () => {
                 required
               />
             </div>
-            <div className="input-container mb-3">
+            <div className="input-container">
               <input
                 type="text"
                 className="form-control custom-input"
@@ -154,7 +158,7 @@ const AddressForm = () => {
                 onChange={(e) => setRoomNumber(e.target.value)}
               />
             </div>
-            <div className="input-container mb-3">
+            <div className="input-container">
               <input
                 type="password"
                 className="form-control custom-input"
@@ -163,9 +167,15 @@ const AddressForm = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            <div className="terms-container-hw">
+              By continuing, you agree to our 
+              <a href="/privacy-policy" className="text-muted-hw"> Privacy Policy</a> 
+              and 
+              <a href="/terms-of-service" className="text-muted-hw"> Terms of Service</a>.
+            </div>
 
             {/* Complete button */}
-            <div className="d-grid mt-4">
+            <div className="d-grid em-margin-top">
               <button type="submit" className="btn btn-primary em-btn-complete">
                 Complete
               </button>
@@ -173,12 +183,6 @@ const AddressForm = () => {
           </form>
 
           {/* Policy and terms */}
-          <div className="text-center mt-2">
-            <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of
-              Service
-            </a>
-          </div>
         </div>
       </div>
     </div>

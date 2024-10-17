@@ -2,22 +2,18 @@
 .login-main-container{
   display: flex;
   background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100vh;
-  padding: 20px;
-  width:375px;
+  height: 100%;
+  padding: 0px 22px;
+  width:100%;
   justify-content: center;
   align-items: center;
 
 }
 .login-container {
-  max-height: 511px;
-  width: 386px;
+  max-height: 439px;
 }
-/* Centered login box */
 .login-box {
-  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   max-width: 386px;
-  height: 437px;
   gap: 15px;
 
 }
@@ -40,6 +36,7 @@ max-height: 32px;
 }
 /* Main title */
 .login-top-text .login-heading {
+  margin-bottom: 4px;
   font-size: 20px;
   line-height: 24px;
   font-weight: 800;
@@ -50,13 +47,24 @@ max-height: 32px;
   color: #000000;
   font-size: 14px;
   line-height: 24px;
+  margin-bottom: 0px;
+  font-weight: 400;
 }
 
 .login-box-from{
+  margin-top: 15px;
   width: 386;
-  height: 208px;
   gap: 8px;
   /* opacity: 0px; */
+}
+.or-txt{
+  margin: 15px 0px;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+text-align: center;
+color: #9D9E9F;
+
 }
 
 /* Input container and icon */
@@ -65,6 +73,9 @@ max-height: 32px;
 }
 .login-box-from input{
 
+}
+.social-icon{
+ margin-right: 12px; 
 }
 .custom-input {
   padding-left: 45px; /* Space for icon */
@@ -116,6 +127,9 @@ max-height: 32px;
   width: 386;
 
 }
+.btn{
+  border-radius: 50px !important;
+}
 
 /* Divider with "Or" */
 .divider {
@@ -143,11 +157,15 @@ max-height: 32px;
 
 /* Google sign-up button */
 .btn-google {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 50px;
   font-size: 16px;
   padding: 12px;
   height: 64px;
+  color: #344054;
+font-weight: 500;
+line-height: 24px;
+
 
 }
 

@@ -1,0 +1,84 @@
+.h-level-container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .h-level-grid {
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    grid-template-rows: 1fr 50px 1fr;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  /* Level Circle */
+  .h-level-circle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .h-level-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .h-level-circle p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #333;
+  }
+  
+  /* Active Level */
+  .h-level-active .h-level-circle {
+    background-color: #4A90E2;
+    color: white;
+  }
+  
+  .h-level-active p {
+    color: white;
+  }
+  
+  /* Lock Icon */
+  .h-level-lock-icon {
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aaa;
+  }
+  
+  /* Arrow Styles */
+  .h-level-arrow-right {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
+  
+  .h-level-arrow-left {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    transform: rotate(180deg);
+  }
+  
+  .h-level-arrow-bottom {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+    transform: rotate(90deg);
+  }
+  
+  .h-level-arrow-left img,
+  .h-level-arrow-right img,
+  .h-level-arrow-bottom img {
+    width: 30px;
+    height: 30px;
+  }
+  

@@ -16,13 +16,17 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
   max-width: 430px;
-  background-color: #ebf2fa;
+  background-color: #ebf2fa !important;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
-body{
-  background-color: #fff !important;
+.body-main-container{
+  width: 80%;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
 }
 .form-control:focus{
   outline: none !important;
@@ -34,8 +38,6 @@ body{
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center;  */
-  /* justify-content: center; */
   background-color:white;
 }
 .page-container {

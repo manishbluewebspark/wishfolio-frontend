@@ -1,14 +1,14 @@
 /* Card styling */
 .wish-card {
+  margin-top: 20px;
     background-color: white;
-    /* border-radius: 16px; */
     padding: 4px;
     margin-bottom: 20px;
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
     text-align: center;
     position: relative;
     width: 100%;
-    max-width: 360px; /* Ensures consistent width */
+    max-width: 360px; 
   }
   
   /* Product image styling */

@@ -297,4 +297,298 @@
     font-size: 16px;
     font-weight: 800;
   }
+  /* how it work css */
+  .hw-how-it-works-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
   
+  /* Tab Buttons */
+  .hw-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    border-radius: 25px;
+  }
+  
+  .hw-tab-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    border-radius: 25px;
+
+  }
+  
+  .hw-tab-btn.active {
+    background-color: #90aeff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 25px;
+
+  }
+  
+  /* Tab Content */
+  .hw-tab-content {
+    /* padding: 20px; */
+  }
+  
+  /* Level Progress in Unblock Levels Tab */
+  .hw-level-progress {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .hw-level-icon {
+    text-align: center;
+  }
+  
+  .hw-level-icon img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Levels Tab Details */
+  .hw-level {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .hw-level img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+  }
+  
+  .hw-level-details h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .hw-level-details p {
+    margin: 5px 0;
+  }
+  
+  .hw-current-level {
+    background-color: #00d084;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  
+  .hw-level-details ul {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+  
+  .hw-level-details ul li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+  }
+  /* levels css */
+  .hwl-statistics-section {
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hwl-statistics-inside-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Star Level Section */
+.hwl-level-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.hwl-level-icon-section {
+    position: relative;
+    height: 72px;
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hwl-level-icon {
+    width: 72px;
+    height: 72px;
+    background-color: #4A64FE;
+    padding: 10px;
+    border-radius: 24px;
+}
+
+.hwl-current-level-badge-con {
+    position: absolute;
+    bottom: -10px;
+    right: -4px;
+    height: 22px;
+    width: 84px;
+}
+
+.hwl-current-level-badge {
+    background-color: #00C036;
+    font-weight: 400;
+    color: black;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.hwl-wishing-items h5 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.hwl-wishing-items p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0;
+}
+
+/* Target Section */
+.hwl-target-section h6 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hwl-stat-item {
+    background-color: #F7F7F7;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.hwl-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.hwl-stat-text span {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.hwl-stat-text h6 {
+    font-size: 16px;
+    font-weight: 800;
+}
+/* unblocklevel css */
+/* Main container */
+.hw-level-flow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Icon and Arrow Container */
+.hw-level-icons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Circular Level Styles */
+.hw-level-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.hw-level-circle p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.hw-level-icon {
+  width: 45px;
+  height: 45px;
+}
+
+.hw-active {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.hw-active p {
+  color: white;
+}
+
+/* Arrows */
+.hw-arrow {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.hw-arrow img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Arrow Positioning */
+.hw-arrow-top {
+  position: absolute;
+  top: -70px; /* Adjust distance from level */
+}
+
+.hw-arrow-right {
+  position: absolute;
+  right: -80px;
+  top: 50px;
+}
+
+.hw-arrow-bottom {
+  position: absolute;
+  bottom: -70px;
+}
+
+.hw-arrow-left {
+  position: absolute;
+  left: -80px;
+  top: 50px;
+}
+
+/* Row for middle levels */
+.hw-level-row {
+  display: flex;
+  gap: 60px; /* Adjust spacing between Sun and Tree */
+  margin: 20px 0;
+}
