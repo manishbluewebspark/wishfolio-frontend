@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 const ProductPage = ({ product }) => {
   const router = useRouter();
   const getSumOfAmounts = (donations) => {
-    return donations.reduce((total, donation) => total + donation.amount, 0);
+    return donations?.reduce((total, donation) => total + donation.amount, 0);
   };
 
   const calculatePercentageOfAmount = (specifiedAmount) => {
-    const totalAmount = getSumOfAmounts(product.donationsDetails);
+    const totalAmount = getSumOfAmounts(product?.donationsDetails);
     const percentage = ((totalAmount / specifiedAmount) * 100).toFixed(2);
     return percentage;
   };
@@ -24,17 +24,17 @@ const ProductPage = ({ product }) => {
 
     switch (filterType) {
       case "today":
-        return donations.filter((donation) => {
+        return donations?.filter((donation) => {
           const createdAt = new Date(donation.createdAt);
           return createdAt >= startOfToday;
         });
       case "yesterday":
-        return donations.filter((donation) => {
+        return donations?.filter((donation) => {
           const createdAt = new Date(donation.createdAt);
           return createdAt < startOfToday && createdAt >= startOfYesterday;
         });
       case "remaining":
-        return donations.filter((donation) => {
+        return donations?.filter((donation) => {
           const createdAt = new Date(donation.createdAt);
           return createdAt < startOfYesterday;
         });
@@ -44,15 +44,15 @@ const ProductPage = ({ product }) => {
   };
 
   const todayDonations = filterDonationsByDate(
-    product.donationsDetails,
+    product?.donationsDetails,
     "today"
   );
   const yesterdayDonations = filterDonationsByDate(
-    product.donationsDetails,
+    product?.donationsDetails,
     "yesterday"
   );
   const remainingDonations = filterDonationsByDate(
-    product.donationsDetails,
+    product?.donationsDetails,
     "remaining"
   );
 
@@ -64,9 +64,9 @@ const ProductPage = ({ product }) => {
     return { date: formattedDate, time };
   }
 
-  const totalDonated = getSumOfAmounts(product.donationsDetails);
+  const totalDonated = getSumOfAmounts(product?.donationsDetails);
   const progressVariant =
-    totalDonated >= product.productPrice ? "success" : "info";
+    totalDonated >= product?.productPrice ? "success" : "info";
   const handleSubmitForDelivery = () => {
     router.push("/submitForDelivery");
   };
@@ -80,19 +80,20 @@ const ProductPage = ({ product }) => {
       {/* Product Details Section */}
       <div className="text-center">
         <Image
-          src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.productImageUrl}`}
-          alt={product.productName}
+          src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product?.productImageUrl}`}
+          alt={product?.productName}
           width={200}
           height={200}
         />
-        <h5 className="mt-3">{product.productName}</h5>
+        <h5 className="mt-3">{product?.productName}</h5>
         <p className="text-muted">
-          ₹{totalDonated || 0}/ ₹{product.productPrice.toLocaleString()} Donated
+          ₹{totalDonated || 0}/ ₹{product?.productPrice.toLocaleString()}{" "}
+          Donated
         </p>
 
         {/* Progress Bar */}
         <ProgressBar
-          now={calculatePercentageOfAmount(product.productPrice)}
+          now={calculatePercentageOfAmount(product?.productPrice)}
           //   variant={progressVariant}
           className={progressVariant}
         />

@@ -5,7 +5,7 @@ import Image from "next/image";
 import "./style.css";
 import profilePic from "../../images/Male15.png"; // Example profile picture
 
-const MyDoner = (propd) => {
+const MyDoner = (props) => {
   function getDateAndTimeFromISO(isoString) {
     const dateObj = new Date(isoString);
     const date = dateObj.toISOString().split("T")[0];
@@ -17,7 +17,11 @@ const MyDoner = (propd) => {
       {/* Header Section */}
       <div className="pf-donor-header d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center">
-          <div className="pf-donor-avatar">
+          {}
+          {/* <div
+            className="pf-donor-avatar"
+            style={{ display: props?.type === "complete" ? "none" : "block" }}
+          >
             <Image
               src={profilePic}
               alt="avatar"
@@ -25,17 +29,17 @@ const MyDoner = (propd) => {
               height={40}
               className="pf-avatar-img"
             />
-          </div>
+          </div> */}
           <span className="pf-donor-title">Donors</span>
         </div>
         <span className="pf-donor-count">
-          {propd?.donationsDetails?.length}
+          {props?.donationsDetails?.length}
         </span>
       </div>
 
       {/* Donor List */}
       <div className="pf-donor-list">
-        {propd?.donationsDetails.map((donor, index) => (
+        {props?.donationsDetails.map((donor, index) => (
           <div
             key={index}
             className="pf-donor-item d-flex justify-content-between align-items-center"

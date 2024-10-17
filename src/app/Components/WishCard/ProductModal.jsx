@@ -17,6 +17,7 @@ const ProductModal = ({
   handleClose,
   minDonation,
   openSuccessModal,
+  isDonated,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -102,12 +103,29 @@ const ProductModal = ({
             <p className="product-title">{product.productName}</p>
 
             <div className="progress-bar-container">
-              <div
+              {/* <div
                 className="progress-bar"
                 style={{
                   width: `${calculatePercentageOfAmount(
                     product.productPrice
                   )}%`,
+                  backgroundColor:
+                    calculatePercentageOfAmount(product.productPrice) >= 100
+                      ? "#00C036 !important"
+                      : "#4A90E2",
+                }}
+              ></div> */}
+              <div
+                className={`progress-bar ${
+                  calculatePercentageOfAmount(product.productPrice) >= 100
+                    ? "progress-bar-success"
+                    : "progress-bar-default"
+                }`}
+                style={{
+                  width:
+                    calculatePercentageOfAmount(product.productPrice) >= 100
+                      ? "100%"
+                      : `${calculatePercentageOfAmount(product.productPrice)}%`,
                 }}
               ></div>
             </div>
@@ -128,16 +146,26 @@ const ProductModal = ({
             </div>
 
             <div className="donate-section">
-              <input
-                type="text"
-                className="donateInput"
-                onChange={(e) => setAmount(e.target.value)}
-                value={amout}
-              />
-              <button className="donate-btn" onClick={handleDonateClick}>
-                Donate
-              </button>
-              <p>Current Balance: ₹{userData?.accountBalance || 0}</p>
+              {calculatePercentageOfAmount(product.productPrice) >= 100 ? ( // Check if funded status
+                <button className="donate-btn-disable">
+                  Funded Successfully!
+                </button>
+              ) : isDonated ? (
+                <button className="donate-btn-disable">Already Donated!</button>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    className="donateInput"
+                    onChange={(e) => setAmount(e.target.value)}
+                    value={amout}
+                  />
+                  <button className="donate-btn" onClick={handleDonateClick}>
+                    Donate
+                  </button>
+                  <p>Current Balance: ₹{userData?.accountBalance || 0}</p>
+                </>
+              )}
             </div>
           </div>
         </div>

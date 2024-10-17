@@ -68,7 +68,7 @@ const Profile = () => {
         // Handle successful upload
         console.log("Image uploaded successfully", response.data);
         // Optionally update the user profile image URL after upload
-        dispatch(fetchUserData(userData._id)); // Refresh the data
+        dispatch(fetchUserData(userData._id));
       } catch (error) {
         console.error("Error uploading the image", error);
       }
@@ -132,7 +132,10 @@ const Profile = () => {
 
       {/* Menu Section with List Items */}
       <div className="pf-menu mt-3">
-        <div className="pf-menu-item d-flex align-items-center">
+        <div
+          className="pf-menu-item d-flex align-items-center"
+          onClick={() => router.push("/orderhistorypage")}
+        >
           <span className="pf-icon-con">
             <Image src={myordericon} alt="Orders" width={20} height={20} />
           </span>

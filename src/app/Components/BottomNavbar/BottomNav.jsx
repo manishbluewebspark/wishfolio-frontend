@@ -7,12 +7,25 @@ import dropIcon from "../../images/drop.jpg"; // Replace with your icon path
 import vectorIcon from "../../images/moon.png"; // Replace with your icon path
 import profileIcon from "../../images/Male15.png"; // Replace with your icon path
 import { useRouter, usePathname } from "next/navigation"; // Import the necessary hooks
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserData } from "../../store/slices/userSlice";
 const BottomNav = () => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState("Wishes");
   const router = useRouter();
-  const pathname = usePathname(); // Get the current path
+  const pathname = usePathname();
+  const { userData } = useSelector((state) => state.user);
+  useEffect(() => {
+    const getUserData = () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        const uData = JSON.parse(user);
+        dispatch(fetchUserData(uData.id)); // Fetch data using user ID from localStorage
+      }
+    };
 
+    getUserData();
+  }, [dispatch]);
   const options = [
     { name: "Wishes", icon: starIcon, isImage: true, url: "/" },
     {
@@ -22,7 +35,14 @@ const BottomNav = () => {
       url: "/mydonations",
     },
     { name: "My Wish", icon: vectorIcon, isImage: true, url: "/mywish" },
-    { name: "Profile", icon: profileIcon, isImage: true, url: "/profile" },
+    {
+      name: "Profile",
+      icon: userData?.imageUrl
+        ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
+        : profileIcon,
+      isImage: true,
+      url: "/profile",
+    },
   ];
 
   const handleSelect = (option) => {

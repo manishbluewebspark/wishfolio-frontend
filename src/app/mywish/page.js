@@ -53,7 +53,7 @@ const WishFolio = () => {
 
   return (
     <>
-      {!isLoading && !error && wishData ? (
+      {!isLoading && !error && wishData?.data ? (
         <>
           <Product
             product={wishData.data}
@@ -94,7 +94,10 @@ const WishFolio = () => {
                     Post My Wish!
                   </button>
                 ) : (
-                  <button className="btn mw-donate-btn donate-btn">
+                  <button
+                    className="btn mw-donate-btn donate-btn"
+                    onClick={() => router.push("/")}
+                  >
                     Donate Now
                   </button>
                 )}

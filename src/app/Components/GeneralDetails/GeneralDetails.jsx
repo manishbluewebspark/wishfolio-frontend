@@ -8,6 +8,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 const GeneralDetails = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -59,10 +60,14 @@ const GeneralDetails = () => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/${userData._id}`,
         formData
       );
-      console.log("Form data saved successfully:", response.data);
+      toast.success("Details Updated Successfully", {
+        position: "top-right",
+      });
       // Optionally, you can handle success/failure UI here
     } catch (error) {
-      console.error("Error saving form data:", error);
+      toast.error("Something went to wrong", {
+        position: "top-right",
+      });
     }
   };
   const handleBackClick = () => {

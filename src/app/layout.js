@@ -1,6 +1,7 @@
-'use client';
+"use client";
 import localFont from "next/font/local";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import Navbar from "./Components/Navbar/Navbar";
 import TopBar from "./Components/Topbar/Topbar";
@@ -8,7 +9,7 @@ import BottomNav from "./Components/BottomNavbar/BottomNav";
 import Head from "next/head"; // Import for better SEO management
 import { Provider } from "react-redux";
 import store from "./store/store";
-
+import { ToastContainer } from "react-toastify";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,17 +31,34 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} w-100`}>
         <Provider store={store}>
           <div className="body-main-container">
           {children}
           </div>
-        </Provider>
+          </Provider>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </body>
     </html>
   );
 }
-

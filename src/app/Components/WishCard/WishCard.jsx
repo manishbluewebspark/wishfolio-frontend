@@ -13,6 +13,7 @@ const WishCard = ({
   wishingBy,
   wishingByImage,
   donationsDetails,
+  type,
 }) => {
   const getSumOfAmounts = (donations) => {
     return donations?.reduce((total, donation) => total + donation.amount, 0);
@@ -37,13 +38,20 @@ const WishCard = ({
         />
       </div>
 
-      {/* Donation Button */}
-      {/* <div className="donation-button-container">
-        <div className="donate-button">
-          <span>Donate</span> <strong>₹{minDonation}</strong>
+      {type === "myDonation" && (
+        <div className="donation-funding-container">
+          <div className="donate-button">
+            <strong>Funding</strong>
+          </div>
         </div>
-      </div> */}
-
+      )}
+      {type === "myDonation" && (
+        <div className="donation-button-container">
+          <div className="donate-button">
+            <strong>₹{donated}</strong>
+          </div>
+        </div>
+      )}
       {/* Wish Info */}
       <div className="wish-info">
         <p className="wish-by">
@@ -76,8 +84,17 @@ const WishCard = ({
         {/* Progress Bar */}
         <div className="progress-bar-container">
           <div
-            className="progress-bar"
-            style={{ width: `${calculatePercentageOfAmount(donationGoal)}%` }}
+            className={`progress-bar ${
+              calculatePercentageOfAmount(donationGoal) >= 100
+                ? "progress-bar-success"
+                : "progress-bar-default"
+            }`}
+            style={{
+              width:
+                calculatePercentageOfAmount(donationGoal) >= 100
+                  ? "100%"
+                  : `${calculatePercentageOfAmount(donationGoal)}%`,
+            }}
           ></div>
         </div>
       </div>
