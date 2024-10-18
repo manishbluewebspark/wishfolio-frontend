@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 const Myorder = () => {
   const router = useRouter();
   return (
-    <div>
+    <>
       <div
         className="mw-orders-section mt-2 cursor-pointer"
         onClick={() => router.push("/orderhistorypage")}
@@ -17,7 +17,7 @@ const Myorder = () => {
         </div>
         <button className="mw-arrow-btn">›</button>
       </div>
-    </div>
+    </>
   );
 };
 

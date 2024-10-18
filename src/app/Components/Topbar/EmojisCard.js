@@ -48,7 +48,7 @@ const EmojisCard = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="emoji-container">
+    <div className="emoji-container container">
       <div className="emoji-row row">
         {levels.map((option, index) => (
           <div

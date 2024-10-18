@@ -3,7 +3,7 @@ import './style.css';
 import Image from "next/image";
 import logo from '../../images/snow.png';
 import UnblockLevels from "../HowItWork/UnblockLevels";
-import HowToUnblock from '../../Components//HowToUnblockImg/HowToUnblock';
+import HowToUnblock from '../HowToUnblockImg/HowToUnblockImg';
 
 const HowToUnblockModal = ({ isOpen, onClose, onConfirm }) => {
   return (

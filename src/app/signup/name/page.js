@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { setName } from "../../store/slices/signupSlice";
 import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
+import { Icon } from '@iconify/react';
+import userIcon from '@iconify/icons-mdi/user';
 
 export default function FullNameForm() {
   const router = useRouter();
@@ -40,8 +42,9 @@ export default function FullNameForm() {
               </p>
             </div>
           </div>
-          <div className="input-container">
+          <div className="input-container position-relative ">
             <i className="fa fa-user input-icon"></i>
+            <Icon icon={userIcon} width="20" className="input-icon" />
             <input
               type="text"
               className="form-control custom-input"

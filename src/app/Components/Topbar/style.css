@@ -5,13 +5,13 @@
     flex-direction: column;
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 386px;
   }
   
   .emoji-row {
-    display: flex;
     justify-content: space-around;
     width: 100%;
-    gap: 6px;
+    gap: 2px;
   }
   
   .emoji-card {
@@ -30,8 +30,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* position: relative; */
-
   }
   
   
@@ -42,16 +40,12 @@
   }
   
   .emoji-locked {
-    /* background-color: #F8F9FA; */
     color: gray;
   }
   
   .emoji-lock {
-    /* position: absolute; */
     top: 10px;
     right: 10px;
-    /* font-size: 12px; */
-    /* color: gray; */
   }
   
   .emoji-icon {
@@ -64,29 +58,11 @@
     color: #000000;
   }
 
-  /* @media (max-width: 576px) {
-    .emoji-row {
-      flex-wrap: wrap;
-    }
-  
-    .emoji-card {
-      width: 80px;
-      height: 110px;
-      margin-bottom: 10px;
-    }
-  } */
-  
-  /* @media (min-width: 768px) {
-    .emoji-card {
-      width: 90px;
-      height: 120px;
-    }
-  }
-   */
+
    /* topbar css */
+
     .top-nav {
-    max-width: 430px;
-    margin: 0 auto;
+      width: 100%;
   }
 
    .top-bar {
@@ -117,6 +93,4 @@
     display: flex;
     align-items: center;
   }
-  @media (min-width:375px) and (max-width:429px) {
-    
-  }
+ 

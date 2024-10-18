@@ -30,9 +30,9 @@ const OrderHistory = () => {
   }, [dispatch, user, activeTab]); // Dependency on user and activeTab
 
   return (
-    <div>
+    <>
       <BackButton title={"My Orders"} />
-      <div className="container phis-container">
+      <div className="phis-container container">
         <div className="phis-tabs row">
           <div
             className={`col phis-tab ${
@@ -87,7 +87,7 @@ const OrderHistory = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

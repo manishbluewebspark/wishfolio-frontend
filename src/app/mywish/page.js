@@ -101,6 +101,7 @@ const WishFolio = () => {
                     Donate Now
                   </button>
                 )}
+                <p className="mw-donate-explore-txt">Explore Wishing Items</p>
               </div>
             </div>
           </div>

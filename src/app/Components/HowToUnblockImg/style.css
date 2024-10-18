@@ -82,3 +82,12 @@
     height: 30px;
   }
   
+  .htubi-con{
+    width: 273px;
+    height: 276px;
+    border: 1px solid red;
+  }
+  .htubi-round-arrow{
+    height: 43px;
+    width: 43px;    
+  }

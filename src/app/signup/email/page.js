@@ -9,6 +9,8 @@ import { setEmail } from "../../store/slices/signupSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
+import { Icon } from '@iconify/react';
+import envelopeIcon from '@iconify/icons-mdi/email';
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export default function LoginWithGoogle() {
   const [email, setEmailState] = useState("");
@@ -66,8 +68,8 @@ export default function LoginWithGoogle() {
             </div>
           </div>
           <div className="em-login-box-form">
-            <div className="input-container">
-              <i className="fa fa-envelope input-icon"></i>
+            <div className="input-container position-relative">
+            <Icon icon={envelopeIcon} width="20" className="input-icon" />
               <input
                 type="email"
                 className="form-control custom-input"

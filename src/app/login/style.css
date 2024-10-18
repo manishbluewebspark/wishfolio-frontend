@@ -1,19 +1,20 @@
 /* Full page container */
 .login-main-container{
-  display: flex;
   background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
   height: 100%;
   padding: 0px 22px;
   width:100%;
-  justify-content: center;
-  align-items: center;
-
 }
 .login-container {
-  max-height: 439px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
 }
 .login-box {
-  max-width: 386px;
+  width: 100%;
   gap: 15px;
 
 }
@@ -31,7 +32,7 @@ max-height: 32px;
 
 }
 .login-top-text{
-  width: 291px;
+  width: 100%px;
   height: 52px;
 }
 /* Main title */
@@ -53,7 +54,7 @@ max-height: 32px;
 
 .login-box-from{
   margin-top: 15px;
-  width: 386;
+  width: 100%;
   gap: 8px;
   /* opacity: 0px; */
 }
@@ -124,7 +125,7 @@ color: #9D9E9F;
   font-weight: bold;
   color: white;
   height: 64px;
-  width: 386;
+  width: 100%;
 
 }
 .btn{
@@ -141,7 +142,7 @@ color: #9D9E9F;
 .divider::after {
   content: '';
   height: 1px;
-  width: 45%;
+  /* width: 45%; */
   background-color: #ddd;
   position: absolute;
   top: 50%;
@@ -176,8 +177,8 @@ line-height: 24px;
 
 /* Create new account link */
 .create-new-con{
-  max-width: 386px;
   /* height: 437px; */
+  width: 100%;
   gap: 15px;
 }
 

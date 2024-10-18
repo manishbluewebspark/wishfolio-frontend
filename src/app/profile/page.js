@@ -76,7 +76,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="pf-profile-container container">
+    <div className="pf-profile-container">
       {/* Top Section with Profile Image and User Information */}
       <div className="pf-header text-center position-relative">
         <Image
@@ -178,7 +178,7 @@ const Profile = () => {
       </div>
 
       {/* Logout Button */}
-      <div className="pf-menu-item d-flex align-items-center justify-content-center just mt-4">
+      <div className="pf-menu-item d-flex align-items-center pf-logout-margin justify-content-center just mt-4">
         <button className="pf-logout-button" onClick={() => setIsLogoutModalOpen(true)}>
           Logout
         </button>

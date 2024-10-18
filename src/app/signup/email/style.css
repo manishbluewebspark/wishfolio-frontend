@@ -7,7 +7,6 @@
     padding: 20px;
     width: 100%;
     justify-content: center;
-    align-items: center;
     position: relative;
   }
   
@@ -48,7 +47,7 @@ margin-bottom: 15px;
   }
   
   .custom-input {
-    padding-left: 45px;
+    padding-left: 40px !important;
     border-radius: 30px;
     border: 1px solid #ddd;
     padding: 12px 15px;
@@ -70,6 +69,7 @@ margin-bottom: 15px;
     transform: translateY(-50%);
     font-size: 18px;
     color: #aaa;
+    margin-top: 2px;
   }
   
   /* Login button */
@@ -85,7 +85,7 @@ margin-bottom: 15px;
   }
   
   .terms-container-hw {
-    font-size: 9px;
+    font-size: 12px;
     color: #6c757d; /* muted text color */
     text-align: center;
     margin-top: 15px;
@@ -104,7 +104,7 @@ margin-bottom: 15px;
   }
   
   .em-login-margin{
-    margin-top: 60px;
+    margin-top: 163px;
 
   }
   .em-back-btn{

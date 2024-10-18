@@ -104,13 +104,13 @@ export default function ProductCard() {
   return (
     <div className="container-sm position-relative mb-2">
       {/* Filter Section */}
-      <div className="d-flex justify-content-between align-items-center mb-2">
+      <div className="d-flex justify-content-between align-items-center">
         <div className="d-block">
           <h2 className="wishing-items-title">Wishing Items</h2>
           <p className="price-range">₹5,000 – ₹10,000 Worth Items</p>
         </div>
 
-        <div className="filter-by">
+        {/* <div className="filter-by">
           <a className="dropdown-toggle" onClick={toggleDropdown}>
             Filter by
           </a>
@@ -135,7 +135,6 @@ export default function ProductCard() {
                     <button onClick={() => setFilterCategory("fashion")}>
                       Fashion
                     </button>
-                    {/* Add more categories */}
                   </div>
                 )}
               </div>
@@ -166,7 +165,7 @@ export default function ProductCard() {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* Product Cards */}

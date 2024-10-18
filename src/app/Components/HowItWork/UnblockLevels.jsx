@@ -8,6 +8,7 @@ import sunIcon from '../../images/emoji2.png';
 import treeIcon from '../../images/emoji3.png';
 import waveIcon from '../../images/emoji4.png';
 import arrowIcon from '../../images/roundarrow.png'; // Replace with your arrow icon
+import HowToUnblockImg from '../HowToUnblockImg/HowToUnblockImg';
 
 const UnblockLevels = () => {
   return (
@@ -22,6 +23,7 @@ const UnblockLevels = () => {
       </div>
       <div>
          <Image src={imgnew}></Image>
+         {/* <HowToUnblockImg></HowToUnblockImg> */}
       </div>
       <div>
         <p className="hw-level-description">

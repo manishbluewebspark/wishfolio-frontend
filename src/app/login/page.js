@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation"; // For client-side navigation
 import { loginUser } from "../store/slices/authSlice"; // Import the login thunk from authSlice
 import logoIcon from "../images/snow.png"; // Replace with your logo
 import "./style.css";
-import { Icon } from "@iconify/react";
-import envelopeIcon from "@iconify/icons-mdi/envelope-open";
+import { Icon } from '@iconify/react';
+import envelopeIcon from '@iconify/icons-mdi/email';
 import lockIcon from "@iconify/icons-mdi/lock";
 import googleIcon from '../images/googleIcon.png';
 import Image from "next/image";
@@ -38,8 +38,9 @@ const LoginScreen = () => {
     router.push("/signup/email");
   };
   return (
+    <>
     <div className="login-main-container">
-      <div className="login-container d-block justify-content-center align-items-center">
+      <div className="login-container">
         <div className="login-box text-center">
           {/* Logo */}
           <div className="login-box-top">
@@ -153,6 +154,7 @@ const LoginScreen = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

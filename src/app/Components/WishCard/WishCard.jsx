@@ -65,7 +65,7 @@ const WishCard = ({
             style={{ marginRight: "4px" }}
           />
           {"  "}
-          {wishingBy}
+          <strong style={{color:'black'}}>{wishingBy}</strong>
         </p>
 
         {/* Price Info */}
