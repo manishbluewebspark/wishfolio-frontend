@@ -96,7 +96,7 @@ const ProductModal = ({
 
             <p className="price">
               ₹ {getSumOfAmounts(product.donationsDetails) || 0}/ ₹
-              {product.productPrice.toLocaleString()}{" "}
+              {product.productPrice?.toLocaleString()}{" "}
               <span className="donated"> Donated</span>
             </p>
 

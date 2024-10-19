@@ -87,7 +87,7 @@ const ProductPage = ({ product }) => {
         />
         <h5 className="mt-3">{product?.productName}</h5>
         <p className="text-muted">
-          ₹{totalDonated || 0}/ ₹{product?.productPrice.toLocaleString()}{" "}
+          ₹{totalDonated || 0}/ ₹{product?.productPrice?.toLocaleString()}{" "}
           Donated
         </p>
 
@@ -113,7 +113,7 @@ const ProductPage = ({ product }) => {
             name={item.donorName || "Unknown Donor"}
             date={getDateAndTimeFromISO(item?.updatedAt)?.date}
             time={getDateAndTimeFromISO(item?.updatedAt)?.time}
-            amount={`₹${item.amount.toLocaleString()}`}
+            amount={`₹${item.amount?.toLocaleString()}`}
             image={
               item.donorImage
                 ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
@@ -136,7 +136,7 @@ const ProductPage = ({ product }) => {
             name={item.donorName || "Unknown Donor"}
             date={new Date(item.createdAt).toLocaleDateString()}
             time={new Date(item.createdAt).toLocaleTimeString()}
-            amount={`₹${item.amount.toLocaleString()}`}
+            amount={`₹${item.amount?.toLocaleString()}`}
             image={
               item.donorImage
                 ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
@@ -158,7 +158,7 @@ const ProductPage = ({ product }) => {
             name={item.donorName || "Unknown Donor"}
             date={new Date(item.createdAt).toLocaleDateString()}
             time={new Date(item.createdAt).toLocaleTimeString()}
-            amount={`₹${item.amount.toLocaleString()}`}
+            amount={`₹${item.amount?.toLocaleString()}`}
             image={
               item.donorImage
                 ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`

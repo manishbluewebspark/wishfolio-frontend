@@ -9,6 +9,7 @@ import axios from "axios";
 import styles from "./AddressPage.module.css";
 import { fetchMyWish } from "../store/slices/myWishSlice";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 const AddressPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedAddressId, setSelectedAddressId] = useState(null);
@@ -27,6 +28,11 @@ const AddressPage = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    const user = localStorage.getItem("user");
+    if (user) {
+      const uData = JSON.parse(user);
+      dispatch(fetchAddresses(uData.id));
+    }
   };
 
   useEffect(() => {
@@ -74,7 +80,8 @@ const AddressPage = () => {
             wishId: wishId,
           }
         );
-        alert(response.data.message);
+        // alert(response.data.message);
+        toast.success(response.data.message);
         router.push("/orderSuccess");
       } catch (error) {
         console.error("Error submitting for delivery:", error);

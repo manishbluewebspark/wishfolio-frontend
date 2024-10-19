@@ -6,7 +6,7 @@ import axios from "axios";
 import "./style.css"; // Custom styles for modal
 import { fetchUserData } from "../../store/slices/userSlice";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
+import { toast } from "react-toastify";
 const AddressModal = ({ showModal, handleClose, openSuccessModal }) => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
@@ -53,8 +53,8 @@ const AddressModal = ({ showModal, handleClose, openSuccessModal }) => {
       if (response.status === 201) {
         // Optional: Trigger success modal or notification
         openSuccessModal && openSuccessModal(); // If function provided, call it
-        alert("Address submitted successfully!");
-
+        // alert("Address submitted successfully!");
+        toast.success("Address submitted successfully!");
         // Reset the form fields after successful submission
         setCountry("India");
         setState("Kerala");
