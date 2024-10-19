@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
   async (loginData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${API_BASE_URL}/auth/login`,
+        `${API_BASE_URL}/auth/send-otp`,
         loginData
       );
       // Assuming the response has a `token` and `user` field

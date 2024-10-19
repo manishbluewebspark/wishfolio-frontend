@@ -10,9 +10,10 @@ import "./style.css";
 import { Icon } from "@iconify/react";
 import envelopeIcon from "@iconify/icons-mdi/envelope";
 import lockIcon from "@iconify/icons-mdi/lock";
-
+import { setEmail } from "../store/slices/signupSlice";
+import { toast } from "react-toastify";
 const LoginScreen = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmailState] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
@@ -22,15 +23,17 @@ const LoginScreen = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password }))
+    dispatch(loginUser({ email }))
       .unwrap()
       .then((userData) => {
+        dispatch(setEmail(email));
+        toast.success("otp send successfully");
         // Redirect to home page after successful login
-        localStorage.setItem("user", JSON.stringify(userData));
-        router.push("/");
+        // localStorage.setItem("user", JSON.stringify(userData));
+        router.push("/login/verify-otp");
       })
       .catch((err) => {
-        console.error("Login failed:", err);
+        toast.error(err);
       });
   };
   const handleCreateAccount = () => {
@@ -77,14 +80,14 @@ const LoginScreen = () => {
                     className="form-control custom-input"
                     placeholder="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmailState(e.target.value)}
                     style={{ borderRadius: "50px" }}
                     required
                   />
                 </div>
               </div>
 
-              <div
+              {/* <div
                 className="position-relative"
                 style={{ marginBottom: "8px" }}
               >
@@ -105,10 +108,10 @@ const LoginScreen = () => {
                 <a href="#" className="forgot-password">
                   Forgot?
                 </a>
-              </div>
+              </div> */}
 
               {/* Error Message */}
-              {error && <p style={{ color: "red" }}>{error}</p>}
+              {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
 
               {/* Login Button */}
               <button

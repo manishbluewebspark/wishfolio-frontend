@@ -9,6 +9,7 @@ import { setOtp } from "../../store/slices/signupSlice";
 import axios from "axios"; // Import axios
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export default function OtpForm() {
   const router = useRouter();
@@ -25,22 +26,22 @@ export default function OtpForm() {
     const otp = otpValues.join("");
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/user/verify-otp`, {
+      const response = await axios.post(`${API_BASE_URL}/auth/verify-otp`, {
         otp,
         email,
       });
-      console.log("API Response:", response.data);
-      dispatch(setOtp(otp));
+
+      console.log(response.data);
+
+      localStorage.setItem("user", JSON.stringify(response.data));
+      // dispatch(setOtp(otp));
 
       if (response.status === 201) {
-        toast.success("OTP verified successfully!");
-        // alert("OTP verified successfully!");
-        router.push("/signup/mobile");
+        toast.success("Login successfully");
+        router.push("/");
       }
     } catch (error) {
-      // console.error("Error verifying OTP:", error);
       toast.error("Invalid OTP");
-      // alert("Failed to verify OTP. Please try again.");
     }
   };
 

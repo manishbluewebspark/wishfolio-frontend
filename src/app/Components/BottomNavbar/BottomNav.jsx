@@ -2,19 +2,24 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import "./style.css";
-import starIcon from "../../images/star.jpg"; // Replace with your icon path
-import dropIcon from "../../images/drop.jpg"; // Replace with your icon path
-import vectorIcon from "../../images/moon.png"; // Replace with your icon path
-import profileIcon from "../../images/Male15.png"; // Replace with your icon path
-import { useRouter, usePathname } from "next/navigation"; // Import the necessary hooks
+import starActiveIcon from "../../images/starActive.jpg";
+import starIcon from "../../images/star.png";
+import dropIcon from "../../images/drop.jpg";
+import dropActiveIcon from "../../images/dropActive.png";
+import vectorIcon from "../../images/moon.png";
+import vectorActiveIcon from "../../images/moonActive.png";
+import profileIcon from "../../images/Male15.png";
+import { useRouter, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
+
 const BottomNav = () => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("Wishes");
   const router = useRouter();
   const pathname = usePathname();
   const { userData } = useSelector((state) => state.user);
+
   useEffect(() => {
     const getUserData = () => {
       const user = localStorage.getItem("user");
@@ -26,21 +31,33 @@ const BottomNav = () => {
 
     getUserData();
   }, [dispatch]);
+
+  // Defining both active and inactive icons for each option
   const options = [
-    { name: "Wishes", icon: starIcon, isImage: true, url: "/" },
+    {
+      name: "Wishes",
+      icon: starIcon,
+      activeIcon: starActiveIcon,
+      url: "/",
+    },
     {
       name: "My Donations",
       icon: dropIcon,
-      isImage: true,
+      activeIcon: dropActiveIcon,
       url: "/mydonations",
     },
-    { name: "My Wish", icon: vectorIcon, isImage: true, url: "/mywish" },
+    {
+      name: "My Wish",
+      icon: vectorIcon,
+      activeIcon: vectorActiveIcon,
+      url: "/mywish",
+    },
     {
       name: "Profile",
-      icon: userData?.imageUrl
+      icon: profileIcon,
+      activeIcon: userData?.imageUrl
         ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
         : profileIcon,
-      isImage: true,
       url: "/profile",
     },
   ];
@@ -70,7 +87,9 @@ const BottomNav = () => {
             >
               <div className="icon-container-bn">
                 <Image
-                  src={option.icon}
+                  src={
+                    selected === option.name ? option.activeIcon : option.icon
+                  } // Show active or inactive icon
                   alt={option.name}
                   width={24}
                   height={24}

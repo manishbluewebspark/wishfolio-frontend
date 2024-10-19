@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "./style.css";
 import { fetchUserData } from "../store/slices/userSlice";
-
+import { toast } from "react-toastify";
 const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -23,9 +23,9 @@ const Profile = () => {
 
   useEffect(() => {
     const getUserData = () => {
-      const userData = localStorage.getItem("user");
-      if (userData) {
-        const uData = JSON.parse(userData);
+      const user = localStorage.getItem("user");
+      if (user) {
+        const uData = JSON.parse(user);
         dispatch(fetchUserData(uData.id));
       }
     };
@@ -61,16 +61,20 @@ const Profile = () => {
             },
           }
         );
+        if (response.status === 201) {
+          toast.success("Profile uploaded successfully");
 
-        // Handle successful upload
-        console.log("Image uploaded successfully", response.data);
-        // Optionally update the user profile image URL after upload
-        dispatch(fetchUserData(userData._id));
+          setTimeout(() => {
+            dispatch(fetchUserData(userData._id));
+          }, 2500);
+        }
       } catch (error) {
+        toast.error("Error uploading the image");
         console.error("Error uploading the image", error);
       }
     }
   };
+  console.log("user", userData);
 
   return (
     <div className="pf-profile-container container">

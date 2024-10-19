@@ -7,6 +7,7 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { toast } from "react-toastify";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const AddressForm = () => {
   const { email, name, mobile } = useSelector((state) => state.signup);
@@ -40,7 +41,7 @@ const AddressForm = () => {
       pincode: pinCode,
       roomNumber: roomNumber,
       email: email,
-      password: password,
+
       userRole: 2,
       mobile: mobile,
       city,
@@ -50,9 +51,11 @@ const AddressForm = () => {
       if (response.status === 201) {
         router.push("/login");
         console.log("Form Data:", formData);
-        alert("submitted successfully!");
+        toast.success("submitted successfully!");
+        // alert("submitted successfully!");
       }
     } catch (error) {
+      toast.error(error?.response?.data?.message);
       console.error("Error sending verification code:", error);
     }
   };
@@ -152,15 +155,6 @@ const AddressForm = () => {
                 placeholder="Room Number"
                 value={roomNumber}
                 onChange={(e) => setRoomNumber(e.target.value)}
-              />
-            </div>
-            <div className="input-container mb-3">
-              <input
-                type="password"
-                className="form-control custom-input"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
