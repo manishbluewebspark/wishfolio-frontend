@@ -8,10 +8,18 @@ import OrderItem from "./OrderItem";
 
 const OrderHistory = () => {
   const [activeTab, setActiveTab] = useState("ongoing"); // State for active tab
+  const [user, setUser] = useState(null); // State for storing the user data from localStorage
   const dispatch = useDispatch();
 
-  // Memoize the user object to prevent unnecessary re-renders
-  const user = useMemo(() => JSON.parse(localStorage.getItem("user")), []);
+  // Use useEffect to safely access localStorage on the client-side
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }
+  }, []);
 
   // Get orders data and loading state from Redux
   const { orderData, isLoading, error } = useSelector((state) => state.myOrder);
