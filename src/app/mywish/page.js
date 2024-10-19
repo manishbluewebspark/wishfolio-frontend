@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./mywish.css"; // Custom CSS file for styling
+// import "./mywish.css"; // Custom CSS file for styling
 import Image from "next/image";
 import img2 from "../images/91.png";
 import Statistics from "../Components/mystatistics/Statistics";

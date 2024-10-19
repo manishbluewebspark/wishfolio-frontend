@@ -1,7 +1,7 @@
 "use client";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./paymethod.css"; // Custom CSS file
+// import "./paymethod.css"; // Custom CSS file
 import { Icon } from "@iconify/react";
 import clipboardIcon from "@iconify/icons-mdi/clipboard"; // Importing specific MDI icon
 import { useSelector } from "react-redux";

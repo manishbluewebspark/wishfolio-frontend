@@ -1,7 +1,7 @@
 "use client"; // This is required to use client-side rendering with App Router
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
-import "./paymethod.css"; // Custom CSS file
+// import "./paymethod.css"; // Custom CSS file
 import arrowright from "../../images/arrow-right.png"; // Correct path to arrow-right image
 import bank from "../../images/bank.png"; // Correct path to bank image
 import bhimupi from "../../images/bhimupi.png"; // Correct path to bhim image

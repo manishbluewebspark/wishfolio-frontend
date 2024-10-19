@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios"; // Import Axios
-import "./orderhistory.css";
+// import "./orderhistory.css";
 import img2 from "../../images/86.png";
 
 const RatingModal = ({ isModalOpen, closeModal, order }) => {

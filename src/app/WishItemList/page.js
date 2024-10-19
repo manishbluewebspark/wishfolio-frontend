@@ -11,7 +11,7 @@ import {
   Button,
 } from "react-bootstrap";
 import productImage from "../images/watchimg.png";
-import "./wishitemlist.css";
+// import "./wishitemlist.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../store/slices/categorySlice";
 import {

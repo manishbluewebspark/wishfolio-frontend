@@ -1,14 +1,14 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import './style.css'; // Import custom styles
-import Image from 'next/image';
-import imgnew from '../../images/howit.JPG'
-import starIcon from '../../images/emoji1.png'; // Replace with actual paths to icons
-import sunIcon from '../../images/emoji2.png';
-import treeIcon from '../../images/emoji3.png';
-import waveIcon from '../../images/emoji4.png';
-import arrowIcon from '../../images/roundarrow.png'; // Replace with your arrow icon
-import HowToUnblockImg from '../HowToUnblockImg/HowToUnblockImg';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+// import './style.css'; // Import custom styles
+import Image from "next/image";
+import imgnew from "../../images/howit.JPG";
+import starIcon from "../../images/emoji1.png"; // Replace with actual paths to icons
+import sunIcon from "../../images/emoji2.png";
+import treeIcon from "../../images/emoji3.png";
+import waveIcon from "../../images/emoji4.png";
+import arrowIcon from "../../images/roundarrow.png"; // Replace with your arrow icon
+import HowToUnblockImg from "../HowToUnblockImg/HowToUnblockImg";
 
 const UnblockLevels = () => {
   return (
@@ -22,15 +22,15 @@ const UnblockLevels = () => {
         </ul>
       </div>
       <div>
-         <Image src={imgnew}></Image>
-         {/* <HowToUnblockImg></HowToUnblockImg> */}
+        <Image src={imgnew}></Image>
+        {/* <HowToUnblockImg></HowToUnblockImg> */}
       </div>
       <div>
         <p className="hw-level-description">
-          The levels will progress in the order of Star, Tree, Wave, and Sun. Once
-          you complete the Sun level, you’ll return to the Star level again. This
-          structure is designed to ensure that donations continue flowing
-          continuously.
+          The levels will progress in the order of Star, Tree, Wave, and Sun.
+          Once you complete the Sun level, you’ll return to the Star level
+          again. This structure is designed to ensure that donations continue
+          flowing continuously.
         </p>
       </div>
     </div>

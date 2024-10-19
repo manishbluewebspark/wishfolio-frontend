@@ -1,12 +1,12 @@
 "use client";
-import Image from 'next/image';
-import React, { useState } from 'react';
-import './style.css';
-import img from '../../images/storiesimg.png';
-import profileImage from '../../images/Male15.png';
-import BackButton from '../Button/BackButton';
-import Modal from './SuccessModal'; // Import the Modal component
-import SuccessModal from './SuccessModal';
+import Image from "next/image";
+import React, { useState } from "react";
+// import './style.css';
+import img from "../../images/storiesimg.png";
+import profileImage from "../../images/Male15.png";
+import BackButton from "../Button/BackButton";
+import Modal from "./SuccessModal"; // Import the Modal component
+import SuccessModal from "./SuccessModal";
 
 const SuccessStories = () => {
   const [selectedReview, setSelectedReview] = useState(null); // State to track the selected review
@@ -14,14 +14,14 @@ const SuccessStories = () => {
   const reviews = [
     {
       name: "Sinan CP",
-      phoneImage: img,  
-      profileImage: profileImage, 
+      phoneImage: img,
+      profileImage: profileImage,
       review: "Reviewed by",
     },
     {
       name: "Sinan CP",
-      phoneImage: img,  
-      profileImage: profileImage, 
+      phoneImage: img,
+      profileImage: profileImage,
       review: "Reviewed by",
     },
     // Add more reviews if necessary
@@ -37,10 +37,14 @@ const SuccessStories = () => {
 
   return (
     <div className="hw-sto-success-stories-container">
-      <BackButton title={'Success Stories'}></BackButton>
+      <BackButton title={"Success Stories"}></BackButton>
       <div className="hw-sto-stories-grid">
         {reviews.map((review, index) => (
-          <div key={index} className="hw-sto-story-card" onClick={() => openModal(review)}>
+          <div
+            key={index}
+            className="hw-sto-story-card"
+            onClick={() => openModal(review)}
+          >
             <div className="hw-sto-phone-container">
               <Image
                 src={review.phoneImage}

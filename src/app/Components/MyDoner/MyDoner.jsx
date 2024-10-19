@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import "./style.css";
+// import "./style.css";
 import profilePic from "../../images/Male15.png"; // Example profile picture
 
 const MyDoner = (props) => {

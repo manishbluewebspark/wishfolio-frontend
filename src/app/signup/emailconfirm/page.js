@@ -1,9 +1,9 @@
 // pages/email-sent.js
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'next/image';
-import logo from '../../images/snow.png';
-import './style.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Image from "next/image";
+import logo from "../../images/snow.png";
+// import './style.css';
 
 export default function EmailSent() {
   return (

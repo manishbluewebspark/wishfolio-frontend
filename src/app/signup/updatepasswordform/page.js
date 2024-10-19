@@ -1,23 +1,23 @@
-'use client';
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'next/image';
-import logo from '../../images/snow.png'; // Replace with your logo path
-import './style.css';
-import { Icon } from '@iconify/react';
-import lockIcon from '@iconify/icons-mdi/lock-outline'; // Correct lock icon from Iconify
+"use client";
+import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Image from "next/image";
+import logo from "../../images/snow.png"; // Replace with your logo path
+// import './style.css';
+import { Icon } from "@iconify/react";
+import lockIcon from "@iconify/icons-mdi/lock-outline"; // Correct lock icon from Iconify
 
 const UpdatePasswordForm = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handlePasswordUpdate = (e) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      alert('Passwords do not match!');
+      alert("Passwords do not match!");
     } else {
       // Add logic to update password here
-      alert('Password updated successfully!');
+      alert("Password updated successfully!");
     }
   };
 
@@ -35,7 +35,9 @@ const UpdatePasswordForm = () => {
             />
             <div className="em-update-top-text text-center">
               <h2 className="em-update-heading">What is your email ID</h2>
-              <p className="subtext">Start your wishing journey by signing up.</p>
+              <p className="subtext">
+                Start your wishing journey by signing up.
+              </p>
             </div>
           </div>
 
@@ -78,7 +80,8 @@ const UpdatePasswordForm = () => {
           {/* Policy and terms */}
           <div className="text-center mt-2">
             <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of Service
+              By continuing, you agree to our Privacy Policy and Terms of
+              Service
             </a>
           </div>
         </div>

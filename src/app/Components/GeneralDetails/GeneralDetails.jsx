@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import "./style.css"; // Import custom styles
+// import "./style.css"; // Import custom styles
 import leftArrowIcon from "../../images/arrow-left.png";
 import Image from "next/image";
 import axios from "axios";
@@ -86,7 +86,7 @@ const GeneralDetails = () => {
           ></Image>
           <h1 className="gd-title text-align-center">General Details</h1>
         </div> */}
-        <BackButton title={'General Details'}></BackButton>
+        <BackButton title={"General Details"}></BackButton>
         <button className="gd-save-btn" onClick={handleSave}>
           Save
         </button>

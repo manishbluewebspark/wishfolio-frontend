@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMyOrders } from "../../store/slices/myOrderSlice"; // Assuming you have myOrderSlice ready
-import "./orderhistory.css"; // Custom CSS file
+// import "./orderhistory.css"; // Custom CSS file
 import BackButton from "../Button/BackButton";
 import OrderItem from "./OrderItem";
 

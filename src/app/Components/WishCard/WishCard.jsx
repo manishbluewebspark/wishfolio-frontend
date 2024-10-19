@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 // import profilePic from '../../images/profile.png'; // Profile image
-import "./style.css"; // Custom styles
+// import "./style.css"; // Custom styles
 
 const WishCard = ({
   productImage,

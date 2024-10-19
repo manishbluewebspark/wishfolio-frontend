@@ -1,14 +1,14 @@
-'use client';
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'next/image';
-import logo from '../../images/snow.png'; // Replace with your logo path
-import './style.css';
-import { Icon } from '@iconify/react';
-import envelopeIcon from '@iconify/icons-mdi/email-outline'; // Correct envelope icon from Iconify
+"use client";
+import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Image from "next/image";
+import logo from "../../images/snow.png"; // Replace with your logo path
+// import './style.css';
+import { Icon } from "@iconify/react";
+import envelopeIcon from "@iconify/icons-mdi/email-outline"; // Correct envelope icon from Iconify
 
 const VerifyEmailForm = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleEmailVerify = (e) => {
     e.preventDefault();
@@ -59,7 +59,8 @@ const VerifyEmailForm = () => {
           {/* Policy and terms */}
           <div className="text-center mt-2">
             <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of Service
+              By continuing, you agree to our Privacy Policy and Terms of
+              Service
             </a>
           </div>
         </div>

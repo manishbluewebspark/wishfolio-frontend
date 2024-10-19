@@ -1,7 +1,7 @@
 "use client";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./paymethod.css";
+// import "./paymethod.css";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";

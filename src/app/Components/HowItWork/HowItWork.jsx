@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import UnblockLevels from "./UnblockLevels";
 import Levels from "./Levels";
-import "./style.css"; // Add your styles here
+// import "./style.css"; // Add your styles here
 
 const HowItWorks = () => {
   const [activeTab, setActiveTab] = useState("unblock");

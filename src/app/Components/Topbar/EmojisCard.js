@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image"; // Import the Next.js Image component
-import "./style.css";
+// import "./style.css";
 import lockIcon from "../../images/lock-circle.jpg";
 import { fetchLevels } from "../../store/slices/levelsSlice";
 import { useDispatch, useSelector } from "react-redux";

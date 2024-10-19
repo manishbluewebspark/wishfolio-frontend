@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import logo from "../../images/snow.png";
-import "./style.css";
+// import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setOtp } from "../../store/slices/signupSlice";
 import axios from "axios"; // Import axios

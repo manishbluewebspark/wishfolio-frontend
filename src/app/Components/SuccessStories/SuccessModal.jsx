@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
-import './style.css';
+import Image from "next/image";
+import React from "react";
+// import './style.css';
 
 const SuccessModal = ({ review, closeModal }) => {
   if (!review) return null; // If no review is selected, don't render anything.
@@ -8,7 +8,9 @@ const SuccessModal = ({ review, closeModal }) => {
   return (
     <div className="hw-sto-modal">
       <div className="hw-sto-modal-content">
-        <span className="hw-sto-close" onClick={closeModal}>&times;</span>
+        <span className="hw-sto-close" onClick={closeModal}>
+          &times;
+        </span>
         <Image
           src={review.phoneImage}
           alt="Phone mockup"

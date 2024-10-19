@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import "./style.css";
+// import "./style.css";
 import starActiveIcon from "../../images/starActive.jpg";
 import starIcon from "../../images/star.png";
 import dropIcon from "../../images/drop.jpg";

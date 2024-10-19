@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import logo from "../../images/snow.png";
-import "./style.css";
+// import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setOtp } from "../../store/slices/signupSlice";
 import axios from "axios"; // Import axios
@@ -65,9 +65,6 @@ export default function OtpForm() {
               <p className="subtext">Verification code sent to {email}</p>
               <p className="em-otp-desc">
                 Start your wishing journey by signing up.
-              </p>
-              <p className="subtext">
-                Verification code sent to Sinan@gmail.com
               </p>
             </div>
           </div>

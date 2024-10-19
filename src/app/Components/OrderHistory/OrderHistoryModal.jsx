@@ -1,5 +1,5 @@
 import React from "react";
-import "./orderhistory.css"; // Custom CSS file
+// import "./orderhistory.css"; // Custom CSS file
 import Image from "next/image";
 import prodimg from "../../images/watchimg.png"; // Path to your image
 import MyDoner from "../MyDoner/MyDoner";

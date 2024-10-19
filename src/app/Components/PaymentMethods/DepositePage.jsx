@@ -1,7 +1,7 @@
 "use client";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./paymethod.css"; // Custom CSS file
+// import "./paymethod.css"; // Custom CSS file
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"; // To fetch payment data from Redux
 import { useRouter } from "next/navigation"; // For navigation

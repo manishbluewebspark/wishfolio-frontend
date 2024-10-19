@@ -1,11 +1,11 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import './style.css'; // Import custom styles
-import Image from 'next/image';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+// import './style.css'; // Import custom styles
+import Image from "next/image";
 // Import your icons
-// import starIcon from '../../images/star.png'; 
-import dollarIcon from '../../images/dollar-circle.png'; // Replace with your icons
-import dropIcon from '../../images/drop.png'; // Replace with your icons
+// import starIcon from '../../images/star.png';
+import dollarIcon from "../../images/dollar-circle.png"; // Replace with your icons
+import dropIcon from "../../images/drop.png"; // Replace with your icons
 
 const Levels = () => {
   return (
@@ -14,8 +14,8 @@ const Levels = () => {
         {/* Star Level Section */}
         <div className="hwl-level-content d-flex align-items-center">
           <div className="hwl-level-icon-section">
-            <Image src={''} alt="Star" className="hwl-level-icon" />
-            <div className='hwl-current-level-badge-con'>
+            <Image src={""} alt="Star" className="hwl-level-icon" />
+            <div className="hwl-current-level-badge-con">
               <span className="hwl-current-level-badge">Current Level</span>
             </div>
           </div>
@@ -37,7 +37,11 @@ const Levels = () => {
           </div>
 
           <div className="hwl-stat-item d-flex align-items-center">
-            <Image src={dropIcon} alt="Number of Donations" className="hwl-icon" />
+            <Image
+              src={dropIcon}
+              alt="Number of Donations"
+              className="hwl-icon"
+            />
             <div className="hwl-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Number of Donations</span>
               <h6>10</h6>

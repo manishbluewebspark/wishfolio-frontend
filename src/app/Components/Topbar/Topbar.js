@@ -1,17 +1,17 @@
-'use client';
-import Image from 'next/image';
-import logoIcon from '../../images/snow.png'; // Use your logo image here
-import settingsIcon from '../../images/settingsIcon.png'; // Use the settings icon image
-import { useRouter } from 'next/navigation';
-import './style.css';
+"use client";
+import Image from "next/image";
+import logoIcon from "../../images/snow.png"; // Use your logo image here
+import settingsIcon from "../../images/settingsIcon.png"; // Use the settings icon image
+import { useRouter } from "next/navigation";
+// import './style.css';
 
 const TopBar = () => {
   const router = useRouter();
 
-    const handleClick = () => {
-        router.push('/storiespage'); // Navigate to the /store route
-    };
-  
+  const handleClick = () => {
+    router.push("/storiespage"); // Navigate to the /store route
+  };
+
   return (
     <nav className="navbar top-nav navbar-light bg-white">
       <div className="container-fluid">
@@ -21,9 +21,11 @@ const TopBar = () => {
           </a> */}
           <a className="navbar-brand d-flex align-items-center" href="#">
             <Image src={logoIcon} alt="WishFolio Logo" width={40} height={40} />
-            <span className="brand-text">Wish<span className="highlight-text">Folio</span></span>
+            <span className="brand-text">
+              Wish<span className="highlight-text">Folio</span>
+            </span>
           </a>
-          <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+          <div onClick={handleClick} style={{ cursor: "pointer" }}>
             <Image src={settingsIcon} alt="Settings" width={40} height={40} />
           </div>
         </div>

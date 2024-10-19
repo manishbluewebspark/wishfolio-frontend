@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import profile from "../images/Male15.png";
@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import LogoutModal from "../Components/Modals/LogoutModal"; // Import the new LogoutModal component
-import "./style.css";
+// import "./style.css";
 import { fetchUserData } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
 const Profile = () => {
@@ -171,8 +171,9 @@ const Profile = () => {
           <span>How is it working?</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center" 
-        onClick={() => router.push("/termsandconditions")}
+        <div
+          className="pf-menu-item d-flex align-items-center"
+          onClick={() => router.push("/termsandconditions")}
         >
           <span className="pf-icon-con">
             <Image src={changepass} alt="Terms" width={20} height={20} />
@@ -183,7 +184,10 @@ const Profile = () => {
 
       {/* Logout Button */}
       <div className="pf-menu-item d-flex align-items-center pf-logout-margin justify-content-center just mt-4">
-        <button className="pf-logout-button" onClick={() => setIsLogoutModalOpen(true)}>
+        <button
+          className="pf-logout-button"
+          onClick={() => setIsLogoutModalOpen(true)}
+        >
           Logout
         </button>
       </div>

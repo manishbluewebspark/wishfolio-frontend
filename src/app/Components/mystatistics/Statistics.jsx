@@ -1,6 +1,6 @@
 "use client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./style.css"; // Custom CSS file for styling
+// import "./style.css"; // Custom CSS file for styling
 import Image from "next/image";
 import icon1 from "../../images/dollar-circle.png";
 import icon2 from "../../images/drop.png";

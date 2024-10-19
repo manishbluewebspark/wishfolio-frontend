@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./orderhistory.css"; // Custom CSS file
+// import "./orderhistory.css"; // Custom CSS file
 import Image from "next/image";
 import OrderHistoryModal from "./OrderHistoryModal"; // Import the new modal component
 import RatingModal from "./RatingModal"; // Import the rating modal component

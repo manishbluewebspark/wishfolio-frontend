@@ -3,7 +3,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import logo from "../../images/snow.png"; // Replace with your logo path
-import "./style.css";
+// import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -19,7 +19,7 @@ const AddressForm = () => {
   const [addressLine2, setAddressLine2] = useState("");
   const [pinCode, setPinCode] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -161,7 +161,7 @@ const AddressForm = () => {
                 onChange={(e) => setRoomNumber(e.target.value)}
               />
             </div>
-            <div className="input-container">
+            {/* <div className="input-container">
               <input
                 type="password"
                 className="form-control custom-input"
@@ -169,7 +169,7 @@ const AddressForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="terms-container-hw">
               By continuing, you agree to our
               <a href="/privacy-policy" className="text-muted-hw">

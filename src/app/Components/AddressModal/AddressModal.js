@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // FIX: Import useRouter
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import "./style.css"; // Custom styles for modal
+// import "./style.css"; // Custom styles for modal
 import { fetchUserData } from "../../store/slices/userSlice";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 import { toast } from "react-toastify";
