@@ -7,6 +7,9 @@ import "./style.css";
 import { useDispatch } from "react-redux";
 import { setName } from "../../store/slices/signupSlice";
 import { useRouter } from "next/navigation";
+import BackButton from "../../Components/Button/BackButton";
+import { Icon } from '@iconify/react';
+import userIcon from '@iconify/icons-mdi/user';
 
 export default function FullNameForm() {
   const router = useRouter();
@@ -19,6 +22,9 @@ export default function FullNameForm() {
   };
   return (
     <div className="d-flex em-fullname-main-container">
+      <div className="em-back-btn">
+      <BackButton></BackButton>
+      </div>
       <div className="em-fullname-container">
         <div className="em-fullname-box">
           <div className="em-fullname-box-top">
@@ -36,8 +42,9 @@ export default function FullNameForm() {
               </p>
             </div>
           </div>
-          <div className="input-container">
+          <div className="input-container position-relative ">
             <i className="fa fa-user input-icon"></i>
+            <Icon icon={userIcon} width="20" className="input-icon" />
             <input
               type="text"
               className="form-control custom-input"
@@ -45,19 +52,19 @@ export default function FullNameForm() {
               onChange={(e) => setNameState(e.target.value)}
             />
           </div>
-          <div className="d-grid mt-4">
+          <div className="terms-container-hw">
+  By continuing, you agree to our 
+  <a href="/privacy-policy" className="text-muted-hw"> Privacy Policy</a> 
+  and 
+  <a href="/terms-of-service" className="text-muted-hw"> Terms of Service</a>.
+</div>
+          <div className="d-grid em-margin-top">
             <button
               className="btn btn-primary em-btn-continue"
               onClick={handleMobileSubmit}
             >
               Continue
             </button>
-          </div>
-          <div className="text-center mt-2">
-            <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of
-              Service
-            </a>
           </div>
         </div>
       </div>

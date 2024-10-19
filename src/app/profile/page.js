@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import profile from "../images/Male15.png";
@@ -11,6 +11,7 @@ import userAvatar from "../images/userAvatar.jpg";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import LogoutModal from "../Components/Modals/LogoutModal"; // Import the new LogoutModal component
 import "./style.css";
 import { fetchUserData } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
@@ -18,6 +19,8 @@ const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const fileInputRef = useRef(null);
+
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // State for managing modal visibility
 
   const { userData, isLoading, error } = useSelector((state) => state.user);
 
@@ -77,7 +80,7 @@ const Profile = () => {
   console.log("user", userData);
 
   return (
-    <div className="pf-profile-container container">
+    <div className="pf-profile-container">
       {/* Top Section with Profile Image and User Information */}
       <div className="pf-header text-center position-relative">
         <Image
@@ -168,7 +171,9 @@ const Profile = () => {
           <span>How is it working?</span>
         </div>
 
-        <div className="pf-menu-item d-flex align-items-center">
+        <div className="pf-menu-item d-flex align-items-center" 
+        onClick={() => router.push("/termsandconditions")}
+        >
           <span className="pf-icon-con">
             <Image src={changepass} alt="Terms" width={20} height={20} />
           </span>
@@ -177,11 +182,18 @@ const Profile = () => {
       </div>
 
       {/* Logout Button */}
-      <div className="pf-menu-item d-flex align-items-center justify-content-center just mt-4">
-        <button className="pf-logout-button" onClick={handleLogout}>
+      <div className="pf-menu-item d-flex align-items-center pf-logout-margin justify-content-center just mt-4">
+        <button className="pf-logout-button" onClick={() => setIsLogoutModalOpen(true)}>
           Logout
         </button>
       </div>
+
+      {/* Logout Modal */}
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleLogout}
+      />
     </div>
   );
 };

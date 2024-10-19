@@ -9,6 +9,7 @@ import { setOtp } from "../../store/slices/signupSlice";
 import axios from "axios"; // Import axios
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import BackButton from "../../Components/Button/BackButton";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export default function OtpForm() {
   const router = useRouter();
@@ -46,6 +47,9 @@ export default function OtpForm() {
 
   return (
     <div className="d-flex em-otp-main-container">
+      <div className="em-back-btn">
+        <BackButton></BackButton>
+      </div>
       <div className="em-otp-container">
         <div className="em-otp-box">
           <div className="em-otp-box-top">
@@ -56,9 +60,15 @@ export default function OtpForm() {
               width={32}
               height={32}
             />
-            <div className="em-otp-top-text text-center mb-4">
+            <div className="em-otp-top-text text-center">
               <h2 className="em-otp-heading">Enter your OTP</h2>
               <p className="subtext">Verification code sent to {email}</p>
+              <p className="em-otp-desc">
+                Start your wishing journey by signing up.
+              </p>
+              <p className="subtext">
+                Verification code sent to Sinan@gmail.com
+              </p>
             </div>
           </div>
           <div className="em-otp-input-container d-flex">
@@ -82,19 +92,25 @@ export default function OtpForm() {
               />
             ))}
           </div>
-          <div className="d-grid mt-4">
+
+          <div className="terms-container-hw">
+            By continuing, you agree to our
+            <a href="/privacy-policy" className="text-muted-hw">
+              Privacy Policy
+            </a>
+            and
+            <a href="/terms-of-service" className="text-muted-hw">
+              Terms of Service
+            </a>
+            .
+          </div>
+          <div className="d-grid otp-margin">
             <button
               className="btn btn-primary em-btn-verify"
               onClick={handleOtpSubmit} // Trigger OTP verification
             >
               Verify
             </button>
-          </div>
-          <div className="text-center mt-2">
-            <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of
-              Service
-            </a>
           </div>
         </div>
       </div>

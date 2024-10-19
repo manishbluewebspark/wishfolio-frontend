@@ -16,13 +16,25 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
   max-width: 430px;
-  background-color: #ebf2fa;
+  background-color: #ebf2fa !important;
   overflow-x: hidden;
-  overflow-y: scroll;
-  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
-body{
-  background-color: #fff !important;
+/* .body-main-container{
+  width: 80%;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+} */
+.body-main-container {
+  transform: scale(0.8); 
+  transform-origin: top center;
+  width: 125%; 
+  height: 125%; 
+  overflow: hidden !important; 
+  margin: 0 auto;
 }
 .form-control:focus{
   outline: none !important;
@@ -34,8 +46,6 @@ body{
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center;  */
-  /* justify-content: center; */
   background-color:white;
 }
 .page-container {
@@ -54,8 +64,6 @@ body{
 .content-container {
   width: 100%;
   flex-grow: 1; 
-  margin-top: 58px; 
-  margin-bottom: 60px; 
   overflow-y: scroll; 
   background-color: white;
   -ms-overflow-style: none; 
@@ -65,7 +73,7 @@ body{
 .content-container2 {
   width: 100%;
   flex-grow: 1; 
-  margin-bottom: 60px; 
+  /* margin-bottom: 60px;  */
   overflow-y: scroll; 
   background-color: white;
   -ms-overflow-style: none; 

@@ -76,7 +76,7 @@ const BottomNav = () => {
   }, [pathname]); // Run whenever the route changes
 
   return (
-    <div className="bottom-nav fixed-bottom bg-light">
+    <div className="bottom-nav bg-white">
       <div className="">
         <div className="row text-center">
           {options.map((option) => (

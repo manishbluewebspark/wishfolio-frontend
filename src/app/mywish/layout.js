@@ -10,7 +10,7 @@ export default function Layout({ children }) {
       <div className="main-layout">
         <div className="bg-light page-container">
           <TopBar />
-          <div className="content-container">
+          <div className="content-container container">
             {children}
           </div>
           <BottomNav />

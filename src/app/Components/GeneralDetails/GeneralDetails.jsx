@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import BackButton from "../Button/BackButton";
 const GeneralDetails = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -77,14 +78,15 @@ const GeneralDetails = () => {
     <div className="gd-profile-container">
       {/* Header with back button, title, and save button */}
       <div className="gd-header d-flex justify-content-between align-items-center">
-        <div className="d-flex">
+        {/* <div className="d-flex">
           <Image
             src={leftArrowIcon}
             className="me-2"
             onClick={handleBackClick}
           ></Image>
           <h1 className="gd-title text-align-center">General Details</h1>
-        </div>
+        </div> */}
+        <BackButton title={'General Details'}></BackButton>
         <button className="gd-save-btn" onClick={handleSave}>
           Save
         </button>

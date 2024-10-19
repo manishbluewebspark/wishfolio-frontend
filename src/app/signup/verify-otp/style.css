@@ -1,22 +1,23 @@
 /* Full page container */
 .em-otp-main-container {
-    display: flex;
-    background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-    height: 100vh;
-    padding: 20px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  height: 100%;
+  padding: 0px 22px;
+  width:100%;
+  justify-content: center;
   }
   
   .em-otp-container {
     max-height: 511px;
-    width: 386px;
+    /* width: 386px; */
   }
   
   /* Centered OTP box */
   .em-otp-box {
-    max-width: 386px;
+    /* max-width: 386px; */
     height: 437px;
     gap: 15px;
   }
@@ -42,10 +43,19 @@
   
   /* Main title */
   .em-otp-heading {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+    margin-bottom: 4px;
+    font-size: 20px;
+    line-height: 24px;
     font-weight: 800;
     color: #000;
+  }
+  .em-otp-desc{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+    
   }
   
   .subtext {
@@ -60,13 +70,14 @@
     margin: 40px 0px 0px;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
+
   }
   
   .otp-input {
     width: 60px;
     height: 60px;
-    font-size: 2rem;
+    font-size: 24px;
     text-align: center;
     border-radius: 40px;
     border: 1px solid #ddd;
@@ -89,4 +100,33 @@
     color: white;
     height: 64px;
   }
+  .otp-input:focus-visible{
+    outline:none;
+  }
+  .terms-container-hw {
+    font-size: 12px;
+    color:#8D8D8D; /* muted text color */
+    text-align: center;
+    margin-top: 20px;
+  }
   
+  .text-muted-hw {
+    color: #000000;
+    text-decoration: none;
+    padding: 0 3px;
+    font-weight: bold;
+  }
+  
+  .text-muted-hw:hover {
+    text-decoration: underline;
+  }
+  
+  .otp-margin{
+    margin-top: 60px;
+  }
+  .em-back-btn{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    
+  }

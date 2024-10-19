@@ -42,7 +42,11 @@ export default function RootLayout({ children }) {
         />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} w-100`}>
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+          <div className="body-main-container">
+          {children}
+          </div>
+          </Provider>
         <ToastContainer
           position="top-center"
           autoClose={3000}

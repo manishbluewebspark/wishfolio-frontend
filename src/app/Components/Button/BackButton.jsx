@@ -1,26 +1,27 @@
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import leftArrowIcon from "../../images/arrow-left.png";
-import "./style.css";
+"use client";
+import React from 'react';
+import Image from 'next/image'; // Assuming you're using Next.js Image component
+import { useRouter} from "next/navigation"; // Import the useRouter hook
+import leftArrowIcon from '../../images/arrow-left.png';
+import './style.css';
 
 const BackButton = (props) => {
-  const router = useRouter();
-  const handleBackClick = () => {
-    router.back();
-  };
+    const router = useRouter(); // Initialize the router
 
-  return (
-    <div>
-      <div className="bck-header d-flex justify-content-between align-items-center container">
-        <div className="d-flex" onClick={handleBackClick}>
-          {" "}
-          <Image src={leftArrowIcon} className="me-2" alt="Back Arrow" />
-          <h1 className="bck-title text-align-center">{props.title}</h1>
+    const handleBackClick = () => {
+        router.back(); // This will navigate to the previous page
+    };
+
+    return (
+        <div>
+            <div className="bck-header d-flex justify-content-between align-items-center container">
+                <div className='d-flex '>
+                    <Image src={leftArrowIcon} className='me-2' alt="Back" onClick={handleBackClick} style={{ cursor: 'pointer' }}/>
+                    <h1 className="bck-title text-align-center">{props.title}</h1>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default BackButton;

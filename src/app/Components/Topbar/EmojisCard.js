@@ -6,10 +6,13 @@ import lockIcon from "../../images/lock-circle.jpg";
 import { fetchLevels } from "../../store/slices/levelsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
+import HowToUnblockModal from "../../Components/Modals/HowToUnblockModal"; // Import the modal component
+
 const EmojisCard = () => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("");
   const [selectedId, setSelectedId] = useState("");
+  const [isModalOpen, setModalOpen] = useState(false); // State to control modal visibility
 
   const { levels, loading, error } = useSelector((state) => state.levels);
 
@@ -24,17 +27,28 @@ const EmojisCard = () => {
       dispatch(fetchProductsByLevel(levels[0]._id));
     }
   }, [levels, selected, dispatch]);
+
   const handleSelect = (name, id) => {
     setSelected(name);
     setSelectedId(id);
     dispatch(fetchProductsByLevel(id));
+    setModalOpen(true); // Open the modal when an emoji is clicked
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false); // Close modal
+  };
+
+  const handleConfirmModal = () => {
+    // Add your logic for confirming the action in the modal
+    setModalOpen(false);
   };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="emoji-container">
+    <div className="emoji-container container">
       <div className="emoji-row row">
         {levels.map((option, index) => (
           <div
@@ -63,6 +77,13 @@ const EmojisCard = () => {
           </div>
         ))}
       </div>
+
+      {/* Modal for HowToUnblock */}
+      <HowToUnblockModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmModal}
+      />
     </div>
   );
 };

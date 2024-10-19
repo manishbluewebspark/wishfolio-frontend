@@ -1,0 +1,54 @@
+/* Container for the entire privacy policy page */
+.tac-privacy-policy-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header section */
+  .tac-privacy-policy-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Title styling */
+  .tac-privacy-policy-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Logo styling */
+  .tac-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Content section */
+  .tac-privacy-policy-content {
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Text styling */
+  .tac-text {
+    /* margin-bottom: 14px; */
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.25px;
+    color: #000000;
+  }
+  
+  /* Links within the text (if any) */
+  .tac-text a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Style for strong text */
+  .tac-text strong {
+    font-weight: bold;
+  }
+  

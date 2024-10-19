@@ -1,24 +1,13 @@
 /* Full page container */
 .em-login-main-container {
     display: flex;
+    flex-direction: column;
     background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-    height: 100vh;
+    height: 100%;
     padding: 20px;
     width: 100%;
     justify-content: center;
-    align-items: center;
-  }
-  
-  .em-login-container {
-    max-height: 511px;
-    width: 386px;
-  }
-  
-  /* Centered login box */
-  .em-login-box {
-    max-width: 386px;
-    height: 437px;
-    gap: 15px;
+    position: relative;
   }
   
   .em-login-box-top {
@@ -26,33 +15,30 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    height: 96px;
-    margin-bottom: 10px;
   }
   
   .em-login-box-logo {
     max-width: 32px;
     max-height: 32px;
   }
-  
-  .em-login-top-text {
-    width: 291px;
-    height: 52px;
-  }
-  
+   
   /* Main title */
   .em-login-heading {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    font-weight: 800;
     color: #000;
+    margin-bottom: 4px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+
   }
   
   .subtext {
     color: #000;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+margin-bottom: 15px;
+
   }
   
   /* Input container and icon */
@@ -61,7 +47,7 @@
   }
   
   .custom-input {
-    padding-left: 45px;
+    padding-left: 40px !important;
     border-radius: 30px;
     border: 1px solid #ddd;
     padding: 12px 15px;
@@ -83,6 +69,7 @@
     transform: translateY(-50%);
     font-size: 18px;
     color: #aaa;
+    margin-top: 2px;
   }
   
   /* Login button */
@@ -97,3 +84,32 @@
     height: 64px;
   }
   
+  .terms-container-hw {
+    font-size: 12px;
+    color: #6c757d; /* muted text color */
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .text-muted-hw {
+    text-decoration: none;
+    padding: 0 3px; /* small padding to add space between links and text */
+    font-weight: bold;
+    color: #000;
+
+  }
+  
+  .text-muted-hw:hover {
+    text-decoration: underline;
+  }
+  
+  .em-login-margin{
+    margin-top: 163px;
+
+  }
+  .em-back-btn{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    
+  }

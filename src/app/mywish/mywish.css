@@ -152,6 +152,7 @@
   align-items: center;
   height: 245;
   width: 100%;
+  margin-top:76px;
 
 }
   .mw-donation-section {
@@ -173,12 +174,22 @@
     font-weight: 400;
     line-height: 19.12px;
     text-align: center;
+    width: 270px;
+  }
+  .mw-donate-explore-txt{
+font-size: 14px;
+font-weight: 400;
+line-height: 19.12px;
+text-align: center;
+margin-top: 20px;
+color: #90AEFF;
+
+
   }
 
 
   
   .mw-donate-img {
-    width: 150px;
     margin-bottom: 20px;
   }
   
@@ -193,7 +204,7 @@
     font-size: 16px;
   }
   .donate-btn {
-    background-color: #4A90E2 !important;
+    background-color: #90AEFF;
     color:black !important;
     border: none;
     padding: 10px 20px !important;;
