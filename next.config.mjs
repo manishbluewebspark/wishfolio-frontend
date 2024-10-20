@@ -2,7 +2,7 @@
 
 const nextConfig = {
   images: {
-    domains: ["localhost", "13.53.166.146"], // Add multiple domains if needed
+    domains: ["localhost", "13.53.166.146", "wishfolio.co"], // Add multiple domains if needed
   },
 };
 
