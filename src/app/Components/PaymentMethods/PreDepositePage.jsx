@@ -8,6 +8,9 @@ import axios from "axios";
 import Image from "next/image";
 import arrowleftIcon from "../../images/arrow-left.png";
 import BackButton from "../Button/BackButton";
+import attachicon from '../../images/attach.png'
+import TransactionSubmitModal from '../Modals/TransactionSubmitModal'
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const PreDepositPage = () => {
@@ -18,6 +21,11 @@ const PreDepositPage = () => {
   const [userId, setUserId] = useState("123"); // Placeholder for user ID, replace with actual user ID logic
 
   const fileInputRef = useRef(null);
+  // submit modal 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+  };
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -41,7 +49,8 @@ const PreDepositPage = () => {
 
       // Handle successful response
       if (response.status === 201) {
-        router.push("/profile");
+        // router.push("/profile");
+        setIsModalOpen(true);
       }
       console.log("Success:", response);
     } catch (error) {
@@ -86,20 +95,11 @@ const PreDepositPage = () => {
     <div className="pta-container">
       <div className="">
         <BackButton title={"Back"}></BackButton>
-        {/* <button className="dp-back-btn" onClick={handleBackClick}>
-          <Image
-            src={arrowleftIcon}
-            width={24}
-            height={24}
-            alt="Arrow Left Icon"
-            className="mx-2"
-          />
-          Back
-        </button> */}
       </div>
       {/* Pending Deposit Info Section */}
       {/* {pendingDeposit && ( */}
       <>
+        <div>
         <form className="pta-input-section" onSubmit={handleSubmit}>
           <div className="pta-title">Enter Transaction ID</div>
 
@@ -129,6 +129,7 @@ const PreDepositPage = () => {
               fileInputRef.current.click(); // Trigger the file input click
             }}
           >
+            <Image src={attachicon} width={7.46} height={13.89} alt="attach" className="pta-attach"></Image>
             Add Screenshot here
           </a>
 
@@ -140,7 +141,11 @@ const PreDepositPage = () => {
           <button type="submit" className="pta-submit-btn">
             Submit
           </button>
+
         </form>
+        <TransactionSubmitModal isOpen={isModalOpen} onClose={closeModal}></TransactionSubmitModal>
+        </div>
+
         <div className="pta-divider">
           <span className="pta-divider-text">OR</span>
         </div>

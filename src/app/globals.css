@@ -9,18 +9,25 @@
     --foreground: #ededed;
   }
 }
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
 
-html, body{
-  font-family: "Manrope", sans-serif;
+body{
+  font-family: "Manrope", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
   max-width: 430px;
   background-color: #ebf2fa !important;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
   display: flex;
-  justify-content: center;
   height: 100%;
   width: 100%;
 }
@@ -36,6 +43,27 @@ html, body{
   overflow: hidden !important; 
   margin: 0 auto;
 }
+@media (min-width:320px) and (max-width:500px) {
+  .body-main-container {
+    transform: scale(1);
+    transform-origin: top center;
+    width: 125%; 
+    height: 125%; 
+    overflow: hidden !important; 
+    margin: 0 auto;
+    zoom: 80% !important;
+  }
+}
+/* .body-main-container {
+  transform: scale(0.8); 
+  transform-origin: top center;
+  width: 100%;
+  height: 125%; 
+  overflow: hidden !important;
+  margin: 0 auto;
+  zoom: 80%; 
+} */
+
 .form-control:focus{
   outline: none !important;
   box-shadow: none !important;
@@ -53,7 +81,6 @@ html, body{
   flex-direction: column;
   height: 100%;
   align-items: center;
-  overflow-y: scroll;
 }
 
 * {
@@ -690,7 +717,8 @@ width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  margin: 15px 0px;
+  
 }
 
 .bck-back-btn {
@@ -2211,18 +2239,20 @@ cursor: pointer;
 /* Container */
 .ptm-container {
   max-width: 100%;
-  margin: 20px auto; 
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 15px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); 
+  background-color:#F7F7F7;
+  border-radius: 25px;
+  /* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);  */
 }
 
 /* Title */
 .ptm-title {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: left;
+font-size: 16px;
+font-weight: 600;
+line-height: 21.86px;
+text-align: left;
+margin-bottom: 14.09px;
+
 }
 
 /* Payment Method Container */
@@ -2230,15 +2260,14 @@ cursor: pointer;
   /* background-color: #fff; */
   /* border-radius: 12px; */
   /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
-  padding: 10px; /* Added padding to make space inside */
-  height: auto;
 }
 
 .ptm-payment-method {
   padding: 15px;
-  border: 1px solid #000000;
-  margin: 12px;
   border-radius: 35px;
+  height: 64px;
+  margin-bottom: 8px;
+  background-color: white;
 }
 
 /* Icons */
@@ -2262,10 +2291,9 @@ cursor: pointer;
 /* Container */
 .dp-container {
 width: 100%;
-margin: 0 auto;
 background-color: #ffffff;
-min-height: 100vh;
-/* margin-top: 164px; */
+height: 100%;
+margin-top: 75px;
 }
 
 /* Back Button */
@@ -2290,22 +2318,28 @@ font-size: 20px;
 margin-bottom: 0px !important;
 font-weight: 800;
 color: #000;
-line-height: 24px
+line-height: 24px;
+text-align: center;
+margin-bottom: 4px;
+
 }
 
 .dp-subtitle {
 font-size: 14px;
 font-weight: 400;
-color: #666;
+line-height: 24px;
+text-align: center;
+color: #000;
+margin-bottom: 15px !important;
+
 }
 
 /* Input Section */
 .dp-input-section {
 background-color:#F7F7F7;
-border-radius: 10px;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-margin-top: 20px;
+border-radius: 24px;
 width:100%;
+padding: 20px;
 }
 
 .dp-label {
@@ -2313,23 +2347,29 @@ font-size: 16px;
 font-weight: 600;
 line-height: 21.86px;
 color: #000;
+
 }
 
 .dp-balance {
 font-size: 12px;
-font-weight: bold;
-color: #696969;
+font-weight: 400;
+line-height: 16.39px;
+
 }
 .dp-balance strong {
 font-size: 12px;
 color: #000000;
+font-size: 12px;
+font-weight: 800;
+line-height: 24px;
+
 }
 
 /* Amount Box */
 .dp-amount-box {
 display: flex;
 align-items: center;
-margin: 20px 0;
+margin: 14.09px  0;
 }
 
 .dp-rupee-sign {
@@ -2337,6 +2377,9 @@ font-size: 34px;
 font-weight: 800;
 color: #000;
 margin-right: 4px;
+line-height: 46.44px;
+margin-right: 7.04px;
+
 }
 
 .dp-amount-input {
@@ -2359,6 +2402,7 @@ width: 304px;
 height: 30px;
 gap: 7px;
 display: flex;
+margin-top: 28.18px;
 }
 
 .dp-quick-btn {
@@ -2386,6 +2430,7 @@ background-color: #e0e0e0;
 .dp-terms {
 font-size: 12px;
 color: #888;
+margin-top: 15px;
 }
 
 .dp-terms a {
@@ -2409,10 +2454,11 @@ color: #999;
 border: none;
 padding: 15px 0;
 width: 100%;
-border-radius: 25px;
+border-radius: 50px;
 font-size: 18px;
 font-weight: bold;
 cursor: not-allowed;
+height: 64px;
 }
 
 .dp-continue-btn-active{
@@ -2427,11 +2473,7 @@ color: #000;
 /* Deposit page CSS */
 /* Container */
 .ta-dp-container {
-max-width: 386px;
-margin: 0 auto;
-padding: 20px;
 background-color: #ffffff;
-min-height: 100vh;
 }
 
 /* Back Button */
@@ -2456,41 +2498,40 @@ font-size: 14px;
 font-weight: 800;
 color: #000;
 line-height: 20px;
-margin-bottom: 15px;
+margin-bottom: 15px  !important;
 }
 
 /* Input Section */
 .ta-dp-input-section {
 background-color: #F7F7F7;
-border-radius: 10px;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-padding: 15px;
-margin-bottom: 20px;
+border-radius: 24px;
+padding: 20px;
+margin-bottom: 15px;
 }
 .ta-dp-input-section-btm {
 display: flex;
 flex-direction: column;
 background-color: #F7F7F7;
-border-radius: 10px;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-padding: 15px;
+border-radius: 24px;
+padding: 20px;
 margin-bottom: 20px;
-height: 110px;
 
 }
 /* Labels and Text */
 .ta-dp-label {
 font-size: 14px;
-color:#696969;
+color:#696969 !important;
 font-weight:400;
 line-height: 19.12px;
 color: #000;
+margin-bottom: 5px;
 }
 
 .ta-dp-balance {
 font-size: 14px;
 font-weight: 600;
 color: #000000;
+margin-right: 5px;
 }
 .ta-dp-balance strong {
 font-size: 14px;
@@ -2508,6 +2549,8 @@ margin-left: 10px;
 /* Amount Section */
 .ta-dp-amount-section {
 margin-bottom: 20px;
+padding: 20px;
+border-radius: 24px;
 }
 
 .ta-dp-rupee-sign {
@@ -2550,13 +2593,9 @@ color: #000;
 
 /* transfer with upi */
 /* Container */
-.twu-container {
-max-width: 386px;
-margin: 0 auto;
-padding: 20px;
-background-color: #ffffff;
-min-height: 100vh;
-}
+/* .twu-container {
+
+} */
 
 /* Back Button */
 .twu-header {
@@ -2576,20 +2615,21 @@ cursor: pointer;
 
 /* Title */
 .twu-title {
-font-size: 13px;
-font-weight: 800;
 color: #000;
 line-height: 20px;
-margin-bottom: 15px;
+margin-bottom: 15px !important;
 text-align: left;
+font-size: 14px;
+font-weight: 800;
+
 }
 
 /* Input Section */
 .twu-input-section {
 background-color: #F7F7F7;
-border-radius: 10px;
+border-radius: 24px;
 box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-padding: 15px;
+padding: 18px;
 margin-bottom: 20px;
 }
 
@@ -2625,15 +2665,15 @@ margin-left: 10px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-margin-bottom: 10px;
+margin-bottom: 20px;
 }
 
 /* Amount Section */
 .twu-amount-section {
 background-color: #F7F7F7;
-border-radius: 10px;
-padding: 15px;
+border-radius: 24px;
 box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+padding: 18px;
 margin-bottom: 20px;
 }
 
@@ -2649,11 +2689,10 @@ margin-bottom: 10px;
 display: flex;
 flex-direction: column;
 background-color: #F7F7F7;
-border-radius: 10px;
 box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-padding: 15px;
 margin-bottom: 20px;
-height: 110px;
+border-radius: 24px;
+padding: 20px;
 }
 
 .twu-final-amount {
@@ -2672,11 +2711,9 @@ color: #000;
 /* pre deposite page  */
 /* Container */
 .pta-container {
-max-width: 386px;
 margin: 0 auto;
 padding: 20px;
 background-color: #ffffff;
-min-height: 100vh;
 }
 
 /* Transaction ID Section */
@@ -2684,42 +2721,60 @@ min-height: 100vh;
 background-color: #F7F7F7;
 border-radius: 10px;
 padding: 20px;
-margin-bottom: 20px;
+margin-bottom: 25px;
 box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
 .pta-title {
-font-size: 16px;
-font-weight: bold;
 color: #000;
-margin-bottom: 15px;
+margin-bottom: 14.09px;
+font-size: 16px;
+font-weight: 600;
+line-height: 21.86px;
+text-align: left;
+
 }
 
 /* Input Field */
 .pta-input {
 width: 100%;
 padding: 12px;
-border-radius: 10px;
+border-radius: 50px;
 border: 1px solid #ccc;
-margin-bottom: 15px;
+margin-bottom: 14.09px;
 font-size: 14px;
+height: 64px;
 }
 
 /* File Upload Link */
 .pta-upload-link {
+font-weight: 400;
+line-height: 19.12px;
+text-align: left;
+
 display: block;
-color: #007bff;
+color: #7094F4;
 font-size: 14px;
-margin-bottom: 10px;
 cursor: pointer;
+text-decoration: none;
+margin-bottom: 14.09px;
+}
+.pta-attach{
+  margin-right: 4px;
+  color: #7094F4;
+
 }
 
 /* Description */
 .pta-description {
-font-size: 12px;
-color: #888;
-margin-bottom: 15px;
+margin-bottom: 14.09px !important;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color:#000;
+
 }
 
 /* Submit Button */
@@ -2729,10 +2784,16 @@ padding: 12px;
 background-color: #90AEFF;
 color: #000;
 border: none;
-border-radius: 10px;
+border-radius: 50px;
 font-size: 16px;
 font-weight: bold;
 cursor: pointer;
+height: 64px;
+
+font-weight: 800;
+line-height: 24px;
+text-align: center;
+
 }
 
 /* Divider */
@@ -2740,7 +2801,7 @@ cursor: pointer;
 display: flex;
 align-items: center;
 text-align: center;
-margin: 20px 0;
+margin: 25px 0;
 }
 
 .pta-divider::before, .pta-divider::after {
@@ -2758,13 +2819,18 @@ margin-left: 10px;
 }
 
 .pta-divider-text {
-font-size: 14px;
-color: #888;
+font-size: 12px;
+font-weight: 400;
+line-height: 18px;
+text-align: center;
+color: #696969;
+
 }
 
 /* New Deposit Section */
 .pta-deposit-section {
-background-color: #F7F7F7;
+background-color:#F7F7F7;
+
 border-radius: 10px;
 padding: 20px;
 text-align: center;
@@ -2774,16 +2840,23 @@ box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 /* Deposit Title */
 .pta-deposit-title {
 font-size: 16px;
-font-weight: bold;
 color: #000;
 margin-bottom: 10px;
+font-weight: 600;
+line-height: 21.86px;
+text-align: center;
+margin-bottom: 6px;
+
 }
 
 /* Deposit Description */
 .pta-deposit-description {
-font-size: 12px;
-color: #888;
-margin-bottom: 15px;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+text-align: center;
+color: black;
+margin-bottom: 14.09px !important;
 }
 
 /* Deposit Button */
@@ -2793,10 +2866,14 @@ padding: 12px;
 background-color: #90AEFF;
 color: #000;
 border: none;
-border-radius: 10px;
-font-size: 16px;
-font-weight: bold;
+border-radius: 50px;
 cursor: pointer;
+height: 64px;
+font-size: 16px;
+font-weight: 800;
+line-height: 24px;
+text-align: center;
+
 }
 /* deposit success css */
 /* Styles for the success page using "tx" prefix */
@@ -3937,15 +4014,35 @@ text-align: center;
   align-items: center;
   margin: 10px 0px;
 }
+.pf-img-thumnil{
+  height: 137;
+  width: 137;
+  border: 2px solid #F7F7F7;
+  border-radius: 75px;
+
+}
+.pf-imgUploadBtn-thmnil{
+  height: 36px;
+  width: 36px;
+  background-color: #7094F4;
+  position: absolute;
+  bottom: 0;
+  right: 32%;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 
 .pf-profile-image {
   border-radius: 50%;
 }
-.pf-profile-image-upload{
+/* .pf-profile-image-upload{
   position: absolute;
   bottom: 0;
   right: 32%;
-}
+} */
 .pf-header-2 {
   display: flex;
   flex-direction: column;

@@ -10,6 +10,7 @@ import paytmupi from "../../images/paytmupi.png"; // Correct path to paytm image
 import phoneupi from "../../images/phoneupi.png"; // Correct path to phonepe image (note corrected extension)
 import arrowleftIcon from "../../images/arrow-left.png";
 import { useRouter } from "next/navigation";
+import Backbutton from '../Button/BackButton'
 const PaymentMethod = () => {
   const router = useRouter();
   const handleDepositClick = () => {
@@ -20,19 +21,8 @@ const PaymentMethod = () => {
   };
   return (
     <>
-      <div className="container pt-3">
-        <div className="">
-          <button className="dp-back-btn" onClick={handleBackClick}>
-            <Image
-              src={arrowleftIcon}
-              width={24}
-              height={24}
-              alt="Arrow Left Icon"
-              className="mx-2"
-            />
-            Back
-          </button>
-        </div>
+      <div className="container">
+          <Backbutton title={'Back'}></Backbutton>
         <div className="container ptm-container">
           <h5 className="ptm-title">Choose Payment Method</h5>
           <div className="ptm-payment-options">

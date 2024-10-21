@@ -13,6 +13,7 @@ import {
 } from "../../store/slices/paymentSlice";
 import { fetchUserData } from "../../store/slices/userSlice";
 import Image from "next/image";
+import BackButton from "../Button/BackButton";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DepositPage = () => {
   const dispatch = useDispatch();
@@ -81,29 +82,20 @@ const DepositPage = () => {
   };
 
   return (
-    <div className="container dp-container pt-3">
+   <>
+   <BackButton title={'Back'}></BackButton>
+    <div className="container dp-container">
       {/* Back Button */}
-      <div className="">
-        <button className="dp-back-btn" onClick={handleBackClick}>
-          <Image
-            src={arrowleftIcon}
-            width={24}
-            height={24}
-            alt="Arrow Left Icon"
-            className="mx-2"
-          />
-          Back
-        </button>
-      </div>
+      
 
       {/* Title and Description */}
-      <div className="text-center mt-4">
+      <div className="text-center">
         <h5 className="dp-title">Enter Deposit Amount</h5>
         <p className="dp-subtitle">How much would you like to deposit?</p>
       </div>
 
       {/* Deposit Input Box */}
-      <div className="dp-input-section text-center p-4 rounded shadow-sm">
+      <div className="dp-input-section text-center shadow-sm">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <span className="dp-label">Enter Amount</span>
           <span className="dp-balance">
@@ -125,7 +117,7 @@ const DepositPage = () => {
         </div>
 
         {/* Predefined Buttons */}
-        <div className="dp-quick-amount mt-4">
+        <div className="dp-quick-amount">
           <button
             className="dp-quick-btn"
             onClick={() => handleQuickAmountClick("1000")}
@@ -160,7 +152,7 @@ const DepositPage = () => {
       </div>
 
       {/* Terms and Privacy */}
-      <div className="text-center mt-3 dp-terms">
+      <div className="text-center dp-terms">
         By continuing, you agree to our <a href="#">Privacy Policy</a> and{" "}
         <a href="#">Terms of Service</a>
       </div>
@@ -178,6 +170,7 @@ const DepositPage = () => {
         </button>
       </div>
     </div>
+   </>
   );
 };
 

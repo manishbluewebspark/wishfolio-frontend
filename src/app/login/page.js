@@ -13,6 +13,7 @@ import { setEmail } from "../store/slices/signupSlice";
 import { toast } from "react-toastify";
 import googleIcon from "../images/googleIcon.png";
 import Image from "next/image";
+// import emailicon from '../images/emailicon.svg';
 
 const LoginScreen = () => {
   const [email, setEmailState] = useState("");
@@ -75,9 +76,9 @@ const LoginScreen = () => {
                   style={{ marginBottom: "8px" }}
                 >
                   <div className="input-group">
-                    <span className="input-group-text input-icon">
-                      <Icon icon={envelopeIcon} width="20" />
-                    </span>
+                  <span className="input-group-text input-icon">
+  <Image src={''} alt="Email Icon" width={24} height={24} />
+</span>
                     <input
                       type="email"
                       className="form-control custom-input"

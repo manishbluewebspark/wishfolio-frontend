@@ -1,13 +1,13 @@
 "use client";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./paymethod.css"; // Custom CSS file
 import { Icon } from "@iconify/react";
-import clipboardIcon from "@iconify/icons-mdi/clipboard"; // Importing specific MDI icon
 import { useRouter } from "next/navigation"; // Import useRouter
 import arrowleftIcon from "../../images/arrow-left.png";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+import clipboardIcon from '../../images/copy.png';
+import BackButton from "../Button/BackButton";
 const TransferPage = () => {
   const router = useRouter(); // Initialize the router
 
@@ -16,20 +16,10 @@ const TransferPage = () => {
   };
   const paymentData = useSelector((state) => state.payment);
   return (
-    <div className="container ta-dp-container pt-3  pb-30">
-      {/* Back Button */}
-      <div className="">
-        <button className="dp-back-btn" onClick={handleBackButtonClick}>
-          <Image
-            src={arrowleftIcon}
-            width={24}
-            height={24}
-            alt="Arrow Left Icon"
-            className="mx-2"
-          />
-          Back
-        </button>
-      </div>
+   <>
+        {/* Back Button */}
+    <BackButton title={'Back'}></BackButton>
+    <div className="ta-dp-container">
 
       {/* Bank Details Section */}
       <div className="ta-dp-input-section">
@@ -46,7 +36,7 @@ const TransferPage = () => {
           </div>
           <div>
             <span className="d-flex align-items-center">
-              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+              <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
             </span>
           </div>
         </div>
@@ -58,7 +48,7 @@ const TransferPage = () => {
           </div>
           <div>
             <span className="d-flex align-items-center">
-              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+            <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
             </span>
           </div>
         </div>
@@ -68,14 +58,14 @@ const TransferPage = () => {
             <span className="ta-dp-label">IFSC</span>
             <span className="d-flex align-items-center">
               <span className="ta-dp-balance">FDRL0001690</span>
-              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+              <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
             </span>
           </div>
           <div>
             <span className="ta-dp-label">Bank Name</span>
             <span className="d-flex align-items-center">
               <span className="ta-dp-balance">Federal Bank</span>
-              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+              <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
             </span>
           </div>
         </div>
@@ -85,21 +75,21 @@ const TransferPage = () => {
             <span className="ta-dp-label">Branch</span>
             <span className="d-flex align-items-center">
               <span className="ta-dp-balance">Kolathur</span>
-              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+              <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
             </span>
           </div>
           <div>
             <span className="ta-dp-label">SWIFT Code</span>
             <span className="d-flex align-items-center">
               <span className="ta-dp-balance">FDRLINBBIBD</span>
-              <Icon icon={clipboardIcon} className="ta-dp-copy-icon" />
+              <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
             </span>
           </div>
         </div>
       </div>
 
       {/* Amount and Commission Section */}
-      <div className="ta-dp-amount-section p-4 rounded shadow-sm">
+      <div className="ta-dp-amount-section shadow-sm">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <span className="ta-dp-label">Transferring Amount</span>
           <span className="ta-dp-balance">₹ {paymentData?.amount}</span>
@@ -119,6 +109,7 @@ const TransferPage = () => {
         </span>
       </div>
     </div>
+   </>
   );
 };
 
