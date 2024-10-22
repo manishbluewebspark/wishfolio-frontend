@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import UnblockLevels from "./UnblockLevels";
 import Levels from "./Levels";
+import BackButton from "../Button/BackButton";
 // import "./style.css"; // Add your styles here
 
 const HowItWorks = () => {
@@ -12,7 +13,9 @@ const HowItWorks = () => {
   };
 
   return (
-    <div className="hw-how-it-works-container">
+    <>
+    <BackButton title={'How is it working ?'}></BackButton>
+      <div className="hw-how-it-works-container">
       {/* Tab Header */}
       <div className="hw-tabs">
         <button
@@ -35,6 +38,7 @@ const HowItWorks = () => {
         {activeTab === "levels" && <Levels />}
       </div>
     </div>
+    </>
   );
 };
 

@@ -62,7 +62,7 @@ const AddressForm = () => {
   };
 
   return (
-    <div className="d-flex em-address-main-container">
+    <div className="em-address-main-container">
       <div className="em-back-btn">
         <BackButton></BackButton>
       </div>

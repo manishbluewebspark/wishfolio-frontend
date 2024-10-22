@@ -1,113 +1,99 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-// import './style.css'; // Import custom styles
 import Image from "next/image";
 import roundarrow from "../../images/roundarrow.png";
+import roundarr2 from "../../images/roundarrow2.png";
 import roundarr3 from "../../images/roundarr3.png";
 import roundarr4 from "../../images/roundarr4.png";
-import roundarr2 from "../../images/roundarrow2.png";
+import starIcon from '../../images/emoji1.png'; // Ensure correct paths
+import sunIcon from '../../images/emoji2.png';
+import treeIcon from '../../images/emoji3.png';
+import waveIcon from '../../images/emoji4.png';
+import lockIcon from '../../images/lock-circle.jpg'; // Ensure path to lock icon
+import "./style.css"; // Import custom styles
 
-// import starIcon from '../../images/emoji1.png';
-// import sunIcon from '../../images/emoji2.png';
-// import treeIcon from '../../images/emoji3.png';
-// import waveIcon from '../../images/emoji4.png';
-// import arrowIcon from '../../images/arrow.png';
-import "./style.css";
+const HowToUnblockImg = ({ selected, handleSelect }) => {
+  // Define emoji levels or options
+  const levels = [
+    { labelName: 'Star', imageUrl: starIcon, locked: false, _id: '1' },
+    { labelName: 'Sun', imageUrl: sunIcon, locked: true, _id: '2' },
+    { labelName: 'Tree', imageUrl: treeIcon, locked: true, _id: '3' },
+    { labelName: 'Wave', imageUrl: waveIcon, locked: true, _id: '4' },
+  ];
 
-const HowToUnblockImg = () => {
   return (
-    // <div className="h-level-container text-center">
-    //   <div className="h-level-grid">
-    //     {/* Sun Level */}
-    //     <div className="h-level-item">
-    //       <div className="h-level-circle">
-    //         <Image src={''} alt="Sun" className="h-level-icon" />
-    //         <p>Sun</p>
-    //         <div className="h-level-lock-icon">🔒</div>
-    //       </div>
-    //     </div>
-
-    //     {/* Arrow Right */}
-    //     <div className="h-level-arrow-right">
-    //       <Image src={''} alt="Arrow Right" />
-    //     </div>
-
-    //     {/* Star Level */}
-    //     <div className="h-level-item h-level-active">
-    //       <div className="h-level-circle">
-    //         <Image src={''} alt="Star" className="h-level-icon" />
-    //         <p>Star</p>
-    //       </div>
-    //     </div>
-
-    //     {/* Arrow Left */}
-    //     <div className="h-level-arrow-left">
-    //       <Image src={''} alt="Arrow Left" />
-    //     </div>
-
-    //     {/* Tree Level */}
-    //     <div className="h-level-item">
-    //       <div className="h-level-circle">
-    //         <Image src={''} alt="Tree" className="h-level-icon" />
-    //         <p>Tree</p>
-    //         <div className="h-level-lock-icon">🔒</div>
-    //       </div>
-    //     </div>
-
-    //     {/* Arrow Bottom */}
-    //     <div className="h-level-arrow-bottom">
-    //       <Image src={''} alt="Arrow Bottom" />
-    //     </div>
-
-    //     {/* Wave Level */}
-    //     <div className="h-level-item">
-    //       <div className="h-level-circle">
-    //         <Image src={''} alt="Wave" className="h-level-icon" />
-    //         <p>Wave</p>
-    //         <div className="h-level-lock-icon">🔒</div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    <>
-      <div className="htubi-con">
-        <div className="row">
-          <div className="col-3">
-            <Image src={roundarrow} className="htubi-round-arrow"></Image>
-          </div>
-          <div className="col-6">
-            <Image src={""} className=""></Image>
-          </div>
-          <div className="col-3">
-            <Image src={roundarr2} className="htubi-round-arrow"></Image>
+    <div className="htubi-emoji-container text-center">
+      <div className="htubi-emoji-row">
+        <div className="htubi-emoji-arrow">
+          <Image src={roundarrow} className="htubi-round-arrow" height={16} width={36} alt="Arrow" />
+        </div>
+        <div className={`htubi-emoji-card-bg htubi-emoji-card ${selected === 'Star' ? "htubi-emoji-selected" : "htubi-emoji-locked"}`} onClick={() => handleSelect('Star', '1')}>
+          <div className="htubi-emoji-card-items">
+            {false && ( // Optionally show the lock icon if locked
+              <div className="htubi-emoji-lock">
+                <Image src={lockIcon} width={16.64} height={16.64} alt="lock" />
+              </div>
+            )}
+            <div className="htubi-emoji-name">Star</div>
+            <div className="htubi-emoji-icon">
+              <Image src={starIcon} alt="Star" width={26.96} height={26.96} />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-3">
-            <Image src={""} className=""></Image>
-          </div>
-          <div className="col-6">
-            <Image src={""} className=""></Image>
-          </div>
-          <div className="col-3">
-            <Image src={""} className=""></Image>
+        <div className="htubi-emoji-arrow">
+          <Image src={roundarr2} className="htubi-round-arrow" height={16} width={36} alt="Arrow" />
+        </div>
+      </div>
+      <div className="htubi-emoji-row">
+        <div className={`htubi-emoji-card ${selected === 'Sun' ? "htubi-emoji-selected" : "htubi-emoji-locked"}`} onClick={() => handleSelect('Sun', '2')}>
+          <div className="htubi-emoji-card-items">
+          {true && ( // Show lock icon if the emoji is locked
+              <div className="htubi-emoji-lock">
+                <Image src={lockIcon} width={16.64} height={16.64} alt="lock" />
+              </div>
+            )}
+            <div className="htubi-emoji-name">Sun</div>
+            <div className="htubi-emoji-icon">
+              <Image src={sunIcon} alt="Sun" width={26.96} height={26.96} />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-3">
-            <Image src={roundarr4} className="htubi-round-arrow"></Image>
-          </div>
-
-          <div className="col-6">
-            <Image src={""} className=""></Image>
-          </div>
-
-          <div className="col-3">
-            <Image src={roundarr3} className="htubi-round-arrow"></Image>
+        <div className={`htubi-emoji-card ${selected === 'Tree' ? "htubi-emoji-selected" : "htubi-emoji-locked"}`} onClick={() => handleSelect('Tree', '3')}>
+          <div className="htubi-emoji-card-items">
+          {true && ( // Show lock icon if the emoji is locked
+              <div className="htubi-emoji-lock">
+                <Image src={lockIcon} width={16.64} height={16.64} alt="lock" />
+              </div>
+            )}
+            <div className="htubi-emoji-name">Tree</div>
+            <div className="htubi-emoji-icon">
+              <Image src={treeIcon} alt="Tree" width={26.96} height={26.96} />
+            </div>
           </div>
         </div>
       </div>
-    </>
+      <div className="htubi-emoji-row">
+        <div className="htubi-emoji-arrow">
+          <Image src={roundarr4} className="htubi-round-arrow" height={16} width={36} alt="Arrow" />
+        </div>
+        <div className={`htubi-emoji-card ${selected === 'Wave' ? "htubi-emoji-selected" : "htubi-emoji-locked"}`} onClick={() => handleSelect('Wave', '4')}>
+          <div className="htubi-emoji-card-items">
+            {true && ( // Show lock icon if the emoji is locked
+              <div className="htubi-emoji-lock">
+                <Image src={lockIcon} width={16.64} height={16.64} alt="lock" />
+              </div>
+            )}
+            <div className="htubi-emoji-name">Wave</div>
+            <div className="htubi-emoji-icon">
+              <Image src={waveIcon} alt="Wave"  width={26.96} height={26.96} />
+            </div>
+          </div>
+        </div>
+        <div className="htubi-emoji-arrow">
+          <Image src={roundarr3} className="htubi-round-arrow" height={16} width={36} alt="Arrow" />
+        </div>
+      </div>
+    </div>
   );
 };
 

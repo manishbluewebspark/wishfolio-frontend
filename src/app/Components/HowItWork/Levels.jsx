@@ -2,10 +2,9 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 // import './style.css'; // Import custom styles
 import Image from "next/image";
-// Import your icons
-// import starIcon from '../../images/star.png';
 import dollarIcon from "../../images/dollar-circle.png"; // Replace with your icons
 import dropIcon from "../../images/drop.png"; // Replace with your icons
+import emojiIocn from '../../images/emoji1.png';
 
 const Levels = () => {
   return (
@@ -14,7 +13,8 @@ const Levels = () => {
         {/* Star Level Section */}
         <div className="hwl-level-content d-flex align-items-center">
           <div className="hwl-level-icon-section">
-            <Image src={""} alt="Star" className="hwl-level-icon" />
+            <h3>Star</h3>
+            <Image src={emojiIocn} alt="Star" height={32} width={32} className="hwl-level-icon" />
             <div className="hwl-current-level-badge-con">
               <span className="hwl-current-level-badge">Current Level</span>
             </div>

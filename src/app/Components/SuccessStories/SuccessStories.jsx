@@ -24,6 +24,12 @@ const SuccessStories = () => {
       profileImage: profileImage,
       review: "Reviewed by",
     },
+    {
+      name: "Sinan CP",
+      phoneImage: img,
+      profileImage: profileImage,
+      review: "Reviewed by",
+    },
     // Add more reviews if necessary
   ];
 
@@ -36,8 +42,9 @@ const SuccessStories = () => {
   };
 
   return (
-    <div className="hw-sto-success-stories-container">
-      <BackButton title={"Success Stories"}></BackButton>
+   <>
+   <BackButton title={"Success Stories"}></BackButton>
+     <div className="hw-sto-success-stories-container">
       <div className="hw-sto-stories-grid">
         {reviews.map((review, index) => (
           <div
@@ -74,6 +81,7 @@ const SuccessStories = () => {
       {/* Modal Component */}
       <SuccessModal review={selectedReview} closeModal={closeModal} />
     </div>
+   </>
   );
 };
 

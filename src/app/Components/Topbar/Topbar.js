@@ -11,6 +11,9 @@ const TopBar = () => {
   const handleClick = () => {
     router.push("/storiespage"); // Navigate to the /store route
   };
+  const goToHome = () => {
+    router.push("/"); // Navigate to the /store route
+  };
 
   return (
     <nav className="navbar top-nav navbar-light bg-white">
@@ -19,7 +22,7 @@ const TopBar = () => {
           {/* <a className="navbar-brand" href="#">
             <Image src={logoIcon} alt="Logo" width={32} height={32} />
           </a> */}
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a className="navbar-brand d-flex align-items-center" onClick={goToHome} style={{cursor:'pointer'}} >
             <Image src={logoIcon} alt="WishFolio Logo" width={40} height={40} />
             <span className="brand-text">
               Wish<span className="highlight-text">Folio</span>

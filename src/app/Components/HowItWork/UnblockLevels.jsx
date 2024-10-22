@@ -1,6 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-// import './style.css'; // Import custom styles
 import Image from "next/image";
 import imgnew from "../../images/howit.JPG";
 import starIcon from "../../images/emoji1.png"; // Replace with actual paths to icons
@@ -10,9 +9,9 @@ import waveIcon from "../../images/emoji4.png";
 import arrowIcon from "../../images/roundarrow.png"; // Replace with your arrow icon
 import HowToUnblockImg from "../HowToUnblockImg/HowToUnblockImg";
 
-const UnblockLevels = () => {
+const UnblockLevels = ({unblockLevelsClasses ,htumMarginClass }) => {
   return (
-    <div className="hw-unblock-levels-container text-center">
+    <div className={`hw-unblock-levels-container text-center ${unblockLevelsClasses}`}>
       <div>
         <h3 className="hw-unblock-title">How to Unblock?</h3>
         <ul className="hw-unblock-instructions">
@@ -21,9 +20,9 @@ const UnblockLevels = () => {
           <li>After that, the next stage will be unlocked.</li>
         </ul>
       </div>
-      <div>
-        <Image src={imgnew}></Image>
-        {/* <HowToUnblockImg></HowToUnblockImg> */}
+      <div className={`hw-unblock-img-con ${htumMarginClass}`}>
+        {/* <Image src={imgnew}></Image> */}
+        <HowToUnblockImg></HowToUnblockImg>
       </div>
       <div>
         <p className="hw-level-description">
