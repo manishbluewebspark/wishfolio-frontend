@@ -9,10 +9,9 @@ export default function Layout({ children }) {
     <>
       <div className="main-layout">
         <div className="bg-light page-container">
-          <div className="content-container2 container">
+          <div className="content-container">
             {children}
           </div>
-          <BottomNav />
         </div>
       </div>
     </>

@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable} w-100`}>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider store={store}>
           <div className="body-main-container">
           {children}

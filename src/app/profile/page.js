@@ -6,8 +6,8 @@ import myordericon from "../images/lovely.png";
 import GNdetailsicon from "../images/edit-2.png";
 import changepass from "../images/note-2.png";
 import howiticon from "../images/message-question.png";
-import imageUploadButton from "../images/imageUploadButton.png";
-import userAvatar from "../images/userAvatar.jpg";
+import imageUploadButton from "../images/camera.png";
+import userAvatar from "../images/duo-icons_user.png";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -83,6 +83,7 @@ const Profile = () => {
     <div className="pf-profile-container">
       {/* Top Section with Profile Image and User Information */}
       <div className="pf-header text-center position-relative">
+        <div className="pf-img-thumnil">
         <Image
           src={
             userData?.imageUrl
@@ -94,14 +95,17 @@ const Profile = () => {
           width={137}
           height={137}
         />
-        <Image
+        </div>
+      <div className="pf-imgUploadBtn-thmnil">
+      <Image
           src={imageUploadButton}
           alt="Upload Profile Picture"
           className="pf-profile-image-upload"
-          width={36}
-          height={36}
+          width={14}
+          height={14}
           onClick={handleImageUploadClick} // Trigger file input on button click
         />
+      </div>
 
         {/* Hidden file input */}
         <input

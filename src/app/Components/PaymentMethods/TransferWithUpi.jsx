@@ -1,23 +1,19 @@
 "use client";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./paymethod.css"; // Custom CSS file
 import { Icon } from "@iconify/react";
-import clipboardIcon from "@iconify/icons-mdi/clipboard"; // Importing specific MDI icon
+import clipboardIcon from "../../images/copy.png"; // Importing specific MDI icon
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import BackButton from "../Button/BackButton";
+import Image from "next/image";
 const TransferWithUpi = () => {
   const router = useRouter();
   const paymentData = useSelector((state) => state.payment);
   return (
-    <div className="container twu-container">
-      {/* Back Button */}
-      <div className="twu-header">
-        <button className="twu-back-btn" onClick={() => router.push("/")}>
-          ← Back
-        </button>
-      </div>
-
+    <>
+    <BackButton title={'Back'}></BackButton>
+    <div className="twu-container">
       {/* Title Section */}
       {/* Payment Details Section */}
       <div className="twu-input-section">
@@ -32,7 +28,7 @@ const TransferWithUpi = () => {
             <div className="twu-label">Payment Provider</div>
             <div className="twu-balance">Google Pay</div>
           </div>
-          <Icon icon={clipboardIcon} className="twu-copy-icon" />
+          <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
         </div>
 
         {/* Phone Number */}
@@ -41,7 +37,7 @@ const TransferWithUpi = () => {
             <div className="twu-label">Phone Number</div>
             <div className="twu-balance">+91 96 85737 3735</div>
           </div>
-          <Icon icon={clipboardIcon} className="twu-copy-icon" />
+          <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
         </div>
 
         {/* UPI ID */}
@@ -50,7 +46,7 @@ const TransferWithUpi = () => {
             <div className="twu-label">UPI ID</div>
             <div className="twu-balance">Sinna@okicici</div>
           </div>
-          <Icon icon={clipboardIcon} className="twu-copy-icon" />
+          <Image src={clipboardIcon} height={20} width={20} alt="copyicon" ></Image>
         </div>
       </div>
 
@@ -73,6 +69,7 @@ const TransferWithUpi = () => {
         <span className="twu-final-amount-value">₹ {paymentData?.amount}</span>
       </div>
     </div>
+    </>
   );
 };
 

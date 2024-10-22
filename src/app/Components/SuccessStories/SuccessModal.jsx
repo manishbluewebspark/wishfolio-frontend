@@ -14,9 +14,9 @@ const SuccessModal = ({ review, closeModal }) => {
         <Image
           src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.imageUrl}`}
           alt="Phone mockup"
-          width={187}
-          height={200}
-          className="hw-sto-phone-image"
+          width={260}
+          height={278.07}
+          className="hw-sto-phone-image-popup"
         />
         <div className="hw-sto-review-text">
           <p>{review.review}</p>

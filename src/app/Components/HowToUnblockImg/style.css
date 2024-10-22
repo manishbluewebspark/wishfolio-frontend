@@ -1,93 +1,81 @@
-.h-level-container {
-    padding: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .h-level-grid {
-    display: grid;
-    grid-template-columns: 1fr 50px 1fr;
-    grid-template-rows: 1fr 50px 1fr;
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  /* Level Circle */
-  .h-level-circle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    background-color: #f7f7f7;
-    border-radius: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .h-level-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .h-level-circle p {
-    font-size: 14px;
-    margin-top: 5px;
-    color: #333;
-  }
-  
-  /* Active Level */
-  .h-level-active .h-level-circle {
-    background-color: #4A90E2;
-    color: white;
-  }
-  
-  .h-level-active p {
-    color: white;
-  }
-  
-  /* Lock Icon */
-  .h-level-lock-icon {
-    font-size: 16px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #aaa;
-  }
-  
-  /* Arrow Styles */
-  .h-level-arrow-right {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
-  }
-  
-  .h-level-arrow-left {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
-    transform: rotate(180deg);
-  }
-  
-  .h-level-arrow-bottom {
-    grid-column: 2 / span 1;
-    grid-row: 3 / span 1;
-    transform: rotate(90deg);
-  }
-  
-  .h-level-arrow-left img,
-  .h-level-arrow-right img,
-  .h-level-arrow-bottom img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .htubi-con{
-    width: 273px;
-    height: 276px;
-    border: 1px solid red;
-  }
-  .htubi-round-arrow{
-    height: 43px;
-    width: 43px;    
-  }
+.htubi-emoji-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 273px;
+  height: 276.37px;
+
+
+}
+
+.htubi-emoji-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16.38px;
+}
+
+.htubi-emoji-arrow {
+  width: 60px; /* Width for arrow icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.htubi-round-arrow {
+  height: 43px;
+  width: 43px;
+}
+
+.htubi-emoji-card {
+
+  width: 77.52px;
+  height: 79.2px;
+  padding: 8.43px;
+  border-radius: 29.49px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  background-color: #f9f9fb; /* Light background for emojis */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px; /* Space between emoji cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.htubi-emoji-card-items {
+  position: relative; /* Relative for positioning lock */
+}
+
+.htubi-emoji-selected {
+  background-color: #A9C5FF; /* Highlight color for selected emoji */
+  color: black;
+  transform: scale(1.05); /* Slightly enlarge the selected emoji */
+}
+
+.htubi-emoji-locked {
+  color: gray;
+  margin-bottom: 1.68;
+}
+
+/* .htubi-emoji-lock {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+} */
+ .htubi-emoji-card-bg {
+  background-color: #90AEFF;
+ }
+
+.htubi-emoji-name {
+  color: #000000;
+font-size: 11.8px;
+font-weight: 600;
+line-height: 16.11px;
+
+}
+

@@ -76,8 +76,8 @@ const ProductModal = ({
           <Image
             src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.productImageUrl}`}
             alt={product.productName}
-            width={200}
-            height={200}
+            width={136}
+            height={153}
           />
 
           <div className="product-details">
@@ -91,7 +91,7 @@ const ProductModal = ({
                 className="profile-pic"
                 style={{ marginRight: "4px" }}
               />{" "}
-              {product.wishingBy}
+              <strong style={{color:'black'}}>{product.wishingBy}</strong>
             </p>
 
             <p className="price">

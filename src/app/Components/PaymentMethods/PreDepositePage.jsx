@@ -8,6 +8,9 @@ import axios from "axios";
 import Image from "next/image";
 import arrowleftIcon from "../../images/arrow-left.png";
 import BackButton from "../Button/BackButton";
+import attachicon from "../../images/attach.png";
+import TransactionSubmitModal from "../Modals/TransactionSubmitModal";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
@@ -18,9 +21,10 @@ const PreDepositPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [pendingDeposit, setPendingDeposit] = useState(null); // State to hold pending deposit data
   const [userId, setUserId] = useState("123"); // Placeholder for user ID, replace with actual user ID logic
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const fileInputRef = useRef(null);
   const { userData, isLoading, error } = useSelector((state) => state.user);
+
   useEffect(() => {
     const getUserData = () => {
       const userData = localStorage.getItem("user");
@@ -28,6 +32,11 @@ const PreDepositPage = () => {
         const uData = JSON.parse(userData);
         dispatch(fetchUserData(uData.id));
       }
+    };
+    // submit modal
+
+    const closeModal = () => {
+      setIsModalOpen(false); // Close the modal
     };
 
     getUserData(); // Call the function
@@ -55,7 +64,8 @@ const PreDepositPage = () => {
 
       // Handle successful response
       if (response.status === 201) {
-        router.push("/profile");
+        // router.push("/profile");
+        setIsModalOpen(true);
       }
       console.log("Success:", response);
     } catch (error) {
@@ -100,61 +110,65 @@ const PreDepositPage = () => {
     <div className="pta-container">
       <div className="">
         <BackButton title={"Back"}></BackButton>
-        {/* <button className="dp-back-btn" onClick={handleBackClick}>
-          <Image
-            src={arrowleftIcon}
-            width={24}
-            height={24}
-            alt="Arrow Left Icon"
-            className="mx-2"
-          />
-          Back
-        </button> */}
       </div>
       {/* Pending Deposit Info Section */}
       {/* {pendingDeposit && ( */}
       <>
-        <form className="pta-input-section" onSubmit={handleSubmit}>
-          <div className="pta-title">Enter Transaction ID</div>
+        <div>
+          <form className="pta-input-section" onSubmit={handleSubmit}>
+            <div className="pta-title">Enter Transaction ID</div>
 
-          <input
-            type="text"
-            className="pta-input"
-            placeholder="Transaction ID"
-            value={transactionId}
-            onChange={(e) => setTransactionId(e.target.value)} // Update state on input change
-            required // Make it a required field
-          />
+            <input
+              type="text"
+              className="pta-input"
+              placeholder="Transaction ID"
+              value={transactionId}
+              onChange={(e) => setTransactionId(e.target.value)} // Update state on input change
+              required // Make it a required field
+            />
 
-          <input
-            type="file"
-            className="pta-upload-input"
-            accept="image/*" // Accept image files
-            onChange={handleFileChange} // Update state when a file is selected
-            ref={fileInputRef} // Attach the ref to this input
-            style={{ display: "none" }} // Hide the input
-          />
+            <input
+              type="file"
+              className="pta-upload-input"
+              accept="image/*" // Accept image files
+              onChange={handleFileChange} // Update state when a file is selected
+              ref={fileInputRef} // Attach the ref to this input
+              style={{ display: "none" }} // Hide the input
+            />
 
-          <a
-            href="#"
-            className="pta-upload-link"
-            onClick={(e) => {
-              e.preventDefault(); // Prevent the default link behavior
-              fileInputRef.current.click(); // Trigger the file input click
-            }}
-          >
-            Add Screenshot here
-          </a>
+            <a
+              href="#"
+              className="pta-upload-link"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent the default link behavior
+                fileInputRef.current.click(); // Trigger the file input click
+              }}
+            >
+              <Image
+                src={attachicon}
+                width={7.46}
+                height={13.89}
+                alt="attach"
+                className="pta-attach"
+              ></Image>
+              Add Screenshot here
+            </a>
 
-          <p className="pta-description">
-            Once you transferred the amount, please enter your transaction ID
-            here.
-          </p>
+            <p className="pta-description">
+              Once you transferred the amount, please enter your transaction ID
+              here.
+            </p>
 
-          <button type="submit" className="pta-submit-btn">
-            Submit
-          </button>
-        </form>
+            <button type="submit" className="pta-submit-btn">
+              Submit
+            </button>
+          </form>
+          <TransactionSubmitModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+          ></TransactionSubmitModal>
+        </div>
+
         <div className="pta-divider">
           <span className="pta-divider-text">OR</span>
         </div>

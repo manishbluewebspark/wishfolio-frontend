@@ -48,50 +48,52 @@ const SuccessStories = () => {
   }
 
   return (
-    <div className="hw-sto-success-stories-container">
+    <>
       <BackButton title={"Success Stories"}></BackButton>
-      <div className="hw-sto-stories-grid">
-        {reviews.map((review, index) => (
-          <div
-            key={index}
-            className="hw-sto-story-card"
-            onClick={() => openModal(review)}
-          >
-            <div className="hw-sto-phone-container">
-              <Image
-                src={
-                  `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.imageUrl}` ||
-                  img
-                } // Use a fallback image if needed
-                alt="Phone mockup"
-                width={187}
-                height={200}
-                className="hw-sto-phone-image"
-              />
-            </div>
-            <div className="hw-sto-review-container">
-              <div className="hw-sto-review-text">
-                <p>Reviewed by </p>
+      <div className="hw-sto-success-stories-container">
+        <div className="hw-sto-stories-grid">
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className="hw-sto-story-card"
+              onClick={() => openModal(review)}
+            >
+              <div className="hw-sto-phone-container">
                 <Image
                   src={
-                    `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.userImageUrl}` ||
-                    profileImage
-                  } // Use fallback profile image
-                  alt="Reviewer profile"
-                  width={14}
-                  height={14}
-                  className="hw-sto-profile-image"
+                    `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.imageUrl}` ||
+                    img
+                  } // Use a fallback image if needed
+                  alt="Phone mockup"
+                  width={187}
+                  height={200}
+                  className="hw-sto-phone-image"
                 />
-                <p className="hw-sto-reviewer-name">{review.name}</p>
+              </div>
+              <div className="hw-sto-review-container">
+                <div className="hw-sto-review-text">
+                  <p>Reviewed by </p>
+                  <Image
+                    src={
+                      `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.userImageUrl}` ||
+                      profileImage
+                    } // Use fallback profile image
+                    alt="Reviewer profile"
+                    width={14}
+                    height={14}
+                    className="hw-sto-profile-image"
+                  />
+                  <p className="hw-sto-reviewer-name">{review.name}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Modal Component */}
-      <SuccessModal review={selectedReview} closeModal={closeModal} />
-    </div>
+        {/* Modal Component */}
+        <SuccessModal review={selectedReview} closeModal={closeModal} />
+      </div>
+    </>
   );
 };
 
