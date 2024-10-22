@@ -33,14 +33,12 @@ const PreDepositPage = () => {
         dispatch(fetchUserData(uData.id));
       }
     };
-    // submit modal
 
-    const closeModal = () => {
-      setIsModalOpen(false); // Close the modal
-    };
-
-    getUserData(); // Call the function
+    getUserData();
   }, []);
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+  };
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
