@@ -9,22 +9,36 @@ import Image from "next/image";
 import arrowleftIcon from "../../images/arrow-left.png";
 import BackButton from "../Button/BackButton";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserData } from "../../store/slices/userSlice";
 const PreDepositPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [transactionId, setTransactionId] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [pendingDeposit, setPendingDeposit] = useState(null); // State to hold pending deposit data
   const [userId, setUserId] = useState("123"); // Placeholder for user ID, replace with actual user ID logic
 
   const fileInputRef = useRef(null);
+  const { userData, isLoading, error } = useSelector((state) => state.user);
+  useEffect(() => {
+    const getUserData = () => {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        const uData = JSON.parse(userData);
+        dispatch(fetchUserData(uData.id));
+      }
+    };
 
+    getUserData(); // Call the function
+  }, []);
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
 
     const formData = new FormData();
     formData.append("transactionId", transactionId);
+    formData.append("userId", userData._id);
     if (selectedImage) {
       formData.append("image", selectedImage);
     }

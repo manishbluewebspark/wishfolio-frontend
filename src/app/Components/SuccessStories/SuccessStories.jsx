@@ -1,31 +1,35 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-// import './style.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // Import axios
 import img from "../../images/storiesimg.png";
 import profileImage from "../../images/Male15.png";
 import BackButton from "../Button/BackButton";
-import Modal from "./SuccessModal"; // Import the Modal component
-import SuccessModal from "./SuccessModal";
-
+import SuccessModal from "./SuccessModal"; // Import the Modal component
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const SuccessStories = () => {
+  const [reviews, setReviews] = useState([]); // State for storing reviews
   const [selectedReview, setSelectedReview] = useState(null); // State to track the selected review
+  const [loading, setLoading] = useState(true); // State to manage loading
+  const [error, setError] = useState(null); // State to handle errors
 
-  const reviews = [
-    {
-      name: "Sinan CP",
-      phoneImage: img,
-      profileImage: profileImage,
-      review: "Reviewed by",
-    },
-    {
-      name: "Sinan CP",
-      phoneImage: img,
-      profileImage: profileImage,
-      review: "Reviewed by",
-    },
-    // Add more reviews if necessary
-  ];
+  // Fetch success stories from the API
+  useEffect(() => {
+    const fetchSuccessStories = async () => {
+      try {
+        const response = await axios.get(
+          `${API_BASE_URL}/user/getSuccessStories?status=1`
+        ); // Call your API endpoint
+        setReviews(response.data?.data); // Assume response data is an array of reviews
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch success stories.");
+        setLoading(false);
+      }
+    };
+
+    fetchSuccessStories();
+  }, []);
 
   const openModal = (review) => {
     setSelectedReview(review);
@@ -34,6 +38,14 @@ const SuccessStories = () => {
   const closeModal = () => {
     setSelectedReview(null);
   };
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading state
+  }
+
+  if (error) {
+    return <div>{error}</div>; // Show error message if API call fails
+  }
 
   return (
     <div className="hw-sto-success-stories-container">
@@ -47,7 +59,10 @@ const SuccessStories = () => {
           >
             <div className="hw-sto-phone-container">
               <Image
-                src={review.phoneImage}
+                src={
+                  `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.imageUrl}` ||
+                  img
+                } // Use a fallback image if needed
                 alt="Phone mockup"
                 width={187}
                 height={200}
@@ -56,9 +71,12 @@ const SuccessStories = () => {
             </div>
             <div className="hw-sto-review-container">
               <div className="hw-sto-review-text">
-                <p>{review.review}</p>
+                <p>Reviewed by </p>
                 <Image
-                  src={review.profileImage}
+                  src={
+                    `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.userImageUrl}` ||
+                    profileImage
+                  } // Use fallback profile image
                   alt="Reviewer profile"
                   width={14}
                   height={14}

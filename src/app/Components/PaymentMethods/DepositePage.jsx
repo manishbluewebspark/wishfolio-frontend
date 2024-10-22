@@ -60,23 +60,26 @@ const DepositPage = () => {
         userId: userData._id,
         amount: amount,
       };
-      try {
-        // Make API request using Axios
-        const response = await axios.post(
-          `${API_BASE_URL}/user/deposit`,
-          formData
-        );
-        if (response.status === 201) {
-          dispatch(updateAmount(amount));
-          dispatch(updateTransactionId(formData.transactionId));
+      dispatch(updateAmount(amount));
+      dispatch(updateTransactionId(formData.transactionId));
+      router.push("/transferamount");
+      // try {
+      //   // Make API request using Axios
+      //   const response = await axios.post(
+      //     `${API_BASE_URL}/user/deposit`,
+      //     formData
+      //   );
+      //   if (response.status === 201) {
+      //     dispatch(updateAmount(amount));
+      //     dispatch(updateTransactionId(formData.transactionId));
 
-          router.push("/transferamount"); // Navigate to success page
-        } else {
-          console.error("Deposit failed:", response);
-        }
-      } catch (error) {
-        console.error("An error occurred during the deposit:", error);
-      }
+      //     router.push("/transferamount"); // Navigate to success page
+      //   } else {
+      //     console.error("Deposit failed:", response);
+      //   }
+      // } catch (error) {
+      //   console.error("An error occurred during the deposit:", error);
+      // }
     }
   };
 

@@ -12,7 +12,7 @@ const SuccessModal = ({ review, closeModal }) => {
           &times;
         </span>
         <Image
-          src={review.phoneImage}
+          src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.imageUrl}`}
           alt="Phone mockup"
           width={187}
           height={200}
@@ -21,7 +21,7 @@ const SuccessModal = ({ review, closeModal }) => {
         <div className="hw-sto-review-text">
           <p>{review.review}</p>
           <Image
-            src={review.profileImage}
+            src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.userImageUrl}`}
             alt="Reviewer profile"
             width={14}
             height={14}

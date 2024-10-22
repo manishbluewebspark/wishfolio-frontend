@@ -14,7 +14,14 @@ const TransferPage = () => {
   const handleBackButtonClick = () => {
     router.push("/profile"); // Navigate to the previous page
   };
+
+  const fees = 5; // fee percentage
   const paymentData = useSelector((state) => state.payment);
+
+  // Assuming paymentData has an amount property
+  const paymentAmount = paymentData.amount;
+  const deductedAmount = paymentAmount - paymentAmount * (fees / 100);
+
   return (
     <div className="container ta-dp-container pt-3  pb-30">
       {/* Back Button */}
@@ -106,17 +113,17 @@ const TransferPage = () => {
         </div>
 
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <span className="ta-dp-label">Platform Commission 0%</span>
-          <span className="ta-dp-balance">₹ 0</span>
+          <span className="ta-dp-label">Platform Commission {fees}%</span>
+          <span className="ta-dp-balance">
+            ₹ {paymentAmount * (fees / 100)}
+          </span>
         </div>
       </div>
 
       {/* Total to Receive */}
       <div className="ta-dp-input-section-btm">
         <span className="ta-dp-final-amount">You Will Receive</span>
-        <span className="ta-dp-final-amount-value">
-          ₹ {paymentData?.amount}
-        </span>
+        <span className="ta-dp-final-amount-value">₹ {deductedAmount}</span>
       </div>
     </div>
   );
