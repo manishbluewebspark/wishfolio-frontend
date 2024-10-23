@@ -4,6 +4,7 @@ import userImage from "../../images/1userAvatar.jpg"; // Add user profile image
 import { ProgressBar, Row, Col, Button } from "react-bootstrap";
 import styles from "./style.css";
 import { useRouter } from "next/navigation";
+import CurrencyName from "../Comman/CurrencyName";
 const ProductPage = ({ product }) => {
   const router = useRouter();
   const getSumOfAmounts = (donations) => {
@@ -87,8 +88,9 @@ const ProductPage = ({ product }) => {
         />
         <h5 className="mt-3">{product?.productName}</h5>
         <p className="text-muted">
-          ₹{totalDonated || 0}/ ₹{product?.productPrice?.toLocaleString()}{" "}
-          Donated
+          <CurrencyName />
+          {totalDonated || 0}/ <CurrencyName />
+          {product?.productPrice?.toLocaleString()} Donated
         </p>
 
         {/* Progress Bar */}
@@ -104,7 +106,10 @@ const ProductPage = ({ product }) => {
         <h6>Today</h6>
         <div className="d-flex justify-content-end align-items-center">
           <p className="text-muted">Received</p>
-          <p className="fw-bold">₹{getSumOfAmounts(todayDonations)}</p>
+          <p className="fw-bold">
+            <CurrencyName />
+            {getSumOfAmounts(todayDonations)}
+          </p>
         </div>
 
         {todayDonations?.map((item) => (
@@ -113,7 +118,7 @@ const ProductPage = ({ product }) => {
             name={item.donorName || "Unknown Donor"}
             date={getDateAndTimeFromISO(item?.updatedAt)?.date}
             time={getDateAndTimeFromISO(item?.updatedAt)?.time}
-            amount={`₹${item.amount?.toLocaleString()}`}
+            amount={`${item.amount?.toLocaleString()}`}
             image={
               item.donorImage
                 ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
@@ -128,7 +133,10 @@ const ProductPage = ({ product }) => {
         <h6>Yesterday</h6>
         <div className="d-flex justify-content-between align-items-center">
           <p className="text-muted">Received</p>
-          <p className="fw-bold">₹{getSumOfAmounts(yesterdayDonations) || 0}</p>
+          <p className="fw-bold">
+            <CurrencyName />
+            {getSumOfAmounts(yesterdayDonations) || 0}
+          </p>
         </div>
         {yesterdayDonations?.map((item) => (
           <DonationCard
@@ -136,7 +144,7 @@ const ProductPage = ({ product }) => {
             name={item.donorName || "Unknown Donor"}
             date={new Date(item.createdAt).toLocaleDateString()}
             time={new Date(item.createdAt).toLocaleTimeString()}
-            amount={`₹${item.amount?.toLocaleString()}`}
+            amount={`${item.amount?.toLocaleString()}`}
             image={
               item.donorImage
                 ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
@@ -150,7 +158,10 @@ const ProductPage = ({ product }) => {
         <h6>Previous</h6>
         <div className="d-flex justify-content-between align-items-center">
           <p className="text-muted">Received</p>
-          <p className="fw-bold">₹{getSumOfAmounts(remainingDonations) || 0}</p>
+          <p className="fw-bold">
+            <CurrencyName />
+            {getSumOfAmounts(remainingDonations) || 0}
+          </p>
         </div>
         {remainingDonations?.map((item) => (
           <DonationCard
@@ -158,7 +169,7 @@ const ProductPage = ({ product }) => {
             name={item.donorName || "Unknown Donor"}
             date={new Date(item.createdAt).toLocaleDateString()}
             time={new Date(item.createdAt).toLocaleTimeString()}
-            amount={`₹${item.amount?.toLocaleString()}`}
+            amount={`${item.amount?.toLocaleString()}`}
             image={
               item.donorImage
                 ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
@@ -207,7 +218,10 @@ const DonationCard = ({ name, date, time, amount, image }) => {
           </p>
         </div>
         <div className="ms-auto">
-          <p className="text-success fw-bold">{amount}</p>
+          <p className="text-success fw-bold">
+            <CurrencyName />
+            {amount}
+          </p>
         </div>
       </div>
     </div>

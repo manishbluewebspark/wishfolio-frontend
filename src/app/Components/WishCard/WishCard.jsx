@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-// import profilePic from '../../images/profile.png'; // Profile image
+import profilePic from "../../images/profile.svg"; // Profile image
 // import "./style.css"; // Custom styles
+import CurrencyName from "../Comman/CurrencyName";
 
 const WishCard = ({
   productImage,
@@ -48,7 +49,10 @@ const WishCard = ({
       {type === "myDonation" && (
         <div className="donation-button-container">
           <div className="donate-button">
-            <strong>₹{donated}</strong>
+            <strong>
+              <CurrencyName />
+              {donated}
+            </strong>
           </div>
         </div>
       )}
@@ -57,7 +61,11 @@ const WishCard = ({
         <p className="wish-by">
           Wish by{" "}
           <Image
-            src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${wishingByImage}`}
+            src={
+              wishingByImage
+                ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${wishingByImage}`
+                : profilePic
+            }
             alt="User Profile"
             width={20}
             height={20}
@@ -70,7 +78,8 @@ const WishCard = ({
 
         {/* Price Info */}
         <p className="price">
-          ₹{getSumOfAmounts(donationsDetails) || price}/ ₹
+          <CurrencyName />
+          {getSumOfAmounts(donationsDetails) || price}/ <CurrencyName />
           {donationGoal?.toLocaleString()}{" "}
           <span className="donated" style={{ marginLeft: "4px" }}>
             {" "}

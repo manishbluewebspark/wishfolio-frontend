@@ -5,7 +5,7 @@ import Image from "next/image";
 import icon1 from "../../images/dollar-circle.png";
 import icon2 from "../../images/drop.png";
 import iconTick from "../../images/tick-circle.png";
-
+import CurrencyName from "../Comman/CurrencyName";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
@@ -122,7 +122,8 @@ const Statistics = (props) => {
                       : "none",
                 }}
               >
-                ₹{formatNumberWithCommas(getSumOfAmounts(statisticData?.data))}/
+                <CurrencyName />
+                {formatNumberWithCommas(getSumOfAmounts(statisticData?.data))}/
                 {formatNumberWithCommas(minDonation?.minimumDonation)}
               </h6>
             </div>

@@ -37,7 +37,8 @@ const PreDepositPage = () => {
     getUserData();
   }, []);
   const closeModal = () => {
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false);
+    router.push("/profile");
   };
   // Function to handle form submission
   const handleSubmit = async (e) => {
@@ -107,7 +108,7 @@ const PreDepositPage = () => {
   return (
     <div className="pta-container">
       <div className="">
-        <BackButton title={"Back"}></BackButton>
+        <BackButton title={"Back"} customeRoute="/profile"></BackButton>
       </div>
       {/* Pending Deposit Info Section */}
       {/* {pendingDeposit && ( */}

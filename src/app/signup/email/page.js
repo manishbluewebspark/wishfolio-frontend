@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
 import { Icon } from "@iconify/react";
 import envelopeIcon from "@iconify/icons-mdi/email";
+import { toast } from "react-toastify";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export default function LoginWithGoogle() {
   const [email, setEmailState] = useState("");
@@ -37,7 +38,8 @@ export default function LoginWithGoogle() {
       }
     } catch (error) {
       console.error("Error sending verification code:", error);
-      setError("Failed to send verification code. Please try again.");
+      //setError("Failed to send verification code. Please try again.");
+      toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }

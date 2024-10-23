@@ -3,21 +3,39 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import logo from "../../images/snow.png";
-// import "./style.css";
 import { useDispatch } from "react-redux";
 import { setMobile } from "../../store/slices/signupSlice";
 import { useRouter } from "next/navigation";
+import axios from "axios"; // Import axios
 import BackButton from "../../Components/Button/BackButton";
+import { toast } from "react-toastify";
 
 export default function PhoneForm() {
   const router = useRouter();
   const [mobile, setMobileState] = useState("");
   const dispatch = useDispatch();
 
-  const handleMobileSubmit = () => {
-    dispatch(setMobile(mobile));
-    router.push("/signup/name");
+  const handleMobileSubmit = async () => {
+    try {
+      // Call the API using axios to submit the phone number
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/user/verify-mobile`, // Use your API endpoint
+        { mobile } // Payload with the mobile number
+      );
+
+      if (response.status === 201) {
+        // If the API responds successfully, save the mobile number to Redux
+        dispatch(setMobile(mobile));
+
+        // Navigate to the next step
+        router.push("/signup/name");
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      console.error("Error submitting mobile number:", error);
+    }
   };
+
   return (
     <div className="d-flex em-phone-main-container">
       <div className="em-back-btn">

@@ -3,10 +3,11 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Import axios
 import img from "../../images/storiesimg.png";
-import profileImage from "../../images/Male15.png";
+import profileImage from "../../images/profile.svg";
 import BackButton from "../Button/BackButton";
 import SuccessModal from "./SuccessModal"; // Import the Modal component
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const SuccessStories = () => {
   const [reviews, setReviews] = useState([]); // State for storing reviews
   const [selectedReview, setSelectedReview] = useState(null); // State to track the selected review
@@ -20,7 +21,7 @@ const SuccessStories = () => {
         const response = await axios.get(
           `${API_BASE_URL}/user/getSuccessStories?status=1`
         ); // Call your API endpoint
-        setReviews(response.data?.data); // Assume response data is an array of reviews
+        setReviews(response.data?.data || []); // Set reviews or empty array
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch success stories.");
@@ -45,6 +46,18 @@ const SuccessStories = () => {
 
   if (error) {
     return <div>{error}</div>; // Show error message if API call fails
+  }
+
+  // If there are no reviews, show a "No success stories available" message
+  if (reviews.length === 0) {
+    return (
+      <div>
+        <BackButton title={"Success Stories"}></BackButton>
+        <div className="hw-sto-success-stories-container">
+          <p>No success stories available at the moment.</p>
+        </div>
+      </div>
+    );
   }
 
   return (

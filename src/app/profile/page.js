@@ -7,7 +7,9 @@ import GNdetailsicon from "../images/edit-2.png";
 import changepass from "../images/note-2.png";
 import howiticon from "../images/message-question.png";
 import imageUploadButton from "../images/camera.png";
-import userAvatar from "../images/duo-icons_user.png";
+// import userAvatar from "../images/duo-icons_user.png";
+import userAvatar from "../images/profile.svg";
+import CurrencyName from "../Components/Comman/CurrencyName";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -77,35 +79,34 @@ const Profile = () => {
       }
     }
   };
-  console.log("user", userData);
 
   return (
     <div className="pf-profile-container">
       {/* Top Section with Profile Image and User Information */}
       <div className="pf-header text-center position-relative">
         <div className="pf-img-thumnil">
-        <Image
-          src={
-            userData?.imageUrl
-              ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
-              : userAvatar
-          }
-          alt="Profile Picture"
-          className="pf-profile-image"
-          width={137}
-          height={137}
-        />
+          <Image
+            src={
+              userData?.imageUrl
+                ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
+                : userAvatar
+            }
+            alt="Profile Picture"
+            className="pf-profile-image"
+            width={137}
+            height={137}
+          />
         </div>
-      <div className="pf-imgUploadBtn-thmnil">
-      <Image
-          src={imageUploadButton}
-          alt="Upload Profile Picture"
-          className="pf-profile-image-upload"
-          width={14}
-          height={14}
-          onClick={handleImageUploadClick} // Trigger file input on button click
-        />
-      </div>
+        <div className="pf-imgUploadBtn-thmnil">
+          <Image
+            src={imageUploadButton}
+            alt="Upload Profile Picture"
+            className="pf-profile-image-upload"
+            width={14}
+            height={14}
+            onClick={handleImageUploadClick} // Trigger file input on button click
+          />
+        </div>
 
         {/* Hidden file input */}
         <input
@@ -119,7 +120,7 @@ const Profile = () => {
 
       <div className="pf-header-2">
         <h4 className="pf-user-name">{userData?.name}</h4>
-        <p className="pf-phone-number">{userData?._id}</p>
+        <p className="pf-phone-number">#{userData?.userNumber}</p>
       </div>
 
       {/* Balance Section with "Deposit" Button */}
@@ -127,7 +128,10 @@ const Profile = () => {
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <p className="pf-balance-label">Available Balance</p>
-            <h3 className="pf-balance-amount">₹{userData?.accountBalance}</h3>
+            <h3 className="pf-balance-amount">
+              <CurrencyName />
+              {userData?.accountBalance}
+            </h3>
           </div>
           <button
             onClick={() => router.push("/predeposit")}

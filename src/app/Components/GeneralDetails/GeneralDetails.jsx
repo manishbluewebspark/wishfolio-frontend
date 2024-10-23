@@ -61,14 +61,10 @@ const GeneralDetails = () => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/${userData._id}`,
         formData
       );
-      toast.success("Details Updated Successfully", {
-        position: "top-right",
-      });
+      toast.success("Details Updated Successfully");
       // Optionally, you can handle success/failure UI here
     } catch (error) {
-      toast.error("Something went to wrong", {
-        position: "top-right",
-      });
+      toast.error("Something went to wrong");
     }
   };
   const handleBackClick = () => {

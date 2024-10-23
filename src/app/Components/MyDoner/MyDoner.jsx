@@ -3,8 +3,8 @@
 import React from "react";
 import Image from "next/image";
 // import "./style.css";
-import profilePic from "../../images/Male15.png"; // Example profile picture
-
+import profilePic from "../../images/profile.svg"; // Example profile picture
+import CurrencyName from "../Comman/CurrencyName";
 const MyDoner = (props) => {
   function getDateAndTimeFromISO(isoString) {
     const dateObj = new Date(isoString);
@@ -46,7 +46,11 @@ const MyDoner = (props) => {
           >
             <div className="d-flex align-items-center">
               <Image
-                src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${donor.donorImage}`}
+                src={
+                  donor.donorImage
+                    ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${donor.donorImage}`
+                    : profilePic
+                }
                 alt={donor.donorName}
                 width={40}
                 height={40}
@@ -65,7 +69,10 @@ const MyDoner = (props) => {
                 </span>
               </div>
             </div>
-            <span className="pf-donor-amount">{donor.amount}</span>
+            <span className="pf-donor-amount">
+              <CurrencyName />
+              {donor.amount}
+            </span>
           </div>
         ))}
       </div>

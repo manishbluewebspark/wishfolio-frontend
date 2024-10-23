@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import OrderHistoryModal from "./OrderHistoryModal"; // Import the new modal component
 import RatingModal from "./RatingModal"; // Import the rating modal component
-
+import CurrencyName from "../Comman/CurrencyName";
 const OrderItem = ({ order, activeTab }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state for order details
   const [isRatingModalOpen, setIsRatingModalOpen] = useState(false); // Modal state for rating
@@ -62,24 +62,33 @@ const OrderItem = ({ order, activeTab }) => {
               {activeTab === "ongoing" ? (
                 "On the way"
               ) : (
-                <span
-                  onClick={openRatingModal}
-                  style={{
-                    cursor: "pointer",
-                    color: "#90AEFF",
-                    fontSize: "16px",
-                    fontWeight: "800",
-                  }}
-                >
-                  Rate Us
-                </span>
+                <>
+                  {order?.imageUrl ? (
+                    "Reviewed"
+                  ) : (
+                    <span
+                      onClick={openRatingModal}
+                      style={{
+                        cursor: "pointer",
+                        color: "#90AEFF",
+                        fontSize: "16px",
+                        fontWeight: "800",
+                      }}
+                    >
+                      Rate Us
+                    </span>
+                  )}
+                </>
               )}
             </p>
           </div>
 
           {/* Price */}
           <div className="col-3 phis-price text-right">
-            <h6 className="phis-price-value">₹{order.productPrice}</h6>
+            <h6 className="phis-price-value">
+              <CurrencyName />
+              {order.productPrice}
+            </h6>
           </div>
         </div>
       </div>

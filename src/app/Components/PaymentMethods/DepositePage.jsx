@@ -14,6 +14,7 @@ import {
 import { fetchUserData } from "../../store/slices/userSlice";
 import Image from "next/image";
 import BackButton from "../Button/BackButton";
+import CurrencyName from "../Comman/CurrencyName";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DepositPage = () => {
   const dispatch = useDispatch();
@@ -85,95 +86,104 @@ const DepositPage = () => {
   };
 
   return (
-   <>
-   <BackButton title={'Back'}></BackButton>
-    <div className="container dp-container">
-      {/* Back Button */}
-      
+    <>
+      <BackButton title={"Back"}></BackButton>
+      <div className="container dp-container">
+        {/* Back Button */}
 
-      {/* Title and Description */}
-      <div className="text-center">
-        <h5 className="dp-title">Enter Deposit Amount</h5>
-        <p className="dp-subtitle">How much would you like to deposit?</p>
-      </div>
-
-      {/* Deposit Input Box */}
-      <div className="dp-input-section text-center shadow-sm">
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <span className="dp-label">Enter Amount</span>
-          <span className="dp-balance">
-            Current Balance{" "}
-            <strong>₹{paymentData?.balance?.toLocaleString() || 0}</strong>
-          </span>
+        {/* Title and Description */}
+        <div className="text-center">
+          <h5 className="dp-title">Enter Deposit Amount</h5>
+          <p className="dp-subtitle">How much would you like to deposit?</p>
         </div>
 
-        {/* Input Field */}
-        <div className="dp-amount-box text-center">
-          <span className="dp-rupee-sign">₹</span>
-          <input
-            type="text"
-            className="dp-amount-input"
-            placeholder="1,000"
-            value={amount}
-            onChange={handleAmountChange} // Handle input change
-          />
+        {/* Deposit Input Box */}
+        <div className="dp-input-section text-center shadow-sm">
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <span className="dp-label">Enter Amount</span>
+            <span className="dp-balance">
+              Current Balance{" "}
+              <strong>
+                <CurrencyName />
+                {paymentData?.balance?.toLocaleString() || 0}
+              </strong>
+            </span>
+          </div>
+
+          {/* Input Field */}
+          <div className="dp-amount-box text-center">
+            <span className="dp-rupee-sign">
+              <CurrencyName />
+            </span>
+            <input
+              type="text"
+              className="dp-amount-input"
+              placeholder="1,000"
+              value={amount}
+              onChange={handleAmountChange} // Handle input change
+            />
+          </div>
+
+          {/* Predefined Buttons */}
+          <div className="dp-quick-amount">
+            <button
+              className="dp-quick-btn"
+              onClick={() => handleQuickAmountClick("1000")}
+            >
+              <CurrencyName />
+              1k
+            </button>
+            <button
+              className="dp-quick-btn"
+              onClick={() => handleQuickAmountClick("5000")}
+            >
+              <CurrencyName />
+              5k
+            </button>
+            <button
+              className="dp-quick-btn"
+              onClick={() => handleQuickAmountClick("10000")}
+            >
+              <CurrencyName />
+              10k
+            </button>
+            <button
+              className="dp-quick-btn"
+              onClick={() => handleQuickAmountClick("50000")}
+            >
+              <CurrencyName />
+              50k
+            </button>
+            <button
+              className="dp-quick-btn"
+              onClick={() => handleQuickAmountClick("100000")}
+            >
+              <CurrencyName />
+              100k
+            </button>
+          </div>
         </div>
 
-        {/* Predefined Buttons */}
-        <div className="dp-quick-amount">
+        {/* Terms and Privacy */}
+        <div className="text-center dp-terms">
+          By continuing, you agree to our <a href="#">Privacy Policy</a> and{" "}
+          <a href="#">Terms of Service</a>
+        </div>
+
+        {/* Continue Button */}
+        <div className={`dp-continue-btn-wrapper mt-4 `}>
           <button
-            className="dp-quick-btn"
-            onClick={() => handleQuickAmountClick("1000")}
+            className={`dp-continue-btn ${
+              isButtonEnabled ? "dp-continue-btn-active" : ""
+            }`}
+            onClick={handleContinueClick}
+            disabled={!isButtonEnabled} // Disable button if no amount is entered
           >
-            ₹1k
-          </button>
-          <button
-            className="dp-quick-btn"
-            onClick={() => handleQuickAmountClick("5000")}
-          >
-            ₹5k
-          </button>
-          <button
-            className="dp-quick-btn"
-            onClick={() => handleQuickAmountClick("10000")}
-          >
-            ₹10k
-          </button>
-          <button
-            className="dp-quick-btn"
-            onClick={() => handleQuickAmountClick("50000")}
-          >
-            ₹50k
-          </button>
-          <button
-            className="dp-quick-btn"
-            onClick={() => handleQuickAmountClick("100000")}
-          >
-            ₹100k
+            Continue
           </button>
         </div>
       </div>
-
-      {/* Terms and Privacy */}
-      <div className="text-center dp-terms">
-        By continuing, you agree to our <a href="#">Privacy Policy</a> and{" "}
-        <a href="#">Terms of Service</a>
-      </div>
-
-      {/* Continue Button */}
-      <div className={`dp-continue-btn-wrapper mt-4 `}>
-        <button
-          className={`dp-continue-btn ${
-            isButtonEnabled ? "dp-continue-btn-active" : ""
-          }`}
-          onClick={handleContinueClick}
-          disabled={!isButtonEnabled} // Disable button if no amount is entered
-        >
-          Continue
-        </button>
-      </div>
-    </div>
-   </>
+    </>
   );
 };
 
