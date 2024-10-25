@@ -10,71 +10,79 @@ import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify/icons-mdi/user";
+import usericon from '../../images/frame.svg';
 
-export default function FullNameForm() {
-  const router = useRouter();
-  const [name, setNameState] = useState("");
-  const dispatch = useDispatch();
+export default function NameForm() {
+    const router = useRouter();
+    const [name, setNameState] = useState("");
+    const dispatch = useDispatch();
 
-  const handleMobileSubmit = () => {
-    dispatch(setName(name));
-    router.push("/signup/address");
-  };
-  return (
-    <div className="d-flex em-fullname-main-container">
-      <div className="em-back-btn">
-        <BackButton></BackButton>
-      </div>
-      <div className="em-fullname-container">
-        <div className="em-fullname-box">
-          <div className="em-fullname-box-top">
-            <Image
-              src={logo}
-              alt="Logo"
-              className="em-fullname-box-logo"
-              width={32}
-              height={32}
-            />
-            <div className="em-fullname-top-text text-center">
-              <h2 className="em-fullname-heading">Enter your Full Name</h2>
-              <p className="subtext">
-                Start your wishing journey by signing up.
-              </p>
+    const handleMobileSubmit = () => {
+        dispatch(setName(name));
+        router.push("/signup/address");
+    };
+
+    return (
+        <div className="d-flex em-name-main-container">
+            <div className="em-back-btn">
+                <BackButton></BackButton>
             </div>
-          </div>
-          <div className="input-container position-relative ">
-            <i className="fa fa-user input-icon"></i>
-            <Icon icon={userIcon} width="20" className="input-icon" />
-            <input
-              type="text"
-              className="form-control custom-input"
-              placeholder="John Doe"
-              onChange={(e) => setNameState(e.target.value)}
-            />
-          </div>
-          <div className="terms-container-hw">
-            By continuing, you agree to our
-            <a href="/privacy-policy" className="text-muted-hw">
-              {" "}
-              Privacy Policy
-            </a>
-            and
-            <a href="/terms-of-service" className="text-muted-hw">
-              {" "}
-              Terms of Service
-            </a>
-            .
-          </div>
-          <div className="d-grid em-margin-top">
-            <button
-              className="btn btn-primary em-btn-continue"
-              onClick={handleMobileSubmit}
-            >
-              Continue
-            </button>
-          </div>
+            <div className="em-name-container">
+                <div className="em-name-box">
+                    <div className="em-name-box-top">
+                        <Image
+                            src={logo}
+                            alt="Logo"
+                            className="em-name-box-logo"
+                            width={32}
+                            height={32}
+                        />
+                        <div className="em-name-top-text text-center">
+                            <h2 className="em-name-heading">Enter your Name</h2>
+                            <p className="em-name-subtext">
+                                Start your wishing journey by signing up.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="input-group custom-input" style={{marginBottom:'8px'}} >
+                     <span className="input-group-text login-input-group-text">
+                      <Image src={usericon} alt="Email Icon" width={24} height={24} />
+                    </span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="John Doe"
+                            onChange={(e) => setNameState(e.target.value)}
+ 			style={{
+                        border: 'none', // Remove border
+                        outline: 'none', // Remove default outline
+                      }}
+                      required
+                        />
+                    </div>
+                    <div className="terms-container-hw">
+                        By continuing, you agree to our
+                        <a href="/privacy-policy" className="text-muted-hw">
+                            {" "}
+                            Privacy Policy
+                        </a>
+                        and
+                        <a href="/terms-of-service" className="text-muted-hw">
+                            {" "}
+                            Terms of Service
+                        </a>
+                        .
+                    </div>
+                    <div className="d-grid em-margin-top">
+                        <button
+                            className="btn btn-primary em-btn-continue"
+                            onClick={handleMobileSubmit}
+                        >
+                            Continue
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

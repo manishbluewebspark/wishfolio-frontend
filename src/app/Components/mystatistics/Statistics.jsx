@@ -72,7 +72,7 @@ const Statistics = (props) => {
             {statisticData?.data?.length >= minDonation.numberOfDonations &&
             getSumOfAmounts(statisticData?.data) >= minDonation?.minimumDonation
               ? "Congrats! you are now eligible."
-              : "Once you finish you will be eligible to post your dream wish item."}
+              : "Complete it to post your dream wish"}
           </p>
         </div>
         <div className="mw-content-inside-sec2">

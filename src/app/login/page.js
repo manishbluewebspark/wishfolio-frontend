@@ -4,16 +4,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation"; // For client-side navigation
 import { loginUser } from "../store/slices/authSlice"; // Import the login thunk from authSlice
-import logoIcon from "../images/snow.png"; // Replace with your logo
-// import "./style.css";
-import { Icon } from "@iconify/react";
-import envelopeIcon from "@iconify/icons-mdi/email";
+import logoIcon from "../images/Snow.svg"; // Replace with your logo
 import lockIcon from "@iconify/icons-mdi/lock";
 import { setEmail } from "../store/slices/signupSlice";
 import { toast } from "react-toastify";
-import googleIcon from "../images/googleIcon.png";
+import googleIcon from "../images/googleicon.svg";
 import Image from "next/image";
-// import emailicon from '../images/emailicon.svg';
+import emailicon from '../images/emailicon.svg';
+import addicon  from '../images/add.svg';
+import arrowright from '../images/arrow-right.svg'
 
 const LoginScreen = () => {
   const [email, setEmailState] = useState("");
@@ -71,51 +70,24 @@ const LoginScreen = () => {
             {/* Login Form */}
             <div className="login-box-from">
               <form onSubmit={handleLogin}>
-                <div
-                  className="position-relative"
-                  style={{ marginBottom: "8px" }}
-                >
-                  <div className="input-group">
-                  <span className="input-group-text input-icon">
-  <Image src={''} alt="Email Icon" width={24} height={24} />
-</span>
+              
+                  <div className="input-group custom-input" style={{marginBottom:'8px'}} >
+                    <span className="input-group-text login-input-group-text">
+                      <Image src={emailicon} alt="Email Icon" width={24} height={24} />
+                    </span>
                     <input
                       type="email"
-                      className="form-control custom-input"
+                      className="form-control"
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmailState(e.target.value)}
-                      style={{ borderRadius: "50px" }}
+                      style={{
+                        border: 'none', // Remove border
+                        outline: 'none', // Remove default outline
+                      }}
                       required
                     />
                   </div>
-                </div>
-
-                {/* <div
-                className="position-relative"
-                style={{ marginBottom: "8px" }}
-              >
-                <div className="input-group">
-                  <span className="input-group-text input-icon">
-                    <Icon icon={lockIcon} width="20" />
-                  </span>
-                  <input
-                    type="password"
-                    className="form-control custom-input"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    style={{ borderRadius: "50px" }}
-                  />
-                </div>
-                <a href="#" className="forgot-password">
-                  Forgot?
-                </a>
-              </div> */}
-
-                {/* Error Message */}
-                {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
 
                 {/* Login Button */}
                 <button
@@ -134,7 +106,7 @@ const LoginScreen = () => {
             {/* Google Sign-in Button */}
             <div className="login-box-btm">
               <button
-                className="btn btn-light btn-google w-100 mb-3"
+                className="btn btn-primary btn-google w-100"
                 onClick={() => handleCreateAccount()}
               >
                 <Image
@@ -151,18 +123,28 @@ const LoginScreen = () => {
 
           {/* Create New Account */}
           <div className="create-new-con">
-            {/* <div className="create-account">
-            <a href="#" onClick={() => handleCreateAccount()}>
-              <i className="bi bi-arrow-right-circle"></i> Create a new account
-            </a>
-          </div> */}
             <button
-              className="btn btn-light btn-google w-100 mb-3"
+              className="btn btn-primary btn-google login-create-acc-btn w-100 mb-3"
               onClick={() => handleCreateAccount()}
             >
-              <i className="bi bi-google"></i> Create a new account
+              <span className='d-flex justify-content-center align-items-center'>
+             <Image src={addicon} height={20} width={20} alt="addicon" className="login-addicon"></Image> 
+              Create a new account
+             </span>
+             <Image src={arrowright}  height={20} width={20} alt="arrowright"></Image>
             </button>
           </div>
+          <div className="terms-container-hw login-margin-top">
+              By continuing, you agree to our
+              <a href="/privacy-policy" className="text-muted-hw">
+                Privacy Policy
+              </a>
+              and
+              <a href="/terms-of-service" className="text-muted-hw">
+                Terms of Service
+              </a>
+              .
+            </div>
         </div>
       </div>
     </>

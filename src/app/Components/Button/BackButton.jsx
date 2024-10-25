@@ -22,6 +22,8 @@ const BackButton = (props) => {
             alt="Back"
             onClick={handleBackClick}
             style={{ cursor: "pointer" }}
+            height={28}
+            width={28}
           />
           <h1 className="bck-title text-align-center">{props.title}</h1>
         </div>

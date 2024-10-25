@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-// import "./style.css";
 import starActiveIcon from "../../images/starActive.jpg";
-import starIcon from "../../images/star.png";
-import dropIcon from "../../images/drop.jpg";
+import starIcon from "../../images/star.svg";
+import dropIcon from "../../images/drop.svg";
 import dropActiveIcon from "../../images/dropActive.png";
-import vectorIcon from "../../images/moon.png";
+import vectorIcon from "../../images/moon.svg";
 import vectorActiveIcon from "../../images/moonActive.png";
-import profileIcon from "../../images/Male15.png";
+import profileIcon from "../../images/frame.svg";
 import { useRouter, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";

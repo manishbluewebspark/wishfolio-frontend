@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
-import logo from "../../images/snow.png";
+import logo from "../../images/Snow.svg";
 // import "./style.css";
 import { setEmail } from "../../store/slices/signupSlice";
 import axios from "axios";
@@ -11,13 +11,17 @@ import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
 import { Icon } from "@iconify/react";
 import envelopeIcon from "@iconify/icons-mdi/email";
+import emailicon from '../../images/emailicon.svg'
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export default function LoginWithGoogle() {
   const [email, setEmailState] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
+
   const handleEmailSubmit = async () => {
     if (!email) {
       alert("Please enter a valid email");
@@ -45,53 +49,61 @@ export default function LoginWithGoogle() {
 
   return (
     <>
-      <div className="d-flex em-login-main-container">
-        <div className="em-back-btn">
+      <div className="d-flex signup-login-main-container">
+        <div className="signup-back-btn">
           <BackButton></BackButton>
         </div>
-        <div className="em-login-container">
-          <div className="em-login-box">
-            <div className="em-login-box-top">
+        <div className="signup-login-container">
+          <div className="signup-login-box">
+            <div className="signup-login-box-top">
               <Image
                 src={logo}
                 alt="Logo"
-                className="em-login-box-logo"
+                className="signup-login-box-logo"
                 width={32}
                 height={32}
               />
-              <div className="em-login-top-text text-center">
-                <h2 className="em-login-heading">What is your email ID</h2>
-                <p className="subtext">
+              <div className="signup-login-top-text text-center">
+                <h2 className="signup-login-heading">What is your email ID</h2>
+                <p className="signup-subtext">
                   Start your wishing journey by signing up.
                 </p>
               </div>
             </div>
-            <div className="em-login-box-form">
-              <div className="input-container position-relative">
-                <Icon icon={envelopeIcon} width="20" className="input-icon" />
-                <input
-                  type="email"
-                  className="form-control custom-input"
-                  placeholder="Email"
-                  onChange={(e) => setEmailState(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="terms-container-hw">
+            <div className="input-group custom-input" style={{marginBottom:'8px'}} >
+                <span className="input-group-text login-input-group-text">
+                      <Image src={emailicon} alt="Email Icon" width={24} height={24} />
+                </span>
+                  <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmailState(e.target.value)}
+                      style={{
+                        border: 'none', // Remove border
+                        outline: 'none', // Remove default outline
+                      }}
+                      required
+                    />
+            
+</div>
+
+            <div className="signup-terms-container-hw">
               By continuing, you agree to our
-              <a href="/privacy-policy" className="text-muted-hw">
+              <a href="/privacy-policy" className="signup-text-muted-hw">
                 Privacy Policy
               </a>
               and
-              <a href="/terms-of-service" className="text-muted-hw">
+              <a href="/terms-of-service" className="signup-text-muted-hw">
                 Terms of Service
               </a>
               .
             </div>
 
-            <div className="d-grid em-login-margin">
+            <div className="d-grid signup-login-margin">
               <button
-                className="btn btn-primary em-btn-login"
+                className="btn btn-primary signup-btn-login"
                 onClick={handleEmailSubmit}
                 disabled={loading} // Disable button while loading
               >

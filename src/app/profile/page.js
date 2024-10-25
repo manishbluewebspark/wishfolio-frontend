@@ -2,17 +2,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import profile from "../images/Male15.png";
-import myordericon from "../images/lovely.png";
-import GNdetailsicon from "../images/edit-2.png";
-import changepass from "../images/note-2.png";
-import howiticon from "../images/message-question.png";
+import myordericon from "../images/lovely.svg";
+import GNdetailsicon from "../images/edit-2.svg";
+import changepass from "../images/note-2.svg";
+import howiticon from "../images/message-question.svg";
 import imageUploadButton from "../images/camera.png";
 import userAvatar from "../images/duo-icons_user.png";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import LogoutModal from "../Components/Modals/LogoutModal"; // Import the new LogoutModal component
-// import "./style.css";
 import { fetchUserData } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
 const Profile = () => {
@@ -92,8 +91,8 @@ const Profile = () => {
           }
           alt="Profile Picture"
           className="pf-profile-image"
-          width={137}
-          height={137}
+          width={90}
+          height={90}
         />
         </div>
       <div className="pf-imgUploadBtn-thmnil">
@@ -118,8 +117,8 @@ const Profile = () => {
       </div>
 
       <div className="pf-header-2">
-        <h4 className="pf-user-name">{userData?.name}</h4>
-        <p className="pf-phone-number">{userData?._id}</p>
+        <h4 className="pf-user-name text-center">{userData?.name}</h4>
+        <p className="pf-phone-number text-center">{userData?._id}</p>
       </div>
 
       {/* Balance Section with "Deposit" Button */}
@@ -127,7 +126,7 @@ const Profile = () => {
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <p className="pf-balance-label">Available Balance</p>
-            <h3 className="pf-balance-amount">₹{userData?.accountBalance}</h3>
+            <h3 className="pf-balance-amount">₹{userData?.accountBalance || '0.00'}</h3>
           </div>
           <button
             onClick={() => router.push("/predeposit")}
@@ -139,7 +138,7 @@ const Profile = () => {
       </div>
 
       {/* Menu Section with List Items */}
-      <div className="pf-menu mt-3">
+      <div className="pf-menu">
         <div
           className="pf-menu-item d-flex align-items-center"
           onClick={() => router.push("/orderhistorypage")}
@@ -147,7 +146,7 @@ const Profile = () => {
           <span className="pf-icon-con">
             <Image src={myordericon} alt="Orders" width={20} height={20} />
           </span>
-          <span>My Orders</span>
+          <span className="pf-my-text">My Orders</span>
         </div>
 
         <div
@@ -162,7 +161,7 @@ const Profile = () => {
               height={20}
             />
           </span>
-          <span>General Details</span>
+          <span className="pf-my-text">General Details</span>
         </div>
 
         <div
@@ -172,7 +171,7 @@ const Profile = () => {
           <span className="pf-icon-con">
             <Image src={howiticon} alt="Help" width={20} height={20} />
           </span>
-          <span>How is it working?</span>
+          <span className="pf-my-text">How is it working?</span>
         </div>
 
         <div
@@ -182,12 +181,12 @@ const Profile = () => {
           <span className="pf-icon-con">
             <Image src={changepass} alt="Terms" width={20} height={20} />
           </span>
-          <span>Terms & Conditions</span>
+          <span className="pf-my-text">Terms & Conditions</span>
         </div>
       </div>
 
       {/* Logout Button */}
-      <div className="pf-menu-item d-flex align-items-center pf-logout-margin justify-content-center just mt-4">
+      <div className="d-flex align-items-center pf-logout-menu justify-content-center">
         <button
           className="pf-logout-button"
           onClick={() => setIsLogoutModalOpen(true)}

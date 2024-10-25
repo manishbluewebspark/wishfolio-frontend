@@ -102,7 +102,7 @@ export default function ProductCard() {
   };
 
   return (
-    <div className="container-sm position-relative mb-2">
+    <div className="home-container-wishing container ">
       {/* Filter Section */}
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-block">
@@ -173,7 +173,7 @@ export default function ProductCard() {
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div
-              className="col-md-6 col-sm-6 col-6 product-col"
+              className="col-lg-6 col-md-6 col-sm-6 col-6 product-col"
               key={product.id}
               onClick={() => handleCardClick(product)}
             >
