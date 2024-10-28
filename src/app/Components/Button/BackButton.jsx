@@ -19,13 +19,15 @@ const BackButton = (props) => {
   return (
     <div>
       <div className="bck-header d-flex justify-content-between align-items-center container">
-        <div className="d-flex ">
+        <div className="d-flex alingn ">
           <Image
             src={leftArrowIcon}
             className="me-2"
             alt="Back"
             onClick={handleBackClick}
             style={{ cursor: "pointer" }}
+            height={28}
+            width={28}
           />
           <h1 className="bck-title text-align-center">{props.title}</h1>
         </div>

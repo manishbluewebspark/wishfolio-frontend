@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
-import logo from "../../images/snow.png";
+import logo from "../../images/Snow.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setOtp } from "../../store/slices/signupSlice";
 import axios from "axios"; // Import axios
@@ -64,12 +64,15 @@ export default function OtpForm() {
               width={32}
               height={32}
             />
-            <div className="em-otp-top-text text-center mb-4">
+            <div className="em-otp-top-text text-center">
               <h2 className="em-otp-heading">Enter your OTP</h2>
-              <p className="subtext">Verification code sent to {email}</p>
+              <p className="em-otp-desc">
+                Start your wishing journey by signing up.
+              </p>
+              <p className="em-otp-subtext">Verification code sent to {email}</p>
             </div>
           </div>
-          <div className="em-otp-input-container d-flex">
+          <div className="em-otp-input-container">
             {otpValues.map((value, index) => (
               <input
                 key={index}
@@ -90,7 +93,18 @@ export default function OtpForm() {
               />
             ))}
           </div>
-          <div className="d-grid mt-4">
+          <div className="otp-terms-container-hw">
+            By continuing, you agree to our
+            <a href="/privacy-policy" className="text-muted-hw">
+              Privacy Policy
+            </a>
+            and
+            <a href="/terms-of-service" className="text-muted-hw">
+              Terms of Service
+            </a>
+            .
+          </div>
+          <div className="d-grid">
             <button
               className="btn btn-primary em-btn-verify"
               onClick={handleOtpSubmit} // Trigger OTP verification
@@ -98,14 +112,10 @@ export default function OtpForm() {
               Verify
             </button>
           </div>
-          <div className="text-center mt-2">
-            <a href="/privacy-policy" className="text-muted">
-              By continuing, you agree to our Privacy Policy and Terms of
-              Service
-            </a>
-          </div>
+
         </div>
       </div>
     </div>
+    
   );
 }

@@ -3,13 +3,15 @@ import localFont from "next/font/local";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import Navbar from "./Components/Navbar/Navbar";
-import TopBar from "./Components/Topbar/Topbar";
-import BottomNav from "./Components/BottomNavbar/BottomNav";
 import Head from "next/head"; // Import for better SEO management
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { ToastContainer } from "react-toastify";
+import '../../node_modules/@fontsource/manrope/200.css'; // Regular weight
+import '../../node_modules/@fontsource/manrope/400.css';
+import '../../node_modules/@fontsource/manrope/600.css';
+
+import '../../node_modules/@fontsource/manrope/800.css'; // Bold weight
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,20 +32,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider store={store}>
-          <div className="body-main-container">
+          <div className="body-main-container bg-white">
           {children}
           </div>
           </Provider>

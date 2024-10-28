@@ -87,10 +87,9 @@ const DepositPage = () => {
 
   return (
     <>
+    {/* Back Button */}
       <BackButton title={"Back"}></BackButton>
       <div className="container dp-container">
-        {/* Back Button */}
-
         {/* Title and Description */}
         <div className="text-center">
           <h5 className="dp-title">Enter Deposit Amount</h5>
@@ -98,8 +97,8 @@ const DepositPage = () => {
         </div>
 
         {/* Deposit Input Box */}
-        <div className="dp-input-section text-center shadow-sm">
-          <div className="d-flex justify-content-between align-items-center mb-3">
+        <div className="dp-input-section text-center">
+          <div className="d-flex justify-content-between align-items-center dp-enter-amt">
             <span className="dp-label">Enter Amount</span>
             <span className="dp-balance">
               Current Balance{" "}

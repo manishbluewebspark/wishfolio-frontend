@@ -93,7 +93,7 @@ export default function OtpForm() {
             ))}
           </div>
 
-          <div className="terms-container-hw">
+          <div className="otp-terms-container-hw">
             By continuing, you agree to our
             <a href="/privacy-policy" className="text-muted-hw">
               Privacy Policy

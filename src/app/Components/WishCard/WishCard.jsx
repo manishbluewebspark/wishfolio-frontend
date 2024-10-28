@@ -67,21 +67,25 @@ const WishCard = ({
                 : profilePic
             }
             alt="User Profile"
-            width={20}
-            height={20}
+            width={14}
+            height={14}
             className="profile-pic"
             style={{ marginRight: "4px" }}
           />
           {"  "}
-          <strong style={{ color: "black" }}>{wishingBy}</strong>
+          <strong style={{ color: "black"}}>{wishingBy}</strong>
         </p>
 
         {/* Price Info */}
         <p className="price">
+          {/* ₹{getSumOfAmounts(donationsDetails) || price}  */}
+          
           <CurrencyName />
-          {getSumOfAmounts(donationsDetails) || price}/ <CurrencyName />
+          {getSumOfAmounts(donationsDetails) || price}/ 
+          <span className="donated" style={{ marginLeft: "4px", color:'#A48888' }}>
+          <CurrencyName />
           {donationGoal?.toLocaleString()}{" "}
-          <span className="donated" style={{ marginLeft: "4px" }}>
+          
             {" "}
             Donated
           </span>

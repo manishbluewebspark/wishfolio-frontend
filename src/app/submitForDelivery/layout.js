@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className="main-layout">
-        <div className="bg-light page-container">
+        <div className="bg-white page-container">
           <TopBar />
           <div className="content-container">{children}</div>
           <BottomNav />

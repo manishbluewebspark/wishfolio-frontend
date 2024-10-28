@@ -1,12 +1,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-family: 'Manrope' !important;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    font-family: 'Manrope' !important;
+    
   }
 }
 html {
@@ -16,10 +19,13 @@ html {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  font-family: 'Manrope' !important;
 }
 
 body{
-  font-family: "Manrope", sans-serif !important;
+  font-family: 'Manrope' !important;
+  font-optical-sizing: auto;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
@@ -31,11 +37,20 @@ body{
   height: 100%;
   width: 100%;
 }
+h1, h2, h3, p {
+  font-family: 'Manrope', sans-serif; /* Apply to headings and paragraphs */
+}
+.navbar{
+  padding: 0px !important;
+  margin-top: 15px !important;
+  box-shadow: none !important;
+}
 /* .body-main-container{
   width: 80%;
   background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
 } */
 .body-main-container {
+  font-family: 'Manrope' !important;
   transform: scale(0.8); 
   transform-origin: top center;
   width: 125%; 
@@ -45,6 +60,7 @@ body{
 }
 @media (min-width:320px) and (max-width:500px) {
   .body-main-container {
+    font-family: 'Manrope';
     transform: scale(1);
     transform-origin: top center;
     width: 125%; 
@@ -53,6 +69,13 @@ body{
     margin: 0 auto;
     zoom: 80% !important;
   }
+}
+/* input, textarea {
+  font-size: 16px !important ; 
+} */
+body {
+  font-family: 'Manrope' !important;
+  touch-action: manipulation; /* Prevent double-tap zoom */
 }
 /* .body-main-container {
   transform: scale(0.8); 
@@ -81,12 +104,14 @@ body{
   flex-direction: column;
   height: 100%;
   align-items: center;
+  font-family: 'Manrope' !important;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Manrope' !important;
 }
 .content-container {
   width: 100%;
@@ -96,6 +121,8 @@ body{
   -ms-overflow-style: none; 
   scrollbar-width: none; 
   height: 100vh;
+  font-family: 'Manrope'!important;
+
 }
 .content-container2 {
   width: 100%;
@@ -151,25 +178,26 @@ font-weight: 400;
   flex-direction: column;
   margin-top: 15px;
   margin-bottom: 15px;
-  /* width: 386px; */
 }
 
 .emoji-row {
   justify-content: space-around;
-  width: 100%;
-  gap: 2px;
+  gap: 6px;
 }
 
 .emoji-card {
-  width: 92px !important;
-  gap:2px;
-  height: 94px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 92px;
+  max-width: 100%;
+  height: 94px ;
+  padding: 10px;
   border-radius: 35px;
   transition: background-color 0.3s ease;
   cursor: pointer;
   text-align: center;
   background-color: #f9f9fb;
-  padding: 10px;
 }
 .emoji-card-items{
   display: flex;
@@ -195,13 +223,15 @@ font-weight: 400;
 }
 
 .emoji-icon {
+  margin-top: 4px;
 }
 
 .emoji-name {
   font-weight: 800;
-  line-height: 21.86px;
+  line-height: auto;
   font-size: 16px;
   color: #000000;
+
 }
 
 
@@ -223,7 +253,6 @@ font-weight: 400;
   font-weight: 800; /* Medium weight for "Wish" */
   color: #000000; /* Black for "Wish" */
   margin-left: 8px; /* Space between logo and text */
-  line-height: 32.78px;
 }
 
 .highlight-text {
@@ -239,6 +268,15 @@ font-weight: 400;
   display: flex;
   align-items: center;
 }
+.navbar-star-icon-con{
+  height: 42px;
+  width: 42px;
+  border-radius: 100px;
+  background-color: #f1f4fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* emoji card end  */
 
@@ -247,40 +285,34 @@ font-weight: 400;
 /* Card styling */
 .wish-card {
   background-color: white;
-  /* border-radius: 16px; */
-  padding: 4px;
   margin-bottom: 20px;
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   text-align: center;
   position: relative;
   width: 100%;
-  max-width: 360px; /* Ensures consistent width */
 }
 
 /* Product image styling */
 .product-image {
-  border-radius: 12px;
+  border-radius: 0px;
   object-fit: cover;
 }
-.product-con{
-  /* width: 386px; */
-  height: 279px;
-  /* gap:12px; */
+
+.home-container-wishing{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .product-col{
-  height: 279px;
-  gap:10px;
+  height:100%;
+  width: 100%;
+  padding: 0px 6px !important;
 }
+
 .wish-card-img{
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+ 
   border-radius: 20px;
   background: #F7F7F7;
-  /* width: 94px; */
-  /* height: 31px; */
-  /* top: 159px; */
-  /* left: 9px; */
-  /* padding: 11px 8px;  */
-  /* border-radius: 100px 0px 0px 0px; */
+  
 }
 
 /* Donation button container */
@@ -308,7 +340,7 @@ font-weight: 400;
 
 /* Wish info container */
 .wish-info {
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 0 5px;
 }
 
@@ -327,41 +359,19 @@ font-weight: 400;
 }
 
 /* Price and donation goal */
-.price {
-  font-size: 12px;
-  font-weight: bold;
-  margin: 5px 0;
-  display: flex;
-  /* justify-content: center; */
-}
 
 .donated {
   font-weight: normal;
   color: #7d7d7d;
 }
 
-/* Product title */
-/* .product-title {
-  font-size: 14px;
-  color: #333;
-  display: flex;
-  justify-content: start;
-  font-weight: 600;
-} */
-
 /* Progress bar container */
-.progress-bar-container {
-  background-color: #f1f1f1 !important;
-  border-radius: 10px;
-  margin-top: 10px;
-  height: 6px;
-  width: 100%;
-}
+
 
 .progress-bar {
-  background-color: #4A90E2 !important;
+  background-color: #90AEFF !important;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 100px 0px 0px 100px;
 }
 
 /* Adjust for mobile screens */
@@ -370,9 +380,9 @@ font-weight: 400;
     max-width: 100%;
   }
 }
-p{
+/* p{
   margin-bottom: 0px !important;
-}
+} */
 /* product modal css */
 /* Modal overlay */
 /* Modal - Bottom Slide */
@@ -450,19 +460,6 @@ border-radius: 30px;
 cursor: pointer;
 }
 /* filter css */
-.wishing-items-title {
-font-size: 20px;
-font-weight: 800;
-color: #000;
-line-height: 24px;
-}
-
-.price-range {
-font-size: 12px;
-color: #888;
-/* margin-top: -5px;  */
-font-weight: 500;
-}
 
 .filter-by {
 position: relative;
@@ -546,15 +543,6 @@ outline: none;
 /* Centered address box */
 
 /* Main title */
-
-
-.subtext {
-color: #000;
-font-size: 0.875rem;
-line-height: 1.5rem;
-text-align: center;
-}
-
 /* Input fields */
 .input-container {
 position: relative;
@@ -595,11 +583,11 @@ width: 100%;
 /* bottom navbar start */
 
 .bottom-nav {
-  border-top: 1px solid #ccc;
   padding: 10px 0;
   background-color: #fff;
   margin: 0 auto;
   width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -637,6 +625,7 @@ width: 100%;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
+  margin-top: 4px;
 }
 
 .active-item .icon-container img {
@@ -678,6 +667,7 @@ width: 100%;
   font-size: 16px;
   font-weight: 800;
   line-height: 24px;
+  margin-bottom: 0px !important;
 }
 
 .bck-save-btn {
@@ -1585,7 +1575,6 @@ text-align: center;
   height: 100vh;
   overflow-y: scroll;
   width: 100%;
-  max-width: 430px;
   border-radius: 15px 15px 0 0;
   padding: 20px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
@@ -1872,7 +1861,7 @@ text-align: center;
   height: 72px;
   width: 100%;
   padding: 15px;
-  border-radius: 24px;
+  border-radius: 20px;
   gap: 15px;
   display: flex;
   justify-content: space-between;
@@ -2117,12 +2106,7 @@ align-items: center;
 
 
 
-.btn-primary {
-background-color: #90AEFF;
-border-color: #90AEFF;
-border-radius: 30px;
-padding: 10px 30px;
-}
+
 
 .close-btn {
 text-align: right;
@@ -2135,23 +2119,16 @@ border-radius: 30px;
 background-color: #90AEFF;
 }
 
-.pta-upload-link {
-display: block;
-color: #90AEFF;
-font-size: 14px;
-margin-bottom: 10px;
-cursor: pointer;
-}
 /* orderhistory end */
 
 /* payment method start */
 /* Container */
 .ptm-container {
-  max-width: 100%;
+  width: 100%;
   padding: 20px;
   background-color:#F7F7F7;
-  border-radius: 25px;
-  /* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);  */
+  border-radius: 24px;
+  line-height: 14.09px;
 }
 
 /* Title */
@@ -2164,16 +2141,9 @@ margin-bottom: 14.09px;
 
 }
 
-/* Payment Method Container */
-.ptm-payment-options {
-  /* background-color: #fff; */
-  /* border-radius: 12px; */
-  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
-}
-
 .ptm-payment-method {
-  padding: 15px;
-  border-radius: 35px;
+  padding: 10px 15px;
+  border-radius: 50px;
   height: 64px;
   margin-bottom: 8px;
   background-color: white;
@@ -2182,6 +2152,7 @@ margin-bottom: 14.09px;
 /* Icons */
 .ptm-icon {
   margin-right: 10px;
+  opacity: 100%;
 }
 
 /* Arrow */
@@ -2224,12 +2195,11 @@ cursor: pointer;
 /* Title and Subtitle */
 .dp-title {
 font-size: 20px;
-margin-bottom: 0px !important;
 font-weight: 800;
 color: #000;
 line-height: 24px;
 text-align: center;
-margin-bottom: 4px;
+margin-bottom: 4px !important;
 
 }
 
@@ -2258,11 +2228,11 @@ line-height: 21.86px;
 color: #000;
 
 }
-
 .dp-balance {
 font-size: 12px;
 font-weight: 400;
 line-height: 16.39px;
+color: #696969;
 
 }
 .dp-balance strong {
@@ -2295,20 +2265,19 @@ margin-right: 7.04px;
 border: none;
 background-color: transparent;
 font-size: 34px;
-font-weight: 600;
+font-weight: 800;
 color: #000000;
 text-align: left;
-width: 150px;
+width: 100%;
 }
 
 .dp-amount-input:disabled {
 cursor: not-allowed;
+opacity: 20%;
 }
 
 /* Quick Amount Buttons */
 .dp-quick-amount {
-width: 304px;
-height: 30px;
 gap: 7px;
 display: flex;
 margin-top: 28.18px;
@@ -2317,10 +2286,10 @@ margin-top: 28.18px;
 .dp-quick-btn {
 width: 48px;
 height: 30px;
-background-color: #f0f0f0;
+background-color: #EEEEEE;
 border: none;
-border-radius: 20px;
-padding: 10px 20px;
+border-radius: 100px;
+padding: 8px 15px;
 font-size: 12px;
 font-weight: 400;
 color: #000000;
@@ -2361,13 +2330,13 @@ text-align: center;
 background-color: #d0e1ff;
 color: #999;
 border: none;
-padding: 15px 0;
+padding: 12px 0;
 width: 100%;
 border-radius: 50px;
-font-size: 18px;
-font-weight: bold;
+font-size: 16px;
+font-weight: 800;
 cursor: not-allowed;
-height: 64px;
+height: 60px;
 }
 
 .dp-continue-btn-active{
@@ -2621,17 +2590,18 @@ color: #000;
 /* Container */
 .pta-container {
 margin: 0 auto;
-padding: 20px;
+padding: 0px 20px;
 background-color: #ffffff;
 }
 
 /* Transaction ID Section */
 .pta-input-section {
 background-color: #F7F7F7;
-border-radius: 10px;
+border-radius: 24px;
+line-height: 14.09px;
 padding: 20px;
 margin-bottom: 25px;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+/* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Title */
@@ -2648,9 +2618,11 @@ text-align: left;
 /* Input Field */
 .pta-input {
 width: 100%;
-padding: 12px;
+padding: 15px 20px;
 border-radius: 50px;
-border: 1px solid #ccc;
+border: none;
+background-color: white;
+color: #797B7C;
 margin-bottom: 14.09px;
 font-size: 14px;
 height: 64px;
@@ -2658,6 +2630,10 @@ height: 64px;
 
 /* File Upload Link */
 .pta-upload-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 font-weight: 400;
 line-height: 19.12px;
 text-align: left;
@@ -2667,8 +2643,9 @@ color: #7094F4;
 font-size: 14px;
 cursor: pointer;
 text-decoration: none;
-margin-bottom: 14.09px;
+margin-bottom: 14.59px;
 }
+
 .pta-attach{
   margin-right: 4px;
   color: #7094F4;
@@ -2695,9 +2672,10 @@ color: #000;
 border: none;
 border-radius: 50px;
 font-size: 16px;
-font-weight: bold;
+font-weight: 800;
+line-height: 24px;
 cursor: pointer;
-height: 64px;
+height: 60px;
 
 font-weight: 800;
 line-height: 24px;
@@ -2739,11 +2717,11 @@ color: #696969;
 /* New Deposit Section */
 .pta-deposit-section {
 background-color:#F7F7F7;
-
-border-radius: 10px;
+line-height: 14.09px;
+border-radius: 24px;
 padding: 20px;
 text-align: center;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+/* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Deposit Title */
@@ -2777,7 +2755,7 @@ color: #000;
 border: none;
 border-radius: 50px;
 cursor: pointer;
-height: 64px;
+height: 60px;
 font-size: 16px;
 font-weight: 800;
 line-height: 24px;
@@ -3050,13 +3028,7 @@ text-align: center;
   border-radius: 12px;
   object-fit: cover;
 }
-.product-con{
-  margin-top: 10px;
-  /* height: 279px; */
-}
-.product-col{
-  gap:10px;
-}
+
 .wish-card-img{
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   border-radius: 20px;
@@ -3097,17 +3069,13 @@ text-align: center;
   gap: 5px;
 }
 
-/* Wish info container */
-.wish-info {
-  margin-top: 15px;
-  padding: 0 5px;
-}
-
 /* Wish by section */
 .wish-by {
   font-size: 10px;
   color: #A48888;
-
+ font-weight: 500;
+ line-height: 24px;
+ margin-bottom: 0px !important;
   display: flex;
   align-items: center;
   /* justify-content: center; */
@@ -3120,12 +3088,15 @@ text-align: center;
 
 /* Price and donation goal */
 .price {
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 24px;
+
   margin: 5px 0;
   display: flex;
   /* justify-content: center; */
 }
+
 
 .donated {
   font-weight: normal;
@@ -3138,25 +3109,20 @@ text-align: center;
   color: #000000;
   display: flex;
   justify-content: start;
-  font-size: 14px;
   font-weight: 500;
-  line-height: 19.12px;
+  margin-bottom: 2px;
 }
 
 /* Progress bar container */
 .progress-bar-container {
-  background-color: #f1f1f1 !important;
+  background-color: #EEEEEE !important;
   border-radius: 10px;
-  margin-top: 10px;
-  height: 6px;
+  margin-top: 2px;
+  height: 8px;
   width: 100%;
 }
 
-.progress-bar {
-  /* background-color: #4A90E2 !important; */
-  height: 100%;
-  border-radius: 10px;
-}
+
 .progress-bar-success {
   background-color: #00C036;
 }
@@ -3170,9 +3136,7 @@ text-align: center;
     max-width: 100%;
   }
 }
-p{
-  margin-bottom: 0px !important;
-}
+
 /* product modal css */
 /* Modal overlay */
 /* Modal - Bottom Slide */
@@ -3277,13 +3241,14 @@ font-size: 20px;
 font-weight: 800;
 color: #000;
 line-height: 24px;
+margin-bottom: 0px;
 }
-
 .price-range {
 font-size: 12px;
-color: #888;
-/* margin-top: -5px;  */
+color: #A48888;
 font-weight: 500;
+line-height: 24px;
+margin-bottom: 10px;
 }
 
 .filter-by {
@@ -3365,336 +3330,19 @@ outline: none;
 
 /* product modalend */
 
-/* login opt start*/
-/* Full page container */
-.em-otp-main-container {
-  display: flex;
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100vh;
-  padding: 20px;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.em-otp-container {
-  max-height: 511px;
-  width: 386px;
-}
-
-/* Centered OTP box */
-.em-otp-box {
-  max-width: 386px;
-  height: 437px;
-  gap: 15px;
-}
-
-.em-otp-box-top {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  height: 96px;
-}
-
-.em-otp-box-logo {
-  max-width: 32px;
-  max-height: 32px;
-}
-
-.em-otp-top-text {
-  width: 291px;
-  height: 52px;
-}
-
-/* Main title */
-.em-otp-heading {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 800;
-  color: #000;
-}
-
-.subtext {
-  color: #000;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  text-align: center;
-}
-
-/* OTP Input Fields */
-.em-otp-input-container {
-  margin: 40px 0px 0px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.otp-input {
-  width: 60px;
-  height: 60px;
-  font-size: 2rem;
-  text-align: center;
-  border-radius: 40px;
-  border: 1px solid #ddd;
-  transition: border 0.3s ease-in-out;
-}
-
-.otp-input:focus {
-  border-color: #8AB6FF;
-  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
-}
-
-/* Verify button */
-.em-btn-verify {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-}
-
-/* login otp end */
-
-/* login page start */
-/* Full page container */
-.login-main-container{
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100%;
-  padding: 0px 22px;
-  width:100%;
-}
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
-}
-.login-box {
-  width: 100%;
-  gap: 15px;
-
-}
-.login-box-top{
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 96px;
-  gap:12px;
-}
-.login-box-logo{
-max-width: 32px;
-max-height: 32px;
-
-}
-.login-top-text{
-  width: 100%px;
-  height: 52px;
-}
-/* Main title */
-.login-top-text .login-heading {
-  margin-bottom: 4px;
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 800;
-  color: #000;
-}
-
-.subtext {
-  color: #000000;
-  font-size: 14px;
-  line-height: 24px;
-  margin-bottom: 0px;
-  font-weight: 400;
-}
-
-.login-box-from{
-  margin-top: 15px;
-  width: 100%;
-  gap: 8px;
-  /* opacity: 0px; */
-}
-.or-txt{
-  margin: 15px 0px;
-font-size: 14px;
-font-weight: 400;
-line-height: 24px;
-text-align: center;
-color: #9D9E9F;
-
-}
-
-/* Input container and icon */
-.input-container {
-  position: relative;
-}
-.login-box-from input{
-
-}
-.social-icon{
- margin-right: 12px; 
-}
-.custom-input {
-  padding-left: 45px !important; 
-  border-radius: 30px !important; /* Rounded corners */
-  border: 1px solid #ddd !important; /* Light border */
-  padding: 12px 45px !important;
-  font-size: 16px !important;
-  background-color: #f7f8fa !important; /* Light gray background */
-  box-shadow: none !important;
-  outline: none !important;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
-  height: 64px !important;
-}
-
-.custom-input:focus {
-  border-color: #8AB6FF !important; /* Blue focus border */
-  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2) !important; /* Subtle shadow on focus */
-}
-
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #aaa;
-}
-
-.forgot-password {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-  color: #8AB6FF; /* Blue color for the "Forgot?" link */
-  text-decoration: none;
-}
-
-/* Login button */
-.btn-login {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-  width: 100%;
-
-}
-.btn{
-  border-radius: 50px !important;
-}
-
-/* Divider with "Or" */
-.divider {
-  position: relative;
-  color: #888;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  height: 1px;
-  /* width: 45%; */
-  background-color: #ddd;
-  position: absolute;
-  top: 50%;
-}
-
-.divider::before {
-  left: 0;
-}
-
-.divider::after {
-  right: 0;
-}
-
-/* Google sign-up button */
-.btn-google {
-  /* border: 1px solid #ddd; */
-  border-radius: 50px;
-  font-size: 16px;
-  padding: 12px;
-  height: 64px;
-  color: #344054;
-font-weight: 500;
-line-height: 24px;
 
 
-}
 
-.btn-google i {
-  font-size: 18px;
-  margin-right: 8px;
-}
-
-/* Create new account link */
-.create-new-con{
-  /* height: 437px; */
-  width: 100%;
-  gap: 15px;
-}
-
-.create-account {
-  border: 1px solid #ddd;
-  border-radius: 50px;
-  font-size: 16px;
-  padding: 12px;
-  height: 64px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-
-}
-
-/* .create-account a {
-  display: flex;
-  align-items: center;
-  color: #333;
-  font-size: 16px;
-  text-decoration: none;
-  padding: 12px 16px;
-  background-color: #f7f8fa;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-} */
-
-.create-account a:hover {
-  background-color: #e1e4e8;
-}
-
-.create-account a i {
-  margin-left: 8px;
-  font-size: 18px;
-}
-
-.invalid-feedback {
-  border-radius: 10px;
-  color: red;
-  font-size: 14px;
-}
-
-/* login page end  */
 /* mywish start */
 /* Container */
 .container-mw {
   background-color: #ffffff;
-  min-height: 100vh;
+  min-height: 100%;
 }
 .mw-top-con{
-  height: 287px;
-  width: 386px;
-  gap:8px;
+  /* height: 287px; */
+  /* width: 386px; */
+  /* gap:8px; */
 }
 
 /* Header */
@@ -3725,7 +3373,7 @@ line-height: 24px;
   padding: 20px;
   border-radius: 24px;
   gap: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 8px;
 }
 .mw-statistics-inside-sec{
   width: 100%;
@@ -3806,7 +3454,7 @@ line-height: 24px;
   height: 72px;
   width: 100%;
   padding: 15px;
-  border-radius: 24px;
+  border-radius: 20px;
   gap: 15px;
 }
 .mwlovely-img{
@@ -3914,19 +3562,15 @@ text-align: center;
 /* profile starrt */
 /* globals.css or custom.css */
 
-.pf-profile-container {
-  /* max-width: 400px; */
-}
-
 .pf-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0px;
+  margin: 15px 0px;
 }
 .pf-img-thumnil{
-  height: 137;
-  width: 137;
+  height:90px;
+  width: 90px;
   border: 2px solid #F7F7F7;
   border-radius: 75px;
 
@@ -3936,8 +3580,8 @@ text-align: center;
   width: 36px;
   background-color: #7094F4;
   position: absolute;
-  bottom: 0;
-  right: 32%;
+  bottom: 2px;
+  right: 37%;
   border-radius: 100px;
   display: flex;
   justify-content: center;
@@ -3956,11 +3600,9 @@ text-align: center;
 .pf-header-2 {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  max-width: 389px;
-  /* height: 57px; */
-
+  margin-bottom: 15px;
 }
 
 
@@ -3978,19 +3620,23 @@ text-align: center;
 }
 
 .pf-balance-section {
-  background-color:#90AEFF;
+  background-color:#F7F7F7;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 20px;
+  height: 96px;
 }
 
 .pf-balance-label {
   font-size: 14px;
-  color: #666;
+  color: #000000;
+  font-family: 400;
+  margin-bottom: 6px;
 }
 
 .pf-balance-amount {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: 600;
+
 }
 .pf-icon-con{
   display: flex;
@@ -4000,35 +3646,56 @@ text-align: center;
   height: 42px;
   width: 42px;
   border-radius: 100px;
-  margin-right: 21px;
+  margin-right:10px;
+}
+.bg-light{
+  background-color: white !important;
+
+}
+.pf-my-text{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.pf-logout-menu{
+  height: 50px;
+  border-radius: 20px;
+  padding: 15px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  background-color:#F7F7F7;
 }
 
 .pf-deposit-button {
- 
-  background-color:black;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
+  height: 60px;
+  width: 105px;
+  padding: 8px 15px;
+  background-color:#90AEFF;
+  color: rgb(0, 0, 0);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
   border: none;
+  margin-bottom: 8px;
 }
 
-.pf-menu {
-  margin-top: 20px;
-}
+
 
 .pf-menu-item {
   height: 72px;
   border-radius: 20px;
   padding: 15px;
-  /* border: 1px solid #ddd; */
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   background-color:#F7F7F7;
 }
 
 .pf-menu-icon {
   /* margin-right: 10px; */
   width: 20px;
+}
+.pf-menu {
+  margin-top: 8px;
 }
 
 .pf-logout {
@@ -4040,8 +3707,13 @@ text-align: center;
   /* background-color: white; */
   color: red;
   border: none;
-  padding: 10px 20px;
+  border-radius: 20px;
+  padding: 15px;
   background-color:#F7F7F7;
+  font-size: 14px;
+  font-weight: 600;
+  height: 50px;
+
 }
 
 .pf-footer {
@@ -4072,9 +3744,7 @@ text-align: center;
   font-size: 12px;
   color: #666;
 }
-.pf-logout-margin{
-  margin-bottom: 222px;
-}
+
 /* profile end */
 
 /* sign up address start */
@@ -4145,119 +3815,7 @@ text-align: center;
 
 /* signup address end */
 
-/* sign up email start*/
-/* Full page container */
-.em-login-main-container {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100%;
-  padding: 20px;
-  width: 100%;
-  justify-content: center;
-  position: relative;
-}
 
-.em-login-box-top {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.em-login-box-logo {
-  max-width: 32px;
-  max-height: 32px;
-}
- 
-/* Main title */
-.em-login-heading {
-  color: #000;
-  margin-bottom: 4px;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 24px;
-
-}
-
-.subtext {
-  color: #000;
-font-size: 14px;
-font-weight: 400;
-line-height: 24px;
-margin-bottom: 15px;
-
-}
-
-/* Input container and icon */
-.input-container {
-  position: relative;
-}
-
-/* .custom-input {
-  padding-left: 40px !important;
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  padding: 12px 15px;
-  font-size: 1rem;
-  background-color: #f7f8fa;
-  height: 64px;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.custom-input:focus {
-  border-color: #8AB6FF;
-  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
-} */
-
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #aaa;
-  margin-top: 2px;
-}
-
-/* Login button */
-.em-btn-login {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-}
-
-.terms-container-hw {
-  font-size: 12px;
-  color: #6c757d; /* muted text color */
-  text-align: center;
-  margin-top: 15px;
-}
-
-.text-muted-hw {
-  text-decoration: none;
-  padding: 0 3px; /* small padding to add space between links and text */
-  font-weight: bold;
-  color: #000;
-
-}
-
-.em-login-margin{
-  margin-top: 163px;
-
-}
-.em-back-btn{
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  
-}
-/* sign up email end */
 /* email comfirm start */
 /* Full page container */
 .em-confirm-main-container {
@@ -4305,236 +3863,8 @@ margin-bottom: 15px;
 }
 /* email confirm end  */
 
-/* mobile screen start */
-/* Full page container */
-.em-phone-main-container {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  padding: 20px;
-  width: 100%;
-  height:100%;
-  justify-content: center;
-  position: relative;
-}
 
 
-
-/* Centered phone box */
-.em-phone-box {
-  gap: 15px;
-}
-
-.em-phone-box-top {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  height: 96px;
-  margin-bottom: 15px;
-}
-
-.em-phone-box-logo {
-  max-width: 32px;
-  max-height: 32px;
-}
-
-.em-phone-top-text {
-  width: 291px;
-  height: 52px;
-}
-
-/* Main title */
-.em-phone-heading {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 800;
-  color: #000;
-}
-
-.subtext {
-  color: #000;
-  font-size: 0.875rem;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-/* Input container and icon */
-.input-container {
-  position: relative;
-}
-
-/* .custom-input {
-  padding-left: 45px;
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  padding: 12px 15px;
-  font-size: 1rem;
-  background-color: #f7f8fa;
-  height: 64px;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.custom-input:focus {
-  border-color: #8AB6FF;
-  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
-} */
-
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #aaa;
-}
-
-/* Continue button */
-.em-btn-continue {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-}
-.terms-container-hw {
-  font-size: 12px;
-  color: #6c757d; /* muted text color */
-  text-align: center;
-  margin-top: 15px;
-}
-
-.text-muted-hw {
-  color: #000000;
-  text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
-  font-weight: bold;
-}
-
-
-.em-margin-top{
-  margin-top: 136px;
-}
-.em-back-btn{
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  
-}
-/* mobile screen end */
-
-/* sign up name start */
-/* Full page container */
-.em-fullname-main-container {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100%;
-  padding: 20px;
-  width: 100%;
-  justify-content: center;
-  position: relative;
-}
-
-/* Centered full name box */
-
-
-.em-fullname-box-top {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-  
-/* Main title */
-.em-fullname-heading {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 800;
-  color: #000;
-  margin-bottom: 4px;
-}
-
-.subtext {
-  color: #000;
-font-size: 14px;
-font-weight: 400;
-line-height: 24px;
-text-align: center;
-margin-bottom: 15px;
-}
-
-/* Input container and icon */
-.input-container {
-  position: relative;
-}
-/* 
-.custom-input {
-  padding-left: 45px !important;
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  padding: 12px 15px;
-  font-size: 1rem;
-  background-color: #f7f8fa;
-  height: 64px;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.custom-input:focus {
-  border-color: #8AB6FF;
-  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
-} */
-
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #aaa;
-}
-
-/* Continue button */
-.em-btn-continue {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-}
-.terms-container-hw {
-  font-size: 12px;
-  color: #6c757d; /* muted text color */
-  text-align: center;
-  margin-top: 15px;
-}
-
-.text-muted-hw {
-  color: #000000;
-  text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
-  font-weight: bold;
-}
-
-
-.em-margin-top{
-  margin-top: 136px;
-}
-.em-back-btn{
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  
-}
-/* sign up name end */
 /* passwoed */
 /* Full page container */
 .em-update-main-container {
@@ -4617,14 +3947,7 @@ margin-bottom: 15px;
   box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
 } */
 
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #aaa;
-}
+
 
 /* Update Password button */
 .em-btn-update {
@@ -4638,136 +3961,8 @@ margin-bottom: 15px;
   height: 64px;
 }
 /* password */
-/* sign up opt start */
-/* Full page container */
-.em-otp-main-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100%;
-  padding: 0px 22px;
-  width:100%;
-  justify-content: center;
-  }
-  
-  .em-otp-container {
-    max-height: 511px;
-    /* width: 386px; */
-  }
-  
-  /* Centered OTP box */
-  .em-otp-box {
-    /* max-width: 386px; */
-    height: 437px;
-    gap: 15px;
-  }
-  
-  .em-otp-box-top {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    height: 96px;
-  }
-  
-  .em-otp-box-logo {
-    max-width: 32px;
-    max-height: 32px;
-  }
-  
-  .em-otp-top-text {
-    width: 291px;
-    height: 52px;
-  }
-  
-  /* Main title */
-  .em-otp-heading {
-    margin-bottom: 4px;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 800;
-    color: #000;
-  }
-  .em-otp-desc{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: center;
-    margin-bottom: 10px;
-    
-  }
-  
-  .subtext {
-    color: #000;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    text-align: center;
-  }
-  
-  /* OTP Input Fields */
-  .em-otp-input-container {
-    margin: 40px 0px 0px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
 
-  }
   
-  .otp-input {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    text-align: center;
-    border-radius: 40px;
-    border: 1px solid #ddd;
-    transition: border 0.3s ease-in-out;
-  }
-  
-  .otp-input:focus {
-    border-color: #8AB6FF;
-    box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
-  }
-  
-  /* Verify button */
-  .em-btn-verify {
-    background-color: #7FA9FF;
-    border: none;
-    border-radius: 50px;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    height: 64px;
-  }
-  .otp-input:focus-visible{
-    outline:none;
-  }
-  .terms-container-hw {
-    font-size: 12px;
-    color:#8D8D8D; /* muted text color */
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .text-muted-hw {
-    color: #000000;
-    text-decoration: none;
-    padding: 0 3px;
-    font-weight: bold;
-  }
-  
-  .otp-margin{
-    margin-top: 60px;
-  }
-  .em-back-btn{
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    
-  }
-/* sign up otp end  */
 /* verify email form start*/
 /* Full page container */
 .em-verify-main-container {
@@ -4850,26 +4045,10 @@ margin-bottom: 15px;
   box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
 } */
 
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: #aaa;
-}
+
 
 /* Verify button */
-.em-btn-verify {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-}
+
 
 /* emal form end */
 
@@ -4937,99 +4116,6 @@ margin-bottom: 15px;
 }
 /* wishitemlist end */
 
-/* address page css start */
-.em-address-main-container {
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
-  height: 100%; /* Full viewport height */
-  width: 100%;
-  padding: 20px;
-  overflow-y: scroll; /* Allow scrolling if content exceeds 100vh */
-}
-/* Centered address box */
-.em-address-box-top {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-/* Main title */
-.em-address-heading {
-font-size: 20px;
-font-weight: 800;
-line-height: 24px;
-text-align: center;
-  color: #000;
-  text-align: center;
-  margin-bottom: 4px;
-}
-
-.subtext {
-  color: #000;
-  font-size: 0.875rem;
-  line-height: 1.5rem;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-/* Input fields */
-.input-container {
-  position: relative;
-  margin-bottom: 8px;
-}
-
-.custom-input,
-.custom-select {
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  padding: 12px 15px;
-  font-size: 1rem;
-  background-color: #f7f8fa;
-  height: 64px;
-  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.custom-input:focus,
-.custom-select:focus {
-  border-color: #8AB6FF;
-  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
-}
-
-/* Complete button */
-.em-btn-complete {
-  background-color: #7FA9FF;
-  border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  height: 64px;
-}
-
-.terms-container-hw {
-  font-size: 12px;
-  color: #6c757d; /* muted text color */
-  text-align: center;
-  margin-top: 15px;
-}
-
-.text-muted-hw {
-  color: #000000;
-  text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
-  font-weight: bold;
-}
-.em-margin-top{
-  margin-top: 72px;
-}
-
-.text-muted-hw:hover {
-  text-decoration: underline;
-}
-/* address page css end */
 .hw-unblock-levels-container{
   display: flex;
   flex-direction: column;
@@ -5074,3 +4160,942 @@ margin-bottom: 70px !important;
   background:linear-gradient(to bottom, #a2d9ff, #a8ff8d) !important;
   height: 100% !important;
 }
+
+/* how to unblock image css  start*/
+.htubi-emoji-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 273px;
+  height: 276.37px;
+
+
+}
+
+.htubi-emoji-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16.38px;
+}
+
+.htubi-emoji-arrow {
+  width: 60px; /* Width for arrow icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.htubi-round-arrow {
+  height: 43px;
+  width: 43px;
+}
+
+.htubi-emoji-card {
+
+  width: 77.52px;
+  height: 79.2px;
+  padding: 8.43px;
+  border-radius: 29.49px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  background-color: #f9f9fb; /* Light background for emojis */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px; /* Space between emoji cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.htubi-emoji-card-items {
+  position: relative; /* Relative for positioning lock */
+}
+
+.htubi-emoji-selected {
+  background-color: #A9C5FF; /* Highlight color for selected emoji */
+  color: black;
+  transform: scale(1.05); /* Slightly enlarge the selected emoji */
+}
+
+.htubi-emoji-locked {
+  color: gray;
+  margin-bottom: 1.68;
+}
+
+/* .htubi-emoji-lock {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+} */
+ .htubi-emoji-card-bg {
+  background-color: #90AEFF;
+ }
+
+.htubi-emoji-name {
+  color: #000000;
+font-size: 11.8px;
+font-weight: 600;
+line-height: 16.11px;
+
+}
+
+
+.--bs-btn-active-bg{
+  background-color: #90AEFF
+}
+
+
+/* how to unblock image css  end  */
+
+/* login page css start  */
+/* Full page container */
+.login-main-container{
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  height: 100%;
+  padding: 0px 15px;
+  width:100%;
+  position: relative;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+.login-box {
+  width: 100%;
+  gap: 15px;
+
+}
+.login-box-top{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap:12px;
+}
+.login-box-logo{
+max-width: 32px;
+max-height: 32px;
+}
+/* Main title */
+.login-top-text .login-heading {
+  margin-bottom: 4px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 800;
+  color: #000;
+}
+.login-top-text .subtext {
+  color: #000000;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.login-box-from{
+  margin-top: 15px;
+  width: 100%;
+  gap: 8px;
+  /* opacity: 0px; */
+}
+.or-txt{
+  margin: 15px 0px;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+text-align: center;
+color: #9D9E9F;
+}
+
+/* Input container and icon */
+.input-container {
+  position: relative;
+}
+.login-box-from input{
+
+}
+.social-icon{
+ margin-right: 12px; 
+}
+.custom-input {
+  border-radius: 50px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border */
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #ffffff; /* Light gray background */
+  box-shadow: none;
+  outline: none;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  height: 64px;
+}
+
+.login-input-group-text{
+    border: none !important;
+    outline: none !important;
+    background-color: white !important;
+}
+.input-group-text{
+  padding: 6px 10px !important;
+}
+
+.custom-input:focus {
+  border-color: #8AB6FF; /* Blue focus border */
+  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2); /* Subtle shadow on focus */
+}
+
+
+/* .forgot-password {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #8AB6FF; 
+  text-decoration: none;
+} */
+
+/* Login button */
+.btn-login {
+  background-color: #7FA9FF;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #000000;
+  height: 64px;
+  opacity: 100%;
+
+}
+.btn-google {
+  border-radius: 100px;
+  font-size: 16px;
+  padding: 10px 15px;
+  height: 64px;
+  color: #344054;
+  font-weight: 500;
+line-height: 24px;
+margin-bottom: 8px;
+background-color: white !important;
+border: none;
+}
+.login-create-acc-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.login-addicon{
+  
+}
+/* Divider with "Or" */
+.divider {
+  position: relative;
+  color: #888;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  height: 1px;
+  /* width: 45%; */
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* Google sign-up button */
+
+
+.btn-google i {
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+/* Create new account link */
+.create-new-con{
+  /* height: 437px; */
+  width: 100%;
+  gap: 15px;
+}
+
+.create-account {
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 12px;
+  height: 64px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+.create-account a:hover {
+  background-color: #e1e4e8;
+}
+
+.create-account a i {
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.invalid-feedback {
+  border-radius: 10px;
+  color: red;
+  font-size: 14px;
+}
+
+
+.login-addicon{
+  margin-right: 10px;
+}
+.login-margin-top{
+      position: absolute;
+    bottom: 0px;
+    margin-bottom: 9px;
+
+}
+/* login page css end  */
+/* otp screen css start */
+/* Full page container */
+.em-otp-main-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  height: 100%;
+  padding: 0px 14px;
+  width:100%;
+  justify-content: center;
+  }
+  
+  
+  /* Centered OTP box */
+  .em-otp-box {
+    gap: 15px;
+  }
+  
+  .em-otp-box-top {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .em-otp-box-logo {
+    max-width: 32px;
+    max-height: 32px;
+  }
+  
+ 
+  /* Main title */
+  .em-otp-heading {
+    margin-bottom: 4px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 800;
+    color: #000;
+  }
+  .em-otp-desc{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 10px !important;
+    
+  }
+  
+  .subtext {
+    color: #000;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+  
+  /* OTP Input Fields */
+  .em-otp-input-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+
+  }
+  
+  .otp-input {
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 40px;
+    border: 1px solid #D6BBFB;
+    transition: border 0.3s ease-in-out;
+    padding: 8px;
+    
+  }
+  .em-otp-subtext {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 15px !important;
+  }
+  
+  .otp-input:focus {
+    border-color: #D6BBFB;
+    box-shadow: 0 0 0 4px #f4ebff;
+  }
+  
+  /* Verify button */
+
+  .em-btn-verify {
+    background-color: #90AEFF;
+    border: none;
+    border-radius: 50px;
+    line-height: 24px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight:800;
+    color: rgb(0, 0, 0);
+    height: 64px;
+  }
+  .btn-primary{
+    background-color: #90AEFF !important;
+    color: black !important;
+    border-radius: 100px !important;
+    border-color: #90AEFF !important;
+    font-weight: 800 !important;
+    
+  }
+  .otp-input:focus-visible{
+    outline:none;
+  }
+  
+  .text-muted-hw {
+    color: #000000;
+    text-decoration: none;
+    padding: 0 3px;
+    font-weight: bold;
+  }
+  
+  .text-muted-hw:hover {
+    text-decoration: underline;
+  }
+  
+  .otp-margin{
+    margin-top: 60px;
+  }
+  .em-back-btn{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    
+  }
+  .otp-terms-container-hw {
+    font-size: 12px;
+    color:#8D8D8D; /* muted text color */
+    text-align: center;
+    margin-bottom: 111px;
+  }
+
+
+/* otp screen css end  */
+/* signup email css start */
+
+/* Full page container */
+.signup-login-main-container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+    height: 100%;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+.signup-login-box-top {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-login-box-logo {
+    max-width: 32px;
+    max-height: 32px;
+    margin-bottom: 12px !important;
+}
+
+/* Main title */
+.signup-login-heading {
+    color: #000;
+    margin-bottom: 4px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+}
+
+.signup-subtext {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 15px !important;
+}
+
+/* Input container and icon */
+.signup-input-container {
+    position: relative;
+}
+
+.signup-custom-input {
+  border-radius: 50px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border */
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #ffffff; /* Light gray background */
+  box-shadow: none;
+  outline: none;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  height: 64px;
+}
+
+.signup-custom-input:focus {
+    border-color: #8AB6FF;
+    box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
+}
+
+.signup-input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 2px;
+}
+
+/* Login button */
+.signup-btn-login {
+    background-color: #7FA9FF;
+    border: none;
+    border-radius: 50px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    height: 64px;
+}
+
+.signup-terms-container-hw {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color:#8D8D8D; /* muted text color */
+    text-align: center;
+    margin-bottom: 136px;
+}
+
+
+.signup-text-muted-hw {
+    text-decoration: none;
+    padding: 0 3px; /* small padding to add space between links and text */
+    font-weight: bold;
+    color: #000;
+}
+
+.signup-text-muted-hw:hover {
+    text-decoration: underline;
+}
+
+.signup-login-margin {
+    margin-top: 163px;
+}
+
+.signup-back-btn {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+/* signup emial css endd */
+
+
+
+
+
+/* signup mobile css start */
+/* Full page container */
+.mob-em-phone-main-container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+/* Centered phone box */
+.mob-em-phone-box {
+  gap: 15px;
+}
+
+.mob-em-phone-box-top {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 96px;
+  margin-bottom: 15px;
+}
+
+.mob-em-phone-box-logo {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.mob-em-phone-top-text {
+  width: 291px;
+  height: 52px;
+}
+
+/* Main title */
+.mob-em-phone-heading {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 800;
+  color: #000;
+}
+
+.mob-subtext {
+  color: #000;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Input container and icon */
+.mob-input-container {
+  position: relative;
+}
+
+.mob-custom-input {
+  border-radius: 50px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border */
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #ffffff; /* Light gray background */
+  box-shadow: none;
+  outline: none;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  height: 64px;
+}
+
+.mob-custom-input:focus {
+  border-color: #8AB6FF;
+  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
+}
+
+.mob-input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #aaa;
+}
+
+/* Continue button */
+.mob-em-btn-continue {
+  background-color: #7FA9FF;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  height: 64px;
+}
+
+.mob-terms-container-hw {
+  font-size: 12px;
+  color: #8D8D8D; /* muted text color */
+  text-align: center;
+  margin-top: 15px;
+}
+
+.mob-text-muted-hw {
+  color: #000000;
+  text-decoration: none;
+  padding: 0 5px; /* spacing around the links */
+  font-weight: bold;
+}
+
+.mob-text-muted-hw:hover {
+  text-decoration: underline;
+}
+
+.mob-em-margin-top {
+  margin-top: 136px;
+}
+
+.mob-em-back-btn {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+/* signup mobile css end  */
+
+
+
+
+/* sign up name css start */
+/* Full page container */
+.em-name-main-container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  height: 100%;
+  padding: 20px;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+/* Centered name box */
+.em-name-box-top {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Main title */
+.em-name-heading {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.em-name-subtext {
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 15px ;
+}
+
+/* Input container and icon */
+.input-container {
+  position: relative;
+}
+
+
+
+.custom-input:focus {
+  border-color: #8AB6FF;
+  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #aaa;
+}
+
+/* Continue button */
+.em-btn-continue {
+  background-color: #7FA9FF;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  height: 64px;
+}
+
+.terms-container-hw {
+  font-size: 12px;
+  color: #6c757d; /* muted text color */
+  text-align: center;
+  margin-top: 15px;
+}
+
+.text-muted-hw {
+  color: #000000;
+  text-decoration: none;
+  padding: 0 5px; /* spacing around the links */
+  font-weight: bold;
+}
+
+.text-muted-hw:hover {
+  text-decoration: underline;
+}
+
+.em-margin-top {
+  margin-top: 136px;
+}
+
+.em-back-btn {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+/* sign up name csss end */
+
+/* address page css start */
+
+/* Full page container */
+.address-main-container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
+  height: 100%; /* Full viewport height */
+  width: 100%;
+  padding: 20px;
+  overflow-y: scroll; /* Allow scrolling if content exceeds 100vh */
+}
+
+/* Centered address box */
+.address-box-top {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Main title */
+.address-heading {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.address-subtext {
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 15px !important;
+    line-height: 24px;
+}
+
+/* Input fields */
+.address-input-container {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.address-custom-input,
+.address-custom-select {
+  border-radius: 50px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border */
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #ffffff; /* Light gray background */
+  box-shadow: none;
+  outline: none;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  height: 64px;
+}
+
+.address-custom-input:focus,
+.address-custom-select:focus {
+  border-color: #8AB6FF;
+  box-shadow: 0 0 0 4px rgba(138, 182, 255, 0.2);
+}
+
+/* Complete button */
+.address-btn-complete {
+  background-color: #7FA9FF;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  height: 64px;
+}
+
+.address-terms-container {
+  font-size: 12px;
+  color: #6c757d; /* muted text color */
+  text-align: center;
+  margin-top: 15px;
+}
+
+.address-text-muted {
+  color: #000000;
+  text-decoration: none;
+  padding: 0 5px; /* spacing around the links */
+  font-weight: bold;
+}
+
+.address-margin-top {
+  margin-top: 72px;
+}
+
+.address-text-muted:hover {
+  text-decoration: underline;
+}
+.address-input-fill{
+  border: none !important;
+}
+.address-term-container{
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+  color:#8D8D8D; /* muted text color */
+  text-align: center;
+  margin-bottom: 72px;
+}
+.address-dropdown-icon{
+  position: absolute;
+  right: 25px;
+  top: 34%;
+}
+
+
+/* address page css end  */

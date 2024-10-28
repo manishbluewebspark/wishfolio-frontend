@@ -10,7 +10,6 @@ import sunIcon from '../../images/emoji2.png';
 import treeIcon from '../../images/emoji3.png';
 import waveIcon from '../../images/emoji4.png';
 import lockIcon from '../../images/lock-circle.jpg'; // Ensure path to lock icon
-import "./style.css"; // Import custom styles
 
 const HowToUnblockImg = ({ selected, handleSelect }) => {
   // Define emoji levels or options
