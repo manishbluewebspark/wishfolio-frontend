@@ -16,6 +16,7 @@ import axios from "axios";
 import LogoutModal from "../Components/Modals/LogoutModal"; // Import the new LogoutModal component
 import { fetchUserData } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
+import righticon from '../images/arrow-short-right.svg';
 const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -134,19 +135,25 @@ const Profile = () => {
       {/* Menu Section with List Items */}
       <div className="pf-menu">
         <div
-          className="pf-menu-item d-flex align-items-center"
+          className="pf-menu-item d-flex justify-content-between align-items-center"
           onClick={() => router.push("/orderhistorypage")}
         >
+          <div className="d-flex align-items-center">
           <span className="pf-icon-con">
             <Image src={myordericon} alt="Orders" width={20} height={20} />
           </span>
           <span className="pf-my-text">My Orders</span>
+          </div>
+          <div>
+          <Image src={righticon} alt="Orders" width={20} height={20} />
+          </div>
         </div>
 
         <div
-          className="pf-menu-item d-flex align-items-center"
+          className="pf-menu-item justify-content-between d-flex align-items-center"
           onClick={() => router.push("/generaldetailpage")}
         >
+          <div className="d-flex align-items-center">
           <span className="pf-icon-con">
             <Image
               src={GNdetailsicon}
@@ -156,26 +163,40 @@ const Profile = () => {
             />
           </span>
           <span className="pf-my-text">General Details</span>
+          </div>
+          <div>
+          <Image src={righticon} alt="Orders" width={20} height={20} />
+          </div>
         </div>
 
         <div
-          className="pf-menu-item d-flex align-items-center"
+          className="pf-menu-item justify-content-between d-flex align-items-center"
           onClick={() => router.push("/howitworkpage")}
         >
+          <div className="d-flex align-items-center">
           <span className="pf-icon-con">
             <Image src={howiticon} alt="Help" width={20} height={20} />
           </span>
           <span className="pf-my-text">How is it working?</span>
+          </div>
+          <div>
+          <Image src={righticon} alt="Orders" width={20} height={20} />
+          </div>
         </div>
 
         <div
-          className="pf-menu-item d-flex align-items-center"
+          className="pf-menu-item justify-content-between d-flex align-items-center"
           onClick={() => router.push("/termsandconditions")}
         >
-          <span className="pf-icon-con">
+        <div className="d-flex align-items-center">
+        <span className="pf-icon-con">
             <Image src={changepass} alt="Terms" width={20} height={20} />
           </span>
           <span className="pf-my-text">Terms & Conditions</span>
+        </div>
+        <div>
+        <Image src={righticon} alt="Orders" width={20} height={20} />
+        </div>
         </div>
       </div>
 

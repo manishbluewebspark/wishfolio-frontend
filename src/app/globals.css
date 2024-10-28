@@ -1,14 +1,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  font-family: 'Manrope';
+  font-family: 'Manrope' !important;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    font-family: 'Manrope';
+    font-family: 'Manrope' !important;
     
   }
 }
@@ -19,11 +19,11 @@ html {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  font-family: 'Manrope';
+  font-family: 'Manrope' !important;
 }
 
 body{
-  font-family: 'Manrope';
+  font-family: 'Manrope' !important;
   font-optical-sizing: auto;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -50,7 +50,7 @@ h1, h2, h3, p {
   background: linear-gradient(180deg, #90AEFF -38.2%, #F7F9FB 100%);
 } */
 .body-main-container {
-  font-family: 'Manrope';
+  font-family: 'Manrope' !important;
   transform: scale(0.8); 
   transform-origin: top center;
   width: 125%; 
@@ -74,7 +74,7 @@ h1, h2, h3, p {
   font-size: 16px !important ; 
 } */
 body {
-  font-family: 'Manrope';
+  font-family: 'Manrope' !important;
   touch-action: manipulation; /* Prevent double-tap zoom */
 }
 /* .body-main-container {
@@ -104,7 +104,7 @@ body {
   flex-direction: column;
   height: 100%;
   align-items: center;
-  font-family: 'Manrope';
+  font-family: 'Manrope' !important;
 }
 
 * {
@@ -667,6 +667,7 @@ width: 100%;
   font-size: 16px;
   font-weight: 800;
   line-height: 24px;
+  margin-bottom: 0px !important;
 }
 
 .bck-save-btn {
@@ -2118,23 +2119,16 @@ border-radius: 30px;
 background-color: #90AEFF;
 }
 
-.pta-upload-link {
-display: block;
-color: #90AEFF;
-font-size: 14px;
-margin-bottom: 10px;
-cursor: pointer;
-}
 /* orderhistory end */
 
 /* payment method start */
 /* Container */
 .ptm-container {
-  max-width: 100%;
+  width: 100%;
   padding: 20px;
   background-color:#F7F7F7;
-  border-radius: 25px;
-  /* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);  */
+  border-radius: 24px;
+  line-height: 14.09px;
 }
 
 /* Title */
@@ -2147,16 +2141,9 @@ margin-bottom: 14.09px;
 
 }
 
-/* Payment Method Container */
-.ptm-payment-options {
-  /* background-color: #fff; */
-  /* border-radius: 12px; */
-  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
-}
-
 .ptm-payment-method {
-  padding: 15px;
-  border-radius: 35px;
+  padding: 10px 15px;
+  border-radius: 50px;
   height: 64px;
   margin-bottom: 8px;
   background-color: white;
@@ -2165,6 +2152,7 @@ margin-bottom: 14.09px;
 /* Icons */
 .ptm-icon {
   margin-right: 10px;
+  opacity: 100%;
 }
 
 /* Arrow */
@@ -2207,12 +2195,11 @@ cursor: pointer;
 /* Title and Subtitle */
 .dp-title {
 font-size: 20px;
-margin-bottom: 0px !important;
 font-weight: 800;
 color: #000;
 line-height: 24px;
 text-align: center;
-margin-bottom: 4px;
+margin-bottom: 4px !important;
 
 }
 
@@ -2241,11 +2228,11 @@ line-height: 21.86px;
 color: #000;
 
 }
-
 .dp-balance {
 font-size: 12px;
 font-weight: 400;
 line-height: 16.39px;
+color: #696969;
 
 }
 .dp-balance strong {
@@ -2278,20 +2265,19 @@ margin-right: 7.04px;
 border: none;
 background-color: transparent;
 font-size: 34px;
-font-weight: 600;
+font-weight: 800;
 color: #000000;
 text-align: left;
-width: 150px;
+width: 100%;
 }
 
 .dp-amount-input:disabled {
 cursor: not-allowed;
+opacity: 20%;
 }
 
 /* Quick Amount Buttons */
 .dp-quick-amount {
-width: 304px;
-height: 30px;
 gap: 7px;
 display: flex;
 margin-top: 28.18px;
@@ -2300,10 +2286,10 @@ margin-top: 28.18px;
 .dp-quick-btn {
 width: 48px;
 height: 30px;
-background-color: #f0f0f0;
+background-color: #EEEEEE;
 border: none;
-border-radius: 20px;
-padding: 10px 20px;
+border-radius: 100px;
+padding: 8px 15px;
 font-size: 12px;
 font-weight: 400;
 color: #000000;
@@ -2344,13 +2330,13 @@ text-align: center;
 background-color: #d0e1ff;
 color: #999;
 border: none;
-padding: 15px 0;
+padding: 12px 0;
 width: 100%;
 border-radius: 50px;
-font-size: 18px;
-font-weight: bold;
+font-size: 16px;
+font-weight: 800;
 cursor: not-allowed;
-height: 64px;
+height: 60px;
 }
 
 .dp-continue-btn-active{
@@ -2604,17 +2590,18 @@ color: #000;
 /* Container */
 .pta-container {
 margin: 0 auto;
-padding: 20px;
+padding: 0px 20px;
 background-color: #ffffff;
 }
 
 /* Transaction ID Section */
 .pta-input-section {
 background-color: #F7F7F7;
-border-radius: 10px;
+border-radius: 24px;
+line-height: 14.09px;
 padding: 20px;
 margin-bottom: 25px;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+/* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Title */
@@ -2631,9 +2618,11 @@ text-align: left;
 /* Input Field */
 .pta-input {
 width: 100%;
-padding: 12px;
+padding: 15px 20px;
 border-radius: 50px;
-border: 1px solid #ccc;
+border: none;
+background-color: white;
+color: #797B7C;
 margin-bottom: 14.09px;
 font-size: 14px;
 height: 64px;
@@ -2641,6 +2630,10 @@ height: 64px;
 
 /* File Upload Link */
 .pta-upload-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 font-weight: 400;
 line-height: 19.12px;
 text-align: left;
@@ -2650,8 +2643,9 @@ color: #7094F4;
 font-size: 14px;
 cursor: pointer;
 text-decoration: none;
-margin-bottom: 14.09px;
+margin-bottom: 14.59px;
 }
+
 .pta-attach{
   margin-right: 4px;
   color: #7094F4;
@@ -2678,9 +2672,10 @@ color: #000;
 border: none;
 border-radius: 50px;
 font-size: 16px;
-font-weight: bold;
+font-weight: 800;
+line-height: 24px;
 cursor: pointer;
-height: 64px;
+height: 60px;
 
 font-weight: 800;
 line-height: 24px;
@@ -2722,11 +2717,11 @@ color: #696969;
 /* New Deposit Section */
 .pta-deposit-section {
 background-color:#F7F7F7;
-
-border-radius: 10px;
+line-height: 14.09px;
+border-radius: 24px;
 padding: 20px;
 text-align: center;
-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+/* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Deposit Title */
@@ -2760,7 +2755,7 @@ color: #000;
 border: none;
 border-radius: 50px;
 cursor: pointer;
-height: 64px;
+height: 60px;
 font-size: 16px;
 font-weight: 800;
 line-height: 24px;
@@ -3712,8 +3707,13 @@ text-align: center;
   /* background-color: white; */
   color: red;
   border: none;
-  padding: 10px 20px;
+  border-radius: 20px;
+  padding: 15px;
   background-color:#F7F7F7;
+  font-size: 14px;
+  font-weight: 600;
+  height: 50px;
+
 }
 
 .pf-footer {
