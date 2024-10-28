@@ -54,23 +54,26 @@ const ProductModal = ({
             if (response.status === 201) {
               openSuccessModal();
             } else {
-              // console.error("Deposit failed:", response);
-              toast.error("Donation failed");
+              toast.error("Donation failed, please try again.");
             }
           } catch (error) {
-            // console.error("An error occurred during the deposit:", error);
-            toast.error("An error occurred during the Donation");
+            toast.error("An error occurred during the Donation.");
           }
         } else {
-          toast.error("Insufficient balance");
+          toast.error(
+            "The donation amount exceeds the remaining required amount for this product."
+          );
         }
       } else {
-        toast.error("Insufficient balance");
+        toast.error(
+          "Your account balance is insufficient to complete the donation."
+        );
       }
     } else {
-      window.alert("Please login first");
+      window.alert("Please login first.");
     }
   };
+
   const getSumOfAmounts = (donations) => {
     return donations.reduce((total, donation) => total + donation.amount, 0);
   };

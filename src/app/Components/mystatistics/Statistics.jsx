@@ -13,23 +13,52 @@ import {
   clearStatisticData,
 } from "../../store/slices/statisticSlice";
 import { fetchLevels } from "../../store/slices/levelsSlice";
-
+import { fetchUserData } from "../../store/slices/userSlice";
+import axios from "axios";
 const Statistics = (props) => {
   const dispatch = useDispatch();
   const { statisticData } = useSelector((state) => state.statistic);
   const [minDonation, setMinDonation] = useState({});
   const { levels, loading } = useSelector((state) => state.levels);
+  const { userData } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(fetchLevels());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   if (levels?.length > 0) {
+  //     setMinDonation(levels[0]);
+  //   }
+  // }, [levels, statisticData]);
   useEffect(() => {
-    if (levels?.length > 0) {
-      setMinDonation(levels[0]);
-    }
-  }, [levels, statisticData]);
+    // Fetch user data from localStorage and Redux on component mount
+    const getUserData = () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        const uData = JSON.parse(user);
+        dispatch(fetchUserData(uData.id)); // Fetch data using user ID from localStorage
+      }
+    };
+    getUserData();
+  }, [dispatch]);
+  useEffect(() => {
+    // Fetch level data based on user level
+    const fetchLevelData = async () => {
+      if (userData?.userLevel) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/level/byUser/${userData.userLevel}`
+          );
+          setMinDonation(response.data?.data);
+        } catch (error) {
+          console.error("Error fetching level data:", error);
+        }
+      }
+    };
 
+    fetchLevelData();
+  }, [userData]);
   useEffect(() => {
     const getUserData = () => {
       const userData = localStorage.getItem("user");

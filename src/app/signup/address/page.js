@@ -12,7 +12,7 @@ import BackButton from "../../Components/Button/BackButton";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const AddressForm = () => {
   const { email, name, mobile } = useSelector((state) => state.signup);
-  const [country, setCountry] = useState("India");
+  // const [country, setCountry] = useState("India");
   const [state, setState] = useState("Kerala");
   const [city, setCity] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
@@ -35,7 +35,7 @@ const AddressForm = () => {
 
     const formData = {
       name: name,
-      country: country,
+      // country: country,
       state: state,
       address_line_1: addressLine1,
       address_line_2: addressLine2,
@@ -89,16 +89,16 @@ const AddressForm = () => {
           {/* Address Form */}
           <form onSubmit={handleSubmit}>
             {/* Dropdown for country */}
-            <div className="input-container">
+            {/* <div className="input-container">
               <select
                 className="form-select custom-select"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
               >
                 <option value="India">🇮🇳 India</option>
-                {/* Add more country options as needed */}
+               
               </select>
-            </div>
+            </div> */}
 
             {/* Dropdown for state */}
             <div className="input-container">
