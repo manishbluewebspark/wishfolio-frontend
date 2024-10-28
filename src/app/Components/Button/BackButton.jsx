@@ -7,9 +7,14 @@ import leftArrowIcon from "../../images/arrow-left.png";
 
 const BackButton = (props) => {
   const router = useRouter(); // Initialize the router
+  console.log("props", props?.customeRoute);
 
   const handleBackClick = () => {
-    router.back(); // This will navigate to the previous page
+    if (props?.customeRoute) {
+      router.push(props?.customeRoute);
+    } else {
+      router.back();
+    }
   };
 
   return (

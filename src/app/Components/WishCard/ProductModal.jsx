@@ -5,10 +5,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { toast } from "react-toastify";
 // import "./style.css"; // Custom styles for modal
 import Statistics from "../mystatistics/Statistics";
-
+import profilePic from "../../images/profile.svg";
 import MyDoner from "../MyDoner/MyDoner";
+import CurrencyName from "../Comman/CurrencyName";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ProductModal = ({
@@ -30,26 +33,39 @@ const ProductModal = ({
 
   const handleDonateClick = async () => {
     if (userData?._id) {
-      const formData = {
-        productId: product.productId,
-        userId: userData._id,
-        amount: amout,
-        wiseProductId: product._id,
-      };
+      if (userData?.accountBalance >= amout) {
+        if (
+          product.productPrice - getSumOfAmounts(product.donationsDetails) >=
+          amout
+        ) {
+          const formData = {
+            productId: product.productId,
+            userId: userData._id,
+            amount: amout,
+            wiseProductId: product._id,
+          };
 
-      try {
-        const response = await axios.post(
-          `${API_BASE_URL}/product/donation`,
-          formData
-        );
+          try {
+            const response = await axios.post(
+              `${API_BASE_URL}/product/donation`,
+              formData
+            );
 
-        if (response.status === 201) {
-          openSuccessModal();
+            if (response.status === 201) {
+              openSuccessModal();
+            } else {
+              // console.error("Deposit failed:", response);
+              toast.error("Donation failed");
+            }
+          } catch (error) {
+            // console.error("An error occurred during the deposit:", error);
+            toast.error("An error occurred during the Donation");
+          }
         } else {
-          console.error("Deposit failed:", response);
+          toast.error("Insufficient balance");
         }
-      } catch (error) {
-        console.error("An error occurred during the deposit:", error);
+      } else {
+        toast.error("Insufficient balance");
       }
     } else {
       window.alert("Please login first");
@@ -84,18 +100,23 @@ const ProductModal = ({
             <p>
               Wish by{" "}
               <Image
-                src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.wishingByImage}`}
+                src={
+                  product.wishingByImage
+                    ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.wishingByImage}`
+                    : profilePic
+                }
                 alt="User Profile"
                 width={20}
                 height={20}
                 className="profile-pic"
                 style={{ marginRight: "4px" }}
               />{" "}
-              <strong style={{color:'black'}}>{product.wishingBy}</strong>
+              <strong style={{ color: "black" }}>{product.wishingBy}</strong>
             </p>
 
             <p className="price">
-              ₹ {getSumOfAmounts(product.donationsDetails) || 0}/ ₹
+              <CurrencyName /> {getSumOfAmounts(product.donationsDetails) || 0}/
+              <CurrencyName />
               {product.productPrice?.toLocaleString()}{" "}
               <span className="donated"> Donated</span>
             </p>
@@ -163,7 +184,10 @@ const ProductModal = ({
                   <button className="donate-btn" onClick={handleDonateClick}>
                     Donate
                   </button>
-                  <p>Current Balance: ₹{userData?.accountBalance || 0}</p>
+                  <p>
+                    Current Balance: <CurrencyName />
+                    {userData?.accountBalance || 0}
+                  </p>
                 </>
               )}
             </div>

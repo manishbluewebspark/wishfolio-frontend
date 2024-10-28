@@ -53,7 +53,9 @@ const BottomNav = () => {
     },
     {
       name: "Profile",
-      icon: profileIcon,
+      icon: userData?.imageUrl
+        ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
+        : profileIcon,
       activeIcon: userData?.imageUrl
         ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
         : profileIcon,
@@ -81,7 +83,9 @@ const BottomNav = () => {
           {options.map((option) => (
             <div
               key={option.name}
-              className={`col ${selected === option.name ? "active-item" : ""}`}
+              className={`col cursor-pointer ${
+                selected === option.name ? "active-item" : ""
+              }`}
               onClick={() => handleSelect(option)}
             >
               <div className="icon-container-bn">

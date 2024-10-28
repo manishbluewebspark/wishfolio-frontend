@@ -15,10 +15,19 @@ export default function OtpForm() {
   const [otpValues, setOtpValues] = useState(["", "", "", ""]); // State for OTP inputs
   const dispatch = useDispatch();
   const { email } = useSelector((state) => state.signup);
+
   const handleInputChange = (index, value) => {
-    const newOtpValues = [...otpValues];
-    newOtpValues[index] = value; // Update the specific OTP input
-    setOtpValues(newOtpValues);
+    if (/^\d?$/.test(value)) {
+      // Allow only single digits (0-9)
+      const newOtpValues = [...otpValues];
+      newOtpValues[index] = value; // Update the specific OTP input
+      setOtpValues(newOtpValues);
+
+      // Move to the next input field if value is entered and not the last input
+      if (value && index < otpValues.length - 1) {
+        document.getElementsByClassName("otp-input")[index + 1].focus();
+      }
+    }
   };
 
   const handleOtpSubmit = async () => {
@@ -33,7 +42,6 @@ export default function OtpForm() {
       console.log(response.data);
 
       localStorage.setItem("user", JSON.stringify(response.data));
-      // dispatch(setOtp(otp));
 
       if (response.status === 201) {
         toast.success("Login successfully");

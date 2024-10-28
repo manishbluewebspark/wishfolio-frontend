@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import prodimg from "../../images/watchimg.png"; // Path to your image
 import MyDoner from "../MyDoner/MyDoner";
-
+import CurrencyName from "../Comman/CurrencyName";
 const OrderHistoryModal = ({ isModalOpen, closeModal, order }) => {
   if (!isModalOpen) return null; // If modal is not open, return nothing
   const getSumOfAmounts = (donations) => {
@@ -26,7 +26,8 @@ const OrderHistoryModal = ({ isModalOpen, closeModal, order }) => {
             layout="responsive"
           />
           <h4>
-            ₹{getSumOfAmounts(order.donationsDetails) || 0} / ₹
+            <CurrencyName />
+            {getSumOfAmounts(order.donationsDetails) || 0} /<CurrencyName />
             {order.productPrice} Donated
           </h4>
           <p>{order.productName}</p>

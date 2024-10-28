@@ -7,7 +7,9 @@ import GNdetailsicon from "../images/edit-2.svg";
 import changepass from "../images/note-2.svg";
 import howiticon from "../images/message-question.svg";
 import imageUploadButton from "../images/camera.png";
-import userAvatar from "../images/duo-icons_user.png";
+// import userAvatar from "../images/duo-icons_user.png";
+import userAvatar from "../images/profile.svg";
+import CurrencyName from "../Components/Comman/CurrencyName";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -76,7 +78,6 @@ const Profile = () => {
       }
     }
   };
-  console.log("user", userData);
 
   return (
     <div className="pf-profile-container">
@@ -95,16 +96,6 @@ const Profile = () => {
           height={90}
         />
         </div>
-      <div className="pf-imgUploadBtn-thmnil">
-      <Image
-          src={imageUploadButton}
-          alt="Upload Profile Picture"
-          className="pf-profile-image-upload"
-          width={14}
-          height={14}
-          onClick={handleImageUploadClick} // Trigger file input on button click
-        />
-      </div>
 
         {/* Hidden file input */}
         <input
@@ -118,7 +109,7 @@ const Profile = () => {
 
       <div className="pf-header-2">
         <h4 className="pf-user-name text-center">{userData?.name}</h4>
-        <p className="pf-phone-number text-center">{userData?._id}</p>
+        <p className="pf-phone-number text-center">{userData?.userNumber}</p>
       </div>
 
       {/* Balance Section with "Deposit" Button */}
@@ -126,7 +117,10 @@ const Profile = () => {
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <p className="pf-balance-label">Available Balance</p>
-            <h3 className="pf-balance-amount">₹{userData?.accountBalance || '0.00'}</h3>
+            <h3 className="pf-balance-amount">
+              <CurrencyName />
+              {userData?.accountBalance || '0.00'}
+            </h3>
           </div>
           <button
             onClick={() => router.push("/predeposit")}
