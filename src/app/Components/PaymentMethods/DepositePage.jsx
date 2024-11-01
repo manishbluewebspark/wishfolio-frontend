@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import "./paymethod.css"; // Custom CSS file
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"; // To fetch payment data from Redux
-import { useRouter } from "next/navigation"; // For navigation
+import { useRouter, useParams } from "next/navigation"; // For navigation
 import axios from "axios"; // Import axios
 import arrowleftIcon from "../../images/arrow-left.png";
 import {
@@ -21,7 +21,10 @@ const DepositPage = () => {
   const [amount, setAmount] = useState(""); // Store user input amount
   const [isButtonEnabled, setIsButtonEnabled] = useState(false); // Enable/Disable button
   const paymentData = useSelector((state) => state.payment); // Assuming you have a Redux state for payment
+  // const router = useRouter();
   const router = useRouter();
+  const params = useParams();
+
   const handleBackClick = () => {
     router.push("/paymentmethodpage");
   };
@@ -64,7 +67,7 @@ const DepositPage = () => {
       };
       dispatch(updateAmount(amount));
       dispatch(updateTransactionId(formData.transactionId));
-      router.push("/transferamount");
+      router.push(`/transferamount/${params.id}`);
       // try {
       //   // Make API request using Axios
       //   const response = await axios.post(
@@ -87,7 +90,7 @@ const DepositPage = () => {
 
   return (
     <>
-    {/* Back Button */}
+      {/* Back Button */}
       <BackButton title={"Back"}></BackButton>
       <div className="container dp-container">
         {/* Title and Description */}

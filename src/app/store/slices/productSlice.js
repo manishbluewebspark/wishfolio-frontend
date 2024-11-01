@@ -3,12 +3,10 @@ import axios from "axios";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchByCategory",
-  async (categoryId) => {
+  async ({ categoryId, userLevel }) => {
     const response = await axios.get(
-      `${API_BASE_URL}/product/productByCategory?categoryId=${categoryId}`
+      `${API_BASE_URL}/product/productByCategory?categoryId=${categoryId}&userLevel=${userLevel}`
     );
-    console.log(response.data, "response.data");
-
     return response.data?.data;
   }
 );

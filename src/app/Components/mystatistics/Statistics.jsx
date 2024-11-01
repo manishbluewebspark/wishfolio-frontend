@@ -61,15 +61,20 @@ const Statistics = (props) => {
   }, [userData]);
   useEffect(() => {
     const getUserData = () => {
-      const userData = localStorage.getItem("user");
+      // const userData = localStorage.getItem("user");
       if (userData) {
-        const uData = JSON.parse(userData);
-        dispatch(fetchStatisticData(uData.id));
+        // const uData = JSON.parse(userData);
+        dispatch(
+          fetchStatisticData({
+            id: userData._id,
+            userLevel: userData.userLevel,
+          })
+        );
       }
     };
 
     getUserData();
-  }, [dispatch]);
+  }, [dispatch, userData]);
 
   const getSumOfAmounts = (donations) => {
     return donations?.reduce((total, donation) => total + donation.amount, 0);

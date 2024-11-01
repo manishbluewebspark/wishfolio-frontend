@@ -43,6 +43,7 @@ const ProductModal = ({
             userId: userData._id,
             amount: amout,
             wiseProductId: product._id,
+            userLevel: userData?.userLevel,
           };
 
           try {

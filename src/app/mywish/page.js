@@ -9,10 +9,12 @@ import Myorder from "../Components/mystatistics/Myorder";
 import { useRouter } from "next/navigation";
 import { fetchMyWish } from "../store/slices/myWishSlice";
 import Product from "../Components/myWish/Product";
+import { fetchUserData } from "../store/slices/userSlice";
+import axios from "axios";
 const WishFolio = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-
+  const { userData } = useSelector((state) => state.user);
   const { statisticData } = useSelector((state) => state.statistic);
   const { levels } = useSelector((state) => state.levels);
   const { wishData, isLoading, error } = useSelector(
@@ -21,12 +23,40 @@ const WishFolio = () => {
 
   const [minDonation, setMinDonation] = useState({});
 
-  // Set minimum donation requirement based on levels
   useEffect(() => {
-    if (levels?.length > 0) {
-      setMinDonation(levels[0]);
-    }
-  }, [levels]);
+    // Fetch user data from localStorage and Redux on component mount
+    const getUserData = () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        const uData = JSON.parse(user);
+        dispatch(fetchUserData(uData.id)); // Fetch data using user ID from localStorage
+      }
+    };
+    getUserData();
+  }, [dispatch]);
+  useEffect(() => {
+    // Fetch level data based on user level
+    const fetchLevelData = async () => {
+      if (userData?.userLevel) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/level/byUser/${userData.userLevel}`
+          );
+          setMinDonation(response.data?.data);
+        } catch (error) {
+          console.error("Error fetching level data:", error);
+        }
+      }
+    };
+
+    fetchLevelData();
+  }, [userData]);
+  // Set minimum donation requirement based on levels
+  // useEffect(() => {
+  //   if (levels?.length > 0) {
+  //     setMinDonation(levels[0]);
+  //   }
+  // }, [levels]);
 
   // Fetch user's wish data on component mount
   useEffect(() => {
