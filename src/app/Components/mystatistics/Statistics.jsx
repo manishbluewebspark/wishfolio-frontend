@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
 import icon1 from "../../images/dollar-circle.svg";
 import icon2 from "../../images/darkdrop.svg";
-import iconTick from "../../images/tick-circle.png";
+import iconTick from "../../images/tick-circle-new.svg";
 import CurrencyName from "../Comman/CurrencyName";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -92,7 +92,7 @@ const Statistics = (props) => {
           ? "#F7F7F7"
           : statisticData?.data?.length >= minDonation.numberOfDonations &&
             getSumOfAmounts(statisticData?.data) >= minDonation?.minimumDonation
-          ? "#31B776"
+          ? "#F7F7F7"
           : "#F7F7F7",
       }}
     >
@@ -119,7 +119,7 @@ const Statistics = (props) => {
                     minDonation.numberOfDonations &&
                   getSumOfAmounts(statisticData?.data) >=
                     minDonation?.minimumDonation
-                ? "#ffffff"
+                ? "#31B776"
                 : "#EEEEEE",
             }}
           >
@@ -154,7 +154,7 @@ const Statistics = (props) => {
                     minDonation?.minimumDonation
                       ? "line-through"
                       : "none",
-                    marginBottom:'0px'
+                  marginBottom: "0px",
                 }}
               >
                 <CurrencyName />
@@ -173,10 +173,9 @@ const Statistics = (props) => {
                     minDonation.numberOfDonations &&
                   getSumOfAmounts(statisticData?.data) >=
                     minDonation?.minimumDonation
-                ? "#ffffff"
+                ? "#31B776"
                 : "#EEEEEE",
-                marginBottom:"0px"
-
+              marginBottom: "0px",
             }}
           >
             {/* Conditionally render icon based on donations count */}
@@ -198,7 +197,7 @@ const Statistics = (props) => {
                     statisticData?.data?.length >= minDonation.numberOfDonations
                       ? "line-through"
                       : "none",
-                      marginBottom:"0px",
+                  marginBottom: "0px",
                 }}
               >
                 Number of Donations
@@ -209,7 +208,7 @@ const Statistics = (props) => {
                     statisticData?.data?.length >= minDonation.numberOfDonations
                       ? "line-through"
                       : "none",
-                      marginBottom:'0px'
+                  marginBottom: "0px",
                 }}
               >
                 {statisticData?.data?.length}/{minDonation.numberOfDonations}

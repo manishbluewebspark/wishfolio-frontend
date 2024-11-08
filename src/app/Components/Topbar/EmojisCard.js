@@ -21,7 +21,6 @@ const EmojisCard = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // Automatically select the first unlocked level
     if (levels.length > 0 && !selected) {
       const firstUnlockedLevel = levels.find(
         (level, index) => index < userData?.userLevel
@@ -30,6 +29,8 @@ const EmojisCard = () => {
         setSelected(firstUnlockedLevel.labelName);
         setSelectedId(firstUnlockedLevel._id);
         dispatch(fetchProductsByLevel(firstUnlockedLevel._id)); // Fetch products for the first unlocked level
+      } else {
+        dispatch(fetchProductsByLevel(levels[0]._id));
       }
     }
   }, [levels, selected, userData, dispatch]);

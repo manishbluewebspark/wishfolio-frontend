@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
 import { Icon } from "@iconify/react";
 import envelopeIcon from "@iconify/icons-mdi/email";
-import emailicon from '../../images/emailicon.svg'
+import emailicon from "../../images/emailicon.svg";
 
 import { toast } from "react-toastify";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -40,6 +40,7 @@ export default function LoginWithGoogle() {
         dispatch(setEmail(email));
         router.push("/signup/verify-otp");
       }
+      console.error("Error sending verification code:");
     } catch (error) {
       console.error("Error sending verification code:", error);
       //setError("Failed to send verification code. Please try again.");
@@ -72,24 +73,31 @@ export default function LoginWithGoogle() {
                 </p>
               </div>
             </div>
-            <div className="input-group custom-input" style={{marginBottom:'8px'}} >
-                <span className="input-group-text login-input-group-text">
-                      <Image src={emailicon} alt="Email Icon" width={24} height={24} />
-                </span>
-                  <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email"
-                      value={email}
-                      onChange={(e) => setEmailState(e.target.value)}
-                      style={{
-                        border: 'none', // Remove border
-                        outline: 'none', // Remove default outline
-                      }}
-                      required
-                    />
-            
-</div>
+            <div
+              className="input-group custom-input"
+              style={{ marginBottom: "8px" }}
+            >
+              <span className="input-group-text login-input-group-text">
+                <Image
+                  src={emailicon}
+                  alt="Email Icon"
+                  width={24}
+                  height={24}
+                />
+              </span>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmailState(e.target.value)}
+                style={{
+                  border: "none", // Remove border
+                  outline: "none", // Remove default outline
+                }}
+                required
+              />
+            </div>
 
             <div className="signup-terms-container-hw">
               By continuing, you agree to our

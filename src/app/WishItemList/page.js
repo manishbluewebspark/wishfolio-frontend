@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import BackButton from '../Components/Button/BackButton';
-import searchIcon from '../images/search-normal.svg';
+import BackButton from "../Components/Button/BackButton";
+import searchIcon from "../images/search-normal.svg";
 import {
   Container,
   Row,
@@ -22,11 +22,11 @@ import {
 } from "../store/slices/productSlice";
 import { fetchUserData } from "../store/slices/userSlice";
 import axios from "axios";
-import SwipeButton from '../Components/Comman/SwipeButton';
+import SwipeButton from "../Components/Comman/SwipeButton";
 import { useRouter } from "next/navigation";
 import CurrencyName from "../Components/Comman/CurrencyName";
 import arrowleftIcon from "../images/arrow-left.png";
-import LevelDropdown from '../Components/Comman/LevelDropdown';
+import LevelDropdown from "../Components/Comman/LevelDropdown";
 import { SwipeableButton } from "react-swipeable-button";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -136,37 +136,39 @@ const WishingItems = () => {
 
   return (
     <Container fluid className="wishing-item-main-con">
-      {/* Header Section */}  
+      {/* Header Section */}
       <div className="wishing-item-list-top-con">
         <div>
           <div className="wishing-item-list-btn-con">
             <BackButton></BackButton>
             <span>
               <h5 className="wishing-item-list-text-h5">Wishing Items</h5>
-              <small className="wishing-item-list-subtext">5,000 - ₹10,000 Worth Items</small>
+              <small className="wishing-item-list-subtext">
+                5,000 - ₹10,000 Worth Items
+              </small>
             </span>
           </div>
         </div>
         <div>
-        <LevelDropdown></LevelDropdown>
+          <LevelDropdown></LevelDropdown>
         </div>
       </div>
       {/* Search Bar */}
       <div className="wishing-item-search-input-con">
-      <span>
-        <Image src={searchIcon}></Image>
-      </span>
-      <input
-        type="text"
-        value=''
-        onChange={''}
-        placeholder="Search Item"
-        className="wishing-item-search-input"
-      />
-      {/* {searchText && (
+        <span>
+          <Image src={searchIcon}></Image>
+        </span>
+        <input
+          type="text"
+          value=""
+          onChange={""}
+          placeholder="Search Item"
+          className="wishing-item-search-input"
+        />
+        {/* {searchText && (
         <i className="bi bi-x-circle clear-icon" onClick={clearSearch}></i>
       )} */}
-    </div>
+      </div>
 
       {/* Dynamic Nav based on categories */}
       <Nav
@@ -224,7 +226,9 @@ const WishingItems = () => {
                   className=""
                 />
               </div>
-              <p className="mt-2 wishing-item-pro-text">{product.productName}</p>
+              <p className="mt-2 wishing-item-pro-text">
+                {product.productName}
+              </p>
             </Col>
           ))
         )}
@@ -255,7 +259,10 @@ const WishingItems = () => {
           </div>
         </Col>
       </Row>  */}
-      <SwipeButton handleSwipe={handleSwipe}  isSwipable={!!selectedProduct} ></SwipeButton>
+      <SwipeButton
+        handleSwipe={handleSwipe}
+        isSwipable={!!selectedProduct}
+      ></SwipeButton>
     </Container>
   );
 };

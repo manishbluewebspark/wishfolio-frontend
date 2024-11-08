@@ -5724,7 +5724,23 @@ border:1px solid #E9E9E9;
 
 }
 
-/* wishing item list css end  */
-
-
-/* address page css end  */
+.pf-profile-image-upload{
+  position: absolute;
+  bottom: 0;
+  right: 36%;
+}
+.mw-donate-btn-disable {
+  background-color:#C1E9D6;
+  color: #B3B3B3;
+  padding: 10px 20px;
+  border-radius: 100px !important;
+  font-weight: 800;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+  border: none;
+  padding: 10px 20px !important;
+  cursor: pointer;
+  height: 60px;
+  width: 182px;
+}
