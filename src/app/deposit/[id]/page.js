@@ -1,4 +1,4 @@
-import DepositPage from "../Components/PaymentMethods/DepositePage";
+import DepositPage from "../../Components/PaymentMethods/DepositePage";
 
 export default function Deposit() {
   return (

@@ -7,10 +7,10 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 // Async thunk for fetching statistic data
 export const fetchStatisticData = createAsyncThunk(
   "statistic/fetchStatisticData",
-  async (statisticId, { rejectWithValue }) => {
+  async ({ id, userLevel }, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/user/statistic/${statisticId}`
+        `${API_BASE_URL}/user/statistic/${id}/${userLevel}`
       );
       return response.data; // Assuming response contains statistic data
     } catch (error) {

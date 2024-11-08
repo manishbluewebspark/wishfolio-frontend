@@ -1,153 +1,74 @@
-"use client"; // This is required to use client-side rendering with App Router
+"use client"; // Required for client-side rendering in Next.js
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
-// import "./paymethod.css"; // Custom CSS file
-import arrowright from "../../images/arrow-right.svg"; // Correct path to arrow-right image
-import bank from "../../images/bank3.svg"; // Correct path to bank image
-import bhimupi from "../../images/bhimpay2.png"; // Correct path to bhim image
-import googleupi from "../../images/gpay2.svg"; // Correct path to google pay image
-import paytmupi from "../../images/patmpay2.svg"; // Correct path to paytm image
-import phoneupi from "../../images/ppay.svg"; // Correct path to phonepe image (note corrected extension)
-import arrowleftIcon from "../../images/arrow-left.png";
+import { useEffect, useState } from "react";
+import axios from "axios"; // Import axios
 import { useRouter } from "next/navigation";
-import Backbutton from '../Button/BackButton'
+import Backbutton from "../Button/BackButton";
+import arrowright from "../../images/arrow-right.svg";
 const PaymentMethod = () => {
   const router = useRouter();
-  const handleDepositClick = () => {
-    router.push("/deposit");
+  const [paymentMethods, setPaymentMethods] = useState([]); // State to hold payment methods
+
+  // Fetch payment methods from the API
+  useEffect(() => {
+    const fetchPaymentMethods = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/payment-method`
+        ); // Example API endpoint
+        setPaymentMethods(response.data?.data); // Assuming the API returns an array of payment methods
+      } catch (error) {
+        console.error("Error fetching payment methods:", error);
+      }
+    };
+
+    fetchPaymentMethods();
+  }, []);
+
+  const handleDepositClick = (methodId) => {
+    // You can pass the payment method ID if needed in the deposit route
+    router.push(`/deposit/${methodId}`);
   };
-  const handleBackClick = () => {
-    router.push("/profile");
-  };
+
   return (
-    <>
-      <div className="container">
-          <Backbutton title={'Back'}></Backbutton>
-        <div className="container ptm-container">
-          <h5 className="ptm-title">Choose Payment Method</h5>
-          <div className="ptm-payment-options">
-            {/* Payment Method 1 */}
-            <div
-              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
-              onClick={handleDepositClick}
-            >
-              <div className="d-flex align-items-center">
+    <div className="container">
+      <Backbutton title={"Back"} />
+      <div className="container ptm-container">
+        <h5 className="ptm-title">Choose Payment Method</h5>
+        <div className="ptm-payment-options">
+          {paymentMethods.length > 0 ? (
+            paymentMethods.map((method) => (
+              <div
+                key={method.id}
+                className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
+                onClick={() => handleDepositClick(method._id)}
+              >
+                <div className="d-flex align-items-center">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${method.logo}`}
+                    alt={method.provider}
+                    className="ptm-icon"
+                    width={119}
+                    height={24}
+                  />
+                  <span>{method.provider}</span>
+                </div>
                 <Image
-                  src={bank}
-                  alt="Bank Transfer"
-                  className="ptm-icon"
-                  width={119}
-                  height={24}
+                  src={arrowright}
+                  alt="Arrow Right"
+                  className="ptm-arrow"
+                  width={20}
+                  height={20}
                 />
               </div>
-              <Image
-                src={arrowright}
-                alt="Arrow Right"
-                className="ptm-arrow"
-                width={20}
-                height={20}
-              />
-            </div>
-
-            {/* Payment Method 2 */}
-            <div
-              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
-              // onClick={handleDepositClick}
-            >
-              <div className="d-flex align-items-center">
-                <Image
-                  src={googleupi}
-                  alt="Google Pay"
-                  className="ptm-icon"
-                  width={150}
-                  height={27.19}
-                />
-              </div>
-              <Image
-                //  onClick={handleDepositClick}
-                src={arrowright}
-                alt="Arrow Right"
-                className="ptm-arrow"
-                width={20}
-                height={20}
-              />
-            </div>
-
-            {/* Payment Method 3 */}
-            <div
-              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
-              // onClick={handleDepositClick}
-            >
-              <div className="d-flex align-items-center">
-                <Image
-                  src={phoneupi}
-                  alt="PhonePe"
-                  className="ptm-icon"
-                  width={114}
-                  height={32}
-                />
-              </div>
-              <Image
-                // onClick={handleDepositClick}
-                src={arrowright}
-                alt="Arrow Right"
-                className="ptm-arrow"
-                width={20}
-                height={20}
-              />
-            </div>
-
-            {/* Payment Method 4 */}
-            <div
-              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
-              // onClick={handleDepositClick}
-            >
-              <div className="d-flex align-items-center">
-                <Image
-                  src={paytmupi}
-                  alt="Paytm"
-                  className="ptm-icon"
-                  width={72}
-                  height={23}
-                />
-              </div>
-              <Image
-                //onClick={handleDepositClick}
-                src={arrowright}
-                alt="Arrow Right"
-                className="ptm-arrow"
-                width={20}
-                height={20}
-              />
-            </div>
-
-            {/* Payment Method 5 */}
-            <div
-              className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
-              //onClick={handleDepositClick}
-            >
-              <div className="d-flex align-items-center">
-                <Image
-                  src={bhimupi}
-                  alt="BHIM"
-                  className="ptm-icon"
-                  width={100}
-                  height={24}
-                />
-              </div>
-              <Image
-                //onClick={handleDepositClick}
-                src={arrowright}
-                alt="Arrow Right"
-                className="ptm-arrow"
-                width={20}
-                height={20}
-              />
-            </div>
-          </div>
+            ))
+          ) : (
+            <p>Loading payment methods...</p> // Fallback while fetching data
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

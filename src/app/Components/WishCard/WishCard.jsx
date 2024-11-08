@@ -39,13 +39,13 @@ const WishCard = ({
         />
       </div>
 
-      {type === "myDonation" && (
+      {/* {type === "myDonation" && (
         <div className="donation-funding-container">
           <div className="donate-button">
             <strong>Funding</strong>
           </div>
         </div>
-      )}
+      )} */}
       {type === "myDonation" && (
         <div className="donation-button-container">
           <div className="donate-button">

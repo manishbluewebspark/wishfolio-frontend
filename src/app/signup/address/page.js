@@ -9,13 +9,13 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
 import BackButton from "../../Components/Button/BackButton";
-import arrowdown from '../../images/arrow-down.svg';
+import arrowdown from "../../images/arrow-down.svg";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const AddressForm = () => {
   const { email, name, mobile } = useSelector((state) => state.signup);
-  const [country, setCountry] = useState("India");
+  // const [country, setCountry] = useState("India");
   const [state, setState] = useState("Kerala");
   const [city, setCity] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
@@ -29,7 +29,7 @@ const AddressForm = () => {
 
     const formData = {
       name: name,
-      country: country,
+      // country: country,
       state: state,
       address_line_1: addressLine1,
       address_line_2: addressLine2,
@@ -69,9 +69,7 @@ const AddressForm = () => {
                 height={32}
               />
               <div className="address-top-text">
-                <h2 className="address-heading">
-                  Enter your Delivery Address
-                </h2>
+                <h2 className="address-heading">Enter your Delivery Address</h2>
                 <p className="address-subtext">
                   Start your wishing journey by signing up.
                 </p>
@@ -81,78 +79,93 @@ const AddressForm = () => {
             {/* Address Form */}
             <form onSubmit={handleSubmit}>
               {/* Country Dropdown */}
- <div className="input-group custom-input" style={{ marginBottom: '8px', position: 'relative' }}>
-  <select
-    className="form-select address-input-fill"
-    value={country}
-    onChange={(e) => setCountry(e.target.value)}
-    style={{ appearance: 'none', paddingRight: '40px', background: 'transparent', border: 'none' }}
-  >
-    <option value="India">Select Country</option>
-    {/* Add more country options as needed */}
-  </select>
-  <Image
-    src={arrowdown} // Adjust the path to your icon
-    alt="Dropdown Icon"
-    className="address-dropdown-icon"
-    height={20}
-    width={20}
-  />
-</div>
+              {/* <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px", position: "relative" }}
+              >
+                <select
+                  className="form-select address-input-fill"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  style={{
+                    appearance: "none",
+                    paddingRight: "40px",
+                    background: "transparent",
+                    border: "none",
+                  }}
+                >
+                  <option value="India">Select Country</option>
+                  
+                </select>
+                <Image
+                  src={arrowdown} // Adjust the path to your icon
+                  alt="Dropdown Icon"
+                  className="address-dropdown-icon"
+                  height={20}
+                  width={20}
+                />
+              </div> */}
 
-
-
-              {/* State Dropdown */}
-              <div className="input-group custom-input" style={{ marginBottom: '8px', position: 'relative' }}>
-  <select
-    className="form-select address-input-fill"
-    value={state}
-    onChange={(e) => setState(e.target.value)}
-    style={{ appearance: 'none', paddingRight: '40px', background: 'transparent', border: 'none' }}
-  >
-                    <option value="">Select State</option>
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px", position: "relative" }}
+              >
+                <select
+                  className="form-select address-input-fill"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                  style={{
+                    appearance: "none",
+                    paddingRight: "40px",
+                    background: "transparent",
+                    border: "none",
+                  }}
+                >
+                  <option value="">Select State</option>
                   <option value="Andhra Pradesh">Andhra Pradesh</option>
-                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                <option value="Assam">Assam</option>
-                <option value="Bihar">Bihar</option>
-                <option value="Chhattisgarh">Chhattisgarh</option>
-                <option value="Goa">Goa</option>
-                <option value="Gujarat">Gujarat</option>
-                <option value="Haryana">Haryana</option>
-                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                <option value="Jharkhand">Jharkhand</option>
-                <option value="Karnataka">Karnataka</option>
-                <option value="Kerala">Kerala</option>
-                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Manipur">Manipur</option>
-                <option value="Meghalaya">Meghalaya</option>
-                <option value="Mizoram">Mizoram</option>
-                <option value="Nagaland">Nagaland</option>
-                <option value="Odisha">Odisha</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Rajasthan">Rajasthan</option>
-                <option value="Sikkim">Sikkim</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Telangana">Telangana</option>
-                <option value="Tripura">Tripura</option>
-                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                <option value="Uttarakhand">Uttarakhand</option>
-                <option value="West Bengal">West Bengal</option>
-    {/* Add more state options as needed */}
-  </select>
-  <Image
-      src={arrowdown} // Adjust the path to your icon
-      alt="Dropdown Icon"
-      className="address-dropdown-icon"
-      height={20}
-      width={20}
-  />
-</div>
-
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                  {/* Add more state options as needed */}
+                </select>
+                <Image
+                  src={arrowdown} // Adjust the path to your icon
+                  alt="Dropdown Icon"
+                  className="address-dropdown-icon"
+                  height={20}
+                  width={20}
+                />
+              </div>
 
               {/* City Input */}
-              <div className="input-group custom-input" style={{ marginBottom: '8px' }} >
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px" }}
+              >
                 <input
                   type="text"
                   className="form-control address-input-fill"
@@ -164,7 +177,10 @@ const AddressForm = () => {
               </div>
 
               {/* Address Line 1 Input */}
-              <div className="input-group custom-input" style={{ marginBottom: '8px' }} >
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px" }}
+              >
                 <input
                   type="text"
                   className="form-control address-input-fill"
@@ -176,7 +192,10 @@ const AddressForm = () => {
               </div>
 
               {/* Address Line 2 Input */}
-              <div className="input-group custom-input" style={{ marginBottom: '8px' }} >
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px" }}
+              >
                 <input
                   type="text"
                   className="form-control address-input-fill"
@@ -187,7 +206,10 @@ const AddressForm = () => {
               </div>
 
               {/* PIN Code Input */}
-              <div className="input-group custom-input" style={{ marginBottom: '8px' }} >
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px" }}
+              >
                 <input
                   type="text"
                   className="form-control address-input-fill"
@@ -199,7 +221,10 @@ const AddressForm = () => {
               </div>
 
               {/* Room Number Input */}
-              <div className="input-group custom-input" style={{ marginBottom: '8px' }} >
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px" }}
+              >
                 <input
                   type="text"
                   className="form-control address-input-fill"
@@ -227,8 +252,6 @@ const AddressForm = () => {
                 </button>
               </div>
             </form>
-
-
           </div>
         </div>
       </div>

@@ -5,22 +5,47 @@ import { fetchMyOrders } from "../../store/slices/myOrderSlice"; // Assuming you
 // import "./orderhistory.css"; // Custom CSS file
 import BackButton from "../Button/BackButton";
 import OrderItem from "./OrderItem";
-
+import { fetchUserData } from "../../store/slices/userSlice";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 const OrderHistory = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("ongoing"); // State for active tab
   const [user, setUser] = useState(null); // State for storing the user data from localStorage
   const dispatch = useDispatch();
 
+  const { userData } = useSelector((state) => state.user);
   // Use useEffect to safely access localStorage on the client-side
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
         setUser(JSON.parse(storedUser));
+        dispatch(fetchUserData(storedUser.id));
       }
     }
   }, []);
+  useEffect(() => {
+    const fetchLevelData = async () => {
+      if (userData?.userLevel) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/user/checkLeve/${userData._id}`
+          );
+          const checkData = response.data?.user?.userLevel;
 
+          if (checkData > userData?.userLevel) {
+            router.push("/LevelUpScreen");
+          }
+          // setLevelData(response.data?.data);
+        } catch (error) {
+          console.error("Error fetching level data:", error);
+        }
+      }
+    };
+
+    fetchLevelData();
+  }, [userData]);
   // Get orders data and loading state from Redux
   const { orderData, isLoading, error } = useSelector((state) => state.myOrder);
 

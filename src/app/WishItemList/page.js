@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import BackButton from '../Components/Button/BackButton';
 import searchIcon from '../images/search-normal.svg';
@@ -20,15 +20,18 @@ import {
   fetchProductsByCategory,
   selectProducts,
 } from "../store/slices/productSlice";
+import { fetchUserData } from "../store/slices/userSlice";
 import axios from "axios";
 import SwipeButton from '../Components/Comman/SwipeButton';
 import { useRouter } from "next/navigation";
 import CurrencyName from "../Components/Comman/CurrencyName";
 import arrowleftIcon from "../images/arrow-left.png";
 import LevelDropdown from '../Components/Comman/LevelDropdown';
+import { SwipeableButton } from "react-swipeable-button";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const WishingItems = () => {
+  const swipeableButtonRef = useRef(null);
   const router = useRouter();
   const dispatch = useDispatch();
   const { categories, loading, error } = useSelector(
@@ -39,9 +42,20 @@ const WishingItems = () => {
     loading: loadingProducts,
     error: errorProducts,
   } = useSelector(selectProducts);
-
+  const { userData } = useSelector((state) => state.user);
   const [activeKey, setActiveKey] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
+    const getUserData = () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        const uData = JSON.parse(user);
+        dispatch(fetchUserData(uData.id));
+      }
+    };
+    getUserData();
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -54,10 +68,15 @@ const WishingItems = () => {
   }, [categories]);
 
   useEffect(() => {
-    if (activeKey) {
-      dispatch(fetchProductsByCategory(activeKey));
+    if (activeKey && userData) {
+      dispatch(
+        fetchProductsByCategory({
+          categoryId: activeKey,
+          userLevel: userData?.userLevel,
+        })
+      );
     }
-  }, [activeKey, dispatch]);
+  }, [activeKey, dispatch, userData]);
 
   const handleSelect = (key) => {
     setActiveKey(key);
@@ -69,13 +88,14 @@ const WishingItems = () => {
 
   const handleSwipe = async () => {
     if (!selectedProduct) {
+      swipeableButtonRef.current?.buttonReset();
       alert("Please select a product first.");
 
       return;
     }
-    const userData = localStorage.getItem("user");
+    const userDatas = localStorage.getItem("user");
 
-    const uData = JSON.parse(userData);
+    const uData = JSON.parse(userDatas);
 
     try {
       const response = await axios.post(
@@ -90,6 +110,7 @@ const WishingItems = () => {
       }
       console.log("Wish posted successfully:", response.data);
     } catch (error) {
+      swipeableButtonRef.current?.buttonReset();
       console.error("Error posting wish:", error);
       if (error.response) {
         console.error("Response data:", error.response.data);
@@ -104,6 +125,15 @@ const WishingItems = () => {
   const handleBackClick = () => {
     router.push("/mywish");
   };
+  const onSuccess = () => {
+    handleSwipe();
+  };
+
+  const onFailure = () => {
+    console.log("Failed to Swipe!");
+    swipeableButtonRef.current?.buttonReset();
+  };
+
   return (
     <Container fluid className="wishing-item-main-con">
       {/* Header Section */}  
@@ -204,12 +234,27 @@ const WishingItems = () => {
       {/* <Row className="fixed-bottom">
         <Col>
           <div className="text-center">
-            <Button className="btn-swipe" block onClick={handleSwipe}>
-              Swipe to Post My Wish <i className="bi bi-arrow-right"></i>
-            </Button>
+            <div style={{ width: "70%", display: "block", margin: "auto" }}>
+              <SwipeableButton
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                text="Swipe to Post My Wish"
+                text_unlocked="Swiped "
+                sliderColor="#e7f0ff"
+                sliderTextColor="#000"
+                sliderIconColor="#000"
+                background_color="#90AEFF"
+                borderRadius={30}
+                circle
+                autoWidth
+                disabled={false}
+                name="react-swipeable-button"
+                ref={swipeableButtonRef}
+              />
+            </div>
           </div>
         </Col>
-      </Row> */}
+      </Row>  */}
       <SwipeButton handleSwipe={handleSwipe}  isSwipable={!!selectedProduct} ></SwipeButton>
     </Container>
   );

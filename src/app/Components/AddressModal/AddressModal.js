@@ -12,7 +12,7 @@ const AddressModal = ({ showModal, handleClose, openSuccessModal }) => {
   const { userData } = useSelector((state) => state.user);
   const router = useRouter(); // FIX: Ensure useRouter is used properly
 
-  const [country, setCountry] = useState("India");
+  // const [country, setCountry] = useState("India");
   const [state, setState] = useState("Kerala");
   const [city, setCity] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
@@ -35,7 +35,7 @@ const AddressModal = ({ showModal, handleClose, openSuccessModal }) => {
     e.preventDefault();
 
     const formData = {
-      country,
+      //  country,
       state,
       city,
       address_line_1: addressLine1,
@@ -56,7 +56,7 @@ const AddressModal = ({ showModal, handleClose, openSuccessModal }) => {
         // alert("Address submitted successfully!");
         toast.success("Address submitted successfully!");
         // Reset the form fields after successful submission
-        setCountry("India");
+        // setCountry("India");
         setState("Kerala");
         setCity("");
         setAddressLine1("");
@@ -90,16 +90,16 @@ const AddressModal = ({ showModal, handleClose, openSuccessModal }) => {
 
             <form onSubmit={handleSubmit}>
               {/* Dropdown for country */}
-              <div className="input-container mb-3">
+              {/* <div className="input-container mb-3">
                 <select
                   className="form-select custom-select"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                 >
                   <option value="India">🇮🇳 India</option>
-                  {/* Add more country options as needed */}
+                 
                 </select>
-              </div>
+              </div> */}
 
               {/* Dropdown for state */}
               <div className="input-container mb-3">

@@ -1,51 +1,62 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image"; // Import the Next.js Image component
-// import "./style.css";
-import lockIcon from "../../images/lock-circle.jpg";
+import lockIcon from "../../images/lock-circle.svg"; // Locked level icon
 import { fetchLevels } from "../../store/slices/levelsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
-import HowToUnblockModal from "../../Components/Modals/HowToUnblockModal"; // Import the modal component
+import HowToUnblockModal from "../../Components/Modals/HowToUnblockModal"; // Modal for locked levels
 
 const EmojisCard = () => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("");
   const [selectedId, setSelectedId] = useState("");
-  const [isModalOpen, setModalOpen] = useState(false); // State to control modal visibility
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const { levels, loading, error } = useSelector((state) => state.levels);
+  const { levels, loading, error } = useSelector((state) => state.levels); // Fetch levels
+  const { userData } = useSelector((state) => state.user); // Fetch user data (including userLevel)
 
   useEffect(() => {
-    dispatch(fetchLevels());
+    dispatch(fetchLevels()); // Fetch levels on component load
   }, [dispatch]);
 
   useEffect(() => {
+    // Automatically select the first unlocked level
     if (levels.length > 0 && !selected) {
-      setSelected(levels[0].labelName);
-      setSelectedId(levels[0]._id);
-      dispatch(fetchProductsByLevel(levels[0]._id));
+      const firstUnlockedLevel = levels.find(
+        (level, index) => index < userData?.userLevel
+      );
+      if (firstUnlockedLevel) {
+        setSelected(firstUnlockedLevel.labelName);
+        setSelectedId(firstUnlockedLevel._id);
+        dispatch(fetchProductsByLevel(firstUnlockedLevel._id)); // Fetch products for the first unlocked level
+      }
     }
-  }, [levels, selected, dispatch]);
+  }, [levels, selected, userData, dispatch]);
 
-  const handleSelect = (name, id) => {
-    setSelected(name);
-    setSelectedId(id);
-    dispatch(fetchProductsByLevel(id));
-    setModalOpen(true); // Open the modal when an emoji is clicked
+  // Handle level selection based on user's level
+  const handleSelect = (name, id, index) => {
+    if (index >= userData.userLevel) {
+      setModalOpen(true); // Open modal if the level is locked
+    } else {
+      setSelected(name); // Set the selected level
+      setSelectedId(id);
+      dispatch(fetchProductsByLevel(id)); // Fetch products by level ID
+    }
   };
 
+  // Close the modal
   const handleCloseModal = () => {
-    setModalOpen(false); // Close modal
-  };
-
-  const handleConfirmModal = () => {
-    // Add your logic for confirming the action in the modal
     setModalOpen(false);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  // Confirm modal action
+  const handleConfirmModal = () => {
+    setModalOpen(false); // You can add custom logic for when the modal is confirmed
+  };
+
+  if (loading) return <p>Loading...</p>; // Show loading message
+  if (error) return <p>Error: {error}</p>; // Show error message
 
   return (
     <div className="emoji-container container">
@@ -54,12 +65,13 @@ const EmojisCard = () => {
           <div
             key={index}
             className={`emoji-card col ${
-              selected === option.labelName ? "emoji-selected" : "emoji-locked"
-            }`}
-            onClick={() => handleSelect(option.labelName, option._id)}
+              selected === option.labelName ? "emoji-selected" : "" // Highlight selected level
+            } ${index >= userData?.userLevel ? "emoji-locked" : ""}`} // Add "emoji-locked" class if the level is locked
+            onClick={() => handleSelect(option.labelName, option._id, index)}
           >
             <div className="emoji-card-items">
-              {option?.locked && (
+              {/* Show lock icon if the level is locked */}
+              {index >= userData?.userLevel && (
                 <div className="emoji-lock">
                   <Image src={lockIcon} width={18} height={18} alt="lock" />
                 </div>
@@ -78,7 +90,7 @@ const EmojisCard = () => {
         ))}
       </div>
 
-      {/* Modal for HowToUnblock */}
+      {/* Modal for locked levels */}
       <HowToUnblockModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

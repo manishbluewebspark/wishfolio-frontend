@@ -307,7 +307,6 @@ font-weight: 400;
 }
 .product-col{
   height:100%;
-  width: 100%;
   padding: 0px 6px !important;
 }
 
@@ -4160,6 +4159,10 @@ text-align: center;
 margin-bottom: 70px !important;
 
 }
+.custome-class-levelup{
+  background:linear-gradient(to bottom, #a2d9ff, #a8ff8d) !important;
+  height: 100% !important;
+}
 
 /* how to unblock image css  start*/
 .htubi-emoji-container {
@@ -5724,3 +5727,4 @@ border:1px solid #E9E9E9;
 /* wishing item list css end  */
 
 
+/* address page css end  */
