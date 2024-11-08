@@ -1,13 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import starActiveIcon from "../../images/starActive.jpg";
-import starIcon from "../../images/star.svg";
+import starActiveIcon from "../../images/home-2Active.svg";
+import starIcon from "../../images/home-2.svg";
 import dropIcon from "../../images/drop.svg";
 import dropActiveIcon from "../../images/dropActive.png";
 import vectorIcon from "../../images/moon.svg";
 import vectorActiveIcon from "../../images/moonActive.png";
 import profileIcon from "../../images/frame.svg";
+import profileactive from  '../../images/frameactive.svg';
 import { useRouter, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
@@ -34,7 +35,7 @@ const BottomNav = () => {
   // Defining both active and inactive icons for each option
   const options = [
     {
-      name: "Wishes",
+      name: "Home",
       icon: starIcon,
       activeIcon: starActiveIcon,
       url: "/",
@@ -58,7 +59,7 @@ const BottomNav = () => {
         : profileIcon,
       activeIcon: userData?.imageUrl
         ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${userData?.imageUrl}`
-        : profileIcon,
+        : profileactive,
       url: "/profile",
     },
   ];

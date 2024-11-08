@@ -120,7 +120,7 @@ const Profile = () => {
             <p className="pf-balance-label">Available Balance</p>
             <h3 className="pf-balance-amount">
               <CurrencyName />
-              {userData?.accountBalance || '0.00'}
+              {userData?.accountBalance || '0'}
             </h3>
           </div>
           <button

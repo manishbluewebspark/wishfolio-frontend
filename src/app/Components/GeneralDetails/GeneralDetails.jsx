@@ -131,6 +131,7 @@ const GeneralDetails = () => {
             value={formData.email}
             readOnly
             className="form-control gd-input-field-right"
+            style={{color:"hsl(0deg 0% 0% / 30%)"}}
           />
         </div>
       </form>

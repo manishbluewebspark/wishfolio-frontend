@@ -14,7 +14,7 @@ const HowItWorks = () => {
 
   return (
     <>
-    <BackButton title={'How is it working ?'}></BackButton>
+    < BackButton title={'How is it working ?'}></BackButton>
       <div className="hw-how-it-works-container">
       {/* Tab Header */}
       <div className="hw-tabs">

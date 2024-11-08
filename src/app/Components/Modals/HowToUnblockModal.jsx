@@ -1,5 +1,4 @@
 import React from "react";
-// import './style.css';
 import Image from "next/image";
 import logo from "../../images/snow.png";
 import UnblockLevels from "../HowItWork/UnblockLevels";

@@ -53,7 +53,7 @@ const EmojisCard = () => {
         {levels.map((option, index) => (
           <div
             key={index}
-            className={`emoji-card col-2 ${
+            className={`emoji-card col ${
               selected === option.labelName ? "emoji-selected" : "emoji-locked"
             }`}
             onClick={() => handleSelect(option.labelName, option._id)}

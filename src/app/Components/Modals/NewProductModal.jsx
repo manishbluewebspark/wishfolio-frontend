@@ -1,64 +1,51 @@
-"use client";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
-// import "./style.css"; // Custom styles for modal
-import Statistics from "../mystatistics/Statistics";
-import profilePic from "../../images/profile.svg";
-import MyDoner from "../MyDoner/MyDoner";
 import CurrencyName from "../Comman/CurrencyName";
+import Statistics from "../mystatistics/Statistics";
+import MyDoner from "../MyDoner/MyDoner";
+import profilePic from "../../images/profile.svg";
+import crossicon from "../../images/cross.svg"
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-const ProductModal = ({
+const ProductModalNew = ({
   product,
-  showModal,
-  handleClose,
+  isOpen,
+  onClose,
   minDonation,
   openSuccessModal,
   isDonated,
 }) => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const [amout, setAmount] = useState(null);
-  const { userData, isLoading, error } = useSelector((state) => state.user);
+  const [amount, setAmount] = useState(null);
+  const { userData } = useSelector((state) => state.user);
 
   useEffect(() => {
-    document.body.style.overflow = showModal ? "hidden" : "auto";
-  }, [showModal]);
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
 
   const handleDonateClick = async () => {
     if (userData?._id) {
-      if (userData?.accountBalance >= amout) {
-        if (
-          product.productPrice - getSumOfAmounts(product.donationsDetails) >=
-          amout
-        ) {
+      if (userData?.accountBalance >= amount) {
+        if (product.productPrice - getSumOfAmounts(product.donationsDetails) >= amount) {
           const formData = {
             productId: product.productId,
             userId: userData._id,
-            amount: amout,
+            amount: amount,
             wiseProductId: product._id,
           };
 
           try {
-            const response = await axios.post(
-              `${API_BASE_URL}/product/donation`,
-              formData
-            );
-
+            const response = await axios.post(`${API_BASE_URL}/product/donation`, formData);
             if (response.status === 201) {
               openSuccessModal();
             } else {
-              // console.error("Deposit failed:", response);
               toast.error("Donation failed");
             }
           } catch (error) {
-            // console.error("An error occurred during the deposit:", error);
             toast.error("An error occurred during the Donation");
           }
         } else {
@@ -71,35 +58,37 @@ const ProductModal = ({
       window.alert("Please login first");
     }
   };
+
   const getSumOfAmounts = (donations) => {
     return donations.reduce((total, donation) => total + donation.amount, 0);
   };
+
   const calculatePercentageOfAmount = (specifiedAmount) => {
     const totalAmount = getSumOfAmounts(product.donationsDetails);
-
-    const percentage = ((totalAmount / specifiedAmount) * 100).toFixed(2); // Format to two decimal places
-    return percentage;
+    return ((totalAmount / specifiedAmount) * 100).toFixed(2); // Format to two decimal places
   };
+
   return (
-    <div className={`bottom-modal ${showModal ? "open" : ""}`}>
-      <div className="modal-content">
-        <div className="modal-header">
-          <button onClick={handleClose} className="close-btn">
-            &times;
+    <div className={`npmc-product-modal ${isOpen ? "open" : ""}`}>
+      <div className="npmc-modal-wrapper">
+        <div className="npmc-modal-content">
+          <div className="npmc-close-btn-con">
+          <button onClick={onClose} className="npmc-close-btn">
+            <Image src={crossicon} height={9} width={9} alt="x"></Image>
           </button>
-        </div>
-        <div className="modal-body">
-            <div className="">
-            <Image
+          </div>
+          <div className="modal-body npmc-modal-body">
+          <div className="npmc-img-con">
+          <Image
             src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.productImageUrl}`}
             alt={product.productName}
             width={136}
             height={153}
           />
-            </div>
+          </div>
 
           <div className="product-details">
-            <p>
+            <p className="npmc-wish-by">
               Wish by{" "}
               <Image
                 src={
@@ -117,9 +106,9 @@ const ProductModal = ({
             </p>
 
             <p className="price">
-              <CurrencyName /> {getSumOfAmounts(product.donationsDetails) || 0}/
+              <strong style={{color:"black"}}> <CurrencyName /> {getSumOfAmounts(product.donationsDetails) || 0}</strong>/
               <CurrencyName />
-              {product.productPrice?.toLocaleString()}{" "}
+              {product.productPrice?.toLocaleString()}{"  "}
               <span className="donated"> Donated</span>
             </p>
 
@@ -152,7 +141,6 @@ const ProductModal = ({
                 }}
               ></div>
             </div>
-            <hr />
             <Statistics
               isPayment={true}
               minDonation={minDonation.minimumDonation}
@@ -177,27 +165,31 @@ const ProductModal = ({
                 <button className="donate-btn-disable">Already Donated!</button>
               ) : (
                 <>
+                  <div className="npmc-btn-in-con">
                   <input
                     type="text"
                     className="donateInput"
-                    onChange={(e) => setAmount(e.target.value)}
-                    value={amout}
+                    onChange={(e) => setAmount(e.target.value.replace(/[^\d.]/g, ''))}
+                    placeholder="₹0"
+                    value={amount ? `₹${amount}` : ''}
                   />
-                  <button className="donate-btn" onClick={handleDonateClick}>
+                  <button className="npmc-donate-btn" onClick={handleDonateClick}>
                     Donate
                   </button>
-                  <p>
-                    Current Balance: <CurrencyName />
-                    {userData?.accountBalance || 0}
+                  </div>
+                  <p className="npmc-curr-blc text-center">
+                    Current Balance: 
+                    <strong style={{color:"black"}}><CurrencyName />{userData?.accountBalance || 0}</strong>
                   </p>
                 </>
               )}
             </div>
           </div>
         </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProductModal;
+export default ProductModalNew;

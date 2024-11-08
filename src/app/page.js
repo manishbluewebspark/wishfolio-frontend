@@ -2,6 +2,7 @@ import BottomNav from "./Components/BottomNavbar/BottomNav";
 import EmojisCard from "./Components/Topbar/EmojisCard";
 import TopBar from "./Components/Topbar/Topbar";
 import ProductCard from "./Components/WishCard/ProductCard";
+import HowItWorkingBtn from "./Components/Button/HowItWorkingBtn";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
           <div className="content-container">
           <EmojisCard />
           <ProductCard />
+          <HowItWorkingBtn></HowItWorkingBtn>
           </div>
           <BottomNav />
         </div>

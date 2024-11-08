@@ -8,13 +8,14 @@ import profileImage from "../../images/Male15.png";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
 import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
+import ProductModalNew from '../Modals/NewProductModal';
 
 import SuccessModal from "./successModal";
 // Sample Product Data
 
 export default function ProductCard() {
   const dispatch = useDispatch();
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  // const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [selected, setSelected] = useState("");
@@ -22,6 +23,24 @@ export default function ProductCard() {
   const [filterCategory, setFilterCategory] = useState("all");
   const [filterPriceRange, setFilterPriceRange] = useState("all");
   const [dropdownOpen, setDropdownOpen] = useState(false); // Dropdown state
+
+  // =========================
+  const [showProductModal, setShowProductModal] = useState(false);
+const [selectedProduct, setSelectedProduct] = useState(null);
+
+// Function to open modal when a product is clicked
+const handleCardClick = (product) => {
+  setSelectedProduct(product);
+  setShowProductModal(true);
+};
+
+// Function to close modal
+const handleCloseModal = () => {
+  setShowProductModal(false);
+  setSelectedProduct(null);
+};
+
+  // ==========================
   const [nestedDropdownOpen, setNestedDropdownOpen] = useState({
     category: false,
     price: false,
@@ -54,15 +73,15 @@ export default function ProductCard() {
       setMinDonation(foundData);
     }
   }, [levels, products]);
-  const handleCardClick = (product) => {
-    setSelectedProduct(product);
-    setShowModal(true);
-  };
+  // const handleCardClick = (product) => {
+  //   setSelectedProduct(product);
+  //   setShowModal(true);
+  // };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedProduct(null);
-  };
+  // const handleCloseModal = () => {
+  //   setShowModal(false);
+  //   setSelectedProduct(null);
+  // };
 
   const handleOpensucessModal = () => {
     setShowModal(false);
@@ -195,15 +214,26 @@ export default function ProductCard() {
       </div>
 
       {/* Modal */}
-      {selectedProduct && (
-        <ProductModal
-          product={selectedProduct}
-          showModal={showModal}
-          minDonation={minDonation}
-          handleClose={handleCloseModal}
-          openSuccessModal={handleOpensucessModal}
-        />
-      )}
+      {/* {showModal && selectedProduct && (
+  <ProductModal
+    product={selectedProduct}
+    showModal={showModal}
+    minDonation={minDonation}
+    handleClose={handleCloseModal}
+    openSuccessModal={handleOpensucessModal}
+  />
+)} */}
+{showProductModal && selectedProduct && (
+  <ProductModalNew
+    product={selectedProduct}
+    isOpen={showProductModal}
+    onClose={handleCloseModal}
+    minDonation={minDonation}
+    openSuccessModal={handleOpensucessModal}
+    // isDonated={isDonated} // Pass the isDonated state as needed
+  />
+)}
+
       {showSuccessModal && (
         <SuccessModal
           showModal={showSuccessModal}

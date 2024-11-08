@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "next/image";
-import img2 from "../images/91.png";
+import img2 from "../images/71.svg";
 import Statistics from "../Components/mystatistics/Statistics";
 import Myorder from "../Components/mystatistics/Myorder";
 import { useRouter } from "next/navigation";
@@ -51,61 +51,61 @@ const WishFolio = () => {
     getSumOfAmounts(statisticData?.data) >= minDonation?.minimumDonation;
 
   return (
-    <>
-      {!isLoading && !error && wishData?.data ? (
-        <>
-          <Product
-            product={wishData.data}
-            showModal={true}
-            minDonation={minDonation}
-            handleClose={() => {}}
-            openSuccessModal={() => {}}
-          />
-        </>
-      ) : (
-        <>
-          <div className="container-mw">
-            {/* Conditionally render Statistics and Myorder components */}
-            <Statistics />
-            <Myorder />
-            <div className="mw-donation-section-con">
-              <div className="mw-donation-section">
-                <Image
-                  src={img2}
-                  height={75}
-                  width={100}
-                  alt="Donation Image"
-                  className="mw-donate-img"
-                />
-                {/* If wishData is not available, show the option to post a new wish */}
-                <h5>More to Donate</h5>
-                <p>
-                  You are currently not eligible for this Wish. Please complete
-                  your statistics to proceed.
-                </p>
+    // <>
+    //   {!isLoading && !error && wishData?.data ? (
+    //     <>
+    //       <Product
+    //         product={wishData.data}
+    //         showModal={true}
+    //         minDonation={minDonation}
+    //         handleClose={() => {}}
+    //         openSuccessModal={() => {}}
+    //       />
+    //     </>
+    //   ) : (
+    //     <>
+    //       <div className="container-mw">
+    //         <Statistics />
+    //         <Myorder />
+    //         <div className="mw-donation-section-con">
+    //           <div className="mw-donation-section">
+    //             <Image
+    //               src={img2}
+    //               height={75}
+    //               width={100}
+    //               alt="Donation Image"
+    //               className="mw-donate-img"
+    //             />
+    //             <h5>Almost there!</h5>
+    //             <p>
+    //             You will be eligible to post your wish after you complete your donations.
+    //             </p>
 
-                {/* Check if user is eligible to post a wish */}
-                {canPostWish ? (
-                  <button
-                    className="btn post-mywish-btn"
-                    onClick={() => router.push("/WishItemList")}
-                  >
-                    Post My Wish!
-                  </button>
-                ) : (
-                  <button
-                    className="btn mw-donate-btn donate-btn"
-                    onClick={() => router.push("/")}
-                  >
-                    Donate Now
-                  </button>
-                )}
-                <p className="mw-donate-explore-txt">Explore Wishing Items</p>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+                
+    //             {canPostWish ? (
+    //               <button
+    //                 className="post-mywish-btn"
+    //                 onClick={() => router.push("/WishItemList")}
+    //               >
+    //                 Post My Wish!
+    //               </button>
+    //             ) : (
+    //               <button
+    //                 className="mw-donate-btn"
+    //                 onClick={() => router.push("/")}
+    //               >
+    //                 Post My wish
+    //               </button>
+    //             )}
+    //             <p className="mw-donate-explore-txt">Explore Wishing Items</p>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </>
+    //   )}
+    // </>
+    <>
+    
     </>
   );
 };

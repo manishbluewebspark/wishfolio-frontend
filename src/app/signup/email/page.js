@@ -105,7 +105,7 @@ export default function LoginWithGoogle() {
 
             <div className="d-grid signup-login-margin">
               <button
-                className="btn btn-primary signup-btn-login"
+                className="signup-btn-login"
                 onClick={handleEmailSubmit}
                 disabled={loading} // Disable button while loading
               >

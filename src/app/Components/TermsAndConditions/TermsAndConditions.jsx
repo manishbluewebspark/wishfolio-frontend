@@ -2,7 +2,7 @@ import React from "react";
 import BackButton from "../Button/BackButton";
 // import './style.css';
 import Image from "next/image";
-import logoIcon from "../../images/snow.png";
+import logoIcon from "../../images/Snow.svg";
 
 const TermsAndConditions = () => {
   return (
@@ -10,8 +10,8 @@ const TermsAndConditions = () => {
       <BackButton title={"Privacy Policy"}></BackButton>
       <div className="tac-privacy-policy-container container">
         <div className="tac-privacy-policy-content">
-          <a className="navbar-brand d-flex align-items-center mb-2" href="#">
-            <Image src={logoIcon} alt="WishFolio Logo" width={40} height={40} />
+          <a className="navbar-brand tac-privacy-policy-brand d-flex align-items-center" href="#">
+            <Image src={logoIcon} alt="WishFolio Logo" width={32} height={32} />
             <span className="brand-text">
               Wish<span className="highlight-text">Folio</span>
             </span>

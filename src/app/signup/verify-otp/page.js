@@ -106,7 +106,7 @@ export default function OtpForm() {
           </div>
           <div className="d-grid otp-margin">
             <button
-              className="btn btn-primary em-btn-verify"
+              className="em-btn-verify"
               onClick={handleOtpSubmit} // Trigger OTP verification
             >
               Verify

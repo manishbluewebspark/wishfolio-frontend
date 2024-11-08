@@ -5,6 +5,7 @@ import Image from "next/image";
 // import "./style.css";
 import profilePic from "../../images/profile.svg"; // Example profile picture
 import CurrencyName from "../Comman/CurrencyName";
+import verifytick from "../../images/tick-circle.svg"
 const MyDoner = (props) => {
   function getDateAndTimeFromISO(isoString) {
     const dateObj = new Date(isoString);
@@ -59,9 +60,10 @@ const MyDoner = (props) => {
               <div className="pf-donor-details">
                 <div className="d-flex align-items-center">
                   <span className="pf-donor-name">{donor.donorName}</span>
-                  {donor?.verified && (
-                    <span className="pf-verified-icon">✔️</span>
-                  )}
+                  
+                    <span className="pf-verified-icon">
+                      <Image src={verifytick} height={15} width={15} ></Image>
+                    </span>
                 </div>
                 <span className="pf-donor-time">
                   {getDateAndTimeFromISO(donor?.updatedAt)?.date} •{" "}
@@ -70,7 +72,7 @@ const MyDoner = (props) => {
               </div>
             </div>
             <span className="pf-donor-amount">
-              <CurrencyName />
+              +<CurrencyName />
               {donor.amount}
             </span>
           </div>

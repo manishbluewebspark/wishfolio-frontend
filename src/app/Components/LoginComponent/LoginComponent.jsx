@@ -3,18 +3,18 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation"; // For client-side navigation
-import { loginUser } from "../store/slices/authSlice"; // Import the login thunk from authSlice
-import logoIcon from "../images/Snow.svg"; // Replace with your logo
+import { loginUser } from "../../store/slices/authSlice"; // Import the login thunk from authSlice
+import logoIcon from "../../images/Snow.svg"; // Replace with your logo
 import lockIcon from "@iconify/icons-mdi/lock";
-import { setEmail } from "../store/slices/signupSlice";
+import { setEmail } from "../../store/slices/signupSlice";
 import { toast } from "react-toastify";
-import googleIcon from "../images/googleicon.svg";
+import googleIcon from "../../images/googleicon.svg";
 import Image from "next/image";
-import emailicon from '../images/emailicon.svg';
-import addicon  from '../images/add.svg';
-import arrowright from '../images/arrow-right.svg'
+import emailicon from '../../images/emailicon.svg';
+import addicon  from '../../images/add.svg';
+import arrowright from '../../images/arrow-right.svg'
 
-const LoginScreen = () => {
+const LoginComponent = () => {
   const [email, setEmailState] = useState("");
   const [password, setPassword] = useState("");
 
@@ -43,7 +43,7 @@ const LoginScreen = () => {
   };
   return (
     <>
-      <div className="login-main-container">
+      <div className="login-main-container-comp">
         <div className="login-container">
           <div className="login-box text-center">
             {/* Logo */}
@@ -104,9 +104,9 @@ const LoginScreen = () => {
             <div className="my-2 or-txt">Or</div>
 
             {/* Google Sign-in Button */}
-            <div className="login-box-btm">
+            <div className="login-box-btm ">
               <button
-                className="btn-google w-100"
+                className="btn-google-comp w-100"
                 onClick={() => handleCreateAccount()}
               >
                 <Image
@@ -124,7 +124,7 @@ const LoginScreen = () => {
           {/* Create New Account */}
           <div className="create-new-con">
             <button
-              className="btn-google login-create-acc-btn w-100"
+              className="btn-google-comp login-create-acc-btn-comp w-100"
               onClick={() => handleCreateAccount()}
             >
               <span className='d-flex justify-content-center align-items-center'>
@@ -134,7 +134,7 @@ const LoginScreen = () => {
              <Image src={arrowright}  height={20} width={20} alt="arrowright"></Image>
             </button>
           </div>
-          <div className="terms-container-hw login-margin-top">
+          {/* <div className="terms-container-hw login-margin-top">
               By continuing, you agree to our
               <a href="/privacy-policy" className="text-muted-hw">
                 Privacy Policy
@@ -144,11 +144,11 @@ const LoginScreen = () => {
                 Terms of Service
               </a>
               .
-            </div>
+            </div> */}
         </div>
       </div>
     </>
   );
 };
 
-export default LoginScreen;
+export default LoginComponent;

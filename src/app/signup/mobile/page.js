@@ -85,7 +85,7 @@ export default function PhoneForm() {
                     </div>
                     <div className="d-grid mob-em-margin-top">
                         <button
-                            className="btn btn-primary mob-em-btn-continue"
+                            className="mob-em-btn-continue"
                             onClick={handleMobileSubmit}
                         >
                             Continue

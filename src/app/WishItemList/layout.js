@@ -14,7 +14,7 @@ export default function Layout({ children }) {
               overflowY: "scroll",
               backgroundColor: "white",
               width: "100%",
-              height: "100vh",
+              height: "100%",
             }}
           >
             {children}

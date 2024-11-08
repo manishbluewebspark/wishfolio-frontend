@@ -2,8 +2,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "./style.css"; // Custom CSS file for styling
 import Image from "next/image";
-import icon1 from "../../images/dollar-circle.png";
-import icon2 from "../../images/drop.png";
+import icon1 from "../../images/dollar-circle.svg";
+import icon2 from "../../images/darkdrop.svg";
 import iconTick from "../../images/tick-circle.png";
 import CurrencyName from "../Comman/CurrencyName";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,14 +52,14 @@ const Statistics = (props) => {
 
   return (
     <div
-      className="mw-statistics-section shadow-sm"
+      className="mw-statistics-section"
       style={{
         background: props?.isPayment
           ? "#F7F7F7"
           : statisticData?.data?.length >= minDonation.numberOfDonations &&
             getSumOfAmounts(statisticData?.data) >= minDonation?.minimumDonation
           ? "#31B776"
-          : "#90AEFF",
+          : "#F7F7F7",
       }}
     >
       <div className="mw-statistics-inside-sec">
@@ -86,7 +86,7 @@ const Statistics = (props) => {
                   getSumOfAmounts(statisticData?.data) >=
                     minDonation?.minimumDonation
                 ? "#ffffff"
-                : "#AEC4FF",
+                : "#EEEEEE",
             }}
           >
             <Image
@@ -94,7 +94,7 @@ const Statistics = (props) => {
                 getSumOfAmounts(statisticData?.data) >=
                 minDonation?.minimumDonation
                   ? iconTick
-                  : icon2
+                  : icon1
               }
               alt="dollar-circle"
               width={24}
@@ -120,6 +120,7 @@ const Statistics = (props) => {
                     minDonation?.minimumDonation
                       ? "line-through"
                       : "none",
+                    marginBottom:'0px'
                 }}
               >
                 <CurrencyName />
@@ -139,7 +140,9 @@ const Statistics = (props) => {
                   getSumOfAmounts(statisticData?.data) >=
                     minDonation?.minimumDonation
                 ? "#ffffff"
-                : "#AEC4FF",
+                : "#EEEEEE",
+                marginBottom:"0px"
+
             }}
           >
             {/* Conditionally render icon based on donations count */}
@@ -161,6 +164,7 @@ const Statistics = (props) => {
                     statisticData?.data?.length >= minDonation.numberOfDonations
                       ? "line-through"
                       : "none",
+                      marginBottom:"0px",
                 }}
               >
                 Number of Donations
@@ -171,6 +175,7 @@ const Statistics = (props) => {
                     statisticData?.data?.length >= minDonation.numberOfDonations
                       ? "line-through"
                       : "none",
+                      marginBottom:'0px'
                 }}
               >
                 {statisticData?.data?.length}/{minDonation.numberOfDonations}

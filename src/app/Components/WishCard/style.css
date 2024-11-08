@@ -127,12 +127,7 @@
   .progress-bar-default {
     background-color: #90AEFF
   }
-  /* Adjust for mobile screens */
-  @media (max-width: 576px) {
-    .wish-card {
-      max-width: 100%;
-    }
-  }
+
   p{
     margin-bottom: 0px !important;
   }

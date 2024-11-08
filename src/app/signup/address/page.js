@@ -222,7 +222,7 @@ const AddressForm = () => {
 
               {/* Complete button */}
               <div className="d-grid address-margin-top">
-                <button type="submit" className="btn btn-primary address-btn-complete">
+                <button type="submit" className="address-btn-complete">
                   Complete
                 </button>
               </div>

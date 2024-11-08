@@ -75,7 +75,7 @@ export default function NameForm() {
                     </div>
                     <div className="d-grid em-margin-top">
                         <button
-                            className="btn btn-primary em-btn-continue"
+                            className="em-btn-continue"
                             onClick={handleMobileSubmit}
                         >
                             Continue

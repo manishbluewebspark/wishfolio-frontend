@@ -27,7 +27,7 @@ const Levels = () => {
 
         {/* Target Section */}
         <div className="hwl-target-section">
-          <h6>Target to be completed</h6>
+          <h6 className="hwl-Target-text">Target to be completed</h6>
           <div className="hwl-stat-item d-flex align-items-center">
             <Image src={dollarIcon} alt="Min Donations" className="hwl-icon" />
             <div className="hwl-stat-text d-flex justify-content-between w-100 align-items-center">
@@ -36,7 +36,7 @@ const Levels = () => {
             </div>
           </div>
 
-          <div className="hwl-stat-item d-flex align-items-center">
+          <div className="hwl-stat-item d-flex align-items-center" style={{marginBottom:"0px !important"}}>
             <Image
               src={dropIcon}
               alt="Number of Donations"

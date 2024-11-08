@@ -85,7 +85,7 @@ const SuccessStories = () => {
               </div>
               <div className="hw-sto-review-container">
                 <div className="hw-sto-review-text">
-                  <p>Reviewed by </p>
+                  <p style={{color:"#A48888"}}>Reviewed by </p>
                   <Image
                     src={
                       `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${review.userImageUrl}` ||
