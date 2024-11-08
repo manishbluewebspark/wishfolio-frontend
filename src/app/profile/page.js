@@ -17,7 +17,7 @@ import { fetchUserData } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
 import righticon from "../images/arrow-short-right.svg";
 import LoginComponent from "../Components/LoginComponent/LoginComponent"; // Import LoginComponent
-
+import LoginModal from "../Components//Modals/LoginModal";
 const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();

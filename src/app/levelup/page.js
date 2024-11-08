@@ -6,8 +6,7 @@ import HowToUnblockComp from '../Components/WishCard/HowToUnblockComp';
 const Page = () => {
     return (
         <>
-            {/* <LevelUpComponent></LevelUpComponent> */}
-            <HowToUnblockComp></HowToUnblockComp>
+            <LevelUpComponent></LevelUpComponent>
         </>
     );
 }

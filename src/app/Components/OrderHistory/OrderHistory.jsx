@@ -35,7 +35,7 @@ const OrderHistory = () => {
           const checkData = response.data?.user?.userLevel;
 
           if (checkData > userData?.userLevel) {
-            router.push("/LevelUpScreen");
+            router.push("/levelup");
           }
           // setLevelData(response.data?.data);
         } catch (error) {

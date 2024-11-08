@@ -8,7 +8,7 @@ import Statistics from "../mystatistics/Statistics";
 import MyDoner from "../MyDoner/MyDoner";
 import profilePic from "../../images/profile.svg";
 import crossicon from "../../images/cross.svg";
-
+import LoginModal from "../Modals/LoginModal";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ProductModalNew = ({
@@ -22,6 +22,7 @@ const ProductModalNew = ({
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(null);
   const { userData } = useSelector((state) => state.user);
+  const [loginOpen, setLoginOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
@@ -67,7 +68,8 @@ const ProductModalNew = ({
         );
       }
     } else {
-      window.alert("Please login first.");
+      // window.alert("Please login first.");
+      setLoginOpen(true);
     }
   };
 
@@ -82,6 +84,7 @@ const ProductModalNew = ({
 
   return (
     <div className={`npmc-product-modal ${isOpen ? "open" : ""}`}>
+      <LoginModal isOpen={loginOpen} />
       <div className="npmc-modal-wrapper">
         <div className="npmc-modal-content">
           <div className="npmc-close-btn-con">
