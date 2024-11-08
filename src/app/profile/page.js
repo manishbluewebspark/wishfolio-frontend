@@ -17,6 +17,7 @@ import LogoutModal from "../Components/Modals/LogoutModal"; // Import the new Lo
 import { fetchUserData } from "../store/slices/userSlice";
 import { toast } from "react-toastify";
 import righticon from '../images/arrow-short-right.svg';
+import LoginModal from '../Components//Modals/LoginModal';
 const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
