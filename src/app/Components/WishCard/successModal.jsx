@@ -10,11 +10,11 @@ const SuccessModal = ({ showModal, handleClose }) => {
   return (
     <div
       className={`bottom-modal ${showModal ? "open" : ""}`}
-      style={{ height: "45vh" }}
+      style={{height:'auto' , padding:'22px'}}
     >
       <div className="modal-content">
         <div className="modal-header">
-          <button onClick={handleClose} className="close-btn">
+          <button onClick={handleClose} className="smcb-close-btn">
             &times;
           </button>
         </div>

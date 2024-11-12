@@ -14,8 +14,6 @@ export default function HomePage() {
           <div className="content-container">
           <EmojisCard />
           <ProductCard />
-          </div>
-          <div className="hitwork-btn-sticky">
           <HowItWorkingBtn></HowItWorkingBtn>
           </div>
           <BottomNav />

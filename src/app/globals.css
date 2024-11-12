@@ -33,6 +33,7 @@ body{
   background-color: #ebf2fa !important;
   overflow-x: hidden !important;
   overflow-y: hidden !important;
+  display: flex;
   height: 100%;
   width: 100%;
 }
@@ -50,10 +51,10 @@ h1, h2, h3, p {
 } */
 .body-main-container {
   font-family: 'Manrope' !important;
-  transform: scale(1); 
+  transform: scale(0.8); 
   transform-origin: top center;
-  width: 100%;
-  height: 100vh; 
+  width: 125%; 
+  height: 125%; 
   overflow: hidden !important; 
   margin: 0 auto;
 }
@@ -62,11 +63,11 @@ h1, h2, h3, p {
     font-family: 'Manrope';
     transform: scale(1);
     transform-origin: top center;
-    width: 100%; 
-    height: 100vh; 
+    width: 125%; 
+    height: 100%; 
     overflow:hidden !important; 
     margin: 0 auto;
-    /* zoom: 80% !important; */
+    zoom: 80% !important;
   }
 }
 /* input, textarea {
@@ -93,24 +94,17 @@ body {
 .main-layout{
   margin: 0 auto;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color:white;
 }
 .page-container {
-  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   align-items: center;
   font-family: 'Manrope' !important;
-}
-.hitwork-btn-sticky{
-  position: absolute;
-  bottom: 80px;
-  float: right;
-  right: 20px;
 }
 
 * {
@@ -120,6 +114,7 @@ body {
   font-family: 'Manrope' !important;
 }
 .content-container {
+  position: relative;
   width: 100%;
   flex-grow: 1; 
   overflow-y: scroll; 
@@ -183,10 +178,7 @@ font-weight: 400;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  overflow: hidden;
-  /* flex-wrap: wrap; */
-  /* flex-direction: column; */
+  flex-direction: column;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -194,24 +186,22 @@ font-weight: 400;
 .emoji-row {
   gap: 6px;
   display: flex;
-  flex-grow: 1;
+  width: 100%;
 }
 
 .emoji-card {
   display:flex;
   justify-content: center;
   align-items: center;
-  min-width: 20px;
-  max-width: 100%;
+  min-width: 10px;
   height: 94px ;
+  width: 100%;
   padding: 10px;
   border-radius: 35px;
   transition: background-color 0.3s ease;
   cursor: pointer;
   text-align: center;
   background-color: #f9f9fb;
-  flex-direction: column;
-  flex: 1 1 92px; 
 }
 .emoji-card-items{
   display: flex;
@@ -5187,14 +5177,20 @@ border: none;
 .npmc-modal-wrapper {
   background-color: rgba(0, 0, 0, 0.8); /* Little black background color */
   position: relative; /* Positioning for inner content */
-  height: 100vh !important;
+  height: 125vh !important;
   display: flex;
   justify-content: center;
   align-items: flex-end; /* Align modal content at the bottom */
 }
+/* .npmc-curr-blc{
+  font-size: 12px;
+  font-weight: 400px;
+  color: #696969;
+} */
+
 .npmc-modal-content {
   position: relative;
-  height: 95vh !important;
+  height: 119vh !important;
   background: white; /* Modal content background */
   border-radius: 30px 30px 0px 0px;; /* Rounded corners */
   /* padding: 0px 20px; */
@@ -5310,12 +5306,12 @@ border: none;
   background-color: #5B80E0 !important; 
 
 }
-/* .hoitw_btn-con{
+.hoitw_btn-con{
   position: sticky;
   bottom: 10px;
   float: inline-end;
   margin-right: 20px;
-} */
+}
 
 /* levelupcomponent */
 .levelup-main-con{
