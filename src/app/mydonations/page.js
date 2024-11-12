@@ -2,50 +2,66 @@
 import React, { useEffect, useState } from "react";
 import Statistics from "../Components/mystatistics/Statistics";
 import WishCard from "../Components/WishCard/WishCard"; // Ensure you have this component in place
-import watchImage from "../images/watchimg.png";
-import bagImage from "../images/bagimg.png";
-import profileImage from "../images/Male15.png";
+import ProductModal from "../Components/WishCard/ProductModal";
+import LoginComponent from "../Components/LoginComponent/LoginComponent";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMyDonations } from "../store/slices/myDonationsSlice";
-import ProductModal from "../Components/WishCard/ProductModal";
+
 const Page = () => {
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // New state for tracking login status
   const { donationsData, isLoading, error } = useSelector(
     (state) => state.myDonations
   );
   const [minDonation, setMinDonation] = useState({});
   const { levels, loading } = useSelector((state) => state.levels);
-  useEffect(() => {
-    if (levels?.length > 0) {
-      setMinDonation(levels[0]);
-    }
-  }, [levels, donationsData]);
+
+  // Track user login status
   useEffect(() => {
     const getUserData = () => {
       const userData = localStorage.getItem("user");
       if (userData) {
         const uData = JSON.parse(userData);
+        setIsLoggedIn(true); // Set logged in status to true
         dispatch(fetchMyDonations(uData.id));
+      } else {
+        setIsLoggedIn(false); // Set logged in status to false
       }
     };
 
     getUserData();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (levels?.length > 0) {
+      setMinDonation(levels[0]);
+    }
+  }, [levels, donationsData]);
+
   const handleCardClick = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
   };
+
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedProduct(null);
   };
+
   const handleOpensucessModal = () => {
     setShowModal(false);
     setSelectedProduct(null);
     // setShowSuccessModal(true);
   };
+
+  // If the user is not logged in, show the LoginComponent
+  if (!isLoggedIn) {
+    return <LoginComponent />;
+  }
+
+  // Render the donations page if the user is logged in
   return (
     <>
       <Statistics

@@ -51,7 +51,7 @@ const LevelUpScreen = () => {
   }, [userData]);
 
   return (
-    <div className="justify-content-center align-items-center custome-class-levelup min-vh-100 d-flex">
+    <div className="justify-content-center align-items-center levelUpContainerLuc-main min-vh-100 d-flex">
       <Row className="text-center w-100" style={{ maxWidth: "500px" }}>
         <Col xs={12}>
           {/* Close Button */}
@@ -66,7 +66,7 @@ const LevelUpScreen = () => {
           </div>
 
           {/* Icon and Title */}
-          <div className="mb-4">
+          <div className="mb-4 emojiluc-sec">
             <Image
               src={treeIcon}
               alt="Tree Icon"

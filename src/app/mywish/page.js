@@ -10,7 +10,9 @@ import { useRouter } from "next/navigation";
 import { fetchMyWish } from "../store/slices/myWishSlice";
 import Product from "../Components/myWish/Product";
 import { fetchUserData } from "../store/slices/userSlice";
+import LoginComponent from "../Components/LoginComponent/LoginComponent"; // Import LoginComponent
 import axios from "axios";
+
 const WishFolio = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const WishFolio = () => {
     (state) => state.myWishData
   );
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track if user is logged in
   const [minDonation, setMinDonation] = useState({});
 
   useEffect(() => {
@@ -29,11 +32,15 @@ const WishFolio = () => {
       const user = localStorage.getItem("user");
       if (user) {
         const uData = JSON.parse(user);
+        setIsLoggedIn(true); // Set the user as logged in
         dispatch(fetchUserData(uData.id)); // Fetch data using user ID from localStorage
+      } else {
+        setIsLoggedIn(false); // Set the user as not logged in
       }
     };
     getUserData();
   }, [dispatch]);
+
   useEffect(() => {
     // Fetch level data based on user level
     const fetchLevelData = async () => {
@@ -51,12 +58,6 @@ const WishFolio = () => {
 
     fetchLevelData();
   }, [userData]);
-  // Set minimum donation requirement based on levels
-  // useEffect(() => {
-  //   if (levels?.length > 0) {
-  //     setMinDonation(levels[0]);
-  //   }
-  // }, [levels]);
 
   // Fetch user's wish data on component mount
   useEffect(() => {
@@ -79,6 +80,11 @@ const WishFolio = () => {
   const canPostWish =
     statisticData?.data?.length >= minDonation.numberOfDonations &&
     getSumOfAmounts(statisticData?.data) >= minDonation?.minimumDonation;
+
+  // If user is not logged in, show the LoginComponent
+  if (!isLoggedIn) {
+    return <LoginComponent />;
+  }
 
   return (
     <>
@@ -108,10 +114,10 @@ const WishFolio = () => {
                 />
                 <h5>Almost there!</h5>
                 <p>
-                You will be eligible to post your wish after you complete your donations.
+                  You will be eligible to post your wish after you complete your
+                  donations.
                 </p>
 
-                
                 {canPostWish ? (
                   <button
                     className="post-mywish-btn"
@@ -121,8 +127,9 @@ const WishFolio = () => {
                   </button>
                 ) : (
                   <button
-                    className="mw-donate-btn"
-                    onClick={() => router.push("/")}
+                    className="mw-donate-btn-disable"
+                    //onClick={() => router.push("/")}
+                    disabled
                   >
                     Post My wish
                   </button>

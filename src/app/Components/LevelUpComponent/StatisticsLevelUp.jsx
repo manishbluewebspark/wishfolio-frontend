@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import Image from "next/image";
 import dollarIcon from "../../images/dollar-circle.png"; // Replace with your icons
 import dropIcon from "../../images/drop.png"; // Replace with your icons
-import emojiIcon from '../../images/emoji1.png';
+import emojiIcon from "../../images/emoji1.png";
 
-const StatisticsLevelUp = () => {
+const StatisticsLevelUp = ({ levelData }) => {
   return (
     <div className="slv-statistics-section shadow-sm">
       <div className="slv-statistics-inside-sec">
@@ -13,7 +13,11 @@ const StatisticsLevelUp = () => {
         <div className="slv-level-content d-flex align-items-center justify-content-center">
           <div className="slv-wishing-items">
             <h5>Wishing Items</h5>
-            <p>₹50,000 - ₹100,000 Worth Items</p>
+            <p>
+              {levelData?.minimumDonation && levelData?.worthItem
+                ? `₹${levelData.minimumDonation} - ₹${levelData.worthItem} Worth Items`
+                : "Loading..."}
+            </p>
           </div>
         </div>
 
@@ -24,11 +28,14 @@ const StatisticsLevelUp = () => {
             <Image src={dollarIcon} alt="Min Donations" className="slv-icon" />
             <div className="slv-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Min Donations</span>
-              <h6>₹10,000</h6>
+              <h6>₹{levelData?.minimumDonation}</h6>
             </div>
           </div>
 
-          <div className="slv-stat-item d-flex align-items-center" style={{ marginBottom: "0px !important" }}>
+          <div
+            className="slv-stat-item d-flex align-items-center"
+            style={{ marginBottom: "0px !important" }}
+          >
             <Image
               src={dropIcon}
               alt="Number of Donations"
@@ -36,7 +43,7 @@ const StatisticsLevelUp = () => {
             />
             <div className="slv-stat-text d-flex justify-content-between w-100 align-items-center">
               <span>Number of Donations</span>
-              <h6>10</h6>
+              <h6>{levelData?.numberOfDonations}</h6>
             </div>
           </div>
         </div>
