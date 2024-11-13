@@ -51,10 +51,10 @@ h1, h2, h3, p {
 } */
 .body-main-container {
   font-family: 'Manrope' !important;
-  transform: scale(0.8); 
+  transform: scale(1); 
   transform-origin: top center;
   width: 125%; 
-  height: 125%; 
+  height: 100%; 
   overflow: hidden !important; 
   margin: 0 auto;
 }
@@ -67,7 +67,7 @@ h1, h2, h3, p {
     height: 100%; 
     overflow:hidden !important; 
     margin: 0 auto;
-    zoom: 80% !important;
+    /* zoom: 80% !important; */
   }
 }
 /* input, textarea {
@@ -159,14 +159,7 @@ a {
     color-scheme: dark;
   }
 }
-.success-heading{
-font-size: 20px;
-font-weight: 800;
-}
-.success-title{
-  font-size: 14px;
-font-weight: 400;
-}
+
 .cursor-pointer{
   cursor:pointer
 }
@@ -417,6 +410,7 @@ align-items: center;
 width: 100%;
 text-align: center;
 position: relative;
+height: 100vh;
 }
 .product-details p{
 font-size: 14px;
@@ -439,20 +433,15 @@ text-align: left;
 list-style: none;
 padding-left: 0;
 }
+.donors-section{
+  width: 100%;
+}
 
 .donor-pic {
 border-radius: 50%;
 margin-right: 10px;
 }
 
-.donate-section {
-margin-top: 20px;
-position: sticky;
-bottom: 0px;
-padding: 20px;
-background-color: white;
-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-}
 
 
 /* filter css */
@@ -1622,7 +1611,8 @@ text-align: center;
 .htum-unblock-modal-content {
   background-color: #000000c7;
   color: white;
-  height: 100vh;
+  height:auto;
+  max-height: 90vh;
   overflow-y: scroll;
   width: 100%;
   border-radius: 15px 15px 0 0;
@@ -2134,7 +2124,6 @@ bottom: 0; /* Slide in from the bottom */
 }
 
 .modal-content {
-  padding-top: 20px;
 overflow-y: auto; /* Make content scrollable */
 }
 
@@ -3214,7 +3203,7 @@ left: 50%;
 transform: translateX(-50%);
 width: 100%;
 max-width: 428px !important;
-height: 124vh;
+height: 90vh;
 background: white;
 border-radius: 30px 30px 0 0;
 box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
@@ -3222,6 +3211,45 @@ transition: all 0.5s ease-in-out;
 z-index: 99999999;
 overflow: scroll;
 }
+.smcb-close-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1024;
+  position: absolute;
+top: 0px;
+right: 0px;
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+height: 30px;
+width: 30px;
+background-color: #4d4a4a85;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50px;
+font-size: 22px;
+}
+
+.success-heading{
+  font-size:20px !important;
+  font-weight: 800 !important;
+  color: black !important;
+  margin-bottom: 0px !important;
+  text-align: center !important;
+  
+  }
+  .success-title{
+    font-size: 14px !important;
+  font-weight: 400 !important;
+  color: black !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  }
 
 .bottom-modal.open {
 bottom: 0; /* Slide in from the bottom */
@@ -3265,10 +3293,7 @@ width: 100%;
 text-align: left;
 }
 
-.donors-section ul {
-list-style: none;
-padding-left: 0;
-}
+
 
 .donor-pic {
 border-radius: 50%;
@@ -3435,7 +3460,6 @@ outline: none;
   gap: 10px;
 }
 .mw-content-inside-sec{
-  width: 346px;
   gap: 3px;
 
 }
@@ -3443,6 +3467,9 @@ outline: none;
   width: 100%;
   gap: 10px;
 
+}
+.hw-unblock-levels-container {
+  margin-top: 69px;
 }
 .mw-statistics-title {
   text-align: left;
@@ -5157,47 +5184,46 @@ border: none;
   top: 34%;
 }
 
-/* address page css end  */
-/*  */
+/* Fullscreen black background overlay */
 .npmc-product-modal {
   position: fixed;
-  bottom: -10%; /* Initially hidden below the viewport */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999999; /* Ensure it’s on top of other content */
-  overflow: hidden; /* Prevent overflow */
-  transition: bottom 0.5s ease-in-out; /* Smooth transition for opening */
+  top: 0;
+  left: 0;
   width: 100%;
-}
-
-.npmc-product-modal.open {
-  bottom: 0; /* Slide in from the bottom when opened */
-}
-
-.npmc-modal-wrapper {
-  background-color: rgba(0, 0, 0, 0.8); /* Little black background color */
-  position: relative; /* Positioning for inner content */
-  height: 125vh !important;
+  height: 100vh; /* Full height for the background overlay */
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.8); /* Black overlay */
   display: flex;
   justify-content: center;
   align-items: flex-end; /* Align modal content at the bottom */
+  overflow: hidden;
 }
-/* .npmc-curr-blc{
-  font-size: 12px;
-  font-weight: 400px;
-  color: #696969;
-} */
 
-.npmc-modal-content {
-  position: relative;
-  height: 119vh !important;
-  background: white; /* Modal content background */
-  border-radius: 30px 30px 0px 0px;; /* Rounded corners */
-  /* padding: 0px 20px; */
-  text-align: center; /* Center text */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow effect for modal content */
-  width: 100%; /* Full width of modal */
+/* Wrapper for the scrollable content */
+.npmc-modal-wrapper {
+  height: 90vh; /* Limit modal height to 90% of the viewport */
+  width: 100%; /* Full width of the viewport */
+  background: white;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Prevent content overflow outside border-radius */
+  display: flex;
+  flex-direction: column;
 }
+
+/* Scrollable content within the wrapper */
+.npmc-modal-content {
+  flex: 1; /* Allow this content to take up available space */
+  overflow-y: auto; /* Enable scrolling within the modal content */
+  padding: 20px; /* Optional padding inside modal */
+  width: 100%; /* Full width within the modal */
+}
+
+/* Class to open modal */
+.npmc-product-modal.open .npmc-modal-wrapper {
+  transform: translateY(0); /* Slide up to show modal */
+}
+
 
 .npmc-close-btn {
   background: none;
@@ -5280,9 +5306,9 @@ border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px !important;
   height: 100%;
   overflow: scroll;
+  /* padding-bottom: 70px !important; */
 }
 .npmc-btn-in-con{
   display: flex;

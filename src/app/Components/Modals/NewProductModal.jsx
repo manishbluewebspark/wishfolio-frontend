@@ -136,18 +136,6 @@ const ProductModalNew = ({
               <p className="product-title">{product.productName}</p>
 
               <div className="progress-bar-container">
-                {/* <div
-                className="progress-bar"
-                style={{
-                  width: `${calculatePercentageOfAmount(
-                    product.productPrice
-                  )}%`,
-                  backgroundColor:
-                    calculatePercentageOfAmount(product.productPrice) >= 100
-                      ? "#00C036 !important"
-                      : "#4A90E2",
-                }}
-              ></div> */}
                 <div
                   className={`progress-bar ${
                     calculatePercentageOfAmount(product.productPrice) >= 100
