@@ -20,7 +20,7 @@ const SuccessModal = ({ showModal, handleClose }) => {
         </div>
         <div className="modal-body">
           <Image src={img2} alt={"title"} width={100} height={100} />
-          <div className="product-details">
+          <div className="ss-product-details-con">
             <p className="success-heading">You are the best!</p>
 
             <p className="success-title">Thanku you for your donation!</p>

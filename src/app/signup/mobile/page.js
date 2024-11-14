@@ -65,9 +65,11 @@ export default function PhoneForm() {
                             placeholder="+91"
                             defaultValue="+91"
                             onChange={(e) => setMobileState(e.target.value)}
+                            
 		style={{
                         border: 'none', // Remove border
                         outline: 'none', // Remove default outline
+                        fontSize:'16px',
                       }}
                       required
                         />
