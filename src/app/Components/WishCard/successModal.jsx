@@ -10,17 +10,17 @@ const SuccessModal = ({ showModal, handleClose }) => {
   return (
     <div
       className={`bottom-modal ${showModal ? "open" : ""}`}
-      style={{ height: "45vh" }}
+      style={{height:'auto' , padding:'22px'}}
     >
       <div className="modal-content">
         <div className="modal-header">
-          <button onClick={handleClose} className="close-btn">
+          <button onClick={handleClose} className="smcb-close-btn">
             &times;
           </button>
         </div>
         <div className="modal-body">
           <Image src={img2} alt={"title"} width={100} height={100} />
-          <div className="product-details">
+          <div className="ss-product-details-con">
             <p className="success-heading">You are the best!</p>
 
             <p className="success-title">Thanku you for your donation!</p>

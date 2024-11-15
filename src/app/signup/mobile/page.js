@@ -70,6 +70,7 @@ export default function PhoneForm() {
               style={{
                 border: "none", // Remove border
                 outline: "none", // Remove default outline
+                fontSize: "16px",
               }}
               required
             />

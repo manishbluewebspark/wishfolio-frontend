@@ -61,11 +61,11 @@ const EmojisCard = () => {
 
   return (
     <div className="emoji-container container">
-      <div className="emoji-row row">
+      <div className="emoji-row">
         {levels.map((option, index) => (
           <div
             key={index}
-            className={`emoji-card col ${
+            className={`emoji-card ${
               selected === option.labelName ? "emoji-selected" : "" // Highlight selected level
             } ${index >= userData?.userLevel ? "emoji-locked" : ""}`} // Add "emoji-locked" class if the level is locked
             onClick={() => handleSelect(option.labelName, option._id, index)}

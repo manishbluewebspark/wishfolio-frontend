@@ -7,6 +7,8 @@ import LoginComponent from "../Components/LoginComponent/LoginComponent";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMyDonations } from "../store/slices/myDonationsSlice";
 import ProductModalNew from "../Components/Modals/NewProductModal";
+import ProModal from "../Components/Modals/ProModal";
+
 const Page = () => {
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -68,7 +70,7 @@ const Page = () => {
         minDonation={minDonation?.minimumDonation}
         numberOfDoanation={minDonation?.numberOfDonations}
       />
-      <div className="row product-con my-2">
+      <div className="row product-con">
         {donationsData?.data.map((product) => (
           <div
             className="col-md-6 col-sm-6 col-6 product-col"
@@ -96,6 +98,7 @@ const Page = () => {
             onClose={handleCloseModal}
             openSuccessModal={handleOpensucessModal}
             isDonated={true}
+            isOpen={showModal}
           />
         )}
       </div>

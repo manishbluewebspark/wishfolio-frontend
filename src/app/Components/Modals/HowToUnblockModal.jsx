@@ -3,6 +3,7 @@ import Image from "next/image";
 import logo from "../../images/snow.png";
 import UnblockLevels from "../HowItWork/UnblockLevels";
 import HowToUnblock from "../HowToUnblockImg/HowToUnblockImg";
+import crossIcon from '../../images/cross.svg';
 
 const HowToUnblockModal = ({ isOpen, onClose, onConfirm }) => {
   const unblockLevelsClasses = "htum-Margin-top-class";
@@ -12,7 +13,7 @@ const HowToUnblockModal = ({ isOpen, onClose, onConfirm }) => {
       <div className="htum-unblock-modal-content">
         <UnblockLevels unblockLevelsClasses={unblockLevelsClasses} htumMarginClass={htumMarginClass} ></UnblockLevels>
         <button className="htum-button-cancel" onClick={onClose}>
-          X
+          <Image src={crossIcon}></Image>
         </button>
       </div>
     </div>

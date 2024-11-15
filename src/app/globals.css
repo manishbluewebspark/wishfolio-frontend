@@ -51,10 +51,10 @@ h1, h2, h3, p {
 } */
 .body-main-container {
   font-family: 'Manrope' !important;
-  transform: scale(0.8); 
+  transform: scale(1); 
   transform-origin: top center;
-  width: 125%; 
-  height: 125%; 
+  width: 100%; 
+  height: 100%; 
   overflow: hidden !important; 
   margin: 0 auto;
 }
@@ -63,11 +63,10 @@ h1, h2, h3, p {
     font-family: 'Manrope';
     transform: scale(1);
     transform-origin: top center;
-    width: 125%; 
+    width: 100%; 
     height: 100%; 
     overflow:hidden !important; 
     margin: 0 auto;
-    zoom: 80% !important;
   }
 }
 /* input, textarea {
@@ -77,15 +76,6 @@ body {
   font-family: 'Manrope' !important;
   touch-action: manipulation; /* Prevent double-tap zoom */
 }
-/* .body-main-container {
-  transform: scale(0.8); 
-  transform-origin: top center;
-  width: 100%;
-  height: 125%; 
-  overflow: hidden !important;
-  margin: 0 auto;
-  zoom: 80%; 
-} */
 
 .form-control:focus{
   outline: none !important;
@@ -159,14 +149,7 @@ a {
     color-scheme: dark;
   }
 }
-.success-heading{
-font-size: 20px;
-font-weight: 800;
-}
-.success-title{
-  font-size: 14px;
-font-weight: 400;
-}
+
 .cursor-pointer{
   cursor:pointer
 }
@@ -185,6 +168,7 @@ font-weight: 400;
 
 .emoji-row {
   gap: 6px;
+  display: flex;
   width: 100%;
 }
 
@@ -192,9 +176,9 @@ font-weight: 400;
   display:flex;
   justify-content: center;
   align-items: center;
-  min-width: 92px;
-  max-width: 100%;
+  min-width: 10px;
   height: 94px ;
+  width: 100%;
   padding: 10px;
   border-radius: 35px;
   transition: background-color 0.3s ease;
@@ -416,6 +400,7 @@ align-items: center;
 width: 100%;
 text-align: center;
 position: relative;
+/* height: 100vh; */
 }
 .product-details p{
 font-size: 14px;
@@ -438,20 +423,16 @@ text-align: left;
 list-style: none;
 padding-left: 0;
 }
+.donors-section{
+  width: 100%;
+  margin-bottom: 12px;
+}
 
 .donor-pic {
 border-radius: 50%;
 margin-right: 10px;
 }
 
-.donate-section {
-margin-top: 20px;
-position: sticky;
-bottom: 0px;
-padding: 20px;
-background-color: white;
-box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-}
 
 
 /* filter css */
@@ -1621,7 +1602,8 @@ text-align: center;
 .htum-unblock-modal-content {
   background-color: #000000c7;
   color: white;
-  height: 100vh;
+  height:auto;
+  max-height: 90vh;
   overflow-y: scroll;
   width: 100%;
   border-radius: 15px 15px 0 0;
@@ -1666,6 +1648,9 @@ text-align: center;
   background-color: #e2e6ea; /* Light gray for cancel */
   color: #000000; /* Dark gray text */
   border: 1px solid #dee2e6; /* Border to match the cancel button style */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .htum-button-cancel:hover {
@@ -2133,7 +2118,6 @@ bottom: 0; /* Slide in from the bottom */
 }
 
 .modal-content {
-  padding-top: 20px;
 overflow-y: auto; /* Make content scrollable */
 }
 
@@ -3215,7 +3199,7 @@ left: 50%;
 transform: translateX(-50%);
 width: 100%;
 max-width: 428px !important;
-height: 124vh;
+height: 90vh;
 background: white;
 border-radius: 30px 30px 0 0;
 box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
@@ -3223,6 +3207,45 @@ transition: all 0.5s ease-in-out;
 z-index: 99999999;
 overflow: scroll;
 }
+.smcb-close-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1024;
+  position: absolute;
+top: 0px;
+right: 0px;
+background: none;
+border: none;
+font-size: 24px;
+cursor: pointer;
+height: 30px;
+width: 30px;
+background-color: #4d4a4a85;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50px;
+font-size: 22px;
+}
+
+.success-heading{
+  font-size:20px !important;
+  font-weight: 800 !important;
+  color: black !important;
+  margin-bottom: 0px !important;
+  text-align: center !important;
+  
+  }
+  .success-title{
+    font-size: 14px !important;
+  font-weight: 400 !important;
+  color: black !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+  }
 
 .bottom-modal.open {
 bottom: 0; /* Slide in from the bottom */
@@ -3266,10 +3289,7 @@ width: 100%;
 text-align: left;
 }
 
-.donors-section ul {
-list-style: none;
-padding-left: 0;
-}
+
 
 .donor-pic {
 border-radius: 50%;
@@ -3436,7 +3456,6 @@ outline: none;
   gap: 10px;
 }
 .mw-content-inside-sec{
-  width: 346px;
   gap: 3px;
 
 }
@@ -3444,6 +3463,9 @@ outline: none;
   width: 100%;
   gap: 10px;
 
+}
+.hw-unblock-levels-container {
+  margin-top: 69px;
 }
 .mw-statistics-title {
   text-align: left;
@@ -4381,8 +4403,11 @@ color: #9D9E9F;
   outline: none;
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   height: 64px;
+  width: 100%;
 }
-
+input, textarea {
+  font-size: 16px !important;
+}
 .login-input-group-text{
     border: none !important;
     outline: none !important;
@@ -5158,47 +5183,46 @@ border: none;
   top: 34%;
 }
 
-/* address page css end  */
-/*  */
+/* Fullscreen black background overlay */
 .npmc-product-modal {
   position: fixed;
-  bottom: -10%; /* Initially hidden below the viewport */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999999; /* Ensure it’s on top of other content */
-  overflow: hidden; /* Prevent overflow */
-  transition: bottom 0.5s ease-in-out; /* Smooth transition for opening */
+  top: 0;
+  left: 0;
   width: 100%;
-}
-
-.npmc-product-modal.open {
-  bottom: 0; /* Slide in from the bottom when opened */
-}
-
-.npmc-modal-wrapper {
-  background-color: rgba(0, 0, 0, 0.8); /* Little black background color */
-  position: relative; /* Positioning for inner content */
-  height: 125vh !important;
+  height: 100vh; /* Full height for the background overlay */
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.8); /* Black overlay */
   display: flex;
   justify-content: center;
   align-items: flex-end; /* Align modal content at the bottom */
+  overflow: hidden;
 }
-/* .npmc-curr-blc{
-  font-size: 12px;
-  font-weight: 400px;
-  color: #696969;
-} */
 
-.npmc-modal-content {
-  position: relative;
-  height: 119vh !important;
-  background: white; /* Modal content background */
-  border-radius: 30px 30px 0px 0px;; /* Rounded corners */
-  /* padding: 0px 20px; */
-  text-align: center; /* Center text */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow effect for modal content */
-  width: 100%; /* Full width of modal */
+/* Wrapper for the scrollable content */
+.npmc-modal-wrapper {
+  height: 90vh; /* Limit modal height to 90% of the viewport */
+  width: 100%; /* Full width of the viewport */
+  background: white;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Prevent content overflow outside border-radius */
+  display: flex;
+  flex-direction: column;
 }
+
+/* Scrollable content within the wrapper */
+.npmc-modal-content {
+  flex: 1; /* Allow this content to take up available space */
+  overflow-y: auto; /* Enable scrolling within the modal content */
+  padding: 38.27px 20px 20px 20px; /* Optional padding inside modal */
+  width: 100%; /* Full width within the modal */
+}
+
+/* Class to open modal */
+.npmc-product-modal.open .npmc-modal-wrapper {
+  transform: translateY(0); /* Slide up to show modal */
+}
+
 
 .npmc-close-btn {
   background: none;
@@ -5225,9 +5249,13 @@ border: none;
   margin-bottom: 1px;
 }
 .npmc-img-con{
-  height: 153px;
-  width: 136px;
+
+  /* height: 153px; */
+  /* width: 136px; */
   margin-bottom: 24px;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
 }
 
 .npmc-product-title {
@@ -5244,6 +5272,12 @@ border: none;
 .npmc-donate-section {
   margin-top: 20px; /* Space above donation section */
 }
+.donate-section{
+  position: sticky;
+  bottom: 0px;
+  background-color: white;
+  padding: 20px;
+}
 
 .npmc-donate-input {
   width: 261px;
@@ -5257,31 +5291,29 @@ border: none;
 .npmc-donate-btn {
   width: 113px;
   height: 60px;
-  background-color: #90AEFF; /* Button background color */
-  color: #000; /* Button text color */
-  border: none; /* Remove default border */
-  padding: 10px 20px; /* Padding for button */
-  border-radius: 30px; /* Rounded button */
-  cursor: pointer; /* Pointer cursor on hover */
-  margin-left: 10px; /* Space between input and button */
+  background-color: #90AEFF; 
+  color: #000; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 30px; 
+  cursor: pointer; 
+  margin-left: 10px; 
 }
 
 .npmc-button-disable {
-  background-color: #F7F7F7; /* Background color for disabled button */
-  color: #000; /* Text color for disabled button */
-  border: none; /* Remove default border */
-  padding: 10px 20px; /* Padding for disabled button */
-  border-radius: 30px; /* Rounded disabled button */
-  cursor: not-allowed; /* Indicate that it’s not clickable */
+  background-color: #F7F7F7; 
+  color: #000; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 30px; 
+  cursor: not-allowed; 
   width: 100
 }
 .npmc-modal-body{
-  margin-top: 38.27px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px !important;
   height: 100%;
   overflow: scroll;
 }
@@ -5786,4 +5818,119 @@ border:1px solid #E9E9E9;
   cursor: pointer;
   height: 60px;
   width: 182px;
+}
+/* ttttttt */
+/* Wrapper for the Pro Modal */
+.pro-modal-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hwb(0deg 0% 100% / 80%);; /* Dim the background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align the modal at the bottom */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999999;
+}
+
+/* Show the modal */
+.pro-modal-wrapper.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Content */
+.pro-modal-content {
+  height: 100%;
+  max-height: 90vh;
+  /* overflow-y: scroll; */
+  background-color: white;
+  width: 100%;
+  max-width: 430px;
+  border-radius: 15px 15px 0 0;
+  padding: 38.27px 20px 20px 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+/* Slide up the modal when shown */
+.pro-modal-wrapper.show .pro-modal-content {
+  transform: translateY(0); /* Slide up the modal */
+}
+
+/* Modal Buttons */
+.pro-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pro-modal-buttons button {
+  width: 48%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Yes Button */
+.pro-button-confirm {
+  background-color: #90AEFF; /* Blue color */
+  color: rgb(0, 0, 0);
+}
+
+.pro-button-confirm:hover {
+  background-color: #697fbb; /* Darker blue on hover */
+}
+
+/* Cancel Button */
+.pro-button-cancel {
+  background-color: #e2e6ea; /* Light gray for cancel */
+  color: #000000; /* Dark gray text */
+  border: 1px solid #dee2e6; /* Border to match the cancel button style */
+}
+
+.pro-button-cancel:hover {
+  background-color: #babdc0; /* Slightly darker gray on hover */
+}
+
+/* Modal Title */
+.pro-modal-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+}
+
+/* Modal Description Text */
+.pro-modal-content p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Center-align modal content */
+.pro-modal-content {
+  text-align: center;
+}
+
+.pro-modal-content-inside{
+  height: 100%;
+  overflow-y: scroll;
+  
+}
+.pro-modal-wrapper.show .row {
+  --bs-gutter-x: 0px !important;
+}
+input:focus, textarea:focus {
+  -webkit-user-modify: read-write-plaintext-only;
+  font-size: 16px !important;
+  transform: scale(1);
+  transition: transform 0.25s ease-in-out;
 }

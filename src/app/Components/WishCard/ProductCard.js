@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
 import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
 import ProductModalNew from '../Modals/NewProductModal';
+import ProModal from '../../Components/Modals/ProModal';
 
 import SuccessModal from "./successModal";
 // Sample Product Data
@@ -224,7 +225,7 @@ const handleCloseModal = () => {
   />
 )} */}
 {showProductModal && selectedProduct && (
-  <ProductModalNew
+  <ProModal
     product={selectedProduct}
     isOpen={showProductModal}
     onClose={handleCloseModal}
