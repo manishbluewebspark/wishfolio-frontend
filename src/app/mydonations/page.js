@@ -6,7 +6,7 @@ import ProductModal from "../Components/WishCard/ProductModal";
 import LoginComponent from "../Components/LoginComponent/LoginComponent";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMyDonations } from "../store/slices/myDonationsSlice";
-
+import ProductModalNew from "../Components/Modals/NewProductModal";
 const Page = () => {
   const dispatch = useDispatch();
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -89,11 +89,11 @@ const Page = () => {
           </div>
         ))}
         {selectedProduct && (
-          <ProductModal
+          <ProductModalNew
             product={selectedProduct}
             showModal={showModal}
             minDonation={minDonation}
-            handleClose={handleCloseModal}
+            onClose={handleCloseModal}
             openSuccessModal={handleOpensucessModal}
             isDonated={true}
           />

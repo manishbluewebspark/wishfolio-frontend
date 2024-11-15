@@ -69,7 +69,9 @@ export default function OtpForm() {
               <p className="em-otp-desc">
                 Start your wishing journey by signing up.
               </p>
-              <p className="em-otp-subtext">Verification code sent to {email}</p>
+              <p className="em-otp-subtext">
+                Verification code sent to {email}
+              </p>
             </div>
           </div>
           <div className="em-otp-input-container">
@@ -99,7 +101,7 @@ export default function OtpForm() {
               Privacy Policy
             </a>
             and
-            <a href="/terms-of-service" className="text-muted-hw">
+            <a href="/termsandconditions" className="text-muted-hw">
               Terms of Service
             </a>
             .
@@ -112,10 +114,8 @@ export default function OtpForm() {
               Verify
             </button>
           </div>
-
         </div>
       </div>
     </div>
-    
   );
 }

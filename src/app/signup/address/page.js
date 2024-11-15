@@ -239,7 +239,7 @@ const AddressForm = () => {
                   Privacy Policy
                 </a>
                 and
-                <a href="/terms-of-service" className="signup-text-muted-hw">
+                <a href="/termsandconditions" className="signup-text-muted-hw">
                   Terms of Service
                 </a>
                 .

@@ -21,6 +21,7 @@ const ProductModalNew = ({
 }) => {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(null);
+  const [error, setError] = useState(""); // New error state
   const { userData } = useSelector((state) => state.user);
   const [loginOpen, setLoginOpen] = useState(false);
 
@@ -29,6 +30,7 @@ const ProductModalNew = ({
   }, [isOpen]);
 
   const handleDonateClick = async () => {
+    setError(""); // Clear error before processing
     if (userData?._id) {
       if (userData?.accountBalance >= amount) {
         if (
@@ -52,17 +54,29 @@ const ProductModalNew = ({
             if (response.status === 201) {
               openSuccessModal();
             } else {
+              setError("Donation failed, please try again."); // Set error message
               toast.error("Donation failed, please try again.");
             }
           } catch (error) {
+            setError("An error occurred during the Donation."); // Set error message
             toast.error("An error occurred during the Donation.");
           }
         } else {
+          setError(
+            `Choose an amount less than ${
+              product.productPrice - getSumOfAmounts(product.donationsDetails)
+            }`
+          ); // Set error message
           toast.error(
-            "The donation amount exceeds the remaining required amount for this product."
+            `Choose an amount less than ${
+              product.productPrice - getSumOfAmounts(product.donationsDetails)
+            }`
           );
         }
       } else {
+        setError(
+          "Your account balance is insufficient to complete the donation."
+        ); // Set error message
         toast.error(
           "Your account balance is insufficient to complete the donation."
         );
@@ -136,18 +150,6 @@ const ProductModalNew = ({
               <p className="product-title">{product.productName}</p>
 
               <div className="progress-bar-container">
-                {/* <div
-                className="progress-bar"
-                style={{
-                  width: `${calculatePercentageOfAmount(
-                    product.productPrice
-                  )}%`,
-                  backgroundColor:
-                    calculatePercentageOfAmount(product.productPrice) >= 100
-                      ? "#00C036 !important"
-                      : "#4A90E2",
-                }}
-              ></div> */}
                 <div
                   className={`progress-bar ${
                     calculatePercentageOfAmount(product.productPrice) >= 100
@@ -181,6 +183,11 @@ const ProductModalNew = ({
               </div>
 
               <div className="donate-section">
+                {/* Show error message if exists */}
+                {error && (
+                  <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+                )}
+
                 {calculatePercentageOfAmount(product.productPrice) >= 100 ? ( // Check if funded status
                   <button className="donate-btn-disable">
                     Funded Successfully!

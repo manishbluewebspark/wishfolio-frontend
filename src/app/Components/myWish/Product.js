@@ -56,6 +56,7 @@ const ProductPage = ({ product }) => {
     product?.donationsDetails,
     "remaining"
   );
+  console.log("yesterdayDonations========", yesterdayDonations);
 
   function getDateAndTimeFromISO(isoString) {
     const dateObj = new Date(isoString);
@@ -102,9 +103,10 @@ const ProductPage = ({ product }) => {
       </div>
 
       {/* Donations Section */}
+      {todayDonations.length}
       <div className="mb-4">
         <h6>Today</h6>
-        <div className="d-flex justify-content-end align-items-center">
+        <div className="d-flex justify-content-between align-items-center">
           <p className="text-muted">Received</p>
           <p className="fw-bold">
             <CurrencyName />
