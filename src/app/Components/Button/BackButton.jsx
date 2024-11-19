@@ -19,7 +19,7 @@ const BackButton = (props) => {
   return (
     <div>
       <div className="bck-header d-flex justify-content-between align-items-center container">
-        <div className="d-flex alingn ">
+        <div className="d-flex align-items-center">
           <Image
             src={leftArrowIcon}
             className="me-2"

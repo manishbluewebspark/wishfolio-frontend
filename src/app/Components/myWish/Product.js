@@ -72,9 +72,9 @@ const ProductPage = ({ product }) => {
     router.push("/submitForDelivery");
   };
   return (
-    <div className={`container ${styles.container}`}>
+    <div className={`my-wish-prod-con ${styles.container}`}>
       {/* WishFolio Header */}
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div className="d-flex justify-content-end align-items-center share-btn-con">
         <button className="btn btn-outline-primary">Share</button>
       </div>
 
@@ -83,8 +83,8 @@ const ProductPage = ({ product }) => {
         <Image
           src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product?.productImageUrl}`}
           alt={product?.productName}
-          width={200}
-          height={200}
+          width={187.41}
+          height={210.16}
         />
         <h5 className="mt-3">{product?.productName}</h5>
         <p className="text-muted">

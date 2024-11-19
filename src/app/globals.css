@@ -2947,7 +2947,7 @@ align-items: center;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: hsl(0deg 0% 0% / 80%);
   justify-content: center;
   align-items: center;
 }
@@ -3863,7 +3863,6 @@ color: #90AEFF;
 .text-muted-hw {
   color: #000000;
   text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
   font-weight: bold;
 }
 .em-margin-top{
@@ -4384,9 +4383,7 @@ color: #9D9E9F;
 .input-container {
   position: relative;
 }
-.login-box-from input{
 
-}
 .social-icon{
  margin-right: 12px; 
 }
@@ -4394,7 +4391,7 @@ color: #9D9E9F;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -4667,7 +4664,6 @@ border: none;
   .text-muted-hw {
     color: #000000;
     text-decoration: none;
-    padding: 0 3px;
     font-weight: bold;
   }
   
@@ -4746,7 +4742,7 @@ border: none;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -4884,7 +4880,7 @@ border: none;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -5041,7 +5037,6 @@ border: none;
 .text-muted-hw {
   color: #000000;
   text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
   font-weight: bold;
 }
 
@@ -5113,7 +5108,7 @@ border: none;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -5932,3 +5927,21 @@ input:focus, textarea:focus {
   transform: scale(1);
   transition: transform 0.25s ease-in-out;
 }
+/* my wish page css start */
+.share-btn-con button{
+  border: none;
+  height: 42px;
+  width: 68px;
+  background-color: hsl(223.64deg 85.71% 69.8% / 10%);
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 100px;
+  color: #7094F4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-wish-prod-con{
+  margin-top: 15px;
+}
+/* my wish page css end  */

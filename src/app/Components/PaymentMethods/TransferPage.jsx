@@ -23,7 +23,7 @@ const TransferPage = () => {
   const [loading, setLoading] = useState(true); // Loading state for API call
   const [error, setError] = useState(null); // Error state for API call
 
-  const fees = 5; // Fee percentage
+  const fees = 15; // Fee percentage
 
   // Function to fetch payment details using param.id
   const fetchPaymentDetails = async () => {
