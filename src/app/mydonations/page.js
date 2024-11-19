@@ -6,7 +6,8 @@ import ProductModal from "../Components/WishCard/ProductModal";
 import LoginComponent from "../Components/LoginComponent/LoginComponent";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMyDonations } from "../store/slices/myDonationsSlice";
-import ProModal from '../Components/Modals/ProModal'; 
+import ProductModalNew from "../Components/Modals/NewProductModal";
+import ProModal from "../Components/Modals/ProModal";
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -90,13 +91,14 @@ const Page = () => {
           </div>
         ))}
         {selectedProduct && (
-          <ProModal
+          <ProductModalNew
             product={selectedProduct}
+            showModal={showModal}
+            minDonation={minDonation}
+            onClose={handleCloseModal}
+            openSuccessModal={handleOpensucessModal}
             isDonated={true}
             isOpen={showModal}
-            onClose={handleCloseModal}
-            minDonation={minDonation}
-            openSuccessModal={handleOpensucessModal}
           />
         )}
       </div>

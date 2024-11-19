@@ -99,7 +99,7 @@ export default function OtpForm() {
               Privacy Policy
             </a>
             and
-            <a href="/terms-of-service" className="text-muted-hw">
+            <a href="/termsandconditions" className="text-muted-hw">
               Terms of Service
             </a>
             .

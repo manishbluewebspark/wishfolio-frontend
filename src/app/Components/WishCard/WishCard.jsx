@@ -39,13 +39,23 @@ const WishCard = ({
         />
       </div>
 
-      {/* {type === "myDonation" && (
+      {type === "myDonation" && (
         <div className="donation-funding-container">
           <div className="donate-button">
-            <strong>Funding</strong>
+            <strong
+              className={`r ${
+                calculatePercentageOfAmount(donationGoal) >= 100
+                  ? "text-success-color"
+                  : ""
+              }`}
+            >
+              {calculatePercentageOfAmount(donationGoal) >= 100
+                ? "Success"
+                : "Funding"}
+            </strong>
           </div>
         </div>
-      )} */}
+      )}
       {type === "myDonation" && (
         <div className="donation-button-container">
           <div className="donate-button">
@@ -73,21 +83,20 @@ const WishCard = ({
             style={{ marginRight: "4px" }}
           />
           {"  "}
-          <strong style={{ color: "black"}}>{wishingBy}</strong>
+          <strong style={{ color: "black" }}>{wishingBy}</strong>
         </p>
 
         {/* Price Info */}
         <p className="price">
           {/* ₹{getSumOfAmounts(donationsDetails) || price}  */}
-          
           <CurrencyName />
-          {getSumOfAmounts(donationsDetails) || price}/ 
-          <span className="donated" style={{ marginLeft: "4px", color:'#A48888' }}>
-          <CurrencyName />
-          {donationGoal?.toLocaleString()}{" "}
-          
-            {" "}
-            Donated
+          {getSumOfAmounts(donationsDetails) || price}/
+          <span
+            className="donated"
+            style={{ marginLeft: "4px", color: "#A48888" }}
+          >
+            <CurrencyName />
+            {donationGoal?.toLocaleString()} Donated
           </span>
         </p>
 

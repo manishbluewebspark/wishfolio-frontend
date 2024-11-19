@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import BackButton from "../Button/BackButton";
+import BackButton from "../Components/Button/BackButton";
 import Image from "next/image";
-import logoIcon from "../../images/Snow.svg";
+import logoIcon from "../images/Snow.svg";
 import axios from "axios"; // Import axios
 const TermsAndConditions = () => {
   const [data, setData] = useState(null); // State to store API data
@@ -18,7 +18,7 @@ const TermsAndConditions = () => {
         );
 
         const filtered = response.data?.data.find(
-          (item) => item.type === "Terms And Condition"
+          (item) => item.type === "Privacy Policy"
         );
 
         setData(filtered); // Set the API data
@@ -44,7 +44,7 @@ const TermsAndConditions = () => {
 
   return (
     <div>
-      <BackButton title={"Terms And Condition"} />
+      <BackButton title={"Privacy Policy"} />
       <div className="tac-privacy-policy-container container">
         <div className="tac-privacy-policy-content">
           <a

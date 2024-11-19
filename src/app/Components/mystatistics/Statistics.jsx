@@ -115,10 +115,8 @@ const Statistics = (props) => {
             style={{
               background: props?.isPayment
                 ? "#EEEEEE"
-                : statisticData?.data?.length >=
-                    minDonation.numberOfDonations &&
-                  getSumOfAmounts(statisticData?.data) >=
-                    minDonation?.minimumDonation
+                : getSumOfAmounts(statisticData?.data) >=
+                  minDonation?.minimumDonation
                 ? "#31B776"
                 : "#EEEEEE",
             }}
@@ -169,10 +167,7 @@ const Statistics = (props) => {
             style={{
               background: props?.isPayment
                 ? "#EEEEEE"
-                : statisticData?.data?.length >=
-                    minDonation.numberOfDonations &&
-                  getSumOfAmounts(statisticData?.data) >=
-                    minDonation?.minimumDonation
+                : statisticData?.data?.length >= minDonation.numberOfDonations
                 ? "#31B776"
                 : "#EEEEEE",
               marginBottom: "0px",

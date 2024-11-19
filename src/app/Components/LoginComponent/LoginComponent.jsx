@@ -10,9 +10,9 @@ import { setEmail } from "../../store/slices/signupSlice";
 import { toast } from "react-toastify";
 import googleIcon from "../../images/googleicon.svg";
 import Image from "next/image";
-import emailicon from '../../images/emailicon.svg';
-import addicon  from '../../images/add.svg';
-import arrowright from '../../images/arrow-right.svg'
+import emailicon from "../../images/emailicon.svg";
+import addicon from "../../images/add.svg";
+import arrowright from "../../images/arrow-right.svg";
 
 const LoginComponent = () => {
   const [email, setEmailState] = useState("");
@@ -70,24 +70,31 @@ const LoginComponent = () => {
             {/* Login Form */}
             <div className="login-box-from">
               <form onSubmit={handleLogin}>
-              
-                  <div className="input-group custom-input" style={{marginBottom:'8px'}} >
-                    <span className="input-group-text login-input-group-text">
-                      <Image src={emailicon} alt="Email Icon" width={24} height={24} />
-                    </span>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email"
-                      value={email}
-                      onChange={(e) => setEmailState(e.target.value)}
-                      style={{
-                        border: 'none', // Remove border
-                        outline: 'none', // Remove default outline
-                      }}
-                      required
+                <div
+                  className="input-group custom-input"
+                  style={{ marginBottom: "8px" }}
+                >
+                  <span className="input-group-text login-input-group-text">
+                    <Image
+                      src={emailicon}
+                      alt="Email Icon"
+                      width={24}
+                      height={24}
                     />
-                  </div>
+                  </span>
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmailState(e.target.value)}
+                    style={{
+                      border: "none", // Remove border
+                      outline: "none", // Remove default outline
+                    }}
+                    required
+                  />
+                </div>
 
                 {/* Login Button */}
                 <button
@@ -127,24 +134,24 @@ const LoginComponent = () => {
               className="btn-google-comp login-create-acc-btn-comp w-100"
               onClick={() => handleCreateAccount()}
             >
-              <span className='d-flex justify-content-center align-items-center'>
-             <Image src={addicon} height={20} width={20} alt="addicon" className="login-addicon"></Image> 
-              Create a new account
-             </span>
-             <Image src={arrowright}  height={20} width={20} alt="arrowright"></Image>
+              <span className="d-flex justify-content-center align-items-center">
+                <Image
+                  src={addicon}
+                  height={20}
+                  width={20}
+                  alt="addicon"
+                  className="login-addicon"
+                ></Image>
+                Create a new account
+              </span>
+              <Image
+                src={arrowright}
+                height={20}
+                width={20}
+                alt="arrowright"
+              ></Image>
             </button>
           </div>
-          {/* <div className="terms-container-hw login-margin-top">
-              By continuing, you agree to our
-              <a href="/privacy-policy" className="text-muted-hw">
-                Privacy Policy
-              </a>
-              and
-              <a href="/terms-of-service" className="text-muted-hw">
-                Terms of Service
-              </a>
-              .
-            </div> */}
         </div>
       </div>
     </>
