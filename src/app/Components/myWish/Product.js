@@ -87,10 +87,10 @@ const ProductPage = ({ product }) => {
           width={187.41}
           height={210.16}
         />
-        <h5 className="mt-3">{product?.productName}</h5>
-        <p className="text-muted">
-          <CurrencyName />
-          {totalDonated || 0}/ <CurrencyName />
+        <h5 className="mywish-pro-text">{product?.productName}</h5>
+        <p className="mywish-pro-subtext">
+          <strong style={{color:'#000000'}}><CurrencyName />
+          {totalDonated || 0}</strong>/ <CurrencyName />
           {product?.productPrice?.toLocaleString()} Donated
         </p>
 
@@ -105,13 +105,15 @@ const ProductPage = ({ product }) => {
       {/* Donations Section */}
       {todayDonations.length}
       <div className="mb-4">
-        <h6>Today</h6>
         <div className="d-flex justify-content-between align-items-center">
-          <p className="text-muted">Received</p>
-          <p className="fw-bold">
+        <h6 className="mywish-pro-today">Today</h6>
+        <div className="">
+          <span className="mx-2">Received</span>
+          <span className="fw-bold">
             <CurrencyName />
             {getSumOfAmounts(todayDonations)}
-          </p>
+          </span>
+        </div>
         </div>
 
         {todayDonations?.map((item) => (
@@ -132,13 +134,15 @@ const ProductPage = ({ product }) => {
 
       {/* Yesterday Donations Section */}
       <div className="mb-4">
-        <h6>Yesterday</h6>
         <div className="d-flex justify-content-between align-items-center">
-          <p className="text-muted">Received</p>
-          <p className="fw-bold">
+        <h6 className="mywish-pro-today">Yesterday</h6>
+        <div>
+          <span className="mx-2">Received</span>
+          <span className="fw-bold">
             <CurrencyName />
             {getSumOfAmounts(yesterdayDonations) || 0}
-          </p>
+          </span>
+        </div>
         </div>
         {yesterdayDonations?.map((item) => (
           <DonationCard
@@ -157,13 +161,15 @@ const ProductPage = ({ product }) => {
       </div>
 
       <div className="mb-4">
-        <h6>Previous</h6>
         <div className="d-flex justify-content-between align-items-center">
-          <p className="text-muted">Received</p>
-          <p className="fw-bold">
+        <h6 className="mywish-pro-today">Previous</h6>
+        <div >
+          <span className="mx-2">Received</span>
+          <span className="fw-bold">
             <CurrencyName />
             {getSumOfAmounts(remainingDonations) || 0}
-          </p>
+          </span>
+        </div>
         </div>
         {remainingDonations?.map((item) => (
           <DonationCard

@@ -20,6 +20,7 @@ const ProModal = ({ isOpen, onClose, product,
   const [amount, setAmount] = useState(null);
   const { userData } = useSelector((state) => state.user);
   const [loginOpen, setLoginOpen] = useState(false);
+  const handleClose = () => setLoginOpen(false);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
@@ -82,11 +83,11 @@ const ProModal = ({ isOpen, onClose, product,
 
   return (
     <div className={`pro-modal-wrapper ${isOpen ? "show" : ""}`}>
-      <LoginModal isOpen={loginOpen} />
+      <LoginModal isOpen={loginOpen} onClose={handleClose} />
       <div className="pro-modal-content">
           <div className="pro-modal-content-inside">
-          <div className="npmc-close-btn-con">
-            <button onClick={onClose} className="npmc-close-btn">
+          <div className="npmc-close-btn-con" onClick={onClose}>
+            <button  className="npmc-close-btn">
               <Image src={crossicon} height={9} width={9} alt="x"></Image>
             </button>
           </div>

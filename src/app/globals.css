@@ -279,9 +279,10 @@ a {
 }
 
 /* Product image styling */
+
 .product-image {
-  border-radius: 0px;
-  object-fit: cover;
+  border-radius: 12px;
+  max-width: 100%;
 }
 
 .home-container-wishing{
@@ -1600,8 +1601,8 @@ text-align: center;
 
 /* Modal Content */
 .htum-unblock-modal-content {
-  background-color: #000000c7;
-  color: white;
+  background-color: #000000c7 !important;
+  color: white !important;
   height:auto;
   max-height: 90vh;
   overflow-y: scroll;
@@ -2187,7 +2188,7 @@ margin-bottom: 14.09px;
 
 /* Icons */
 .ptm-icon {
-  margin-right: 10px;
+  /* margin-right: 10px; */
   opacity: 100%;
 }
 
@@ -2895,8 +2896,8 @@ align-items: center;
 }
 
 .hw-sto-stories-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Adjust for mobile responsiveness if needed */
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr);  */
 }
 
 .hw-sto-story-card {
@@ -2915,9 +2916,15 @@ align-items: center;
 .hw-sto-phone-image {
   border-radius: 20px;
   margin-bottom: 5px;
+  width: 100%;
+  max-width:187px;
+  height: 100%;
 }
 .hw-sto-phone-image-popup{
   border-radius: 27.81px;
+  width: 100%;
+  height: 100%;
+  max-width: 260px;
 }
 
 .hw-sto-review-container {
@@ -3079,10 +3086,7 @@ text-align: center;
 }
 
 /* Product image styling */
-.product-image {
-  border-radius: 12px;
-  object-fit: cover;
-}
+
 
 .wish-card-img{
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
@@ -4930,7 +4934,7 @@ border: none;
 .mob-text-muted-hw {
   color: #000000;
   text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
+  padding: 0 2px; /* spacing around the links */
   font-weight: bold;
 }
 
@@ -5239,6 +5243,7 @@ border: none;
   align-items: center;
   width: 25px;
   background-color: #8d8a8a;
+  cursor: pointer;
 }
 .npmc-wish-by{
   margin-bottom: 1px;
@@ -5271,7 +5276,7 @@ border: none;
   position: sticky;
   bottom: 0px;
   background-color: white;
-  padding: 20px;
+  padding: 5px;
 }
 
 .npmc-donate-input {
@@ -5645,8 +5650,6 @@ border:1px solid #E9E9E9;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  bottom: 30px;
 }
 
 .swipe-button {
@@ -5778,6 +5781,7 @@ border:1px solid #E9E9E9;
 }
 .wishing-item-main-con{
   position: relative;
+  height: 100%;
 }
 .htucomp-main-con{
   color: white !important;
@@ -5920,9 +5924,12 @@ border:1px solid #E9E9E9;
   overflow-y: scroll;
   
 }
-.pro-modal-wrapper.show .row {
+/* .pro-modal-wrapper.show .row {
   --bs-gutter-x: 0px !important;
-}
+} */
+ .my-contri-row{
+  --bs-gutter-x: 0px !important;
+ }
 input:focus, textarea:focus {
   -webkit-user-modify: read-write-plaintext-only;
   font-size: 16px !important;
@@ -5946,4 +5953,50 @@ input:focus, textarea:focus {
 .my-wish-prod-con{
   margin-top: 15px;
 }
+.mywish-pro-text{
+  font-size: 16px ;
+  font-weight: 800;
+  color: black;
+  text-align: start;
+}
+.mywish-pro-subtext{
+  font-size: 11px;
+  font-weight:500;
+  line-height: 24px;
+  color: #A48888;
+  text-align: start;
+  margin-bottom: 0px !important;
+}
+.mywish-pro-today{
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  color: #000;
+}
+.swip-btn-sticky{
+  position: sticky;
+  bottom: 10px;
+  margin: 0px 20px;
+}
 /* my wish page css end  */
+img.ptm-icon.pay-iconsGoogle.Pay{
+  height: 50px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsBank.Transfer{
+  height: 25px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsPhone.Pe{
+  height: 60px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsPaytm{
+  height: 60px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsBHIM{
+  height: 25px !important;
+    width: 100px !important;
+    margin-left: 10px;
+}
