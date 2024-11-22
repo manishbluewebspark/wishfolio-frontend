@@ -10,6 +10,10 @@ import styles from "./AddressPage.module.css";
 import { fetchMyWish } from "../store/slices/myWishSlice";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import BackButton from "../Components/Button/BackButton";
+import NewAddressModal from '../Components/Modals/NewAddressModal';
+import editIcon from  '../images/edit2color.svg';
+import Image from "next/image";
 const AddressPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedAddressId, setSelectedAddressId] = useState(null);
@@ -93,39 +97,31 @@ const AddressPage = () => {
   };
 
   return (
-    <div className={`container mt-3 ${styles.container}`}>
-      <div className="d-flex align-items-center mb-3">
-        <button
-          className="btn btn-link p-0 me-2"
-          onClick={() => window.history.back()}
-        >
-          <i className="bi bi-arrow-left"></i>{" "}
-          {/* Bootstrap Icon for back arrow */}
-        </button>
-        <h4 className="m-0">Address</h4>
-      </div>
-
+    <>
+    <BackButton title={'Address'}></BackButton>
+    <div className={`container ${styles.container} h-100`}>
       {/* User's Main Address Card */}
       <div
-        className={`card mb-3 p-3 border-0 shadow-sm ${styles.card} ${
+        className={`card delivery-address-con  ${styles.card} ${
           selectedAddressId === userData?._id ? styles.activeAddress : ""
         }`} // Apply active class if main address is selected
         onClick={() => handleAddressSelect(userData?._id, "main")} // Add onClick to select main address
       >
         <div className="d-flex justify-content-between">
-          <h6>Main Address</h6>
-          <Button variant="link" className="p-0">
-            <i className="bi bi-pencil"></i> Edit{" "}
+          <h6 className="delivery-address-text-head">Address Line 1</h6>
+          
+          <Button variant="text" className="p-0 edit-button-address">
+          <Image src={editIcon} width="17" height='17' alt='edit'></Image> Edit{" "}
           </Button>
         </div>
-        <p className="mb-1">
+        <p className="mb-1 delivery-address-subtext">
           {userData?.country} {userData?.state}
         </p>
-        <p className="mb-1">
+        <p className="mb-1 delivery-address-subtext">
           {userData?.address_line_1} {userData?.address_line_2}
         </p>
-        <p className="mb-1">Pin Code: {userData?.pincode}</p>
-        <p className="mb-0">Room Number: {userData?.roomNumber}</p>
+        <p className="mb-1 delivery-address-subtext">Pin Code: {userData?.pincode}</p>
+        <p className="mb-0 delivery-address-subtext">Room Number: {userData?.roomNumber}</p>
       </div>
 
       {/* Render Additional Addresses */}
@@ -133,25 +129,25 @@ const AddressPage = () => {
         addressData.map((item, index) => (
           <div
             key={index}
-            className={`card mb-3 p-3 border-0 shadow-sm ${styles.card} ${
+            className={`card delivery-address-con ${styles.card} ${
               selectedAddressId === item._id ? styles.activeAddress : ""
             }`} // Apply active class
             onClick={() => handleAddressSelect(item._id, "other")} // Add onClick to select address
           >
             <div className="d-flex justify-content-between">
-              <h6>Address {index + 2}</h6>
-              <Button variant="link" className="p-0">
-                <i className="bi bi-pencil"></i> Edit{" "}
-              </Button>
+              <h6 className="delivery-address-text-head">Address {index + 2}</h6>
+              <Button variant="text" className="p-0 edit-button-address">
+          <Image src={editIcon} width="17" height='17' alt='edit'></Image> Edit{" "}
+          </Button>
             </div>
-            <p className="mb-1">
+            <p className="mb-1 delivery-address-subtext">
               {item.country} {item.state}
             </p>
-            <p className="mb-1">
+            <p className="mb-1 delivery-address-subtext">
               {item.address_line_1} {item.address_line_2}
             </p>
-            <p className="mb-1">Pin Code: {item.pincode}</p>
-            <p className="mb-0">Room Number: {item.roomNumber}</p>
+            <p className="mb-1 delivery-address-subtext">Pin Code: {item.pincode}</p>
+            <p className="mb-0 delivery-address-subtext">Room Number: {item.roomNumber}</p>
           </div>
         ))
       ) : (
@@ -159,37 +155,38 @@ const AddressPage = () => {
       )}
 
       {/* Add New Address Button */}
-      <div className="text-center mb-5">
-        <button
-          className="btn btn-link text-primary"
-          style={{ fontSize: "16px" }}
+      <div className="delivery-address-addnew text-center mb-5">
+        <a
+          style={{cursor:'pointer'}}
+          className=""
           onClick={handleCardClick}
         >
           Add a New Address
-        </button>
+        </a>
       </div>
 
-      <AddressModal
-        showModal={showModal}
-        handleClose={handleCloseModal}
-        openSuccessModal={openSuccessModal} // Pass the function here
+      <NewAddressModal
+        isOpen={showModal}
+        onClose={handleCloseModal}
+        onConfirm={openSuccessModal} // Pass the function here
       />
 
       {/* Submit for Delivery Button */}
-      <Row className={`fixed-bottom ${styles["fixed-bottom-button"]}`}>
-        <Col>
-          <div className="text-center">
-            <Button
-              className={`btn-swipe ${styles["btn-swipe"]}`}
-              block
-              onClick={handleSubmitForDelivery} // Call API on click
-            >
-              Submit for Delivery
-            </Button>
-          </div>
-        </Col>
-      </Row>
     </div>
+    <Row className="fixed-bottom-btn-delivery">
+          <Col>
+            <div className="text-center">
+              <Button
+                 className={`btn-swipe w-100 ${styles["btn-swipe"]}`}
+                 block
+                 onClick={handleSubmitForDelivery}
+              >
+                Submit for Delivery
+              </Button>
+            </div>
+          </Col>
+        </Row>
+    </>
   );
 };
 

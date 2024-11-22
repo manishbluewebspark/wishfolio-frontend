@@ -1,15 +1,19 @@
-"use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+// import './style.css';
 import Image from "next/image";
-import axios from "axios"; // Import Axios
+import logo from "../../images/snow.png";
+import logoIcon from "../../images/Snow.svg"; // Replace with your logo
+import { useRouter } from "next/navigation";
+import crossicon from '../../images/cross.svg';
 import img2 from "../../images/86.png";
+import uploadIcon from '../../images/ion_attach.svg';
 
-const RatingModal = ({ isModalOpen, closeModal, order }) => {
-  const [selectedFile, setSelectedFile] = useState(null);
+const LoginModal = ({ isOpen, onClose, onConfirm , order }) => {
+    const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
-    document.body.style.overflow = isModalOpen ? "hidden" : "auto";
-  }, [isModalOpen]);
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
 
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -44,22 +48,21 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
       alert("Error uploading file");
     }
   };
-
+ 
   return (
-    <div
-      className={`bottom-modal ${isModalOpen ? "open" : ""}`}
-      style={{ height: "80vh" }}
-    >
-      <div className="modal-content text-center">
-        <div className="modal-header">
-          <button onClick={closeModal} className="close-btn">
-            &times;
-          </button>
-        </div>
-        <div className="modal-body">
-          <div className="phis-thumbnil">
+    <div className={`pf-logout-modal-wrapper ${isOpen ? "show" : ""}`}>
+     <div className="pf-review-logout-modal-content">
+  <div className="pf-review-login-main-container">
+    <div className="pf-review-container">
+    <div className="npmc-close-btn-con" onClick={onClose}>
+            <button  className="npmc-close-btn">
+              <Image src={crossicon} height={9} width={9} alt="x"></Image>
+            </button>
+          </div>
+      <div className="pf-review-box text-center">
+      <div className="phis-thumbnil">
             <Image
-              src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${order.productImageUrl}`}
+            //   src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${order.productImageUrl}`}
               alt="Product"
               className="img-fluid phis-product-image"
               width={56.89}
@@ -85,8 +88,8 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
                 style={{ display: "none" }}
                 id="file-upload"
               />
-              <label htmlFor="file-upload" className="pta-upload-link">
-                Upload Product Image
+              <label htmlFor="file-upload" className="pta-upload-link text-center">
+                 <Image src={uploadIcon} height={22} width={20} alt='uploadIcon'></Image> Upload Product Image
               </label>
             </div>
             <div className="rate-btn mt-4">
@@ -95,10 +98,13 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
               </button>
             </div>
           </div>
-        </div>
       </div>
+    </div>
+  </div>
+</div>
+
     </div>
   );
 };
 
-export default RatingModal;
+export default LoginModal;

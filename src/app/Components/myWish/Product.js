@@ -187,11 +187,11 @@ const ProductPage = ({ product }) => {
         ))}
       </div>
       {progressVariant === "success" && (
-        <Row className="fixed-bottom fixed-bottom-button">
+        <Row className="fixed-bottom-btn-delivery">
           <Col>
             <div className="text-center">
               <Button
-                className="btn-swipe"
+                className="btn-swipe w-100"
                 block
                 onClick={handleSubmitForDelivery}
               >

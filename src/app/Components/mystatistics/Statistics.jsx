@@ -157,6 +157,7 @@ const Statistics = (props) => {
               >
                 <CurrencyName />
                 {formatNumberWithCommas(getSumOfAmounts(statisticData?.data))}/
+                <CurrencyName />
                 {formatNumberWithCommas(minDonation?.minimumDonation)}
               </h6>
             </div>
