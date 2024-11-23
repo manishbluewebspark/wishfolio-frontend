@@ -37,7 +37,7 @@ const EmojisCard = () => {
 
   // Handle level selection based on user's level
   const handleSelect = (name, id, index) => {
-    if (index >= userData.userLevel) {
+    if (index + 1 !== userData.userLevel) {
       setModalOpen(true); // Open modal if the level is locked
     } else {
       setSelected(name); // Set the selected level

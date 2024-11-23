@@ -24,10 +24,10 @@ const LevelDropdown = ({ onLevelChange }) => {
   };
   useEffect(() => {
     if (levels) {
-      setSelectedName(levels[0]?.labelName);
-      setSelectedImage(levels[0]?.imageUrl);
+      setSelectedName(levels[userData?.userLevel]?.labelName);
+      setSelectedImage(levels[userData?.userLevel]?.imageUrl);
     }
-  }, [levels]);
+  }, [levels, userData]);
   const handleSelect = (name, image, index) => {
     onLevelChange(index);
     setSelectedName(name);
@@ -70,7 +70,7 @@ const LevelDropdown = ({ onLevelChange }) => {
               />
               <span className="wi-level-name">{option.labelName}</span>
 
-              {index >= userData?.userLevel && (
+              {index + 1 !== userData?.userLevel && (
                 <Image
                   src={lockIcon}
                   alt="Locked"

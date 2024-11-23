@@ -78,7 +78,6 @@ const WishFolio = () => {
 
   // Condition to check whether the user can post a wish
   const canPostWish =
-    statisticData?.data?.length >= minDonation.numberOfDonations &&
     getSumOfAmounts(statisticData?.data) >= minDonation?.minimumDonation;
 
   // If user is not logged in, show the LoginComponent

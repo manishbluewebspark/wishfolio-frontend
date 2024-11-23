@@ -153,7 +153,7 @@ const WishingItems = () => {
       );
     } else {
       setShowMessage(false);
-      setLevelIndex(null);
+      setLevelIndex(levelIndex + 1);
 
       setMessage("");
     }
