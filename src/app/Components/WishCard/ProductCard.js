@@ -8,9 +8,10 @@ import profileImage from "../../images/Male15.png";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
 import { fetchProductsByLevel } from "../../store/slices/productByLevelSlice";
-import ProductModalNew from '../Modals/NewProductModal';
-import ProModal from '../../Components/Modals/ProModal';
-
+import ProductModalNew from "../Modals/NewProductModal";
+import ProModal from "../../Components/Modals/ProModal";
+import axios from "axios";
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 import SuccessModal from "./successModal";
 // Sample Product Data
 
@@ -27,19 +28,19 @@ export default function ProductCard() {
 
   // =========================
   const [showProductModal, setShowProductModal] = useState(false);
-const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-// Function to open modal when a product is clicked
-const handleCardClick = (product) => {
-  setSelectedProduct(product);
-  setShowProductModal(true);
-};
+  // Function to open modal when a product is clicked
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+    setShowProductModal(true);
+  };
 
-// Function to close modal
-const handleCloseModal = () => {
-  setShowProductModal(false);
-  setSelectedProduct(null);
-};
+  // Function to close modal
+  const handleCloseModal = () => {
+    setShowProductModal(false);
+    setSelectedProduct(null);
+  };
 
   // ==========================
   const [nestedDropdownOpen, setNestedDropdownOpen] = useState({
@@ -53,6 +54,16 @@ const handleCloseModal = () => {
   } = useSelector((state) => state.productsByLevel);
   const { levels, loading, error } = useSelector((state) => state.levels);
   const [user, setUser] = useState(null);
+  const [count, setCount] = useState(null);
+  const productCount = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/product/update-count`); // Update the endpoint based on your API
+      setCount(response.data?.data);
+    } catch (error) {
+      console.error("Error fetching product count:", error);
+      throw error;
+    }
+  };
 
   useEffect(() => {
     const getUserData = () => {
@@ -65,6 +76,7 @@ const handleCloseModal = () => {
     };
 
     getUserData(); // Call the function
+    productCount();
   }, []);
 
   useEffect(() => {
@@ -191,11 +203,15 @@ const handleCloseModal = () => {
       {/* Product Cards */}
       <div className="row product-con">
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
+          filteredProducts.map((product, index) => (
             <div
               className="col-lg-6 col-md-6 col-sm-6 col-6 product-col"
               key={product.id}
-              onClick={() => handleCardClick(product)}
+              onClick={() =>
+                count !== null && index < count?.productCount
+                  ? handleCardClick(product)
+                  : ""
+              }
             >
               <WishCard
                 minDonation={minDonation?.minimumDonation}
@@ -206,6 +222,7 @@ const handleCloseModal = () => {
                 wishingBy={product.wishingBy}
                 wishingByImage={product.wishingByImage}
                 donationsDetails={product.donationsDetails}
+                isHighlighted={count !== null && index < count?.productCount}
               />
             </div>
           ))
@@ -224,16 +241,16 @@ const handleCloseModal = () => {
     openSuccessModal={handleOpensucessModal}
   />
 )} */}
-{showProductModal && selectedProduct && (
-  <ProModal
-    product={selectedProduct}
-    isOpen={showProductModal}
-    onClose={handleCloseModal}
-    minDonation={minDonation}
-    openSuccessModal={handleOpensucessModal}
-    // isDonated={isDonated} // Pass the isDonated state as needed
-  />
-)}
+      {showProductModal && selectedProduct && (
+        <ProModal
+          product={selectedProduct}
+          isOpen={showProductModal}
+          onClose={handleCloseModal}
+          minDonation={minDonation}
+          openSuccessModal={handleOpensucessModal}
+          // isDonated={isDonated} // Pass the isDonated state as needed
+        />
+      )}
 
       {showSuccessModal && (
         <SuccessModal

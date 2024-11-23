@@ -4,6 +4,8 @@ import Image from "next/image";
 import OrderHistoryModal from "./OrderHistoryModal"; // Import the new modal component
 import RatingModal from "./RatingModal"; // Import the rating modal component
 import CurrencyName from "../Comman/CurrencyName";
+import MyOrderOnGoingModal from "../../Components/Modals/MyOrderOnGoingModal";
+import ReviewModal from "../../Components/Modals/ReviewModal";
 const OrderItem = ({ order, activeTab }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state for order details
   const [isRatingModalOpen, setIsRatingModalOpen] = useState(false); // Modal state for rating
@@ -94,16 +96,16 @@ const OrderItem = ({ order, activeTab }) => {
       </div>
 
       {/* Modal Component for Order Details */}
-      <OrderHistoryModal
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
+      <MyOrderOnGoingModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
         order={order}
       />
 
       {/* Rating Modal Component */}
-      <RatingModal
-        isModalOpen={isRatingModalOpen}
-        closeModal={closeRatingModal}
+      <ReviewModal
+        isOpen={isRatingModalOpen}
+        onClose={closeRatingModal}
         order={order}
       />
     </div>

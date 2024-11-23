@@ -135,6 +135,7 @@ const WishingItems = () => {
   };
 
   return (
+   <>
     <Container fluid className="wishing-item-main-con">
       {/* Header Section */}
       <div className="wishing-item-list-top-con">
@@ -259,11 +260,14 @@ const WishingItems = () => {
           </div>
         </Col>
       </Row>  */}
+    </Container>
+    <div className="swip-btn-sticky">
       <SwipeButton
         handleSwipe={handleSwipe}
         isSwipable={!!selectedProduct}
       ></SwipeButton>
-    </Container>
+      </div>
+   </>
   );
 };
 

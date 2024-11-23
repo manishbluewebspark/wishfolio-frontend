@@ -64,11 +64,11 @@ const SuccessStories = () => {
     <>
       <BackButton title={"Success Stories"}></BackButton>
       <div className="hw-sto-success-stories-container">
-        <div className="hw-sto-stories-grid">
+        <div className="hw-sto-stories-grid row">
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="hw-sto-story-card"
+              className="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-6"
               onClick={() => openModal(review)}
             >
               <div className="hw-sto-phone-container">

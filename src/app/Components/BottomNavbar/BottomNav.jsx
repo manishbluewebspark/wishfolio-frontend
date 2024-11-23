@@ -41,7 +41,7 @@ const BottomNav = () => {
       url: "/",
     },
     {
-      name: "My Donations",
+      name: "My Contributions",
       icon: dropIcon,
       activeIcon: dropActiveIcon,
       url: "/mydonations",

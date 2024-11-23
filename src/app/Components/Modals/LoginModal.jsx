@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "../../images/snow.png";
 import logoIcon from "../../images/Snow.svg"; // Replace with your logo
 import { useRouter } from "next/navigation";
+import crossicon from '../../images/cross.svg';
 
 const LoginModal = ({ isOpen, onClose, onConfirm }) => {
   const router = useRouter();
@@ -15,6 +16,11 @@ const LoginModal = ({ isOpen, onClose, onConfirm }) => {
       <div className="login-pf-logout-modal-content">
         <div className="login-pf-login-main-container">
           <div className="login-container">
+          <div className="npmc-close-btn-con" onClick={onClose}>
+            <button  className="npmc-close-btn">
+              <Image src={crossicon} height={9} width={9} alt="x"></Image>
+            </button>
+          </div>
             <div className="login-box text-center">
               {/* Logo */}
               <div className="login-box-top">

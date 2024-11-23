@@ -44,16 +44,16 @@ const PaymentMethod = () => {
                 className="ptm-payment-method d-flex justify-content-between align-items-center cursor-pointer"
                 onClick={() => handleDepositClick(method._id)}
               >
-                <div className="d-flex align-items-center">
+                {/* <div className="d-flex align-items-center justify-content-between "> */}
                   <Image
                     src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${method.logo}`}
                     alt={method.provider}
-                    className="ptm-icon"
-                    width={119}
-                    height={24}
+                    className={`ptm-icon pay-icons${method.provider}`}
+                    width={114}
+                    height={32}
                   />
                   <span>{method.provider}</span>
-                </div>
+                {/* </div> */}
                 <Image
                   src={arrowright}
                   alt="Arrow Right"

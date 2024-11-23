@@ -73,9 +73,9 @@ const ProductPage = ({ product }) => {
     router.push("/submitForDelivery");
   };
   return (
-    <div className={`container ${styles.container}`}>
+    <div className={`my-wish-prod-con ${styles.container}`}>
       {/* WishFolio Header */}
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div className="d-flex justify-content-end align-items-center share-btn-con">
         <button className="btn btn-outline-primary">Share</button>
       </div>
 
@@ -84,13 +84,16 @@ const ProductPage = ({ product }) => {
         <Image
           src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product?.productImageUrl}`}
           alt={product?.productName}
-          width={200}
-          height={200}
+          width={187.41}
+          height={210.16}
         />
-        <h5 className="mt-3">{product?.productName}</h5>
-        <p className="text-muted">
-          <CurrencyName />
-          {totalDonated || 0}/ <CurrencyName />
+        <h5 className="mywish-pro-text">{product?.productName}</h5>
+        <p className="mywish-pro-subtext">
+          <strong style={{ color: "#000000" }}>
+            <CurrencyName />
+            {totalDonated || 0}
+          </strong>
+          / <CurrencyName />
           {product?.productPrice?.toLocaleString()} Donated
         </p>
 
@@ -105,13 +108,15 @@ const ProductPage = ({ product }) => {
       {/* Donations Section */}
 
       <div className="mb-4">
-        <h6>Today</h6>
         <div className="d-flex justify-content-between align-items-center">
-          <p className="text-muted">Received</p>
-          <p className="fw-bold">
-            <CurrencyName />
-            {getSumOfAmounts(todayDonations)}
-          </p>
+          <h6 className="mywish-pro-today">Today</h6>
+          <div className="">
+            <span className="mx-2">Received</span>
+            <span className="fw-bold">
+              <CurrencyName />
+              {getSumOfAmounts(todayDonations)}
+            </span>
+          </div>
         </div>
 
         {todayDonations?.map((item) => (
@@ -135,7 +140,7 @@ const ProductPage = ({ product }) => {
         <div className="mb-4">
           <h6>Yesterday</h6>
           <div className="d-flex justify-content-between align-items-center">
-            <p className="text-muted">Received</p>
+            <h6 className="mywish-pro-today">Yesterday</h6>
             <p className="fw-bold">
               <CurrencyName />
               {getSumOfAmounts(yesterdayDonations) || 0}
@@ -161,7 +166,7 @@ const ProductPage = ({ product }) => {
         <div className="mb-4">
           <h6>Previous</h6>
           <div className="d-flex justify-content-between align-items-center">
-            <p className="text-muted">Received</p>
+            <h6 className="mywish-pro-today">Previous</h6>
             <p className="fw-bold">
               <CurrencyName />
               {getSumOfAmounts(remainingDonations) || 0}
@@ -189,11 +194,11 @@ const ProductPage = ({ product }) => {
         </div>
       )}
       {progressVariant === "success" && (
-        <Row className="fixed-bottom fixed-bottom-button">
+        <Row className="fixed-bottom-btn-delivery">
           <Col>
             <div className="text-center">
               <Button
-                className="btn-swipe"
+                className="btn-swipe w-100"
                 block
                 onClick={handleSubmitForDelivery}
               >

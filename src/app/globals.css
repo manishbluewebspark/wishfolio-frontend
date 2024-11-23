@@ -279,9 +279,10 @@ a {
 }
 
 /* Product image styling */
+
 .product-image {
-  border-radius: 0px;
-  object-fit: cover;
+  border-radius: 12px;
+  max-width: 100%;
 }
 
 .home-container-wishing{
@@ -1064,12 +1065,12 @@ text-align: left;
   font-weight: 400px;
   line-height: 18px;
   text-align: center;
-  /* border: 1px solid #ccc; */
   background-color: #f8f8f8;
   cursor: pointer;
   border-radius: 10px;
   border: none;
   border-radius: 25px;
+  color: #000 !important;
 
 }
 
@@ -1083,7 +1084,7 @@ text-align: left;
 
 /* Tab Content */
 .hw-tab-content {
-  /* padding: 20px; */
+  /* padding: 20px; */  
 }
 
 /* Level Progress in Unblock Levels Tab */
@@ -1436,7 +1437,7 @@ margin: 20px 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dim the background */
+  background-color: hsl(0deg 0% 0% / 80%); /* Dim the background */
   display: flex;
   justify-content: center;
   align-items: flex-end; /* Align the modal at the bottom */
@@ -1583,7 +1584,7 @@ text-align: center;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dim the background */
+  background-color: hsl(0deg 0% 0% / 80%); 
   display: flex;
   justify-content: center;
   align-items: flex-end; /* Align the modal at the bottom */
@@ -1600,8 +1601,8 @@ text-align: center;
 
 /* Modal Content */
 .htum-unblock-modal-content {
-  background-color: #000000c7;
-  color: white;
+  background-color: #000000c7 !important;
+  color: white !important;
   height:auto;
   max-height: 90vh;
   overflow-y: scroll;
@@ -1962,16 +1963,18 @@ text-align: center;
   height: calc(100vh - 100px); /* Adjust for padding and tab space */
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-.phis-content p{
-  
 }
 
 .phis-empty-message {
   color: #999;
   font-size: 16px;
   text-align: center;
+}
+.edit-button-address{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #90AEFF;
 }
 
 /* Order item container */
@@ -2034,17 +2037,19 @@ height: 98px;
 background-color: #f9f9f9;
 padding: 8px;
 border-radius: 10px;
-margin-bottom: 5px;
+margin-bottom: 15px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
+
 .phis-thumbnil{
 background-color: white;
 border-radius: 10px;
 }
 /* order Item madal css */
 /* Order item container */
-.phis-order-item-con {
-margin-bottom: 15px;
-}
+
 
 /* Modal Overlay */
 .phis-modal-overlay {
@@ -2151,8 +2156,14 @@ text-align: right;
 border-radius: 30px;
 }
 .rate-btn button {
-border-radius: 30px;
 background-color: #90AEFF;
+border-radius: 50px;
+height: 60px;
+width: 60%;
+font-weight: 800;
+font-size: 16px;
+border: none;
+margin-bottom: 24px;
 }
 
 /* orderhistory end */
@@ -2187,7 +2198,7 @@ margin-bottom: 14.09px;
 
 /* Icons */
 .ptm-icon {
-  margin-right: 10px;
+  /* margin-right: 10px; */
   opacity: 100%;
 }
 
@@ -2895,8 +2906,8 @@ align-items: center;
 }
 
 .hw-sto-stories-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Adjust for mobile responsiveness if needed */
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr);  */
 }
 
 .hw-sto-story-card {
@@ -2915,9 +2926,15 @@ align-items: center;
 .hw-sto-phone-image {
   border-radius: 20px;
   margin-bottom: 5px;
+  width: 100%;
+  max-width:187px;
+  height: 100%;
 }
 .hw-sto-phone-image-popup{
   border-radius: 27.81px;
+  width: 100%;
+  height: 100%;
+  max-width: 260px;
 }
 
 .hw-sto-review-container {
@@ -2947,7 +2964,7 @@ align-items: center;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: hsl(0deg 0% 0% / 80%);
   justify-content: center;
   align-items: center;
 }
@@ -3079,12 +3096,10 @@ text-align: center;
 }
 
 /* Product image styling */
-.product-image {
-  border-radius: 12px;
-  object-fit: cover;
-}
+
 
 .wish-card-img{
+  position: relative;
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   border-radius: 20px;
   background: #F7F7F7;
@@ -3179,6 +3194,7 @@ text-align: center;
 
 .progress-bar-success {
   background-color: #00C036 !important;
+  border-radius: 100px !important;
 }
 .text-success-color{
   color: #00C036 !important;
@@ -3865,7 +3881,6 @@ color: #90AEFF;
 .text-muted-hw {
   color: #000000;
   text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
   font-weight: bold;
 }
 .em-margin-top{
@@ -4135,19 +4150,29 @@ color: #90AEFF;
 }
 
 .btn-swipe {
-  background-color: #e7f0ff !important;
-  color: #007bff !important;
+  background-color: #90AEFF !important;
+  color: #000000 !important;
   padding: 12px !important;
   border-radius: 30px !important;
+  height: 64px;
+  border: none;
+  font-weight: 800;
 }
+
 .btn-swipe:hover {
-  background-color: #e7f0ff !important;
-  color: #007bff !important;;
+  background-color: #5B80E0 !important;
+  color: #000000 !important;;
   padding: 12px !important;;
   border-radius: 30px !important;;
 }
 .btn-swipe i {
   margin-left: 10px;
+}
+.fixed-bottom-btn-delivery {
+  bottom: 10px !important;
+  margin: 0px 10px;
+  position: sticky;
+
 }
 /* wishitemlist.css */
 
@@ -4386,9 +4411,7 @@ color: #9D9E9F;
 .input-container {
   position: relative;
 }
-.login-box-from input{
 
-}
 .social-icon{
  margin-right: 12px; 
 }
@@ -4396,7 +4419,7 @@ color: #9D9E9F;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -4669,7 +4692,6 @@ border: none;
   .text-muted-hw {
     color: #000000;
     text-decoration: none;
-    padding: 0 3px;
     font-weight: bold;
   }
   
@@ -4748,7 +4770,7 @@ border: none;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -4886,7 +4908,7 @@ border: none;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -4934,7 +4956,7 @@ border: none;
 .mob-text-muted-hw {
   color: #000000;
   text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
+  padding: 0 2px; /* spacing around the links */
   font-weight: bold;
 }
 
@@ -5043,7 +5065,6 @@ border: none;
 .text-muted-hw {
   color: #000000;
   text-decoration: none;
-  padding: 0 5px; /* spacing around the links */
   font-weight: bold;
 }
 
@@ -5115,7 +5136,7 @@ border: none;
   border-radius: 50px; /* Rounded corners */
   border: 1px solid #ddd; /* Light border */
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   background-color: #ffffff; /* Light gray background */
   box-shadow: none;
@@ -5244,6 +5265,7 @@ border: none;
   align-items: center;
   width: 25px;
   background-color: #8d8a8a;
+  cursor: pointer;
 }
 .npmc-wish-by{
   margin-bottom: 1px;
@@ -5276,7 +5298,7 @@ border: none;
   position: sticky;
   bottom: 0px;
   background-color: white;
-  padding: 20px;
+  padding: 5px;
 }
 
 .npmc-donate-input {
@@ -5650,8 +5672,6 @@ border:1px solid #E9E9E9;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  bottom: 30px;
 }
 
 .swipe-button {
@@ -5694,7 +5714,7 @@ border:1px solid #E9E9E9;
 }
 
 .swipe-button.swiped .swipe-icon {
-  transform: translateX(330px); /* Move icon to the right when swiped */
+  transform: translateX(315px); /* Move icon to the right when swiped */
 }
 
 .swipe-text {
@@ -5776,13 +5796,20 @@ border:1px solid #E9E9E9;
   margin-bottom: 15px !important;
   border-radius: 50px;
   width: 100%;
-  overflow-x: scroll;
+  display: flex;
+  flex-wrap: nowrap !important;
+  width: 100%;
+  overflow-y: scroll;
+}
+.wishing-item-nav-item a{
+  width: max-content !important;
 }
 .wishing-item-nav-item{
   height: 40px;
 }
 .wishing-item-main-con{
   position: relative;
+  height: 100%;
 }
 .htucomp-main-con{
   color: white !important;
@@ -5925,9 +5952,12 @@ border:1px solid #E9E9E9;
   overflow-y: scroll;
   
 }
-.pro-modal-wrapper.show .row {
+/* .pro-modal-wrapper.show .row {
   --bs-gutter-x: 0px !important;
-}
+} */
+ .my-contri-row{
+  --bs-gutter-x: 0px !important;
+ }
 input:focus, textarea:focus {
   -webkit-user-modify: read-write-plaintext-only;
   font-size: 16px !important;
@@ -5939,4 +5969,363 @@ input:focus, textarea:focus {
 .my-wish-text-view{
     text-align: center;
     color: #A48888;
+}
+/* my wish page css start */
+.share-btn-con button{
+  border: none;
+  height: 42px;
+  width: 68px;
+  background-color: hsl(223.64deg 85.71% 69.8% / 10%);
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 100px;
+  color: #7094F4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-wish-prod-con{
+  margin-top: 15px;
+}
+.mywish-pro-text{
+  font-size: 16px ;
+  font-weight: 800;
+  color: black;
+  text-align: start;
+}
+.mywish-pro-subtext{
+  font-size: 11px;
+  font-weight:500;
+  line-height: 24px;
+  color: #A48888;
+  text-align: start;
+  margin-bottom: 0px !important;
+}
+.mywish-pro-today{
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  color: #000;
+}
+.swip-btn-sticky{
+  position: sticky;
+  bottom: 10px;
+  margin: 0px 20px;
+}
+/* my wish page css end  */
+img.ptm-icon.pay-iconsGoogle.Pay{
+  height: 50px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsBank.Transfer{
+  height: 25px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsPhone.Pe{
+  height: 60px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsPaytm{
+  height: 60px !important;
+  width: 100px !important;
+}
+img.ptm-icon.pay-iconsBHIM{
+  height: 25px !important;
+    width: 100px !important;
+    margin-left: 10px;
+}
+/* delivery address css start */
+.delivery-address-con {
+  border-radius: 12px;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 24px ;
+  border: none;
+
+}
+.delivery-address-text-head{
+  font-size: 16px;  
+  font-weight: 600;
+}
+.delivery-address-subtext{
+  font-size: 14px ;
+  font-weight: 400;
+  line-height: 24px;
+
+}
+.delivery-address-addnew{
+  background-color: #f7f7f7;
+  padding:12px;
+  height: 54px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.delivery-address-addnew a{
+  text-decoration: none;
+  color: #90AEFF;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* delivery7 address css end  */
+/* delivery modal css start */
+.delivery-address-modal-content{
+    background-color: white;
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    height: 100%;
+    max-height: 90vh;
+    overflow: scroll;
+}
+.pf-logout-modal-wrapper.show .delivery-address-modal-content {
+  transform: translateY(0); /* Slide up the modal */
+}
+.delivery-address-modal-content h3{
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+
+}
+.delivery-address-modal-content p{
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+text-align: center;
+
+
+}
+.delivery-address-modal-content {
+  text-align: center;
+}
+.delivery-address-modal-main-container{
+background: white;
+height: 100%;
+border-radius: 25px 25px 0 0;
+padding: 0px 15px;
+width:100%;
+position: relative;
+}
+.delivery-address-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.delivery-address-box-logo{
+  margin-top: 38.36px ;
+  margin-bottom: 12px;
+}
+.delivery-address-text-head-modal{
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  margin-bottom: 4px;
+}
+.delivery-address-subtext-modal{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.delivery-address-modal-content h3{
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+}
+.delivery-address-modal-content p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+.delivery-address-modal-content {
+  text-align: center;
+}
+.delivery-address-box{
+  width: 100%;
+}
+/* delovery modal css end  */
+
+/* Got your request modal css start  */
+.got-u-req-modal-content {
+  background-color: white;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  /* height: 45vh; */
+  height: auto;
+}
+
+.got-u-req-main-container {
+  background-color: white;
+  height: 100%;
+  border-radius: 25px 25px 0 0;
+  padding: 24px 22px 24px;
+  width: 100%;
+  position: relative;
+}
+
+.pf-logout-modal-wrapper.show .got-u-req-modal-content {
+  transform: translateY(0); /* Slide up the modal */
+}
+
+
+.got-u-req-modal-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+}
+
+.got-u-req-modal-content p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+
+.got-u-req-modal-content {
+  text-align: center;
+}
+.got-u-req-subtext{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom:20px;
+
+}
+.got-u-req-text{
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+/* Got Your Request modal css end  */
+/* my order on goining modal css start   */
+.moogm-logout-modal-content {
+  background-color: white;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+
+.moogm-login-main-container {
+  background: white;
+  height: 100%;
+  border-radius: 25px 25px 0 0;
+  padding: 0px 15px;
+  width:100%;
+  position: relative;
+}
+
+.pf-logout-modal-wrapper.show .moogm-logout-modal-content {
+  transform: translateY(0); /* Slide up the modal */
+}
+
+.moogm-logout-modal-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+}
+
+.moogm-logout-modal-content {
+  text-align: center;
+}
+.moogm-text-head{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 800;
+  text-align: left;
+  margin-bottom: 0px;
+}
+.moogm-text-subtext{
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 800 !important;
+  text-align: left !important;
+  margin-bottom: 0px !important;
+}
+
+
+/* my order modal on going modal css end  */
+/* review modal css start  */
+.pf-review-logout-modal-content {
+  background-color: white;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  height: 100%;
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+
+.pf-review-login-main-container {
+  background: white;
+  height: 100%;
+  border-radius: 25px 25px 0 0;
+  padding: 0px 15px;
+  width:100%;
+  position: relative;
+}
+
+.pf-logout-modal-wrapper.show .pf-review-logout-modal-content {
+  transform: translateY(0); /* Slide up the modal */
+}
+
+.pf-review-logout-modal-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+}
+
+.pf-review-logout-modal-content p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+
+.pf-review-logout-modal-content {
+  text-align: center;
+}
+
+
+/* review modal css end   */
+.wish-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Black with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; /* Ensure it appears above the image */
+  border-radius: 20px;
+}
+
+.listing-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
 }

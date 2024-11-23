@@ -15,6 +15,7 @@ const WishCard = ({
   wishingByImage,
   donationsDetails,
   type,
+  isHighlighted = true,
 }) => {
   const getSumOfAmounts = (donations) => {
     return donations?.reduce((total, donation) => total + donation.amount, 0);
@@ -29,7 +30,14 @@ const WishCard = ({
   return (
     <div className="wish-card">
       {/* Product Image */}
+
       <div className="wish-card-img">
+        {!isHighlighted && (
+          <div class="wish-card-overlay">
+            <p class="listing-text">Listing Soon</p>
+          </div>
+        )}
+
         <Image
           src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${productImage}`}
           alt={title}

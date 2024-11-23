@@ -70,7 +70,7 @@ const Page = () => {
         minDonation={minDonation?.minimumDonation}
         numberOfDoanation={minDonation?.numberOfDonations}
       />
-      <div className="row product-con">
+      <div className="row product-con my-contri-row">
         {donationsData?.data.map((product) => (
           <div
             className="col-md-6 col-sm-6 col-6 product-col"
