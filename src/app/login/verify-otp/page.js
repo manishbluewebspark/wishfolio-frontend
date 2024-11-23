@@ -39,8 +39,6 @@ export default function OtpForm() {
         email,
       });
 
-      console.log(response.data);
-
       localStorage.setItem("user", JSON.stringify(response.data));
 
       if (response.status === 201) {

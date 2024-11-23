@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import axios from "axios"; // Import Axios
-// import "./orderhistory.css";
+import axios from "axios";
 import img2 from "../../images/86.png";
+import attachRemoveicon from "../../images/IconSet2.svg";
 
 const RatingModal = ({ isModalOpen, closeModal, order }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -16,6 +16,10 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
     setSelectedFile(event.target.files[0]);
   };
 
+  const removeFile = () => {
+    setSelectedFile(null);
+  };
+
   const handleUpload = async () => {
     if (!selectedFile) {
       alert("Please select a file first!");
@@ -24,7 +28,7 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-    formData.append("orderId", order._id); // If you need to send the order ID
+    formData.append("orderId", order._id);
 
     try {
       const response = await axios.post(
@@ -39,7 +43,7 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
 
       console.log("Upload successful", response.data);
       alert("File uploaded successfully!");
-      closeModal(); // Close modal after upload
+      closeModal();
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("Error uploading file");
@@ -86,10 +90,27 @@ const RatingModal = ({ isModalOpen, closeModal, order }) => {
                 style={{ display: "none" }}
                 id="file-upload"
               />
-              <label htmlFor="file-upload" className="pta-upload-link">
-                Upload Product Image
-              </label>
+              {!selectedFile ? (
+                <label htmlFor="file-upload" className="pta-upload-link">
+                  Upload Product Image
+                </label>
+              ) : (
+                <div className="selected-file-container">
+                  <a href="#" className="pta-upload-link">
+                    Image attached
+                    <Image
+                      onClick={removeFile}
+                      src={attachRemoveicon}
+                      width={20}
+                      height={20}
+                      alt="attach"
+                      className="pta-attach"
+                    ></Image>
+                  </a>
+                </div>
+              )}
             </div>
+
             <div className="rate-btn mt-4">
               <button className="btn-primary" onClick={handleUpload}>
                 Rate Us

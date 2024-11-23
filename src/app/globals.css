@@ -5934,3 +5934,9 @@ input:focus, textarea:focus {
   transform: scale(1);
   transition: transform 0.25s ease-in-out;
 }
+
+
+.my-wish-text-view{
+    text-align: center;
+    color: #A48888;
+}

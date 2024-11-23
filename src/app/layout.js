@@ -7,11 +7,12 @@ import Head from "next/head"; // Import for better SEO management
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { ToastContainer } from "react-toastify";
-import '../../node_modules/@fontsource/manrope/200.css'; // Regular weight
-import '../../node_modules/@fontsource/manrope/400.css';
-import '../../node_modules/@fontsource/manrope/600.css';
+import "../../node_modules/@fontsource/manrope/200.css"; // Regular weight
+import "../../node_modules/@fontsource/manrope/400.css";
+import "../../node_modules/@fontsource/manrope/600.css";
 
-import '../../node_modules/@fontsource/manrope/800.css'; // Bold weight
+import "../../node_modules/@fontsource/manrope/800.css"; // Bold weight
+import { GoogleOAuthProvider } from "@react-oauth/google";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -32,14 +33,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Provider store={store}>
-          <div className="body-main-container bg-white">
-          {children}
-          </div>
+        <GoogleOAuthProvider
+          clientId={
+            "552120198753-8p60e6f4vfql2a587g9imbbckmtjb0ag.apps.googleusercontent.com"
+          }
+        >
+          <Provider store={store}>
+            <div className="body-main-container bg-white">{children}</div>
           </Provider>
+        </GoogleOAuthProvider>
         <ToastContainer
           position="top-center"
           autoClose={3000}

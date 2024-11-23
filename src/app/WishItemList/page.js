@@ -106,7 +106,7 @@ const WishingItems = () => {
         }
       );
       if (response.status === 201) {
-        router.push("/WishConfirmation");
+        router.push("/mywish");
       }
       console.log("Wish posted successfully:", response.data);
     } catch (error) {

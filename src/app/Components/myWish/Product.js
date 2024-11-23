@@ -103,7 +103,7 @@ const ProductPage = ({ product }) => {
       </div>
 
       {/* Donations Section */}
-      {todayDonations.length}
+
       <div className="mb-4">
         <h6>Today</h6>
         <div className="d-flex justify-content-between align-items-center">
@@ -131,55 +131,63 @@ const ProductPage = ({ product }) => {
       </div>
 
       {/* Yesterday Donations Section */}
-      <div className="mb-4">
-        <h6>Yesterday</h6>
-        <div className="d-flex justify-content-between align-items-center">
-          <p className="text-muted">Received</p>
-          <p className="fw-bold">
-            <CurrencyName />
-            {getSumOfAmounts(yesterdayDonations) || 0}
-          </p>
+      {yesterdayDonations.length > 0 && (
+        <div className="mb-4">
+          <h6>Yesterday</h6>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="text-muted">Received</p>
+            <p className="fw-bold">
+              <CurrencyName />
+              {getSumOfAmounts(yesterdayDonations) || 0}
+            </p>
+          </div>
+          {yesterdayDonations?.map((item) => (
+            <DonationCard
+              key={item._id}
+              name={item.donorName || "Unknown Donor"}
+              date={new Date(item.createdAt).toLocaleDateString()}
+              time={new Date(item.createdAt).toLocaleTimeString()}
+              amount={`${item.amount?.toLocaleString()}`}
+              image={
+                item.donorImage
+                  ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
+                  : userImage
+              }
+            />
+          ))}
         </div>
-        {yesterdayDonations?.map((item) => (
-          <DonationCard
-            key={item._id}
-            name={item.donorName || "Unknown Donor"}
-            date={new Date(item.createdAt).toLocaleDateString()}
-            time={new Date(item.createdAt).toLocaleTimeString()}
-            amount={`${item.amount?.toLocaleString()}`}
-            image={
-              item.donorImage
-                ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
-                : userImage
-            }
-          />
-        ))}
-      </div>
-
-      <div className="mb-4">
-        <h6>Previous</h6>
-        <div className="d-flex justify-content-between align-items-center">
-          <p className="text-muted">Received</p>
-          <p className="fw-bold">
-            <CurrencyName />
-            {getSumOfAmounts(remainingDonations) || 0}
-          </p>
+      )}
+      {remainingDonations?.length > 0 && (
+        <div className="mb-4">
+          <h6>Previous</h6>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="text-muted">Received</p>
+            <p className="fw-bold">
+              <CurrencyName />
+              {getSumOfAmounts(remainingDonations) || 0}
+            </p>
+          </div>
+          {remainingDonations?.map((item) => (
+            <DonationCard
+              key={item._id}
+              name={item.donorName || "Unknown Donor"}
+              date={new Date(item.createdAt).toLocaleDateString()}
+              time={new Date(item.createdAt).toLocaleTimeString()}
+              amount={`${item.amount?.toLocaleString()}`}
+              image={
+                item.donorImage
+                  ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
+                  : userImage
+              }
+            />
+          ))}
         </div>
-        {remainingDonations?.map((item) => (
-          <DonationCard
-            key={item._id}
-            name={item.donorName || "Unknown Donor"}
-            date={new Date(item.createdAt).toLocaleDateString()}
-            time={new Date(item.createdAt).toLocaleTimeString()}
-            amount={`${item.amount?.toLocaleString()}`}
-            image={
-              item.donorImage
-                ? `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${item.donorImage}`
-                : userImage
-            }
-          />
-        ))}
-      </div>
+      )}
+      {remainingDonations?.length === 0 && yesterdayDonations.length === 0 && (
+        <div>
+          <p className="my-wish-text-view">You don't have any donation yet</p>
+        </div>
+      )}
       {progressVariant === "success" && (
         <Row className="fixed-bottom fixed-bottom-button">
           <Col>

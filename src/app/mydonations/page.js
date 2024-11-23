@@ -81,7 +81,11 @@ const Page = () => {
               productImage={product.productImageUrl}
               title={product.productName}
               price={product.totalAmount || 0}
-              donationGoal={product.productPrice}
+              donationGoal={
+                product.productPrice > 0
+                  ? product.productPrice
+                  : product.productOriName
+              }
               wishingByImage={product.wishingByImage}
               wishingBy={product.wishingBy}
               donationsDetails={product.donationsDetails}

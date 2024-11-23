@@ -13,7 +13,10 @@ import Image from "next/image";
 import emailicon from "../../images/emailicon.svg";
 import addicon from "../../images/add.svg";
 import arrowright from "../../images/arrow-right.svg";
-
+import { signIn } from "next-auth/react"; // Import signIn method from next-auth
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const LoginComponent = () => {
   const [email, setEmailState] = useState("");
   const [password, setPassword] = useState("");
@@ -29,132 +32,164 @@ const LoginComponent = () => {
       .unwrap()
       .then((userData) => {
         dispatch(setEmail(email));
-        toast.success("otp send successfully");
+        toast.success("otp sent successfully");
         // Redirect to home page after successful login
-        // localStorage.setItem("user", JSON.stringify(userData));
         router.push("/login/verify-otp");
       })
       .catch((err) => {
         toast.error(err);
       });
   };
+
   const handleCreateAccount = () => {
     router.push("/signup/email");
   };
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      console.log("Google Login Success:", tokenResponse);
+      const { credential } = tokenResponse;
+      const { access_token } = tokenResponse;
+      try {
+        // Use the access token to get user profile data from Google's userinfo API
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
+
+        const userData = res.data;
+        console.log("User Data from Google:", userData);
+        const response = await axios.post(
+          `${API_BASE_URL}/user/googleLogin`,
+          userData
+        );
+        localStorage.setItem("user", JSON.stringify(response.data));
+
+        if (response.status === 201) {
+          toast.success("Login successfully");
+          router.push("/");
+        }
+
+        //toast.success("Google login successful!");
+        // router.push("/dashboard"); // Redirect to dashboard or home page
+      } catch (error) {
+        console.error("Error fetching Google user info:", error);
+        toast.error("Failed to fetch user info");
+      }
+    },
+    onError: (error) => {
+      console.error("Google login failed:", error);
+      toast.error("Google login failed");
+    },
+  });
   return (
-    <>
-      <div className="login-main-container-comp">
-        <div className="login-container">
-          <div className="login-box text-center">
-            {/* Logo */}
-            <div className="login-box-top">
-              <div className="login-box-logo">
-                <Image
-                  src={logoIcon}
-                  alt="Logo"
-                  className="logo-img"
-                  width={32}
-                  height={32}
+    <div className="login-main-container-comp">
+      <div className="login-container">
+        <div className="login-box text-center">
+          <div className="login-box-top">
+            <div className="login-box-logo">
+              <Image
+                src={logoIcon}
+                alt="Logo"
+                className="logo-img"
+                width={32}
+                height={32}
+              />
+            </div>
+            <div className="login-top-text">
+              <p className="login-heading">Sign in with Email</p>
+              <p className="subtext">
+                Welcome back! Login to your wishing journey.
+              </p>
+            </div>
+          </div>
+
+          <div className="login-box-from">
+            <form onSubmit={handleLogin}>
+              <div
+                className="input-group custom-input"
+                style={{ marginBottom: "8px" }}
+              >
+                <span className="input-group-text login-input-group-text">
+                  <Image
+                    src={emailicon}
+                    alt="Email Icon"
+                    width={24}
+                    height={24}
+                  />
+                </span>
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmailState(e.target.value)}
+                  style={{
+                    border: "none",
+                    outline: "none",
+                  }}
+                  required
                 />
               </div>
 
-              {/* Heading */}
-              <div className="login-top-text">
-                <p className="login-heading">Sign in with Email</p>
-                <p className="subtext">
-                  Welcome back! Login to your wishing journey.
-                </p>
-              </div>
-            </div>
-
-            {/* Login Form */}
-            <div className="login-box-from">
-              <form onSubmit={handleLogin}>
-                <div
-                  className="input-group custom-input"
-                  style={{ marginBottom: "8px" }}
-                >
-                  <span className="input-group-text login-input-group-text">
-                    <Image
-                      src={emailicon}
-                      alt="Email Icon"
-                      width={24}
-                      height={24}
-                    />
-                  </span>
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmailState(e.target.value)}
-                    style={{
-                      border: "none", // Remove border
-                      outline: "none", // Remove default outline
-                    }}
-                    required
-                  />
-                </div>
-
-                {/* Login Button */}
-                <button
-                  type="submit"
-                  className="btn-login w-100"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Logging in..." : "Login"}
-                </button>
-              </form>
-            </div>
-
-            {/* Divider */}
-            <div className="my-2 or-txt">Or</div>
-
-            {/* Google Sign-in Button */}
-            <div className="login-box-btm ">
               <button
-                className="btn-google-comp w-100"
-                onClick={() => handleCreateAccount()}
+                type="submit"
+                className="btn-login w-100"
+                disabled={isLoading}
               >
-                <Image
-                  src={googleIcon}
-                  height={24}
-                  width={24}
-                  alt="socialIcon"
-                  className="social-icon"
-                ></Image>
-                Sign up with Google
+                {isLoading ? "Logging in..." : "Login"}
               </button>
-            </div>
+            </form>
           </div>
 
-          {/* Create New Account */}
-          <div className="create-new-con">
+          <div className="my-2 or-txt">Or</div>
+
+          {/* Google Sign-in Button */}
+          <div className="login-box-btm ">
             <button
-              className="btn-google-comp login-create-acc-btn-comp w-100"
-              onClick={() => handleCreateAccount()}
+              className="btn-google-comp w-100"
+              onClick={handleGoogleLogin}
             >
-              <span className="d-flex justify-content-center align-items-center">
-                <Image
-                  src={addicon}
-                  height={20}
-                  width={20}
-                  alt="addicon"
-                  className="login-addicon"
-                ></Image>
-                Create a new account
-              </span>
               <Image
-                src={arrowright}
-                height={20}
-                width={20}
-                alt="arrowright"
+                src={googleIcon}
+                height={24}
+                width={24}
+                alt="socialIcon"
+                className="social-icon"
               ></Image>
+              Sign in with Google
             </button>
           </div>
         </div>
+
+        <div className="create-new-con">
+          <button
+            className="btn-google-comp login-create-acc-btn-comp w-100"
+            onClick={handleCreateAccount}
+          >
+            <span className="d-flex justify-content-center align-items-center">
+              <Image
+                src={addicon}
+                height={20}
+                width={20}
+                alt="addicon"
+                className="login-addicon"
+              ></Image>
+              Create a new account
+            </span>
+            <Image
+              src={arrowright}
+              height={20}
+              width={20}
+              alt="arrowright"
+            ></Image>
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

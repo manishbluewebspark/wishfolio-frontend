@@ -43,10 +43,11 @@ const AddressForm = () => {
 
     try {
       const response = await axios.post(`${API_BASE_URL}/user`, formData);
+      localStorage.setItem("user", JSON.stringify(response.data));
       if (response.status === 201) {
-        router.push("/login");
-        console.log("Form Data:", formData);
+        // router.push("/login");
         toast.success("submitted successfully!");
+        router.push("/");
       }
     } catch (error) {
       toast.error(error?.response?.data?.message);

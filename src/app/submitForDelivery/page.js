@@ -155,7 +155,7 @@ const AddressPage = () => {
           </div>
         ))
       ) : (
-        <p>No addresses found.</p>
+        <p></p>
       )}
 
       {/* Add New Address Button */}

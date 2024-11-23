@@ -58,7 +58,11 @@ const TermsAndConditions = () => {
           </a>
 
           {/* Use API data */}
-          <p className="tac-text">{data?.description}</p>
+          <div
+            className="tac-text"
+            dangerouslySetInnerHTML={{ __html: data?.description }}
+          />
+          {/* <p className="tac-text">{data?.description}</p> */}
         </div>
       </div>
     </div>

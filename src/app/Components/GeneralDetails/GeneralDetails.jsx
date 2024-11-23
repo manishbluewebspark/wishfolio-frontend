@@ -58,7 +58,7 @@ const GeneralDetails = () => {
   const handleSave = async () => {
     try {
       const response = await axios.patch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/user/${userData._id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/user/profile/${userData._id}`,
         formData
       );
       toast.success("Details Updated Successfully");
@@ -131,7 +131,7 @@ const GeneralDetails = () => {
             value={formData.email}
             readOnly
             className="form-control gd-input-field-right"
-            style={{color:"hsl(0deg 0% 0% / 30%)"}}
+            style={{ color: "hsl(0deg 0% 0% / 30%)" }}
           />
         </div>
       </form>
