@@ -8,7 +8,7 @@ import dropActiveIcon from "../../images/dropActive.png";
 import vectorIcon from "../../images/moon.svg";
 import vectorActiveIcon from "../../images/moonActive.png";
 import profileIcon from "../../images/frame.svg";
-import profileactive from  '../../images/frameactive.svg';
+import profileactive from "../../images/frameactive.svg";
 import { useRouter, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../store/slices/userSlice";
@@ -41,7 +41,7 @@ const BottomNav = () => {
       url: "/",
     },
     {
-      name: "My Contributions",
+      name: "Contributions",
       icon: dropIcon,
       activeIcon: dropActiveIcon,
       url: "/mydonations",

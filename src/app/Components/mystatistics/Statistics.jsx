@@ -163,7 +163,7 @@ const Statistics = (props) => {
             </div>
           </div>
 
-          <div
+          {/* <div
             className="mw-stat-item "
             style={{
               background: props?.isPayment
@@ -174,7 +174,7 @@ const Statistics = (props) => {
               marginBottom: "0px",
             }}
           >
-            {/* Conditionally render icon based on donations count */}
+           
             <Image
               src={
                 statisticData?.data?.length >= minDonation.numberOfDonations
@@ -210,7 +210,7 @@ const Statistics = (props) => {
                 {statisticData?.data?.length}/{minDonation.numberOfDonations}
               </h6>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

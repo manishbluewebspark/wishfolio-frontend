@@ -12,14 +12,14 @@ const LevelUpComponent = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
   const [levelData, setLevelData] = useState(null);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.push("/orderhistorypage");
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     router.push("/orderhistorypage");
+  //   }, 3000);
 
-    // Cleanup the timer if the component unmounts
-    return () => clearTimeout(timer);
-  }, [router]);
+  //   // Cleanup the timer if the component unmounts
+  //   return () => clearTimeout(timer);
+  // }, [router]);
   useEffect(() => {
     // Fetch user data from localStorage and Redux on component mount
     const getUserData = () => {

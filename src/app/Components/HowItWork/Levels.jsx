@@ -55,7 +55,7 @@ const Levels = () => {
                 </div>
               </div>
 
-              <div
+              {/* <div
                 className="hwl-stat-item d-flex align-items-center"
                 style={{ marginBottom: "0px !important" }}
               >
@@ -68,7 +68,7 @@ const Levels = () => {
                   <span>Number of Donations</span>
                   <h6>{option?.numberOfDonations}</h6>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

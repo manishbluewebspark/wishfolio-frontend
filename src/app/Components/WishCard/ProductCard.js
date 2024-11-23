@@ -139,7 +139,7 @@ export default function ProductCard() {
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-block">
           <h2 className="wishing-items-title">Wishing Items</h2>
-          <p className="price-range">₹5,000 – ₹10,000 Worth Items</p>
+          <p className="price-range">{minDonation?.worthItem}</p>
         </div>
 
         {/* <div className="filter-by">

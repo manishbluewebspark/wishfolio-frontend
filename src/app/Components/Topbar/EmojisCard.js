@@ -23,7 +23,7 @@ const EmojisCard = () => {
   useEffect(() => {
     if (levels.length > 0 && !selected) {
       const firstUnlockedLevel = levels.find(
-        (level, index) => index < userData?.userLevel
+        (level, index) => index + 1 == userData?.userLevel
       );
       if (firstUnlockedLevel) {
         setSelected(firstUnlockedLevel.labelName);
@@ -72,7 +72,7 @@ const EmojisCard = () => {
           >
             <div className="emoji-card-items">
               {/* Show lock icon if the level is locked */}
-              {index >= userData?.userLevel && (
+              {index + 1 !== userData?.userLevel && (
                 <div className="emoji-lock">
                   <Image src={lockIcon} width={18} height={18} alt="lock" />
                 </div>

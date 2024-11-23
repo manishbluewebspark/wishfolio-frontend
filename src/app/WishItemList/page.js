@@ -28,6 +28,8 @@ import CurrencyName from "../Components/Comman/CurrencyName";
 import arrowleftIcon from "../images/arrow-left.png";
 import LevelDropdown from "../Components/Comman/LevelDropdown";
 import { SwipeableButton } from "react-swipeable-button";
+import { fetchStatisticData } from "../store/slices/statisticSlice";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const WishingItems = () => {
@@ -42,9 +44,17 @@ const WishingItems = () => {
     loading: loadingProducts,
     error: errorProducts,
   } = useSelector(selectProducts);
+
+  const { levels } = useSelector((state) => state.levels);
+  const { statisticData } = useSelector((state) => state.statistic);
   const { userData } = useSelector((state) => state.user);
   const [activeKey, setActiveKey] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState("");
+  const [levelIndex, setLevelIndex] = useState(null);
+  const [minDonation, setMinDonation] = useState({});
+  const [worthItem, setWorthItem] = useState("");
 
   useEffect(() => {
     const getUserData = () => {
@@ -72,11 +82,11 @@ const WishingItems = () => {
       dispatch(
         fetchProductsByCategory({
           categoryId: activeKey,
-          userLevel: userData?.userLevel,
+          userLevel: levelIndex ? levelIndex : userData?.userLevel,
         })
       );
     }
-  }, [activeKey, dispatch, userData]);
+  }, [activeKey, dispatch, userData, levelIndex]);
 
   const handleSelect = (key) => {
     setActiveKey(key);
@@ -108,7 +118,6 @@ const WishingItems = () => {
       if (response.status === 201) {
         router.push("/mywish");
       }
-      console.log("Wish posted successfully:", response.data);
     } catch (error) {
       swipeableButtonRef.current?.buttonReset();
       console.error("Error posting wish:", error);
@@ -128,115 +137,186 @@ const WishingItems = () => {
   const onSuccess = () => {
     handleSwipe();
   };
+  const handleLevelChange = (levelIndex) => {
+    // dispatch(
+    //   fetchProductsByCategory({
+    //     categoryId: activeKey,
+    //     userLevel: levelIndex + 1,
+    //   })
+    // );
 
+    if (levelIndex + 1 > userData?.userLevel) {
+      setShowMessage(true);
+      setLevelIndex(levelIndex + 1);
+      setMessage(
+        "You have to complete your current level first in order to become eligible for these wishes."
+      );
+    } else {
+      setShowMessage(false);
+      setLevelIndex(null);
+
+      setMessage("");
+    }
+    setWorthItem(levels[levelIndex]?.worthItem);
+  };
   const onFailure = () => {
-    console.log("Failed to Swipe!");
     swipeableButtonRef.current?.buttonReset();
   };
+  useEffect(() => {
+    // Fetch level data based on user level
+    const fetchLevelData = async () => {
+      if (userData?.userLevel) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/level/byUser/${userData.userLevel}`
+          );
+          setMinDonation(response.data?.data);
+        } catch (error) {
+          console.error("Error fetching level data:", error);
+        }
+      }
+    };
 
+    fetchLevelData();
+  }, [userData]);
+
+  useEffect(() => {
+    const getUserData = () => {
+      // const userData = localStorage.getItem("user");
+      if (userData) {
+        // const uData = JSON.parse(userData);
+        dispatch(
+          fetchStatisticData({
+            id: userData._id,
+            userLevel: userData.userLevel,
+          })
+        );
+      }
+    };
+
+    getUserData();
+  }, [dispatch, userData]);
+  useEffect(() => {
+    if (levels) {
+      setWorthItem(levels[0]?.worthItem);
+    }
+  }, [levels]);
+  const getSumOfAmounts = (donations) => {
+    return donations?.reduce((total, donation) => total + donation.amount, 0);
+  };
+  function formatNumberWithCommas(number) {
+    return number?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
-   <>
-    <Container fluid className="wishing-item-main-con">
-      {/* Header Section */}
-      <div className="wishing-item-list-top-con">
-        <div>
-          <div className="wishing-item-list-btn-con">
-            <BackButton></BackButton>
-            <span>
-              <h5 className="wishing-item-list-text-h5">Wishing Items</h5>
-              <small className="wishing-item-list-subtext">
-                5,000 - ₹10,000 Worth Items
-              </small>
-            </span>
+    <>
+      <Container fluid className="wishing-item-main-con">
+        {/* Header Section */}
+        <div className="wishing-item-list-top-con">
+          <div>
+            <div className="wishing-item-list-btn-con">
+              <BackButton></BackButton>
+              <span>
+                <h5 className="wishing-item-list-text-h5">Wishing Items</h5>
+                <small className="wishing-item-list-subtext">{worthItem}</small>
+              </span>
+            </div>
+          </div>
+          <div>
+            <LevelDropdown onLevelChange={handleLevelChange}></LevelDropdown>
           </div>
         </div>
-        <div>
-          <LevelDropdown></LevelDropdown>
-        </div>
-      </div>
-      {/* Search Bar */}
-      <div className="wishing-item-search-input-con">
-        <span>
-          <Image src={searchIcon}></Image>
-        </span>
-        <input
-          type="text"
-          value=""
-          onChange={""}
-          placeholder="Search Item"
-          className="wishing-item-search-input"
-        />
-        {/* {searchText && (
-        <i className="bi bi-x-circle clear-icon" onClick={clearSearch}></i>
-      )} */}
-      </div>
+        {/* Search Bar */}
+        {/* <div className="wishing-item-search-input-con">
+          <span>
+            <Image src={searchIcon}></Image>
+          </span>
+          <input
+            type="text"
+            value=""
+            onChange={""}
+            placeholder="Search Item"
+            className="wishing-item-search-input"
+          />
+          
+        </div> */}
 
-      {/* Dynamic Nav based on categories */}
-      <Nav
-        variant="pills"
-        activeKey={activeKey}
-        className="wishing-item-nav-con"
-        onSelect={handleSelect}
-      >
-        {loading ? (
-          <p>Loading categories...</p>
-        ) : error ? (
-          <p>Error loading categories: {error}</p>
-        ) : (
-          categories.map((category) => (
-            <Nav.Item key={category._id} className="wishing-item-nav-item">
-              <Nav.Link eventKey={category._id}>
-                {category.categoryName}
-              </Nav.Link>
-            </Nav.Item>
-          ))
-        )}
-      </Nav>
+        {/* Dynamic Nav based on categories */}
+        <Nav
+          variant="pills"
+          activeKey={activeKey}
+          className="wishing-item-nav-con"
+          onSelect={handleSelect}
+        >
+          {loading ? (
+            <p>Loading categories...</p>
+          ) : error ? (
+            <p>Error loading categories: {error}</p>
+          ) : (
+            categories.map((category) => (
+              <Nav.Item key={category._id} className="wishing-item-nav-item">
+                <Nav.Link eventKey={category._id}>
+                  {category.categoryName}
+                </Nav.Link>
+              </Nav.Item>
+            ))
+          )}
+        </Nav>
 
-      {/* Product Grid */}
-      <Row>
-        {loadingProducts ? (
-          <p>Loading products...</p>
-        ) : errorProducts ? (
-          <p>Error loading products: {errorProducts}</p>
-        ) : products.length === 0 ? ( // Check if products array is empty
-          <Col>
-            <p>No products found.</p>
-          </Col>
-        ) : (
-          products.map((product) => (
-            <Col
-              xs={4}
-              className="mb-3"
-              key={product.id}
-              onClick={() => productOnClick(product)}
-            >
-              <div
-                className={`wishingitem-product-card text-center ${
-                  selectedProduct?._id === product._id ? "selected" : ""
-                }`}
-              >
-                <Image
-                  src={
-                    `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.productImageUrl}` ||
-                    productImage
-                  } // Use actual product image
-                  width={89}
-                  height={99.81}
-                  alt={product.productName}
-                  className=""
-                />
-              </div>
-              <p className="mt-2 wishing-item-pro-text">
-                {product.productName}
-              </p>
+        {/* Product Grid */}
+        <Row>
+          {loadingProducts ? (
+            <p>Loading products...</p>
+          ) : errorProducts ? (
+            <p>Error loading products: {errorProducts}</p>
+          ) : products.length === 0 ? ( // Check if products array is empty
+            <Col>
+              <p>No products found.</p>
             </Col>
-          ))
-        )}
-      </Row>
+          ) : (
+            products.map((product) => (
+              <Col
+                xs={4}
+                className="mb-3"
+                key={product.id}
+                onClick={() => productOnClick(product)}
+              >
+                <div
+                  className={`wishingitem-product-card text-center ${
+                    selectedProduct?._id === product._id ? "selected" : ""
+                  }`}
+                >
+                  <Image
+                    src={
+                      `${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.productImageUrl}` ||
+                      productImage
+                    } // Use actual product image
+                    width={89}
+                    height={99.81}
+                    alt={product.productName}
+                    className=""
+                  />
+                </div>
+                <p
+                  className="mt-2 wishing-item-pro-text"
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {product.productName}
+                </p>
+                <p className="mt-0 wishing-item-pro-text">
+                  <CurrencyName />{" "}
+                  {formatNumberWithCommas(product.productPrice)}
+                </p>
+              </Col>
+            ))
+          )}
+        </Row>
 
-      {/* Swipe to Post My Wish */}
-      {/* <Row className="fixed-bottom">
+        {/* Swipe to Post My Wish */}
+        {/* <Row className="fixed-bottom">
         <Col>
           <div className="text-center">
             <div style={{ width: "70%", display: "block", margin: "auto" }}>
@@ -260,14 +340,31 @@ const WishingItems = () => {
           </div>
         </Col>
       </Row>  */}
-    </Container>
-    <div className="swip-btn-sticky">
-      <SwipeButton
-        handleSwipe={handleSwipe}
-        isSwipable={!!selectedProduct}
-      ></SwipeButton>
+      </Container>
+      <div className="swip-btn-sticky">
+        {(showMessage ||
+          getSumOfAmounts(statisticData?.data) <
+            minDonation?.minimumDonation) && (
+          <div className="message-container">
+            <div className="message-box">
+              <span className="message-icon">🔒</span>
+              <p>
+                You have to complete your current level first in order to become
+                eligible for these wishes.
+              </p>
+            </div>
+          </div>
+        )}
+        {!showMessage &&
+          getSumOfAmounts(statisticData?.data) >=
+            minDonation?.minimumDonation && (
+            <SwipeButton
+              handleSwipe={handleSwipe}
+              isSwipable={!!selectedProduct}
+            ></SwipeButton>
+          )}
       </div>
-   </>
+    </>
   );
 };
 

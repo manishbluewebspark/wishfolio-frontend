@@ -13,11 +13,7 @@ const StatisticsLevelUp = ({ levelData }) => {
         <div className="slv-level-content d-flex align-items-center justify-content-center">
           <div className="slv-wishing-items">
             <h5>Wishing Items</h5>
-            <p>
-              {levelData?.minimumDonation && levelData?.worthItem
-                ? `₹${levelData.minimumDonation} - ₹${levelData.worthItem} Worth Items`
-                : "Loading..."}
-            </p>
+            <p>{levelData?.worthItem}</p>
           </div>
         </div>
 
@@ -32,7 +28,7 @@ const StatisticsLevelUp = ({ levelData }) => {
             </div>
           </div>
 
-          <div
+          {/* <div
             className="slv-stat-item d-flex align-items-center"
             style={{ marginBottom: "0px !important" }}
           >
@@ -45,7 +41,7 @@ const StatisticsLevelUp = ({ levelData }) => {
               <span>Number of Donations</span>
               <h6>{levelData?.numberOfDonations}</h6>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

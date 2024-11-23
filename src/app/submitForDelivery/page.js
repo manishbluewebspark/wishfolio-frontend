@@ -11,8 +11,8 @@ import { fetchMyWish } from "../store/slices/myWishSlice";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import BackButton from "../Components/Button/BackButton";
-import NewAddressModal from '../Components/Modals/NewAddressModal';
-import editIcon from  '../images/edit2color.svg';
+import NewAddressModal from "../Components/Modals/NewAddressModal";
+import editIcon from "../images/edit2color.svg";
 import Image from "next/image";
 const AddressPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -98,94 +98,111 @@ const AddressPage = () => {
 
   return (
     <>
-    <BackButton title={'Address'}></BackButton>
-    <div className={`container ${styles.container} h-100`}>
-      {/* User's Main Address Card */}
-      <div
-        className={`card delivery-address-con  ${styles.card} ${
-          selectedAddressId === userData?._id ? styles.activeAddress : ""
-        }`} // Apply active class if main address is selected
-        onClick={() => handleAddressSelect(userData?._id, "main")} // Add onClick to select main address
-      >
-        <div className="d-flex justify-content-between">
-          <h6 className="delivery-address-text-head">Address Line 1</h6>
-          
-          <Button variant="text" className="p-0 edit-button-address">
-          <Image src={editIcon} width="17" height='17' alt='edit'></Image> Edit{" "}
-          </Button>
-        </div>
-        <p className="mb-1 delivery-address-subtext">
-          {userData?.country} {userData?.state}
-        </p>
-        <p className="mb-1 delivery-address-subtext">
-          {userData?.address_line_1} {userData?.address_line_2}
-        </p>
-        <p className="mb-1 delivery-address-subtext">Pin Code: {userData?.pincode}</p>
-        <p className="mb-0 delivery-address-subtext">Room Number: {userData?.roomNumber}</p>
-      </div>
-
-      {/* Render Additional Addresses */}
-      {addressData && addressData.length > 0 ? (
-        addressData.map((item, index) => (
-          <div
-            key={index}
-            className={`card delivery-address-con ${styles.card} ${
-              selectedAddressId === item._id ? styles.activeAddress : ""
-            }`} // Apply active class
-            onClick={() => handleAddressSelect(item._id, "other")} // Add onClick to select address
-          >
-            <div className="d-flex justify-content-between">
-              <h6 className="delivery-address-text-head">Address {index + 2}</h6>
-              <Button variant="text" className="p-0 edit-button-address">
-          <Image src={editIcon} width="17" height='17' alt='edit'></Image> Edit{" "}
-          </Button>
-            </div>
-            <p className="mb-1 delivery-address-subtext">
-              {item.country} {item.state}
-            </p>
-            <p className="mb-1 delivery-address-subtext">
-              {item.address_line_1} {item.address_line_2}
-            </p>
-            <p className="mb-1 delivery-address-subtext">Pin Code: {item.pincode}</p>
-            <p className="mb-0 delivery-address-subtext">Room Number: {item.roomNumber}</p>
-          </div>
-        ))
-      ) : (
-        <p></p>
-      )}
-
-      {/* Add New Address Button */}
-      <div className="delivery-address-addnew text-center mb-5">
-        <a
-          style={{cursor:'pointer'}}
-          className=""
-          onClick={handleCardClick}
+      <BackButton title={"Address"}></BackButton>
+      <div className={`container newClassForaddress ${styles.container} h-100`}>
+        {/* User's Main Address Card */}
+        <div
+          className={`card delivery-address-con  ${styles.card} ${
+            selectedAddressId === userData?._id ? styles.activeAddress : ""
+          }`} // Apply active class if main address is selected
+          onClick={() => handleAddressSelect(userData?._id, "main")} // Add onClick to select main address
         >
-          Add a New Address
-        </a>
-      </div>
+          <div className="d-flex justify-content-between">
+            <h6 className="delivery-address-text-head">Address Line 1</h6>
 
-      <NewAddressModal
-        isOpen={showModal}
-        onClose={handleCloseModal}
-        onConfirm={openSuccessModal} // Pass the function here
-      />
+            <Button variant="text" className="p-0 edit-button-address">
+              <Image src={editIcon} width="17" height="17" alt="edit"></Image>{" "}
+              Edit{" "}
+            </Button>
+          </div>
+          <p className="mb-1 delivery-address-subtext">
+            {userData?.country} {userData?.state}
+          </p>
+          <p className="mb-1 delivery-address-subtext">
+            {userData?.address_line_1} {userData?.address_line_2}
+          </p>
+          <p className="mb-1 delivery-address-subtext">
+            Pin Code: {userData?.pincode}
+          </p>
+          <p className="mb-0 delivery-address-subtext">
+            Room Number: {userData?.roomNumber}
+          </p>
+        </div>
 
-      {/* Submit for Delivery Button */}
-    </div>
-    <Row className="fixed-bottom-btn-delivery">
-          <Col>
-            <div className="text-center">
-              <Button
-                 className={`btn-swipe w-100 ${styles["btn-swipe"]}`}
-                 block
-                 onClick={handleSubmitForDelivery}
-              >
-                Submit for Delivery
-              </Button>
+        {/* Render Additional Addresses */}
+        {addressData && addressData.length > 0 ? (
+          addressData.map((item, index) => (
+            <div
+              key={index}
+              className={`card delivery-address-con ${styles.card} ${
+                selectedAddressId === item._id ? styles.activeAddress : ""
+              }`} // Apply active class
+              onClick={() => handleAddressSelect(item._id, "other")} // Add onClick to select address
+            >
+              <div className="d-flex justify-content-between">
+                <h6 className="delivery-address-text-head">
+                  Address {index + 2}
+                </h6>
+                <Button variant="text" className="p-0 edit-button-address">
+                  <Image
+                    src={editIcon}
+                    width="17"
+                    height="17"
+                    alt="edit"
+                  ></Image>{" "}
+                  Edit{" "}
+                </Button>
+              </div>
+              <p className="mb-1 delivery-address-subtext">
+                {item.country} {item.state}
+              </p>
+              <p className="mb-1 delivery-address-subtext">
+                {item.address_line_1} {item.address_line_2}
+              </p>
+              <p className="mb-1 delivery-address-subtext">
+                Pin Code: {item.pincode}
+              </p>
+              <p className="mb-0 delivery-address-subtext">
+                Room Number: {item.roomNumber}
+              </p>
             </div>
-          </Col>
-        </Row>
+          ))
+        ) : (
+          <p></p>
+        )}
+
+        {/* Add New Address Button */}
+        <div className="delivery-address-addnew text-center mb-5">
+          <a
+            style={{ cursor: "pointer" }}
+            className=""
+            onClick={handleCardClick}
+          >
+            Add a New Address
+          </a>
+        </div>
+
+        <NewAddressModal
+          isOpen={showModal}
+          onClose={handleCloseModal}
+          onConfirm={openSuccessModal} // Pass the function here
+        />
+
+        {/* Submit for Delivery Button */}
+      </div>
+      <Row className="fixed-bottom-btn-delivery">
+        <Col>
+          <div className="text-center">
+            <Button
+              className={`btn-swipe w-100 ${styles["btn-swipe"]}`}
+              block
+              onClick={handleSubmitForDelivery}
+            >
+              Submit for Delivery
+            </Button>
+          </div>
+        </Col>
+      </Row>
     </>
   );
 };

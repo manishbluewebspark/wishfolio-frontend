@@ -56,7 +56,6 @@ const ProductPage = ({ product }) => {
     product?.donationsDetails,
     "remaining"
   );
-  console.log("yesterdayDonations========", yesterdayDonations);
 
   function getDateAndTimeFromISO(isoString) {
     const dateObj = new Date(isoString);

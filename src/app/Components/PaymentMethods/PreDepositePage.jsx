@@ -9,21 +9,33 @@ import attachicon from "../../images/attach.png";
 import attachRemoveicon from "../../images/IconSet2.svg";
 import BackButton from "../Button/BackButton";
 import TransactionSubmitModal from "../Modals/TransactionSubmitModal";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserData } from "../../store/slices/userSlice";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const PreDepositPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [transactionId, setTransactionId] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const fileInputRef = useRef(null);
-
+  const { userData, isLoading, error } = useSelector((state) => state.user);
   const closeModal = () => {
     setIsModalOpen(false);
     router.push("/profile");
   };
 
+  useEffect(() => {
+    const getUserData = () => {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        const uData = JSON.parse(userData);
+        dispatch(fetchUserData(uData.id));
+      }
+    };
+    getUserData();
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,7 +44,7 @@ const PreDepositPage = () => {
     if (selectedImage) {
       formData.append("image", selectedImage);
     }
-
+    formData.append("userId", userData._id);
     try {
       const response = await axios.post(
         `${API_BASE_URL}/user/deposit/upload`,

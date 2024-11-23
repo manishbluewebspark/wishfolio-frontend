@@ -88,7 +88,10 @@ const WishFolio = () => {
 
   return (
     <>
-      {!isLoading && !error && wishData?.data ? (
+      {!isLoading &&
+      !error &&
+      wishData?.data &&
+      wishData?.data?.ordersDetails?.length === 0 ? (
         <>
           <Product
             product={wishData.data}
@@ -134,7 +137,12 @@ const WishFolio = () => {
                     Post My wish
                   </button>
                 )}
-                <p className="mw-donate-explore-txt">Explore Wishing Items</p>
+                <p
+                  className="mw-donate-explore-txt"
+                  onClick={() => router.push("/WishItemList")}
+                >
+                  Explore Wishing Items
+                </p>
               </div>
             </div>
           </div>
