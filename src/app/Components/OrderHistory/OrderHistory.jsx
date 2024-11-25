@@ -25,27 +25,27 @@ const OrderHistory = () => {
       }
     }
   }, []);
-  useEffect(() => {
-    const fetchLevelData = async () => {
-      if (userData?.userLevel) {
-        try {
-          const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/user/checkLeve/${userData._id}`
-          );
-          const checkData = response.data?.user?.userLevel;
+  // useEffect(() => {
+  //   const fetchLevelData = async () => {
+  //     if (userData?.userLevel) {
+  //       try {
+  //         const response = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_BASE_URL}/user/checkLeve/${userData._id}`
+  //         );
+  //         const checkData = response.data?.user?.userLevel;
 
-          if (checkData > userData?.userLevel) {
-            router.push("/levelup");
-          }
-          // setLevelData(response.data?.data);
-        } catch (error) {
-          console.error("Error fetching level data:", error);
-        }
-      }
-    };
+  //         if (checkData > userData?.userLevel) {
+  //           router.push("/levelup");
+  //         }
+  //         // setLevelData(response.data?.data);
+  //       } catch (error) {
+  //         console.error("Error fetching level data:", error);
+  //       }
+  //     }
+  //   };
 
-    fetchLevelData();
-  }, [userData]);
+  //   fetchLevelData();
+  // }, [userData]);
   // Get orders data and loading state from Redux
   const { orderData, isLoading, error } = useSelector((state) => state.myOrder);
 

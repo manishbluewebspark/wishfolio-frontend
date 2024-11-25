@@ -14,10 +14,15 @@ import BackButton from "../Components/Button/BackButton";
 import NewAddressModal from "../Components/Modals/NewAddressModal";
 import editIcon from "../images/edit2color.svg";
 import Image from "next/image";
+import GotRequestModal from "../Components/Modals/GotRequestModal";
+
 const AddressPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const [selectedAddressType, setSelectedAddressType] = useState("");
+  const [showSucessModal, setShowSucessModal] = useState(false);
+  const [editingAddress, setEditingAddress] = useState(null); // New state for selected address
+
   const router = useRouter();
   const dispatch = useDispatch();
   const { addressData, isLoading, error } = useSelector(
@@ -32,6 +37,7 @@ const AddressPage = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setEditingAddress(null);
     const user = localStorage.getItem("user");
     if (user) {
       const uData = JSON.parse(user);
@@ -54,7 +60,8 @@ const AddressPage = () => {
       const user = localStorage.getItem("user");
       if (user) {
         const uData = JSON.parse(user);
-        dispatch(fetchUserData(uData.id)); // Fetch user data again after modal closes
+        dispatch(fetchUserData(uData.id));
+        setEditingAddress(null);
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -86,7 +93,10 @@ const AddressPage = () => {
         );
         // alert(response.data.message);
         toast.success(response.data.message);
-        router.push("/orderSuccess");
+        setShowSucessModal(true);
+        const timer = setTimeout(() => {
+          router.push("/levelup");
+        }, 5000);
       } catch (error) {
         console.error("Error submitting for delivery:", error);
         alert("An error occurred while submitting for delivery.");
@@ -95,6 +105,13 @@ const AddressPage = () => {
       alert("Please select an address for delivery.");
     }
   };
+
+  // Function to handle edit button click
+  const handleEditAddress = (address) => {
+    setEditingAddress(address);
+    setShowModal(true);
+  };
+  // console.log("editingAddress=====", editingAddress);
 
   return (
     <>
@@ -109,10 +126,12 @@ const AddressPage = () => {
         >
           <div className="d-flex justify-content-between">
             <h6 className="delivery-address-text-head">Address Line 1</h6>
-
-            <Button variant="text" className="p-0 edit-button-address">
-              <Image src={editIcon} width="17" height="17" alt="edit"></Image>{" "}
-              Edit{" "}
+            <Button
+              variant="text"
+              className="p-0 edit-button-address"
+              onClick={() => handleEditAddress(userData)} // Pass user data for editing
+            >
+              <Image src={editIcon} width="17" height="17" alt="edit" /> Edit
             </Button>
           </div>
           <p className="mb-1 delivery-address-subtext">
@@ -143,13 +162,12 @@ const AddressPage = () => {
                 <h6 className="delivery-address-text-head">
                   Address {index + 2}
                 </h6>
-                <Button variant="text" className="p-0 edit-button-address">
-                  <Image
-                    src={editIcon}
-                    width="17"
-                    height="17"
-                    alt="edit"
-                  ></Image>{" "}
+                <Button
+                  variant="text"
+                  className="p-0 edit-button-address"
+                  onClick={() => handleEditAddress(item)} // Pass item data for editing
+                >
+                  <Image src={editIcon} width="17" height="17" alt="edit" />{" "}
                   Edit{" "}
                 </Button>
               </div>
@@ -185,10 +203,14 @@ const AddressPage = () => {
         <NewAddressModal
           isOpen={showModal}
           onClose={handleCloseModal}
-          onConfirm={openSuccessModal} // Pass the function here
+          onConfirm={openSuccessModal}
+          addressData={editingAddress} // Pass the selected address data here
         />
-
-        {/* Submit for Delivery Button */}
+        <GotRequestModal
+          isOpen={showSucessModal}
+          onClose={() => setShowSucessModal(false)}
+          onConfirm={() => setShowSucessModal(false)}
+        />
       </div>
       <Row className="fixed-bottom-btn-delivery">
         <Col>

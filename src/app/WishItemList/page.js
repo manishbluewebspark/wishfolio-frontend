@@ -145,7 +145,7 @@ const WishingItems = () => {
     //   })
     // );
 
-    if (levelIndex + 1 > userData?.userLevel) {
+    if (levelIndex + 1 !== userData?.userLevel) {
       setShowMessage(true);
       setLevelIndex(levelIndex + 1);
       setMessage(

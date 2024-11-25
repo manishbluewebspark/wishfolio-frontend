@@ -24,8 +24,8 @@ const LevelDropdown = ({ onLevelChange }) => {
   };
   useEffect(() => {
     if (levels) {
-      setSelectedName(levels[userData?.userLevel]?.labelName);
-      setSelectedImage(levels[userData?.userLevel]?.imageUrl);
+      setSelectedName(levels[userData?.userLevel - 1]?.labelName);
+      setSelectedImage(levels[userData?.userLevel - 1]?.imageUrl);
     }
   }, [levels, userData]);
   const handleSelect = (name, image, index) => {

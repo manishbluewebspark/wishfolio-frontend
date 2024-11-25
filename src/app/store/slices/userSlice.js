@@ -14,8 +14,13 @@ export const fetchUserData = createAsyncThunk(
           Authorization: `Bearer ${localStorage.getItem("token")}`, // Include token from local storage
         },
       });
+
       return response.data; // Assuming response contains user data
     } catch (error) {
+      if (error?.response?.data?.message === "User not found") {
+        localStorage.removeItem("user");
+        window.location.href = "/login";
+      }
       // Return the error message or status if available
       if (error.response && error.response.data) {
         return rejectWithValue(
