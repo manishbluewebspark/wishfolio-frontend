@@ -270,7 +270,7 @@ const WishingItems = () => {
             <p>Error loading products: {errorProducts}</p>
           ) : products.length === 0 ? ( // Check if products array is empty
             <Col>
-              <p>No products found.</p>
+              <p className="text-center">No products found.</p>
             </Col>
           ) : (
             products.map((product) => (

@@ -64,10 +64,12 @@ const ProModal = ({
           }
         } else {
           setError(
-            `Choose an amount less than ${
-              product.productPrice - getSumOfAmounts(product.donationsDetails)
+            `Choose an amount less than ₹ ${
+              new Intl.NumberFormat().format(
+                product.productPrice - getSumOfAmounts(product.donationsDetails)
+              )
             }`
-          ); // Set error message
+          );// Set error message
           // toast.error(
           //   "The donation amount exceeds the remaining required amount for this product."
           // );
@@ -142,7 +144,7 @@ const ProModal = ({
               <CurrencyName />
               {product.productPrice?.toLocaleString()}
               {"  "}
-              <span className="donated"> Donated</span>
+              <span className="donated"> Funded</span>
             </p>
 
             <p className="product-title">{product.productName}</p>
@@ -195,6 +197,7 @@ const ProModal = ({
                       }
                       placeholder="₹0"
                       value={amount ? `₹${amount}` : ""}
+            
                     />
                     <button
                       className="npmc-donate-btn"

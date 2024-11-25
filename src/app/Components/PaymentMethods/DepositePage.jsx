@@ -15,6 +15,7 @@ import { fetchUserData } from "../../store/slices/userSlice";
 import Image from "next/image";
 import BackButton from "../Button/BackButton";
 import CurrencyName from "../Comman/CurrencyName";
+import Link from "next/link";
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const DepositPage = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,8 @@ const DepositPage = () => {
     getUserData(); // Call the function
   }, []);
   const handleAmountChange = (e) => {
-    setAmount(e.target.value);
+    const value = e.target.value.replace(/[^0-9]/g, '');
+    setAmount(value);
   };
 
   const handleQuickAmountClick = (value) => {
@@ -168,8 +170,8 @@ const DepositPage = () => {
 
         {/* Terms and Privacy */}
         <div className="text-center dp-terms">
-          By continuing, you agree to our <a href="#">Privacy Policy</a> and{" "}
-          <a href="#">Terms of Service</a>
+          By continuing, you agree to our <Link href="/privacy-policy">Privacy Policy</Link> and{" "}
+          <Link href="/termsandconditions">Terms of Service</Link>
         </div>
 
         {/* Continue Button */}

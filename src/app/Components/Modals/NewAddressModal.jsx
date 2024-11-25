@@ -219,7 +219,7 @@ const NewAddressModal = ({ isOpen, onClose, onConfirm }) => {
                         className="em-btn-complete"
                         style={{ color: "black" }}
                       >
-                        Complete
+                        Save Address
                       </button>
                     </div>
                   </form>
