@@ -5,9 +5,10 @@ import logo from "../../images/snow.png";
 import logoIcon from "../../images/Snow.svg"; // Replace with your logo
 import { useRouter } from "next/navigation";
 import crossicon from "../../images/cross.svg";
-import img2 from "../../images/86.png";
+import img2 from "../../images/86.svg";
 import uploadIcon from "../../images/ion_attach.svg";
 import attachRemoveicon from "../../images/IconSet2.svg";
+import axios from "axios";
 const LoginModal = ({ isOpen, onClose, onConfirm, order }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -44,7 +45,7 @@ const LoginModal = ({ isOpen, onClose, onConfirm, order }) => {
 
       console.log("Upload successful", response.data);
       alert("File uploaded successfully!");
-      closeModal(); // Close modal after upload
+      onClose(); // Close modal after upload
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("Error uploading file");
@@ -67,9 +68,9 @@ const LoginModal = ({ isOpen, onClose, onConfirm, order }) => {
                   src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${order.productImageUrl}`}
                   alt="Product"
                   className="img-fluid phis-product-image"
-                  width={56.89}
-                  height={63.8}
-                  layout="responsive"
+                  width={153}
+                  height={136}
+                  // layout="responsive"
                 />
               </div>
               <Image src={img2} alt={"title"} width={100} height={100} />

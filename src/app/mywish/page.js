@@ -117,7 +117,7 @@ const WishFolio = () => {
                 <h5>Almost there!</h5>
                 <p>
                   You will be eligible to post your wish after you complete your
-                  donations.
+                  contributions.
                 </p>
 
                 {canPostWish ? (

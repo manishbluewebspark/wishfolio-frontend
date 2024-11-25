@@ -33,7 +33,7 @@ p {
   border-radius: 20px;
 }
 .success .progress-bar {
-  background-color: #00C036;
+  background-color: #00C036 !important;
   border-radius: 20px;
 }
 /* Card styling for donations */
@@ -47,17 +47,7 @@ p {
   border-radius: 50%;
 }
 
-.card h6 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-}
 
-.card p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  color: #757575;
-}
 
 .text-success {
   color: #00C851 !important;

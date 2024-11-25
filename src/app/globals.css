@@ -136,10 +136,16 @@ a {
   width: 100%;
   margin: 5px;
   border-radius: 50px;
-  border: 1px solid #EAEAEA;
+  border: 0.5px solid #90AEFF !important;
   height: 60px;
   padding: 12px;
   text-align: center;
+  font-weight: 800;
+}
+.donateInput:focus-visible{
+  /* outline-color:  1px solid #90AEFF !important; */
+  border: 0.5px solid #90AEFF !important;
+  outline-color:#90AEFF !important ;
 }
 .donateInput:focus{
   border: #00C036 !important;
@@ -1699,7 +1705,8 @@ text-align: center;
   padding: 15px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   width: 100%;
-  height: 320px;
+  max-height: 320px;
+  height: 100%;
   overflow-y: scroll;
   margin: 0 auto;
   margin-top: 12px;
@@ -1738,7 +1745,7 @@ text-align: center;
 
 .pf-donor-item {
   padding: 10px 0;
-  border-bottom: 1px solid #f0f0f0;
+  /* border-bottom: 1px solid #f0f0f0; */
 }
 
 .pf-donor-item:last-child {
@@ -1814,7 +1821,7 @@ text-align: center;
   padding: 20px;
   border-radius: 24px;
   gap: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   margin-top: 15px;
 }
 .mw-statistics-inside-sec{
@@ -1863,8 +1870,6 @@ text-align: center;
   padding: 10px;
   border-radius: 80px;
   background-color: #AEC4FF;
-  margin-bottom: 10px;
-  ;
 }
 
 .mw-icon {
@@ -1930,15 +1935,20 @@ text-align: center;
 /* Container styling */
 .phis-container {
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+      justify-content: center;
+      align-items: center;
 }
 
 /* Tabs styling */
 .phis-tabs {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: 20px;
   background-color: #f1f1f1 !important;
-  border-radius: 30px !important;
+  border-radius: 100px !important;
 }
 
 .phis-tab {
@@ -2038,7 +2048,7 @@ color:#31B776;
 height: 98px;
 background-color: #f9f9f9;
 padding: 8px;
-border-radius: 10px;
+border-radius: 20px;
 margin-bottom: 15px;
 display: flex;
 justify-content: center;
@@ -2313,11 +2323,19 @@ margin-right: 7.04px;
 .dp-amount-input {
 border: none;
 background-color: transparent;
-font-size: 34px;
+font-size: 34px !important;
 font-weight: 800;
 color: #000000;
 text-align: left;
 width: 100%;
+border: none !important;
+}
+.dp-amount-input:focus{
+  font-size: 34px !important;
+  border: none !important;
+}
+.dp-amount-input:focus-visible{
+  outline:none;
 }
 
 .dp-amount-input:disabled {
@@ -3204,6 +3222,23 @@ text-align: center;
 .progress-bar-default {
   background-color: #90AEFF
 }
+.pro-wish-head-text{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.pro-wish-head-subtexttext{
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #A48888 !important;
+
+}
+.my-wish-pro-amount{
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0px !important;
+}
 /* Adjust for mobile screens */
 
 
@@ -3239,8 +3274,8 @@ background: none;
 border: none;
 font-size: 24px;
 cursor: pointer;
-height: 30px;
-width: 30px;
+height: 25px;
+width: 25px;
 background-color: #4d4a4a85;
 display: flex;
 justify-content: center;
@@ -3262,7 +3297,7 @@ font-size: 22px;
   font-weight: 400 !important;
   color: black !important;
   text-align: center !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 0px !important;
   }
 
 .bottom-modal.open {
@@ -3326,6 +3361,7 @@ cursor: pointer;
 width: 100% !important;
 font-size: 16px !important;
 font-weight: 800 !important; 
+height: 60px;
 }
 
 .donate-btn-disable {
@@ -3507,8 +3543,6 @@ outline: none;
   padding: 10px;
   border-radius: 80px;
   background-color: #AEC4FF;
-  margin-bottom: 10px;
-  ;
 }
 
 .mw-icon {
@@ -3567,7 +3601,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 width: 100%;
-margin-top:76px;
+margin-top:70px;
 
 }
 .mw-donation-section {
@@ -3596,6 +3630,7 @@ line-height: 19.12px;
 text-align: center;
 margin-top: 20px;
 color: #90AEFF;
+cursor: pointer;
 
 
 }
@@ -3630,8 +3665,10 @@ color: #90AEFF;
   border: none;
   padding: 10px 20px !important;;
   border-radius: 30px !important;;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
+  height: 50px !important;
+  width: 182px !important;
 
 }
 /* mywish end */
@@ -3752,7 +3789,7 @@ color: #90AEFF;
   color: rgb(0, 0, 0);
   border-radius: 100px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 800;
   border: none;
   margin-bottom: 8px;
 }
@@ -4137,6 +4174,13 @@ color: #90AEFF;
   transition: transform 0.2s;
   width: 122.03px;
   height: 122.03px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.wishingitem-product-card img{
+  height: auto !important;
 }
 .wishing-item-pro-text{
   text-align: center;
@@ -5300,7 +5344,7 @@ border: none;
   position: sticky;
   bottom: 0px;
   background-color: white;
-  padding: 5px;
+  padding-top: 20px;
 }
 
 .npmc-donate-input {
@@ -5322,6 +5366,7 @@ border: none;
   border-radius: 30px; 
   cursor: pointer; 
   margin-left: 10px; 
+  font-weight: 800;
 }
 
 .npmc-button-disable {
@@ -5874,17 +5919,20 @@ border:1px solid #E9E9E9;
 
 /* Modal Content */
 .pro-modal-content {
-  height: 100%;
+  /* height: 100%; */
   max-height: 90vh;
   /* overflow-y: scroll; */
   background-color: white;
   width: 100%;
   max-width: 430px;
   border-radius: 15px 15px 0 0;
-  padding: 38.27px 20px 20px 20px;
+  padding: 38.27px 20px 0px 20px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   transform: translateY(100%);
   transition: transform 0.3s ease;
+}
+.npmc-curr-blc{
+  margin-bottom: 0px !important;
 }
 
 /* Slide up the modal when shown */
@@ -5988,20 +6036,53 @@ input:focus, textarea:focus {
 }
 .my-wish-prod-con{
   margin-top: 15px;
+  height: 100%;
+}
+.mywish-pro-text-view-con{
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-wish-pro-date-con{
+    margin-bottom: 10px;
 }
 .mywish-pro-text{
   font-size: 16px ;
   font-weight: 800;
   color: black;
   text-align: start;
+  margin: 4px 0px;
 }
+.mywish-pro-donation-card{
+  margin-bottom: 5px;
+  padding: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 62px;
+  border-radius: 20px ;
+  background-color: #F7F7F7;
+  
+}
+.small{
+  margin-bottom: 0px ;
+}
+.my-wish-prod-img{
+  background-image: url('../app/images/Animation1732540650476.gif');
+}
+
+
 .mywish-pro-subtext{
   font-size: 11px;
   font-weight:500;
   line-height: 24px;
   color: #A48888;
   text-align: start;
-  margin-bottom: 0px !important;
+  margin-bottom: 4px !important;
+}
+.mywish-pro-progress{
+  margin-bottom: 20px !important;
 }
 .mywish-pro-today{
   font-size: 20px;
@@ -6041,7 +6122,7 @@ img.ptm-icon.pay-iconsBHIM{
   border-radius: 12px;
   background-color: #f7f7f7;
   padding: 20px;
-  border-radius: 24px ;
+  border-radius: 24px !important ;
   border: none;
   margin-bottom: 15px;
 
@@ -6082,7 +6163,7 @@ img.ptm-icon.pay-iconsBHIM{
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     transform: translateY(100%);
     transition: transform 0.3s ease;
-    height: 100%;
+    /* height: 100%; */
     max-height: 90vh;
     overflow: scroll;
 }
@@ -6094,7 +6175,20 @@ img.ptm-icon.pay-iconsBHIM{
   font-weight: 800;
   line-height: 24px;
   text-align: center;
-
+}
+.submit-for-disabledbtn{
+  background-color: #DEE7FF!important; 
+  color: #B2B2B2 !important; 
+  cursor: not-allowed !important;
+  /* opacity: 0.7 !important;  */
+  padding: 12px !important;
+  border-radius: 30px !important;
+  height: 64px;
+  border: none;
+  font-weight: 800;
+}
+.moogm-box img{
+  height: auto !important;
 }
 .delivery-address-modal-content p{
 font-size: 14px;
@@ -6223,15 +6317,27 @@ position: relative;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   transform: translateY(100%);
   transition: transform 0.3s ease;
-  max-height: 90vh;
+  max-height: 85vh;
+  height: 100%;
   overflow-y: scroll;
+}
+.moong-addresscon{
+  /* border: 1px solid red; */
+}
+.pf-donor-name {
+  display: inline-block; /* Ensures the span behaves like a block-level element for width to apply */
+  max-width: 150px; /* Set the maximum width for the content */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  overflow: hidden; /* Hide the overflowing text */
+  text-overflow: ellipsis; /* Add dots (...) at the end of the truncated text */
+  vertical-align: middle; /* Align with surrounding content if needed */
 }
 
 .moogm-login-main-container {
   background: white;
   height: 100%;
   border-radius: 25px 25px 0 0;
-  padding: 0px 15px;
+  padding: 25px 15px 0px;
   width:100%;
   position: relative;
 }
@@ -6256,6 +6362,7 @@ position: relative;
   font-weight: 800;
   text-align: left;
   margin-bottom: 0px;
+  margin-top: 24px;
 }
 .moogm-text-subtext{
   font-size: 14px;
@@ -6275,7 +6382,7 @@ position: relative;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   transform: translateY(100%);
   transition: transform 0.3s ease;
-  height: 100%;
+  /* height: 100%; */
   max-height: 90vh;
   overflow-y: scroll;
 }
@@ -6284,7 +6391,7 @@ position: relative;
   background: white;
   height: 100%;
   border-radius: 25px 25px 0 0;
-  padding: 0px 15px;
+  padding: 25px 15px 0px;
   width:100%;
   position: relative;
 }
@@ -6357,4 +6464,10 @@ position: relative;
 }
 .newClassForaddress{
   overflow: auto;
+}
+.npmc-img-con img{
+  height: auto !important;
+}
+.postmywish-img{
+  height: auto !important;
 }

@@ -45,7 +45,7 @@ const MyDoner = (props) => {
             key={index}
             className="pf-donor-item d-flex justify-content-between align-items-center"
           >
-            <div className="d-flex align-items-center">
+            <div className="d-flex">
               <Image
                 src={
                   donor.donorImage
@@ -53,12 +53,12 @@ const MyDoner = (props) => {
                     : profilePic
                 }
                 alt={donor.donorName}
-                width={40}
-                height={40}
+                width={42}
+                height={42}
                 className="pf-donor-img"
               />
               <div className="pf-donor-details">
-                <div className="d-flex align-items-center">
+                <div className="d-flex ">
                   <span className="pf-donor-name">{donor.donorName}</span>
                   
                     <span className="pf-verified-icon">

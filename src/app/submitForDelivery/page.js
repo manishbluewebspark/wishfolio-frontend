@@ -214,14 +214,20 @@ const AddressPage = () => {
       </div>
       <Row className="fixed-bottom-btn-delivery">
         <Col>
-          <div className="text-center">
-            <Button
-              className={`btn-swipe w-100 ${styles["btn-swipe"]}`}
-              block
-              onClick={handleSubmitForDelivery}
-            >
-              Submit for Delivery
-            </Button>
+          <div className="text-center" style={{ margin: "0px 10px" }}>
+            {selectedAddressId ? (
+              <Button
+                className={`btn-swipe w-100 ${styles["btn-swipe"]}  `}
+                block
+                onClick={handleSubmitForDelivery}
+              >
+                Deliver to this address
+              </Button>
+            ) : (
+              <Button className={`submit-for-disabledbtn w-100`}>
+                Deliver to this address
+              </Button>
+            )}
           </div>
         </Col>
       </Row>

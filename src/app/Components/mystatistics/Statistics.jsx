@@ -143,7 +143,7 @@ const Statistics = (props) => {
                       : "none",
                 }}
               >
-                Min Donations
+                Min Contributions
               </span>
               <h6
                 style={{

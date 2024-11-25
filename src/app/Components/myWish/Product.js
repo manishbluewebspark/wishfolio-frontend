@@ -5,6 +5,7 @@ import { ProgressBar, Row, Col, Button } from "react-bootstrap";
 import styles from "./style.css";
 import { useRouter } from "next/navigation";
 import CurrencyName from "../Comman/CurrencyName";
+import rightIcon from '../../images/ep_success-filled.svg'
 const ProductPage = ({ product }) => {
   const router = useRouter();
   const getSumOfAmounts = (donations) => {
@@ -74,21 +75,22 @@ const ProductPage = ({ product }) => {
   return (
     <div className={`my-wish-prod-con ${styles.container}`}>
       {/* WishFolio Header */}
-      <div className="d-flex justify-content-end align-items-center share-btn-con">
-        <button className="btn btn-outline-primary">Share</button>
-      </div>
+      {/* <div className="d-flex justify-content-end align-items-center share-btn-con">
+        <button className="">Share</button>
+      </div> */}
 
       {/* Product Details Section */}
-      <div className="text-center">
+      <div className="text-center my-wish-prod-img">
         <Image
           src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product?.productImageUrl}`}
           alt={product?.productName}
           width={187.41}
           height={210.16}
+          className="postmywish-img"
         />
         <h5 className="mywish-pro-text">{product?.productName}</h5>
         <p className="mywish-pro-subtext">
-          <strong style={{ color: "#000000" }}>
+          <strong style={{ color: "#000000", fontSize:'14px'}}>
             <CurrencyName />
             {totalDonated || 0}
           </strong>
@@ -100,14 +102,14 @@ const ProductPage = ({ product }) => {
         <ProgressBar
           now={calculatePercentageOfAmount(product?.productPrice)}
           //   variant={progressVariant}
-          className={progressVariant}
+          className={`${progressVariant} mywish-pro-progress`}
         />
       </div>
 
       {/* Donations Section */}
 
       <div className="mb-4">
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-center my-wish-pro-date-con">
           <h6 className="mywish-pro-today">Today</h6>
           <div className="">
             <span className="mx-2">Received</span>
@@ -187,8 +189,8 @@ const ProductPage = ({ product }) => {
           ))}
         </div>
       )}
-      {remainingDonations?.length === 0 && yesterdayDonations.length === 0 && (
-        <div>
+      {remainingDonations?.length === 0 && yesterdayDonations.length === 0 && todayDonations?.length === 0 &&(
+        <div className="mywish-pro-text-view-con">
           <p className="my-wish-text-view">You don't have any donation yet</p>
         </div>
       )}
@@ -214,26 +216,30 @@ const ProductPage = ({ product }) => {
 // DonationCard component
 const DonationCard = ({ name, date, time, amount, image }) => {
   return (
-    <div className="card mb-3">
-      <div className="d-flex align-items-center p-2">
-        <Image
+    <div className="mywish-pro-donation-card">
+      <div className="w-100 d-flex align-items-center justify-content-between">
+       <div className="d-flex align-items-center justify-content-center">
+       <Image
           src={image}
           alt="User Image"
           className="rounded-circle"
-          width={50}
-          height={50}
+          width={42}
+          height={42}
         />
-        <div className="ms-3">
-          <h6 className="mb-0">
-            {name} <span className="text-success">&#x2714;</span>
+        <div className="ms-1">
+          <h6 className="mb-0 pro-wish-head-text" >
+            {name} <span className="text-success">
+              <Image src={rightIcon} height={15} width={15}></Image>
+            </span>
           </h6>
-          <p className="text-muted small">
+          <p className=" small clas pro-wish-head-subtexttext">
             {date} • {time}
           </p>
         </div>
+       </div>
         <div className="ms-auto">
-          <p className="text-success fw-bold">
-            <CurrencyName />
+          <p className="text-success fw-bold my-wish-pro-amount">
+            +<CurrencyName />
             {amount}
           </p>
         </div>

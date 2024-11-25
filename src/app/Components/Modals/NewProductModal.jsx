@@ -167,13 +167,13 @@ const ProductModalNew = ({
                 ></div>
               </div>
               <Statistics
-                isPayment={true}
+                isPayment={false}
                 minDonation={minDonation.minimumDonation}
                 price={product.productPrice}
                 numberOfDoanation={minDonation.numberOfDonations}
                 remaningDonation={
-                  minDonation.numberOfDonations -
-                  product.donationsDetails.length
+                minDonation.numberOfDonations -
+                product.donationsDetails.length
                 }
               />
 

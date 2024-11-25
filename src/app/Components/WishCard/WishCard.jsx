@@ -104,7 +104,7 @@ const WishCard = ({
             style={{ marginLeft: "4px", color: "#A48888" }}
           >
             <CurrencyName />
-            {donationGoal?.toLocaleString()} Donated
+            {donationGoal?.toLocaleString()} Funded
           </span>
         </p>
 

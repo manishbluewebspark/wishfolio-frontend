@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image"; // Assuming you're using Next.js Image component
 import { useRouter } from "next/navigation"; // Import the useRouter hook
-import leftArrowIcon from "../../images/arrow-left.png";
+import leftArrowIcon from "../../images/arrow-left.svg";
 // import './style.css';
 
 const BackButton = (props) => {

@@ -136,9 +136,11 @@ const Profile = () => {
           <div>
             <p className="pf-balance-label">Available Balance</p>
             <h3 className="pf-balance-amount">
-              <CurrencyName />
-              {userData?.accountBalance || "0"}
-            </h3>
+  <CurrencyName />
+  {userData?.accountBalance
+    ? new Intl.NumberFormat().format(userData.accountBalance)
+    : "0"}
+</h3>
           </div>
           <button
             onClick={() => router.push("/predeposit")}
