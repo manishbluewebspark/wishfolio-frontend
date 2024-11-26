@@ -55,6 +55,7 @@ const WishingItems = () => {
   const [levelIndex, setLevelIndex] = useState(null);
   const [minDonation, setMinDonation] = useState({});
   const [worthItem, setWorthItem] = useState("");
+  
 
   useEffect(() => {
     const getUserData = () => {
@@ -209,7 +210,7 @@ const WishingItems = () => {
   }
   return (
     <>
-      <Container fluid className="wishing-item-main-con">
+      <Container fluid className={`${products.length <= 10 ? 'wishing-item-main-con-h': 'wishing-item-main-con-a ' } wishing-item-main-con`}>
         {/* Header Section */}
         <div className="wishing-item-list-top-con">
           <div>

@@ -294,9 +294,10 @@ a {
 }
 
 .home-container-wishing{
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   flex-direction: column;
+  height: auto;
 }
 .product-col{
   height:100%;
@@ -754,6 +755,7 @@ text-align: center;
   line-height: 24px;
   text-align: left;
   color: #9D9E9F;
+  z-index: 9999999;
 }
 
 .gd-input-field-right:read-only {
@@ -1034,7 +1036,6 @@ text-align: left;
   background-color:#EEEEEE;
   border-radius: 50px;
   padding: 10px 20px;
-  margin-bottom: 10px;
 }
 
 .hwl-icon {
@@ -1159,7 +1160,7 @@ text-align: left;
   width: 100%;
   max-width: 100%;
   margin: 10px 0 auto;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
   background: #F7F7F7;
 
 }
@@ -2014,7 +2015,7 @@ padding-left: 10px;
 .phis-product-name {
 font-size: 14px;
 font-weight: 600;
-margin: 5px;
+/* margin: 5px; */
 }
 
 .phis-order-date {
@@ -2029,19 +2030,22 @@ font-size: 12px;
 display: flex;
 align-items: center;
 color: #333;
+margin-bottom: 0px;
 }
 
 .phis-delivery-status i {
-margin-right: 5px;
+/* margin-right: 5px; */
 font-size: 16px;
 }
 
 /* Price styling */
 .phis-price-value {
-font-size: 18px;
-font-weight: bold;
-color:#31B776;
+  font-size: 16px;
+  font-weight: bold;
+  color: #31B776;
   margin: 0;
+  text-align: end;
+  padding-right: 10px;
 }
 
 .phis-order-item-con{
@@ -2914,7 +2918,7 @@ align-items: center;
 /* sucess story */
 .hw-sto-success-stories-container {
   margin-top: 10px;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
 }
 
@@ -2948,7 +2952,7 @@ align-items: center;
   margin-bottom: 5px;
   width: 100%;
   max-width:187px;
-  height: 100%;
+  /* height: 100%; */
 }
 .hw-sto-phone-image-popup{
   border-radius: 27.81px;
@@ -3111,7 +3115,7 @@ text-align: center;
   text-align: center;
   position: relative;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   cursor: pointer;
 }
 
@@ -3178,7 +3182,7 @@ text-align: center;
 
 /* Price and donation goal */
 .price {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 800;
   line-height: 24px;
   margin: 0px 0;
@@ -3195,8 +3199,22 @@ text-align: center;
 .product-title {
   font-size: 14px;
   color: #000000 !important;
-  display: flex;
-  justify-content: start;
+  text-align: start;
+  justify-content: end;
+  font-weight: 500 !important;
+  margin-bottom: 2px;
+  /* display: inline-block; */
+  max-width: 175px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.product-title-mod {
+  font-size: 11px;
+  color: #000000 !important;
+  text-align: start;
+  justify-content: end;
   font-weight: 500 !important;
   margin-bottom: 2px;
 }
@@ -3374,6 +3392,7 @@ cursor: pointer;
 width: 100% !important;
 font-size: 16px !important;
 font-weight: 800 !important;
+height: 60px !important;
 }
 /* filter css */
 .wishing-items-title {
@@ -3621,7 +3640,7 @@ margin-top:70px;
   font-weight: 400;
   line-height: 19.12px;
   text-align: center;
-  width: 270px;
+  width: 300px;
 }
 .mw-donate-explore-txt{
 font-size: 14px;
@@ -3664,11 +3683,16 @@ cursor: pointer;
   color:black !important;
   border: none;
   padding: 10px 20px !important;;
-  border-radius: 30px !important;;
   font-size: 16px;
   font-weight: 600;
-  height: 50px !important;
   width: 182px !important;
+  border-radius: 100px !important;
+  font-weight: 800;
+  text-align: center;
+  padding: 10px 20px !important;
+  cursor: pointer;
+  height: 60px !important;
+  width: 182px;
 
 }
 /* mywish end */
@@ -4199,7 +4223,7 @@ cursor: pointer;
   background-color: #90AEFF !important;
   color: #000000 !important;
   padding: 12px !important;
-  border-radius: 30px !important;
+  border-radius: 100px !important;
   height: 64px;
   border: none;
   font-weight: 800;
@@ -4286,6 +4310,7 @@ margin-bottom: 4px;
 }
 .hw-unblock-instructions{
   margin-bottom: 0px;
+  list-style-type: decimal;
 }
 .hw-level-description{
 font-size: 14px;
@@ -5409,9 +5434,9 @@ border: none;
 
 }
 .hoitw_btn-con{
-  position: sticky;
-  bottom: 10px;
-  float: inline-end;
+  position: absolute;
+  bottom: 75px;
+  right: 0px;
   margin-right: 20px;
 }
 
@@ -5602,7 +5627,7 @@ border:1px solid #E9E9E9;
 
 
 .slv-stat-item {
-  background-color: #EEEEEE;
+  background-color: #ffffff;
   border-radius: 50px;
   padding: 10px 20px;
   margin-bottom: 10px;
@@ -5856,7 +5881,13 @@ border:1px solid #E9E9E9;
 }
 .wishing-item-main-con{
   position: relative;
-  height: 100%;
+  /* height: 100%; */
+}
+.wishing-item-main-con-h{
+  height: 100% !important;
+}
+.wishing-item-main-con-a{
+  height: auto !important;
 }
 .htucomp-main-con{
   color: white !important;
@@ -5921,7 +5952,7 @@ border:1px solid #E9E9E9;
 .pro-modal-content {
   /* height: 100%; */
   max-height: 90vh;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   background-color: white;
   width: 100%;
   max-width: 430px;
@@ -5987,7 +6018,7 @@ border:1px solid #E9E9E9;
 
 /* Modal Description Text */
 .pro-modal-content p {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 24px;
 }
@@ -6052,7 +6083,7 @@ input:focus, textarea:focus {
   font-weight: 800;
   color: black;
   text-align: start;
-  margin: 4px 0px;
+  margin: 10px 0px 4px;
 }
 .mywish-pro-donation-card{
   margin-bottom: 5px;
@@ -6068,13 +6099,13 @@ input:focus, textarea:focus {
 .small{
   margin-bottom: 0px ;
 }
-.my-wish-prod-img{
+.my-wish-prod-imgsuccess{
   background-image: url('../app/images/Animation1732540650476.gif');
 }
 
 
 .mywish-pro-subtext{
-  font-size: 11px;
+  font-size: 14px;
   font-weight:500;
   line-height: 24px;
   color: #A48888;
@@ -6091,9 +6122,13 @@ input:focus, textarea:focus {
   color: #000;
 }
 .swip-btn-sticky{
-  position: sticky;
+  /* position: sticky;
   bottom: 10px;
-  margin: 0px 20px;
+  margin: 0px 20px; */
+  position: absolute;
+    width: 92%;
+    bottom: 10px;
+    margin: 0px 20px;
 }
 /* my wish page css end  */
 img.ptm-icon.pay-iconsGoogle.Pay{
@@ -6332,6 +6367,14 @@ position: relative;
   text-overflow: ellipsis; /* Add dots (...) at the end of the truncated text */
   vertical-align: middle; /* Align with surrounding content if needed */
 }
+.wishcard-small-name{
+  display: inline-block; /* Ensures the span behaves like a block-level element for width to apply */
+  max-width: 120px; /* Set the maximum width for the content */
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  overflow: hidden; /* Hide the overflowing text */
+  text-overflow: ellipsis; /* Add dots (...) at the end of the truncated text */
+  vertical-align: middle;
+}
 
 .moogm-login-main-container {
   background: white;
@@ -6470,4 +6513,14 @@ position: relative;
 }
 .postmywish-img{
   height: auto !important;
+}
+.new-swip-btn{
+  height: 60px;
+  border: none;
+  background-color: #90AEFF;
+  color: black;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 100px;
+
 }

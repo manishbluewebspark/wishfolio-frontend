@@ -73,6 +73,7 @@ const ProductPage = ({ product }) => {
     router.push("/submitForDelivery");
   };
   return (
+   <>
     <div className={`my-wish-prod-con ${styles.container}`}>
       {/* WishFolio Header */}
       {/* <div className="d-flex justify-content-end align-items-center share-btn-con">
@@ -80,7 +81,7 @@ const ProductPage = ({ product }) => {
       </div> */}
 
       {/* Product Details Section */}
-      <div className="text-center my-wish-prod-img">
+      <div className={`text-center my-wish-prod-img${progressVariant}`}>
         <Image
           src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product?.productImageUrl}`}
           alt={product?.productName}
@@ -194,22 +195,23 @@ const ProductPage = ({ product }) => {
           <p className="my-wish-text-view">You don't have any donation yet</p>
         </div>
       )}
-      {progressVariant === "success" && (
+    </div>
+    {progressVariant === "success" && (
         <Row className="fixed-bottom-btn-delivery">
           <Col>
             <div className="text-center">
-              <Button
+              <button
                 className="btn-swipe w-100"
                 block
                 onClick={handleSubmitForDelivery}
               >
                 Submit for Delivery
-              </Button>
+              </button>
             </div>
           </Col>
         </Row>
       )}
-    </div>
+   </>
   );
 };
 

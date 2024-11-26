@@ -15,7 +15,7 @@ const UnblockLevels = ({unblockLevelsClasses ,htumMarginClass }) => {
       <div>
         <h3 className="hw-unblock-title">How to Unblock?</h3>
         <ul className="hw-unblock-instructions">
-          <li>Complete your current level’s statistics and target.</li>
+          <li>Contribute funds according to your designated levels.</li>
           <li>Once you finish, request your wishing item.</li>
           <li>After that, the next stage will be unlocked.</li>
         </ul>
@@ -28,7 +28,7 @@ const UnblockLevels = ({unblockLevelsClasses ,htumMarginClass }) => {
         <p className="hw-level-description">
           The levels will progress in the order of Star, Tree, Wave, and Sun.
           Once you complete the Sun level, you’ll return to the Star level
-          again. This structure is designed to ensure that donations continue
+          again. This structure is designed to ensure that Contributions continue
           flowing continuously.
         </p>
       </div>

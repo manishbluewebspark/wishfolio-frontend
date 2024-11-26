@@ -52,7 +52,7 @@ const myDonationsSlice = createSlice({
       .addCase(fetchMyDonations.rejected, (state, action) => {
         state.isLoading = false; // Set loading to false
         // Handle error message
-        state.error = action.payload || "Failed to fetch donations data.";
+        state.error = action.payload || "Failed to fetch contributions data.";
       });
   },
 });

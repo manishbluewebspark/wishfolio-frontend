@@ -147,7 +147,7 @@ const ProductModalNew = ({
                 <span className="donated"> Donated</span>
               </p>
 
-              <p className="product-title">{product.productName}</p>
+              <p className="product-title-mod">{product.productName}</p>
 
               <div className="progress-bar-container">
                 <div

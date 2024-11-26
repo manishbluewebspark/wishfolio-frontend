@@ -91,14 +91,16 @@ const WishCard = ({
             style={{ marginRight: "4px" }}
           />
           {"  "}
-          <strong style={{ color: "black" }}>{wishingBy}</strong>
+          <strong style={{ color: "black" }} className="wishcard-small-name">{wishingBy}</strong>
         </p>
 
         {/* Price Info */}
         <p className="price">
           {/* ₹{getSumOfAmounts(donationsDetails) || price}  */}
           <CurrencyName />
-          {getSumOfAmounts(donationsDetails) || price}/
+{getSumOfAmounts(donationsDetails)
+  ? new Intl.NumberFormat('en-IN').format(getSumOfAmounts(donationsDetails))
+  : new Intl.NumberFormat('en-IN').format(price)}/
           <span
             className="donated"
             style={{ marginLeft: "4px", color: "#A48888" }}

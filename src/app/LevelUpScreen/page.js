@@ -106,7 +106,7 @@ const LevelUpScreen = () => {
                 >
                   <span className="d-flex align-items-center">
                     <i className="bi bi-currency-dollar text-dark mr-2"></i> Min
-                    Donations
+                    Contributions
                   </span>
                   <span>₹{levelData?.minimumDonation}</span>
                 </Card>
@@ -116,7 +116,7 @@ const LevelUpScreen = () => {
                 >
                   <span className="d-flex align-items-center">
                     <i className="bi bi-droplet-half text-dark mr-2"></i> Number
-                    of Donations
+                    of Contributions
                   </span>
                   <span>{levelData?.numberOfDonations}</span>
                 </Card>

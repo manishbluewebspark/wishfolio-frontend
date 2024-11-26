@@ -72,7 +72,7 @@ const LevelUpComponent = () => {
 
         {/* Button */}
         <button className="donateButtonLuc" onClick={() => router.push("/")}>
-          Start Donating
+          Start Contributing
         </button>
       </div>
     </div>

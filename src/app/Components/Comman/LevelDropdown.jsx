@@ -5,7 +5,7 @@ import emojiIconStar from "../../images/emoji1.png";
 import emojiIconTree from "../../images/emoji2.png";
 import emojiIconWave from "../../images/emoji3.png";
 import emojiIconSun from "../../images/emoji4.png";
-import lockIcon from "../../images/lock-circle.jpg";
+import lockIcon from "../../images/lock-circle.svg";
 import dropdownIcon from "../../images/arrow-down.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLevels } from "../../store/slices/levelsSlice";

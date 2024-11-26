@@ -49,7 +49,7 @@ const GotRequestModal = ({ isOpen, onClose, onConfirm }) => {
                   className="btn-login w-100"
                   onClick={handleGotoMyOrder}
                 >
-                  GO to My Orders
+                  Go to my orders
                 </button>
               </div>
             </div>

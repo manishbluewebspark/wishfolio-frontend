@@ -29,7 +29,7 @@ const HowToUnblockComp = () => {
         <p className="hw-level-description">
           The levels will progress in the order of Star, Tree, Wave, and Sun.
           Once you complete the Sun level, you’ll return to the Star level
-          again. This structure is designed to ensure that donations continue
+          again. This structure is designed to ensure that Contributions continue
           flowing continuously.
         </p>
       </div>

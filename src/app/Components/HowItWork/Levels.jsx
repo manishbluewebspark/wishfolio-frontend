@@ -17,7 +17,7 @@ const Levels = () => {
   return (
     <>
       {levels.map((option, index) => (
-        <div className="hwl-statistics-section shadow-sm">
+        <div className="hwl-statistics-section">
           <div className="hwl-statistics-inside-sec" key={index}>
             {/* Star Level Section */}
             <div className="hwl-level-content d-flex align-items-center">
@@ -30,9 +30,9 @@ const Levels = () => {
                   width={32}
                   className="hwl-level-icon"
                 />
-                <div className="hwl-current-level-badge-con">
+                {/* <div className="hwl-current-level-badge-con">
                   <span className="hwl-current-level-badge">Current Level</span>
-                </div>
+                </div> */}
               </div>
               <div className="hwl-wishing-items">
                 <h5>Wishing Items</h5>
@@ -50,8 +50,12 @@ const Levels = () => {
                   className="hwl-icon"
                 />
                 <div className="hwl-stat-text d-flex justify-content-between w-100 align-items-center">
-                  <span>Min Donations</span>
-                  <h6>₹{option?.minimumDonation}</h6>
+                  <span>Min Contributions</span>
+                  <h6>
+  ₹{option?.minimumDonation 
+    ? new Intl.NumberFormat('en-IN').format(option.minimumDonation) 
+    : "0"}
+</h6>
                 </div>
               </div>
 

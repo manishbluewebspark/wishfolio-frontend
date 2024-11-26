@@ -23,7 +23,7 @@ const StatisticsLevelUp = ({ levelData }) => {
           <div className="slv-stat-item d-flex align-items-center">
             <Image src={dollarIcon} alt="Min Donations" className="slv-icon" />
             <div className="slv-stat-text d-flex justify-content-between w-100 align-items-center">
-              <span>Min Donations</span>
+              <span>Min Contribution</span>
               <h6>₹{levelData?.minimumDonation}</h6>
             </div>
           </div>

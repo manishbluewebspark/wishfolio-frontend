@@ -14,8 +14,8 @@ export default function HomePage() {
           <div className="content-container">
           <EmojisCard />
           <ProductCard />
-          <HowItWorkingBtn></HowItWorkingBtn>
           </div>
+          <HowItWorkingBtn></HowItWorkingBtn>
           <BottomNav />
         </div>
       </div>

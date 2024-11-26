@@ -111,8 +111,8 @@ const ProModal = ({
             <Image
               src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${product.productImageUrl}`}
               alt={product.productName}
-              width={136}
-              height={153}
+              width={163}
+              height={183}
             />
           </div>
 
@@ -135,11 +135,12 @@ const ProModal = ({
             </p>
 
             <p className="price">
-              <strong style={{ color: "black" }}>
-                {" "}
-                <CurrencyName />{" "}
-                {getSumOfAmounts(product.donationsDetails) || 0}
-              </strong>
+            <strong style={{ color: "black" }}>
+  <CurrencyName />
+  {getSumOfAmounts(product.donationsDetails)
+    ? new Intl.NumberFormat('en-IN').format(getSumOfAmounts(product.donationsDetails))
+    : "0"}
+</strong>
               /
               <CurrencyName />
               {product.productPrice?.toLocaleString()}
@@ -147,7 +148,7 @@ const ProModal = ({
               <span className="donated"> Funded</span>
             </p>
 
-            <p className="product-title">{product.productName}</p>
+            <p className="product-title-mod">{product.productName}</p>
 
             <div className="progress-bar-container">
               <div
@@ -210,12 +211,14 @@ const ProModal = ({
                     <p style={{ color: "red", textAlign: "center" }}>{error}</p>
                   )}
                   <p className="npmc-curr-blc text-center">
-                    Current Balance:
-                    <strong style={{ color: "black" }}>
-                      <CurrencyName />
-                      {userData?.accountBalance || 0}
-                    </strong>
-                  </p>
+  Current Balance:
+  <strong style={{ color: "black" }}>
+    <CurrencyName />
+    {userData?.accountBalance
+      ? new Intl.NumberFormat('en-IN').format(userData.accountBalance)
+      : "0"}
+  </strong>
+</p>
                 </>
               )}
             </div>

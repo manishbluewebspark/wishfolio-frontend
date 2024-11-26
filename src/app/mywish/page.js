@@ -116,8 +116,8 @@ const WishFolio = () => {
                 />
                 <h5>Almost there!</h5>
                 <p>
-                  You will be eligible to post your wish after you complete your
-                  contributions.
+                You can share your wish with the community
+                once you've completed your contributions
                 </p>
 
                 {canPostWish ? (
@@ -133,7 +133,7 @@ const WishFolio = () => {
                     //onClick={() => router.push("/")}
                     disabled
                   >
-                    Post My wish
+                    Post My wish!
                   </button>
                 )}
                 <p

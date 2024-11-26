@@ -72,9 +72,11 @@ const MyDoner = (props) => {
               </div>
             </div>
             <span className="pf-donor-amount">
-              +<CurrencyName />
-              {donor.amount}
-            </span>
+  +<CurrencyName />
+  {donor.amount
+    ? new Intl.NumberFormat('en-IN').format(donor.amount) // Format with commas
+    : "0"}
+</span>
           </div>
         ))}
       </div>

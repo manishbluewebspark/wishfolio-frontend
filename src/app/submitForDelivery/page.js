@@ -217,7 +217,7 @@ const AddressPage = () => {
           <div className="text-center" style={{ margin: "0px 10px" }}>
             {selectedAddressId ? (
               <Button
-                className={`btn-swipe w-100 ${styles["btn-swipe"]}  `}
+                className={`btn-swipe w-100 `}
                 block
                 onClick={handleSubmitForDelivery}
               >
