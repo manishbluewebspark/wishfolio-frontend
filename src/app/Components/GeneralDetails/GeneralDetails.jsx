@@ -62,6 +62,7 @@ const GeneralDetails = () => {
         formData
       );
       toast.success("Details Updated Successfully");
+      router.push("/profile");
       // Optionally, you can handle success/failure UI here
     } catch (error) {
       toast.error("Something went to wrong");

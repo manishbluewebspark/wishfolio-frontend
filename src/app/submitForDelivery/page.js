@@ -21,7 +21,8 @@ const AddressPage = () => {
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const [selectedAddressType, setSelectedAddressType] = useState("");
   const [showSucessModal, setShowSucessModal] = useState(false);
-  const [editingAddress, setEditingAddress] = useState(null); // New state for selected address
+  const [editingAddress, setEditingAddress] = useState(null);
+  const [loading, setLoading] = useState(false); // New state to handle double submission prevention
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -69,67 +70,68 @@ const AddressPage = () => {
     }
   };
 
-  // Function to handle address selection
   const handleAddressSelect = (addressId, type) => {
     setSelectedAddressId(addressId);
     setSelectedAddressType(type);
   };
 
-  // Function to submit the selected address for delivery
   const handleSubmitForDelivery = async () => {
-    const productId = wishData.data.productId;
-    const wishId = wishData.data._id;
-    if (selectedAddressId) {
-      try {
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/user/delivery`, // Replace with your API endpoint
-          {
-            addressId: selectedAddressId,
-            productId: productId,
-            addressType: selectedAddressType,
-            userId: userData?._id,
-            wishId: wishId,
-          }
-        );
-        // alert(response.data.message);
-        toast.success(response.data.message);
-        setShowSucessModal(true);
-        const timer = setTimeout(() => {
-          router.push("/levelup");
-        }, 5000);
-      } catch (error) {
-        console.error("Error submitting for delivery:", error);
-        alert("An error occurred while submitting for delivery.");
-      }
-    } else {
+    if (!selectedAddressId) {
       alert("Please select an address for delivery.");
+      return;
+    }
+
+    const productId = wishData?.data?.productId;
+    const wishId = wishData?.data?._id;
+
+    try {
+      setLoading(true); // Prevent double submission
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/user/delivery`,
+        {
+          addressId: selectedAddressId,
+          productId: productId,
+          addressType: selectedAddressType,
+          userId: userData?._id,
+          wishId: wishId,
+        }
+      );
+      toast.success(response.data.message);
+      setShowSucessModal(true);
+
+      setTimeout(() => {
+        router.push("/levelup");
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting for delivery:", error);
+      toast.error("An error occurred while submitting for delivery.");
+    } finally {
+      setLoading(false); // Re-enable button
     }
   };
 
-  // Function to handle edit button click
   const handleEditAddress = (address) => {
     setEditingAddress(address);
     setShowModal(true);
   };
-  // console.log("editingAddress=====", editingAddress);
 
   return (
     <>
-      <BackButton title={"Address"}></BackButton>
+      <BackButton title={"Address"} />
       <div className={`container newClassForaddress ${styles.container} h-100`}>
         {/* User's Main Address Card */}
         <div
           className={`card delivery-address-con  ${styles.card} ${
             selectedAddressId === userData?._id ? styles.activeAddress : ""
-          }`} // Apply active class if main address is selected
-          onClick={() => handleAddressSelect(userData?._id, "main")} // Add onClick to select main address
+          }`}
+          onClick={() => handleAddressSelect(userData?._id, "main")}
         >
           <div className="d-flex justify-content-between">
             <h6 className="delivery-address-text-head">Address Line 1</h6>
             <Button
               variant="text"
               className="p-0 edit-button-address"
-              onClick={() => handleEditAddress(userData)} // Pass user data for editing
+              onClick={() => handleEditAddress(userData)}
             >
               <Image src={editIcon} width="17" height="17" alt="edit" /> Edit
             </Button>
@@ -155,8 +157,8 @@ const AddressPage = () => {
               key={index}
               className={`card delivery-address-con ${styles.card} ${
                 selectedAddressId === item._id ? styles.activeAddress : ""
-              }`} // Apply active class
-              onClick={() => handleAddressSelect(item._id, "other")} // Add onClick to select address
+              }`}
+              onClick={() => handleAddressSelect(item._id, "other")}
             >
               <div className="d-flex justify-content-between">
                 <h6 className="delivery-address-text-head">
@@ -165,7 +167,7 @@ const AddressPage = () => {
                 <Button
                   variant="text"
                   className="p-0 edit-button-address"
-                  onClick={() => handleEditAddress(item)} // Pass item data for editing
+                  onClick={() => handleEditAddress(item)}
                 >
                   <Image src={editIcon} width="17" height="17" alt="edit" />{" "}
                   Edit{" "}
@@ -186,16 +188,12 @@ const AddressPage = () => {
             </div>
           ))
         ) : (
-          <p></p>
+          <p>No additional addresses found.</p>
         )}
 
         {/* Add New Address Button */}
         <div className="delivery-address-addnew text-center mb-5">
-          <a
-            style={{ cursor: "pointer" }}
-            className=""
-            onClick={handleCardClick}
-          >
+          <a style={{ cursor: "pointer" }} onClick={handleCardClick}>
             Add a New Address
           </a>
         </div>
@@ -204,7 +202,7 @@ const AddressPage = () => {
           isOpen={showModal}
           onClose={handleCloseModal}
           onConfirm={openSuccessModal}
-          addressData={editingAddress} // Pass the selected address data here
+          addressData={editingAddress}
         />
         <GotRequestModal
           isOpen={showSucessModal}
@@ -217,14 +215,14 @@ const AddressPage = () => {
           <div className="text-center" style={{ margin: "0px 10px" }}>
             {selectedAddressId ? (
               <Button
-                className={`btn-swipe w-100 `}
-                block
+                className={`btn-swipe w-100`}
                 onClick={handleSubmitForDelivery}
+                disabled={loading} // Disable button if loading
               >
-                Deliver to this address
+                {loading ? "Processing..." : "Deliver to this address"}
               </Button>
             ) : (
-              <Button className={`submit-for-disabledbtn w-100`}>
+              <Button className={`submit-for-disabledbtn w-100`} disabled>
                 Deliver to this address
               </Button>
             )}

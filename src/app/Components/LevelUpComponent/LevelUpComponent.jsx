@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import EmojiBadge from "./EmojiBadge";
 import StatisticsLevelUp from "../../Components/LevelUpComponent/StatisticsLevelUp";
-
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { fetchUserData } from "../../store/slices/userSlice";
@@ -57,14 +57,23 @@ const LevelUpComponent = () => {
 
         {/* Emoji Section */}
         <div className="emojiluc-sec">
-          <EmojiBadge></EmojiBadge>
+          {/* <EmojiBadge></EmojiBadge> */}
+          <div className="emojiBadgeLuc">
+            <h2 className="titleLuc">{levelData?.labelName || ""}</h2>
+            <div className="emojiLuc">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_FILE_ACCESS_URL}/${levelData?.imageUrl}`}
+                height={48.35}
+                width={48.35}
+              ></Image>
+            </div>
+          </div>
         </div>
 
         {/* Message Section */}
         <h3 className="levelUpTextLuc">Level Up!</h3>
         <p className="congratsTextLuc">
-          Congratulations, you are now in Level {levelData?.labelName || "Tree"}
-          .
+          Congratulations, you are now in Level {levelData?.labelName || ""}.
         </p>
 
         {/* Wishing Items Section */}

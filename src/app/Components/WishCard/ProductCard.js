@@ -53,8 +53,10 @@ export default function ProductCard() {
     error: productsError,
   } = useSelector((state) => state.productsByLevel);
   const { levels, loading, error } = useSelector((state) => state.levels);
+  const { userData } = useSelector((state) => state.user);
   const [user, setUser] = useState(null);
   const [count, setCount] = useState(null);
+  const [userCurrentLevelId, setCurrentLevelId] = useState("");
   const productCount = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/product/update-count`); // Update the endpoint based on your API
@@ -78,6 +80,13 @@ export default function ProductCard() {
     getUserData(); // Call the function
     productCount();
   }, []);
+  useEffect(() => {
+    if (userData) {
+      const tempId = levels[userData?.userLevel - 1];
+      setSelected(tempId?._id);
+    }
+  }, [userData]);
+  // console.log("userData", userData);
 
   useEffect(() => {
     if (products.length > 0) {
@@ -102,7 +111,7 @@ export default function ProductCard() {
     setShowSuccessModal(true);
   };
   const handleCloseSuccessModal = () => {
-    dispatch(fetchProductsByLevel(levels[0]._id));
+    dispatch(fetchProductsByLevel(selected));
     dispatch(fetchUserData(user.id));
     setShowSuccessModal(false);
   };

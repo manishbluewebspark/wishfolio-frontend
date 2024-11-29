@@ -60,16 +60,19 @@ const LoginScreen = () => {
         );
 
         const userData = res.data;
-        console.log("User Data from Google:", userData);
         const response = await axios.post(
           `${API_BASE_URL}/user/googleLogin`,
           userData
         );
-        localStorage.setItem("user", JSON.stringify(response.data));
-
         if (response.status === 201) {
-          toast.success("Login successfully");
-          router.push("/");
+          if (response?.data?.id === "userNotFound") {
+            dispatch(setEmail(userData?.email));
+            router.push("/signup/mobile");
+          } else {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            toast.success("Login successfully");
+            router.push("/");
+          }
         }
 
         //toast.success("Google login successful!");

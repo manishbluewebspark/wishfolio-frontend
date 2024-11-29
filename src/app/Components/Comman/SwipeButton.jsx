@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'next/image';
-import righticon from '../../images/arrow-rightwhite.svg';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Image from "next/image";
+import righticon from "../../images/arrow-rightwhite.svg";
 
 const SwipeButton = ({ handleSwipe, isSwipable }) => {
   const [isSwiped, setIsSwiped] = useState(false);
@@ -18,14 +18,18 @@ const SwipeButton = ({ handleSwipe, isSwipable }) => {
 
   return (
     <div className="swipe-button-container">
-      <div 
-        className={`swipe-button ${isSwiped ? 'swiped' : ''} ${!isSwipable ? 'disabled' : ''}`} 
+      <div
+        className={`swipe-button ${isSwiped ? "swiped" : ""} ${
+          !isSwipable ? "disabled" : ""
+        }`}
         onClick={isSwipable ? onSwipe : null} // Only trigger onSwipe if isSwipable is true
       >
-        <div className={`swipe-icon ${!isSwipable ? 'disabled' : ''}`}>
+        {/* <div className={`swipe-icon ${!isSwipable ? 'disabled' : ''}`}>
           <Image src={righticon} alt="Swipe Icon" color='white' />
+        </div> */}
+        <div className={`swipe-text ${!isSwipable ? "disabled" : ""} `}>
+          Submit to Post My Wish
         </div>
-        <div className={`swipe-text ${!isSwipable ? 'disabled' : ''} `}>Swipe to Post My Wish</div>
       </div>
     </div>
   );
