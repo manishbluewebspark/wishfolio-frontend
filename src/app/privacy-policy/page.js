@@ -43,7 +43,7 @@ const TermsAndConditions = () => {
   }
 
   return (
-    <div>
+    <>
       <BackButton title={"Privacy Policy"} />
       <div className="tac-privacy-policy-container container">
         <div className="tac-privacy-policy-content">
@@ -65,7 +65,7 @@ const TermsAndConditions = () => {
           {/* <p className="tac-text">{data?.description}</p> */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

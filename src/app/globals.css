@@ -3053,6 +3053,8 @@ text-align: center;
 .tac-privacy-policy-container {
   margin-top: 15px;
   padding: 0px 20px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .tac-privacy-policy-brand{
   margin-bottom: 15px;
@@ -5369,7 +5371,7 @@ border: none;
 }
 .donate-section{
   position: sticky;
-  bottom: 0px;
+  bottom: 10px;
   background-color: white;
   padding-top: 20px;
 }
@@ -6033,7 +6035,7 @@ border:1px solid #E9E9E9;
 
 .pro-modal-content-inside{
   height: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   
 }
 /* .pro-modal-wrapper.show .row {
