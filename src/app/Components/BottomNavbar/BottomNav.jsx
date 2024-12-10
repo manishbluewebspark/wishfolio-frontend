@@ -7,7 +7,7 @@ import dropIcon from "../../images/drop.svg";
 import dropActiveIcon from "../../images/coloricondrop.svg";
 import vectorIcon from "../../images/moon.svg";
 import vectorActiveIcon from "../../images/coloriconmoon.svg";
-import profileIcon from "../../images/frame.svg";
+import profileIcon from "../../images/gray-icons_user.svg";
 import profileactive from "../../images/frameactive.svg";
 import { useRouter, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
