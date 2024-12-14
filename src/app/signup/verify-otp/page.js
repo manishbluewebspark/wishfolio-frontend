@@ -5,10 +5,11 @@ import Image from "next/image";
 import logo from "../../images/snow.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setOtp } from "../../store/slices/signupSlice";
-import axios from "axios"; // Import axios
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import BackButton from "../../Components/Button/BackButton";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function OtpForm() {
@@ -47,6 +48,9 @@ export default function OtpForm() {
       toast.error("Invalid OTP");
     }
   };
+
+  // Check if all OTP inputs are filled
+  const isButtonDisabled = otpValues.some((value) => value === "");
 
   return (
     <div className="d-flex em-otp-main-container">
@@ -106,8 +110,9 @@ export default function OtpForm() {
           </div>
           <div className="d-grid otp-margin">
             <button
-              className="em-btn-verify"
+              className={`em-btn-verify ${isButtonDisabled ? "disabled" : ""}`}
               onClick={handleOtpSubmit} // Trigger OTP verification
+              disabled={isButtonDisabled} // Disable button if not all inputs are filled
             >
               Verify
             </button>

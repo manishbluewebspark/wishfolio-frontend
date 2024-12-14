@@ -9,11 +9,9 @@ import { setEmail } from "../../store/slices/signupSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import BackButton from "../../Components/Button/BackButton";
-import { Icon } from "@iconify/react";
-import envelopeIcon from "@iconify/icons-mdi/email";
 import emailicon from "../../images/emailicon.svg";
-
 import { toast } from "react-toastify";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function LoginWithGoogle() {
@@ -40,10 +38,8 @@ export default function LoginWithGoogle() {
         dispatch(setEmail(email));
         router.push("/signup/verify-otp");
       }
-      console.error("Error sending verification code:");
     } catch (error) {
       console.error("Error sending verification code:", error);
-      //setError("Failed to send verification code. Please try again.");
       toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
@@ -54,7 +50,7 @@ export default function LoginWithGoogle() {
     <>
       <div className="d-flex signup-login-main-container">
         <div className="signup-back-btn">
-          <BackButton></BackButton>
+          <BackButton />
         </div>
         <div className="signup-login-container">
           <div className="signup-login-box">
@@ -92,8 +88,8 @@ export default function LoginWithGoogle() {
                 value={email}
                 onChange={(e) => setEmailState(e.target.value)}
                 style={{
-                  border: "none", // Remove border
-                  outline: "none", // Remove default outline
+                  border: "none",
+                  outline: "none",
                 }}
                 required
               />
@@ -113,17 +109,17 @@ export default function LoginWithGoogle() {
 
             <div className="d-grid signup-login-margin">
               <button
-                className="signup-btn-login"
+                className={`signup-btn-login ${
+                  !email || loading ? "disabled" : ""
+                }`}
                 onClick={handleEmailSubmit}
-                disabled={loading} // Disable button while loading
+                disabled={!email || loading}
               >
                 {loading ? "Sending..." : "Get Verification Code"}
               </button>
             </div>
             {error && (
-              <div className="text-danger mt-3 text-center">
-                {error} {/* Show error message */}
-              </div>
+              <div className="text-danger mt-3 text-center">{error}</div>
             )}
           </div>
         </div>

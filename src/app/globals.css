@@ -5774,6 +5774,15 @@ border:1px solid #E9E9E9;
 .swipe-text.disabled{
   color:  #B2B2B2;
 }
+
+.disabled {
+  cursor: not-allowed !important; /* Change cursor to not-allowed */
+  background: #DEE7FF !important;
+}
+.disabled:hover {
+  background-color: #DEE7FF !important;
+}
+
 .swipe-icon {
   display: flex;
   align-items: center;

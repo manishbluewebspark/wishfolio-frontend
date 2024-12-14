@@ -127,7 +127,7 @@ const Profile = () => {
 
       <div className="pf-header-2">
         <h4 className="pf-user-name text-center">{userData?.name}</h4>
-        <p className="pf-phone-number text-center">ID{userData?.userNumber}</p>
+        <p className="pf-phone-number text-center">ID {userData?.userNumber}</p>
       </div>
 
       {/* Balance Section with "Deposit" Button */}
@@ -136,11 +136,11 @@ const Profile = () => {
           <div>
             <p className="pf-balance-label">Available Balance</p>
             <h3 className="pf-balance-amount">
-  <CurrencyName />
-  {userData?.accountBalance
-    ? new Intl.NumberFormat().format(userData.accountBalance)
-    : "0"}
-</h3>
+              <CurrencyName />
+              {userData?.accountBalance
+                ? new Intl.NumberFormat().format(userData.accountBalance)
+                : "0"}
+            </h3>
           </div>
           <button
             onClick={() => router.push("/predeposit")}

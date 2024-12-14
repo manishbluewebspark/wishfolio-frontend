@@ -6,7 +6,7 @@ import logo from "../../images/snow.png";
 import { useDispatch } from "react-redux";
 import { setMobile } from "../../store/slices/signupSlice";
 import { useRouter } from "next/navigation";
-import axios from "axios"; // Import axios
+import axios from "axios";
 import BackButton from "../../Components/Button/BackButton";
 import { toast } from "react-toastify";
 
@@ -14,6 +14,7 @@ export default function PhoneForm() {
   const router = useRouter();
   const [mobile, setMobileState] = useState("");
   const dispatch = useDispatch();
+
   const handleMobileSubmit = async () => {
     try {
       // Call the API using axios to submit the phone number
@@ -34,6 +35,9 @@ export default function PhoneForm() {
       console.error("Error submitting mobile number:", error);
     }
   };
+
+  // Check if the mobile input is valid
+  const isButtonDisabled = !mobile || mobile.length < 10;
 
   return (
     <div className="d-flex mob-em-phone-main-container">
@@ -63,7 +67,7 @@ export default function PhoneForm() {
           >
             <input
               type="text"
-              className="form-contro"
+              className="form-control"
               placeholder="+91"
               defaultValue="+91"
               onChange={(e) => setMobileState(e.target.value)}
@@ -78,20 +82,21 @@ export default function PhoneForm() {
           <div className="mob-terms-container-hw">
             By continuing, you agree to our
             <a href="/privacy-policy" className="mob-text-muted-hw">
-              {" "}
               Privacy Policy
             </a>
             and
             <a href="/termsandconditions" className="mob-text-muted-hw">
-              {" "}
               Terms of Service
             </a>
             .
           </div>
           <div className="d-grid mob-em-margin-top">
             <button
-              className="mob-em-btn-continue"
+              className={`mob-em-btn-continue ${
+                isButtonDisabled ? "disabled" : ""
+              }`}
               onClick={handleMobileSubmit}
+              disabled={isButtonDisabled}
             >
               Continue
             </button>

@@ -24,6 +24,12 @@ const AddressForm = () => {
   const [roomNumber, setRoomNumber] = useState("");
   const router = useRouter();
 
+  const isButtonDisabled = !(
+    city.trim() &&
+    addressLine1.trim() &&
+    pinCode.trim() &&
+    state.trim()
+  );
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -248,7 +254,13 @@ const AddressForm = () => {
 
               {/* Complete button */}
               <div className="d-grid address-margin-top">
-                <button type="submit" className="address-btn-complete">
+                <button
+                  type="submit"
+                  className={`address-btn-complete  ${
+                    isButtonDisabled ? "disabled" : ""
+                  }`}
+                  disabled={isButtonDisabled}
+                >
                   Complete
                 </button>
               </div>
